@@ -5,6 +5,7 @@ import { SITE, SITE_EMAIL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Cancellation Policy',
   description: 'Wildpath Adventures cancellation and refund policy.',
+  alternates: { canonical: '/cancellation' },
 };
 
 export default function CancellationPage() {
@@ -40,26 +41,27 @@ export default function CancellationPage() {
 
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-4">Cancellation fees</h2>
-                  <div className="bg-[#E8E3D5] overflow-hidden">
-                    <div className="grid grid-cols-2 px-5 py-3 bg-[#1A1A1A] text-[#F2EDE3]">
-                      <p className="wp-subhead text-[0.6rem] tracking-[0.18em]">Days before departure</p>
-                      <p className="wp-subhead text-[0.6rem] tracking-[0.18em] text-right">Cancellation fee</p>
-                    </div>
-                    {[
-                      { days: 'More than 90 days', fee: 'Deposit only (20%)' },
-                      { days: '60–90 days', fee: '30% of journey cost' },
-                      { days: '30–59 days', fee: '60% of journey cost' },
-                      { days: 'Less than 30 days', fee: '100% of journey cost' },
-                    ].map((row, i) => (
-                      <div
-                        key={row.days}
-                        className={`grid grid-cols-2 px-5 py-3.5 ${i % 2 === 1 ? 'bg-[#F2EDE3]' : 'bg-[#E8E3D5]'}`}
-                      >
-                        <p className="text-sm text-[#1A1A1A]">{row.days}</p>
-                        <p className="text-sm text-[#1A1A1A] text-right font-medium">{row.fee}</p>
-                      </div>
-                    ))}
-                  </div>
+                  <p className="mb-4">
+                    Cancellation fees generally scale with how close the
+                    cancellation is to your departure date. The earlier you cancel,
+                    the smaller the fee. Exact percentages and deposit amounts are
+                    confirmed in your personalised proposal and booking
+                    confirmation — they vary with the partners, lodges, and charter
+                    operators involved in your specific route.
+                  </p>
+                  <p className="mb-4">
+                    As a general principle:
+                  </p>
+                  <ul className="list-disc pl-5 space-y-1.5">
+                    <li>Cancellations well in advance typically forfeit only the deposit.</li>
+                    <li>Cancellations closer to departure typically incur a larger percentage of the journey cost.</li>
+                    <li>Cancellations within the final weeks before departure typically forfeit the full journey cost.</li>
+                  </ul>
+                  <p className="mt-4">
+                    We strongly recommend travel insurance that covers
+                    cancellation, and we will support your insurance claim with
+                    documentation.
+                  </p>
                 </div>
 
                 <div>
@@ -103,9 +105,9 @@ export default function CancellationPage() {
 
                 <div className="bg-[#E8E3D5] p-5 border-l-2 border-[#C5511A] mt-10">
                   <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
-                    <strong className="text-[#9E4214]">Note:</strong> Some lodges and
-                    charter operators apply their own cancellation terms during
-                    peak season (July–October). We will flag these in your
+                    Some accommodation partners and charter operators apply their
+                    own cancellation terms, particularly during peak season
+                    (July–October). We will always flag these in your
                     confirmation, before any deposit is taken.
                   </p>
                 </div>

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "enq_1783914523002_g1d02tu",
+    "receivedAt": "2026-07-13T03:48:43.002Z",
+    "ip": "redacted",
+    "name": "Test Client",
+    "email": "test@example.com",
+    "phone": "+49 30 1234567",
+    "country": "Germany",
+    "journey": "untamed-desert",
+    "travelMonth": "October 2026",
+    "travellers": "2",
+    "message": "Looking to plan a 13-day self-drive for two photographers. Want Sossusvlei and Etosha focus.",
+    "travelStyle": "",
+    "duration": "",
+    "interests": "",
+    "consent": true
+  },
+  {
+    "id": "enq_1783914591381_b8hs3ma",
+    "receivedAt": "2026-07-13T03:49:51.381Z",
+    "ip": "redacted",
+    "name": "Test Client",
+    "email": "test@example.com",
+    "phone": "+49 30 1234567",
+    "country": "Germany",
+    "journey": "untamed-desert",
+    "travelMonth": "October 2026",
+    "travellers": "2",
+    "message": "Looking to plan a 13-day self-drive for two photographers. Want Sossusvlei and Etosha focus.",
+    "travelStyle": "",
+    "duration": "",
+    "interests": "",
+    "consent": true
+  },
+  {
+    "id": "enq_1783914641476_xwugazg",
+    "receivedAt": "2026-07-13T03:50:41.476Z",
+    "ip": "redacted",
+    "name": "Juliet Tangison",
+    "email": "juliet@example.com",
+    "phone": "+264 81 555 0000",
+    "country": "Namibia",
+    "journey": "untamed-desert",
+    "travelMonth": "October 2026",
+    "travellers": "2",
+    "message": "Looking to plan a 13-day self-drive for two photographers. Want Sossusvlei and Etosha focus. Mid-budget.",
+    "travelStyle": "",
+    "duration": "",
+    "interests": "",
+    "consent": true
+  }
+]

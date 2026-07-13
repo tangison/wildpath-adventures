@@ -19,6 +19,7 @@ import { WHATSAPP_URL, SITE_EMAIL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'FAQ',
   description: 'Frequently asked questions about travelling with Wildpath Adventures in Namibia.',
+  alternates: { canonical: '/faq' },
 };
 
 const FAQS = [
@@ -32,7 +33,7 @@ const FAQS = [
   },
   {
     q: 'Is it safe to self-drive?',
-    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing, a 4×4 with full insurance, and a 24-hour line. We do not recommend self-drive for the Skeleton Coast or remote Damaraland — there, a guided vehicle is better.',
+    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing and a 4×4 arranged for your route. We do not recommend self-drive for the Skeleton Coast or remote Damaraland — there, a guided vehicle is better.',
   },
   {
     q: 'What about malaria?',
@@ -68,7 +69,7 @@ const FAQS = [
   },
   {
     q: 'What if there is an emergency?',
-    a: 'Every guest has a 24-hour line — to your guide, to our ops team in Windhoek, to medical evacuation. We carry satellite comms in remote areas. Travel insurance covering medical evacuation is mandatory for every booking.',
+    a: 'You have a direct line to your planning team throughout your journey, and we coordinate with local partners and medical evacuation services as needed. Travel insurance covering medical evacuation is mandatory for every booking.',
   },
 ];
 

@@ -62,10 +62,10 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
               </div>
             </div>
           </div>
-          {dest.imageStatus === 'placeholder' && (
+          {dest.imageKind === 'illustration' && (
             <div className="absolute top-24 right-6 md:right-12 bg-[#F2EDE3]/90 px-3 py-1.5">
               <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
-                Photography coming soon
+                Editorial illustration
               </p>
             </div>
           )}

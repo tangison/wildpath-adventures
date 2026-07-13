@@ -5,6 +5,7 @@ import { SITE, SITE_EMAIL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
   description: 'The terms under which Wildpath Adventures provides journeys and services.',
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {
@@ -50,13 +51,15 @@ export default function TermsPage() {
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">2. Payment</h2>
                   <p className="mb-3">
-                    A deposit of 20% confirms your booking. The balance is due 60
-                    days before departure. Bookings made within 60 days of departure
-                    require full payment at confirmation.
+                    A deposit confirms your booking. The balance is due before
+                    departure, on a schedule confirmed in your personalised
+                    proposal. Bookings made close to departure may require full
+                    payment at confirmation.
                   </p>
                   <p>
-                    We invoice in USD or NAD. Payment is by bank transfer or card;
-                    card surcharges may apply.
+                    Exact deposit percentages, balance due dates, accepted
+                    currencies, and payment methods are confirmed per booking —
+                    they vary with the partners and services involved.
                   </p>
                 </div>
 
@@ -148,9 +151,9 @@ export default function TermsPage() {
 
                 <div className="bg-[#E8E3D5] p-5 border-l-2 border-[#C5511A] mt-10">
                   <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
-                    <strong className="text-[#9E4214]">Note:</strong> NTB registration
-                    number and company registration details will be added here once
-                    finalised. This section is a placeholder for those entries.
+                    Wildpath Adventures is a Namibian-owned tour operator
+                    registered in Windhoek, Namibia. Registration numbers and
+                    further statutory details are available on request.
                   </p>
                 </div>
               </div>

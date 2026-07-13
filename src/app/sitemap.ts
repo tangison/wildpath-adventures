@@ -5,24 +5,24 @@ import { DESTINATIONS } from '@/lib/destinations';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages = [
-    '',
-    '/journeys',
-    '/destinations',
-    '/about',
-    '/field-notes',
-    '/contact',
-    '/brand',
-    '/faq',
-    '/privacy',
-    '/terms',
-    '/cancellation',
+    { path: '', priority: 1 },
+    { path: '/journeys', priority: 0.9 },
+    { path: '/destinations', priority: 0.9 },
+    { path: '/about', priority: 0.7 },
+    { path: '/field-notes', priority: 0.6 },
+    { path: '/contact', priority: 0.8 },
+    { path: '/brand', priority: 0.4 },
+    { path: '/faq', priority: 0.6 },
+    { path: '/privacy', priority: 0.3 },
+    { path: '/terms', priority: 0.3 },
+    { path: '/cancellation', priority: 0.3 },
   ];
 
-  const staticEntries: MetadataRoute.Sitemap = staticPages.map((path) => ({
-    url: `${SITE_URL}${path}`,
+  const staticEntries: MetadataRoute.Sitemap = staticPages.map((p) => ({
+    url: `${SITE_URL}${p.path}`,
     lastModified: new Date(),
     changeFrequency: 'monthly' as const,
-    priority: path === '' ? 1 : 0.7,
+    priority: p.priority,
   }));
 
   const journeyEntries: MetadataRoute.Sitemap = JOURNEYS.map((j) => ({

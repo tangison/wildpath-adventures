@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Anton, Oswald, Archivo, Caveat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
-import { SITE, SITE_EMAIL, SITE_URL } from "@/lib/site";
+import { SITE, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description:
-    "Expeditions through Namibia and Southern Africa. Red sand. Ancient rock. Raw horizons. Travel the untamed beauty.",
+    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa. Travel the untamed beauty.",
   keywords: [
     "Namibia",
     "Kalahari",
@@ -57,14 +57,18 @@ export const metadata: Metadata = {
     "Victoria Falls",
     "Chobe",
     "safari",
-    "expeditions",
+    "self-drive",
     "African travel",
+    "tour operator",
   ],
   authors: [{ name: SITE.name }],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: `${SITE.name} — ${SITE.tagline}`,
     description:
-      "Expeditions through Namibia and Southern Africa. Travel the untamed beauty.",
+      "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa.",
     siteName: SITE.name,
     type: "website",
     locale: "en_US",
@@ -77,6 +81,26 @@ export const metadata: Metadata = {
   },
 };
 
+// JSON-LD structured data — TravelAgency schema
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  name: SITE.name,
+  description:
+    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa.",
+  url: SITE_URL,
+  email: SITE.email,
+  telephone: SITE.phone,
+  areaServed: ["Namibia", "Botswana", "Zimbabwe", "Zambia"],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: SITE.location.city,
+    addressRegion: SITE.location.region,
+    addressCountry: SITE.location.country,
+  },
+  slogan: SITE.tagline,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -84,6 +108,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
       >

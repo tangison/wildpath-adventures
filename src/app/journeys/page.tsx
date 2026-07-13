@@ -56,7 +56,7 @@ export default function JourneysPage() {
                     <div className="relative md:col-span-7 aspect-[16/10] md:aspect-auto md:min-h-[420px] bg-[#1A1A1A] overflow-hidden [direction:ltr]">
                       <Image
                         src={j.heroImage}
-                        alt={`${j.name} — ${j.regions.join(', ')}`}
+                        alt={`${j.name} — ${j.route.map(r => r.name).join(', ')}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 60vw"
                         className="object-cover group-hover:scale-105 transition-transform duration-[800ms] ease-out"

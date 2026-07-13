@@ -10,7 +10,7 @@ import {
   AcaciaMark,
   ScrollReveal,
   JourneySnapshot,
-  JourneyTimeline,
+  JourneyRouteTimeline,
 } from '@/components/wildpath';
 import { JOURNEYS, getJourney } from '@/lib/journeys';
 import { WHATSAPP_URL } from '@/lib/site';
@@ -26,6 +26,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: journey.name,
     description: journey.tagline,
+    alternates: { canonical: `/journeys/${journey.slug}` },
   };
 }
 
@@ -35,7 +36,6 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
 
   if (!journey) notFound();
 
-  // Other journeys for "Continue exploring" section
   const otherJourneys = JOURNEYS.filter((j) => j.slug !== journey.slug).slice(0, 3);
 
   return (
@@ -47,7 +47,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
         <section className="relative h-[50vh] md:h-[65vh] min-h-[400px] bg-[#1A1A1A] overflow-hidden">
           <Image
             src={journey.heroImage}
-            alt={`${journey.name} — ${journey.regions.join(', ')}`}
+            alt={`${journey.name} — ${journey.regions?.join(', ') || journey.route.map(r => r.name).join(', ')}`}
             fill
             priority
             sizes="100vw"
@@ -80,31 +80,24 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
           highlights={journey.highlights}
           travelStyle={journey.travelStyle}
           availability={journey.availability}
-          meals={journey.meals}
+          mealsNote={journey.mealsNote}
           startPoint={journey.startPoint}
           endPoint={journey.endPoint}
         />
 
-        {/* ═════════════════════ OVERVIEW / STORY ═════════════════════ */}
+        {/* ═════════════════════ OVERVIEW ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">The arc of the journey</p>
-              <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-10">
+              <p className="wp-script text-2xl text-[#9E4214] mb-6">The shape of the journey</p>
+              <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.95] mb-8">
                 {journey.overview}
               </h2>
             </ScrollReveal>
-            <div className="space-y-6 text-lg leading-relaxed text-[#1A1A1A]/80">
-              {journey.story.map((para, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
-                  <p>{para}</p>
-                </ScrollReveal>
-              ))}
-            </div>
           </div>
         </section>
 
-        {/* ═════════════════════ ROUTE MAP — text-based path of regions ═════════════════════ */}
+        {/* ═════════════════════ ROUTE MAP — text-based path of destinations ═════════════════════ */}
         <section className="py-12 md:py-16 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal className="text-center mb-10">
@@ -115,12 +108,12 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
             </ScrollReveal>
             <ScrollReveal delay={0.1}>
               <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-                {journey.regions.map((r, i) => (
-                  <div key={r} className="flex items-center gap-3 md:gap-4">
-                    <span className="wp-display text-base md:text-xl text-[#F2EDE3] px-3 py-1.5 border border-[#F2EDE3]/30">
-                      {r}
+                {journey.route.map((r, i) => (
+                  <div key={`${r.name}-${i}`} className="flex items-center gap-3 md:gap-4">
+                    <span className="wp-display text-sm md:text-lg text-[#F2EDE3] px-3 py-1.5 border border-[#F2EDE3]/30">
+                      {r.name}
                     </span>
-                    {i < journey.regions.length - 1 && (
+                    {i < journey.route.length - 1 && (
                       <span className="text-[#E8854A] text-xl">↓</span>
                     )}
                   </div>
@@ -130,8 +123,8 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
           </div>
         </section>
 
-        {/* ═════════════════════ JOURNEY TIMELINE — the centerpiece ═════════════════════ */}
-        <JourneyTimeline days={journey.days} />
+        {/* ═════════════════════ ROUTE TIMELINE — the centerpiece ═════════════════════ */}
+        <JourneyRouteTimeline route={journey.route} />
 
         {/* ═════════════════════ ACACIA DIVIDER ═════════════════════ */}
         <div className="py-6 flex justify-center">
@@ -180,6 +173,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
               <p className="text-lg text-[#F2EDE3]/75 max-w-xl mx-auto leading-relaxed mb-10">
                 We will send you the detailed route, selected accommodation, meal
                 plans, and pricing — drafted around your dates and your party.
+                Full itinerary and accommodation details available on request.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
@@ -204,7 +198,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
                   href="/contact"
                   className="hover:text-[#E8854A] transition-colors inline-flex items-center gap-2 justify-center"
                 >
-                  <MapPin size={13} /> Customize this journey
+                  <MapPin size={13} /> Customise this journey
                 </Link>
               </div>
             </ScrollReveal>

@@ -5,11 +5,18 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
-import { SITE, SITE_EMAIL, WHATSAPP_URL, TEL_URL } from '@/lib/site';
+import {
+  SITE,
+  SITE_EMAIL,
+  WHATSAPP_URL,
+  TEL_URL,
+  configuredSocialLinks,
+} from '@/lib/site';
+import type { RouteStop } from '@/lib/journeys';
 
 // ═══════════════════════════════════════════════════════════
 // MOTION TOKENS — Premium archetype per motion-design skill
-// Easing: cubic-bezier(0.4, 0, 0.2, 1) · Durations: 350-600ms · 0% overshoot
+// Easing: cubic-bezier(0.4, 0, 0.2, 1) · Durations: 350-600ms
 // ═══════════════════════════════════════════════════════════
 const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
@@ -17,7 +24,7 @@ const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 // ═══════════════════════════════════════════════════════════
 // WORDMARK — TEXT ONLY. Never a badge, never an icon.
 // WILDPATH: Anton, dominant, uppercase
-// ADVENTURES: Oswald Bold, much smaller, vertically centred on WILDPATH midline
+// ADVENTURES: Oswald Bold, smaller, vertically centred on midline
 // Badge exists ONLY as favicon / browser icon / app icon.
 // ═══════════════════════════════════════════════════════════
 
@@ -34,7 +41,6 @@ export function Wordmark({
 }) {
   const color = inverted ? 'text-[#F2EDE3]' : 'text-[#1A1A1A]';
 
-  // Per SVG spec: ADVENTURES is ~27% of WILDPATH cap-height, vertically centered on midline
   const sizes = {
     sm: { wildpath: 'text-xl', adventures: 'text-[0.5rem]', gap: 'gap-1.5', tracking: 'tracking-[0.1em]' },
     md: { wildpath: 'text-3xl', adventures: 'text-[0.7rem]', gap: 'gap-2.5', tracking: 'tracking-[0.15em]' },
@@ -46,14 +52,12 @@ export function Wordmark({
 
   const content = (
     <span className={`inline-flex items-center ${s.gap} ${color} ${className}`}>
-      {/* WILDPATH — Anton, dominant */}
       <span
         className={`wp-display leading-none ${s.wildpath}`}
         style={{ letterSpacing: '-0.01em', fontFamily: 'var(--font-anton), sans-serif' }}
       >
         WILDPATH
       </span>
-      {/* ADVENTURES — Oswald Bold, vertically centered on WILDPATH's midline */}
       <span
         className={`leading-none self-center ${s.adventures} ${s.tracking}`}
         style={{ fontFamily: 'var(--font-oswald), sans-serif', fontWeight: 700 }}
@@ -78,8 +82,7 @@ export function Wordmark({
 }
 
 // ═══════════════════════════════════════════════════════════
-// ILLUSTRATION DIVIDERS — hand-drawn motifs
-// One artistic universe. Pen and ink. Engraving influence.
+// ILLUSTRATION DIVIDERS — hand-drawn motifs (one artistic universe)
 // ═══════════════════════════════════════════════════════════
 
 export function AcaciaMark({ className = '' }: { className?: string }) {
@@ -132,7 +135,6 @@ export function ContourLines({ className = '' }: { className?: string }) {
   );
 }
 
-// Footprints motif — used between journey days
 export function FootprintsMark({ className = '' }: { className?: string }) {
   return (
     <svg viewBox="0 0 60 120" className={className} aria-hidden="true" fill="currentColor">
@@ -183,7 +185,8 @@ export function ScrollReveal({
 }
 
 // ═══════════════════════════════════════════════════════════
-// NAVIGATION — no Lodges. About replaces Ethos. Brand stays.
+// NAVIGATION — no Lodges. About replaces Ethos.
+// Primary CTA: "Plan Your Journey" (WhatsApp deep link)
 // ═══════════════════════════════════════════════════════════
 
 const NAV_LINKS = [
@@ -229,15 +232,12 @@ export function Nav() {
                 {link.name}
               </Link>
             ))}
-            <a
-              href={WHATSAPP_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/contact"
               className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2"
             >
-              <MessageCircle size={13} />
-              Plan Your Safari
-            </a>
+              Plan Your Journey
+            </Link>
           </div>
 
           <button
@@ -284,20 +284,17 @@ export function Nav() {
               transition={{ duration: 0.4, ease: EASE_DECELERATE, delay: 0.3 }}
               className="pt-6 border-t border-[#1A1A1A]/15"
             >
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-flex items-center gap-3"
+                className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block"
               >
-                <MessageCircle size={16} />
-                WhatsApp Us
+                Plan Your Journey
+              </Link>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 text-lg text-[#1A1A1A]/80">
+                <MessageCircle size={16} /> WhatsApp · {SITE.phone}
               </a>
-              <a href={TEL_URL} className="block mt-4 text-lg text-[#1A1A1A]/80">
-                {SITE.phone}
-              </a>
-              <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80">
+              <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80 break-all">
                 {SITE_EMAIL}
               </a>
             </motion.div>
@@ -309,10 +306,13 @@ export function Nav() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// FOOTER — Real contact. WhatsApp primary. Tangison credit.
+// FOOTER — real contact only. No fake social links.
+// Social icons render ONLY if official accounts are configured in .env.
 // ═══════════════════════════════════════════════════════════
 
 export function Footer() {
+  const socials = configuredSocialLinks();
+
   return (
     <footer className="bg-[#1A1A1A] text-[#F2EDE3] mt-auto">
       {/* Illustration strip — footer landscape accent */}
@@ -330,45 +330,38 @@ export function Footer() {
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 pb-12 border-b border-[#F2EDE3]/15">
             <Wordmark size="lg" inverted />
-            <p className="wp-script text-2xl text-[#E8854A] mt-4">Travel the Untamed Beauty</p>
+            <p className="wp-script text-2xl text-[#E8854A] mt-4">{SITE.tagline}</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
               <p className="text-[#F2EDE3]/75 max-w-sm mb-8 leading-relaxed text-sm">
-                Expeditions through Namibia and Southern Africa. We locate experiences.
-                We do not engineer them. Every itinerary is tailored — drawn by geology,
-                paced by the land.
+                A Namibian-owned tour operator creating personalised journeys
+                across Namibia and Southern Africa. Every itinerary is tailored
+                around the landscapes, wildlife, and pace that make this part of
+                Africa unforgettable.
               </p>
-              <div className="flex gap-3">
-                <a
-                  href={SITE.social.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-10 h-10 border border-[#F2EDE3]/30 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.65rem] font-bold tracking-wider"
-                >
-                  IG
-                </a>
-                <a
-                  href={SITE.social.facebook}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-10 h-10 border border-[#F2EDE3]/30 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.65rem] font-bold tracking-wider"
-                >
-                  FB
-                </a>
-                <a
-                  href={SITE.social.youtube}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="YouTube"
-                  className="w-10 h-10 border border-[#F2EDE3]/30 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.65rem] font-bold tracking-wider"
-                >
-                  YT
-                </a>
-              </div>
+              {/* Social links — only rendered if officially configured */}
+              {socials.length > 0 ? (
+                <div className="flex gap-3">
+                  {socials.map((s) => (
+                    <a
+                      key={s.short}
+                      href={s.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={s.label}
+                      className="w-10 h-10 border border-[#F2EDE3]/30 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.65rem] font-bold tracking-wider"
+                    >
+                      {s.short}
+                    </a>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35">
+                  Official social accounts to follow
+                </p>
+              )}
             </div>
 
             <div>
@@ -419,10 +412,11 @@ export function Footer() {
               <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
               <Link href="/privacy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
               <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
+              <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
             </div>
           </div>
 
-          {/* Tangison Studio credit — subtle, premium */}
+          {/* Tangison Studio credit — subtle, premium, clickable */}
           <div className="mt-8 text-center">
             <p className="text-[0.6rem] tracking-[0.2em] uppercase text-[#F2EDE3]/35">
               Designed &amp; Built by{' '}
@@ -443,9 +437,9 @@ export function Footer() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// JOURNEY SNAPSHOT — 20-second overview at the top of every journey page.
-// Single column on mobile, key-value grid on desktop.
-// No prices. No accommodation. Strong CTA.
+// JOURNEY SNAPSHOT — 20-second overview at the top of every journey.
+// Shows: duration, travel style, start/end, best for, availability, highlights.
+// No accommodation column. No price cards. Dual CTA.
 // ═══════════════════════════════════════════════════════════
 
 type SnapshotField = { label: string; value: string };
@@ -458,7 +452,7 @@ export function JourneySnapshot({
   highlights,
   travelStyle,
   availability,
-  meals,
+  mealsNote,
   startPoint,
   endPoint,
 }: {
@@ -469,16 +463,15 @@ export function JourneySnapshot({
   highlights: string[];
   travelStyle: string;
   availability: string;
-  meals: string;
+  mealsNote: string;
   startPoint: string;
   endPoint: string;
 }) {
   const fields: SnapshotField[] = [
     { label: 'Duration', value: duration },
-    { label: 'Best For', value: bestFor },
     { label: 'Travel Style', value: travelStyle },
+    { label: 'Best For', value: bestFor },
     { label: 'Availability', value: availability },
-    { label: 'Meals', value: meals },
     { label: 'Starting Point', value: startPoint },
     { label: 'Ending Point', value: endPoint },
   ];
@@ -519,6 +512,9 @@ export function JourneySnapshot({
                 </span>
               ))}
             </div>
+            <p className="mt-6 text-xs text-[#1A1A1A]/60 leading-relaxed max-w-2xl">
+              {mealsNote}
+            </p>
           </div>
         </ScrollReveal>
 
@@ -537,7 +533,7 @@ export function JourneySnapshot({
             className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
           >
             <MessageCircle size={15} />
-            Ask on WhatsApp
+            WhatsApp Us
           </a>
         </ScrollReveal>
       </div>
@@ -546,28 +542,28 @@ export function JourneySnapshot({
 }
 
 // ═══════════════════════════════════════════════════════════
-// JOURNEY TIMELINE — Cluster-Leaf inspired visual timeline.
-// Each day is a story: number, place, title, moments, image.
-// Never a table. Accommodation deliberately omitted.
+// JOURNEY ROUTE TIMELINE — visual route sequence (Cluster-Leaf inspired).
+// Each stop is a story: name, short editorial description, arrow onward.
+// NO day-by-day numbering (avoids exposing source inconsistencies).
+// NO accommodation column. NO operational detail.
+// Full itinerary is "available on request".
 // ═══════════════════════════════════════════════════════════
 
-import type { JourneyDay } from '@/lib/journeys';
-
-export function JourneyTimeline({ days }: { days: JourneyDay[] }) {
+export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
   return (
     <section className="py-20 md:py-32 px-6 md:px-12">
       <div className="max-w-5xl mx-auto">
         <ScrollReveal className="mb-16">
-          <p className="wp-script text-2xl text-[#9E4214] mb-3">The route, day by day</p>
+          <p className="wp-script text-2xl text-[#9E4214] mb-3">The route</p>
           <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9]">
             A story, not
             <br />
             <span className="text-[#9E4214]">a spreadsheet.</span>
           </h2>
           <p className="mt-6 text-base text-[#1A1A1A]/70 max-w-xl leading-relaxed">
-            Below is the public arc of the journey. The detailed day-by-day
-            itinerary — with selected accommodation, meal plans, and logistics — is
-            available on request.
+            Below is the public arc of the journey — the destinations in sequence.
+            The full day-by-day itinerary, with selected accommodation, meal plans,
+            and logistics, is available on request.
           </p>
         </ScrollReveal>
 
@@ -575,57 +571,38 @@ export function JourneyTimeline({ days }: { days: JourneyDay[] }) {
           {/* Vertical line — the path */}
           <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-[#1A1A1A]/15 md:-translate-x-1/2" aria-hidden="true" />
 
-          <div className="space-y-12 md:space-y-20">
-            {days.map((day, i) => (
-              <ScrollReveal key={day.day} delay={i * 0.04}>
+          <div className="space-y-8 md:space-y-12">
+            {route.map((stop, i) => (
+              <ScrollReveal key={`${stop.name}-${i}`} delay={i * 0.04}>
                 <div
-                  className={`relative grid md:grid-cols-2 gap-6 md:gap-12 items-center ${
+                  className={`relative grid md:grid-cols-2 gap-6 md:gap-12 items-start ${
                     i % 2 === 1 ? 'md:[direction:rtl]' : ''
                   }`}
                 >
-                  {/* Day number — the footprint on the path */}
-                  <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 -translate-y-0 z-10">
+                  {/* Stop marker — the footprint on the path */}
+                  <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-2 z-10">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#F2EDE3] border-2 border-[#C5511A] flex items-center justify-center shadow-[0_0_0_6px_#F2EDE3]">
                       <span className="wp-display text-base md:text-lg text-[#9E4214]">
-                        {day.day}
+                        {String(i + 1).padStart(2, '0')}
                       </span>
                     </div>
                   </div>
 
-                  {/* Image side */}
-                  <div className={`pl-20 md:pl-0 [direction:ltr] ${i % 2 === 1 ? 'md:order-2' : 'md:order-1'}`}>
-                    <div className="relative aspect-[4/3] bg-[#1A1A1A] overflow-hidden">
-                      <Image
-                        src={day.image || '/images/illustrations/v2/10-note-early-light.webp'}
-                        alt={`${day.place} — ${day.title}`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover"
-                      />
-                    </div>
+                  {/* Stop content — single column, alternating sides on desktop */}
+                  <div className={`pl-20 md:pl-0 [direction:ltr] ${i % 2 === 1 ? 'md:order-2' : 'md:order-1'} ${i % 2 === 1 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
+                    <p className="wp-subhead text-[0.6rem] tracking-[0.25em] text-[#9E4214] mb-2">
+                      Stop {String(i + 1).padStart(2, '0')}
+                    </p>
+                    <h3 className="wp-display text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight">
+                      {stop.name}
+                    </h3>
+                    <p className="text-sm md:text-base text-[#1A1A1A]/80 leading-relaxed max-w-md md:inline-block">
+                      {stop.description}
+                    </p>
                   </div>
 
-                  {/* Text side */}
-                  <div className={`pl-20 md:pl-0 [direction:ltr] ${i % 2 === 1 ? 'md:order-1 md:text-right md:pr-12' : 'md:order-2 md:pl-12'}`}>
-                    <p className="wp-subhead text-[0.6rem] tracking-[0.25em] text-[#9E4214] mb-2">
-                      Day {day.day}
-                    </p>
-                    <p className="wp-script text-2xl text-[#6B5E3D] mb-1">{day.place}</p>
-                    <h3 className="wp-display text-2xl md:text-3xl text-[#1A1A1A] mb-4 leading-tight">
-                      {day.title}
-                    </h3>
-                    <p className="text-sm md:text-base text-[#1A1A1A]/80 leading-relaxed mb-4 max-w-md md:inline-block">
-                      {day.description}
-                    </p>
-                    <ul className={`flex flex-wrap gap-x-4 gap-y-1 text-[0.7rem] tracking-[0.1em] uppercase text-[#1A1A1A]/65 ${i % 2 === 1 ? 'md:justify-end' : ''}`}>
-                      {day.moments.map((m) => (
-                        <li key={m} className="flex items-center gap-1.5">
-                          <span className="w-1 h-1 rounded-full bg-[#C5511A]" aria-hidden="true" />
-                          {m}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  {/* Empty side for layout balance */}
+                  <div className="hidden md:block [direction:ltr]" />
                 </div>
               </ScrollReveal>
             ))}
@@ -637,8 +614,8 @@ export function JourneyTimeline({ days }: { days: JourneyDay[] }) {
           <FootprintsMark className="w-6 h-12 text-[#9E4214]/40" />
           <p className="wp-script text-xl text-[#9E4214]">Continue the journey</p>
           <p className="text-sm text-[#1A1A1A]/60 max-w-md text-center leading-relaxed">
-            The full day-by-day itinerary — with logistics, transfers, and our
-            selected accommodation — is available on request.
+            The full day-by-day itinerary — with selected accommodation, logistics,
+            and inclusions — is available on request.
           </p>
           <Link
             href="/contact"
@@ -654,7 +631,7 @@ export function JourneyTimeline({ days }: { days: JourneyDay[] }) {
 }
 
 // ═══════════════════════════════════════════════════════════
-// COMING SOON — editorial locked screen
+// COMING SOON — editorial locked screen (preserved for future use)
 // ═══════════════════════════════════════════════════════════
 
 export function ComingSoon({
@@ -666,7 +643,6 @@ export function ComingSoon({
 }) {
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] relative overflow-hidden">
-      {/* Background: brand illustration, darkened */}
       <div className="absolute inset-0 z-0">
         <Image
           src="/images/illustrations/v2/09-coming-soon.webp"
@@ -719,22 +695,22 @@ export function ComingSoon({
               {subtitle}
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                href="/contact"
+                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
+              >
+                Plan Your Journey
+                <ArrowRight size={16} />
+              </Link>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
+                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
               >
                 <MessageCircle size={15} />
                 WhatsApp Us
               </a>
-              <Link
-                href="/contact"
-                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
-              >
-                Plan Your Safari
-                <ArrowRight size={16} />
-              </Link>
             </div>
           </motion.div>
         </div>

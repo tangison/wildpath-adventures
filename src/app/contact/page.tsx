@@ -8,7 +8,8 @@ import { SITE, SITE_EMAIL, WHATSAPP_URL, TEL_URL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Plan your safari. WhatsApp, phone, or enquiry form — every Wildpath journey starts with a conversation.',
+    'Plan your journey. WhatsApp, phone, or enquiry form — every Wildpath journey starts with a conversation.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {

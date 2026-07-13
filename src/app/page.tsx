@@ -23,15 +23,13 @@ const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 // ═══════════════════════════════════════════════════════════
 // WILDPATH ADVENTURES — HOME
 // Editorial safari journal. Illustration-led. Wordmark primary.
-// Sells emotion. Not tours.
+// All public claims audited against Juliet's supplied profile.
+// No invented conservation partnerships, percentages, or staff.
 // ═══════════════════════════════════════════════════════════
 
 export default function Home() {
-  // Featured journeys — all four are featured on home
   const featuredJourneys = JOURNEYS;
-
-  // Top 4 destinations to feature on home
-  const featuredDestinations = DESTINATIONS.slice(0, 4);
+  const featuredDestinations = DESTINATIONS.filter((d) => d.imageKind === 'photo').slice(0, 4);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
@@ -78,9 +76,10 @@ export default function Home() {
                 Travel the untamed beauty
               </p>
               <p className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-2xl mx-auto leading-relaxed">
-                Thoughtfully planned journeys through Namibia and Southern Africa.
-                Tailored around the landscapes, wildlife and pace that make this
-                part of Africa unforgettable.
+                A Namibian-owned tour operator creating personalised journeys
+                across Namibia and Southern Africa. Every itinerary is tailored
+                around the landscapes, wildlife, and pace that make this part of
+                Africa unforgettable.
               </p>
               <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
                 <Link
@@ -90,15 +89,12 @@ export default function Home() {
                   Choose Your Journey
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  href="/contact"
                   className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
-                  <MessageCircle size={15} />
-                  Plan Your Safari
-                </a>
+                  Plan Your Journey
+                </Link>
               </div>
             </motion.div>
           </div>
@@ -114,10 +110,10 @@ export default function Home() {
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <SectionHeading
-                eyebrow="Choose your journey"
-                title="Four routes. One"
-                highlight="country, and beyond."
-                intro="Each journey is a complete arc — drawn by geology, paced by the land, and tailored to the people on it. No scripts. No coaches."
+                eyebrow="Four flagship journeys"
+                title="Routes drawn by geology,"
+                highlight="not by tourism."
+                intro="Each journey is a complete arc — tailored around the people on it, the season, and the land. Self-drive, guided, or a mix of both."
               />
             </ScrollReveal>
 
@@ -173,27 +169,27 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ WHY WILDPATH ═════════════════════ */}
+        {/* ═════════════════════ WHY WILDPATH — confirmed strengths only ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <SectionHeading
-                eyebrow="Why travel with us"
-                title="We locate"
-                highlight="experiences."
-                intro="We do not engineer them. The land is the author. We are the editors."
+                eyebrow="Why travel with Wildpath"
+                title="Namibian-owned."
+                highlight="Personally planned."
+                intro="A small, dedicated team based in Windhoek. Every itinerary is shaped by local destination knowledge and trusted partners across the region."
                 dark
               />
             </ScrollReveal>
 
             <div className="grid md:grid-cols-3 gap-px bg-[#F2EDE3]/10">
               {[
-                { title: 'Namibian roots', body: 'Every guide is Namibian. Every route is drawn here. We are not headquartered in London or New York.' },
-                { title: 'Slow travel', body: 'We do not do fourteen parks in seven days. We do one landscape deeply, then move. Pace is the point.' },
-                { title: 'Tailored, not templated', body: 'No two journeys are the same. Every itinerary is drafted around the people on it, the season, and the land.' },
-                { title: 'Real conservation', body: 'A percentage of every journey funds Save the Rhino Trust and the Namibian Desert Lion Project. Carbon logged, not offset.' },
-                { title: 'Local communities', body: 'We hire from Damaraland, from the Kunene, from Windhoek. Our supply chain is 90% Namibian.' },
-                { title: '24-hour line', body: 'When you travel with us, you have a direct line — to your guide, to our ops team, to the person who planned your route.' },
+                { title: 'Namibian ownership', body: 'A Namibian-owned tour operator based in Windhoek. We plan every journey from inside the country we travel in.' },
+                { title: 'Personalised planning', body: 'Every itinerary is drafted around your dates, your pace, and the people travelling with you. No two journeys are the same.' },
+                { title: 'Self-drive & guided', body: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
+                { title: 'Local destination knowledge', body: 'Our journeys are shaped by local destination knowledge and trusted partners across Namibia and Southern Africa.' },
+                { title: 'Flexible routes', body: 'Combine destinations. Add a transfer. Walk further. Stay longer. Every published route is a starting point, not a fixed script.' },
+                { title: 'Responsible travel', body: 'We aim to work with responsible local partners and support travel practices that respect Namibia’s wildlife, landscapes, and communities.' },
               ].map((v, i) => (
                 <ScrollReveal key={v.title} delay={i * 0.05}>
                   <div className="bg-[#1A1A1A] p-8 md:p-10 h-full">
@@ -213,31 +209,33 @@ export default function Home() {
           <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
         </div>
 
-        {/* ═════════════════════ JOURNEY PHILOSOPHY ═════════════════════ */}
+        {/* ═════════════════════ TAILOR-MADE EXPLANATION ═════════════════════ */}
         <section id="philosophy" className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Our philosophy</p>
+              <p className="wp-script text-2xl text-[#9E4214] mb-6">Tailor-made journeys</p>
               <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-10">
-                We do not engineer experiences.
+                Every route is
                 <br />
-                <span className="text-[#9E4214]">We locate them.</span>
+                <span className="text-[#9E4214]">drafted around you.</span>
               </h2>
             </ScrollReveal>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-lg leading-relaxed text-[#1A1A1A]/80">
               <ScrollReveal delay={0.15}>
                 <p>
-                  From the arid plains where acacia trees anchor the earth, to the
-                  shifting dunes of the Kalahari, our presence is temporary, but
-                  the impact is permanent. We move on foot, by Cessna, and by
-                  Land Cruiser — never by coach, never by script.
+                  The four flagship routes above are starting points. Combine
+                  destinations, change the duration, add a transfer or a guided
+                  section. Depending on the journey, transport may include
+                  self-drive, guided road travel, transfers, or regional
+                  connections arranged on request.
                 </p>
               </ScrollReveal>
               <ScrollReveal delay={0.25}>
                 <p>
-                  Expect dust on your boots, fire in the evenings, and the kind of
-                  silence you cannot find elsewhere. Every route is drawn by
-                  geology, not by tourism. Every silence is real.
+                  We plan every itinerary personally — from the first enquiry to
+                  your return home. Accommodation is arranged according to route
+                  and budget, with full details confirmed in your personalised
+                  proposal. No scripts, no coaches, no fixed departures.
                 </p>
               </ScrollReveal>
             </div>
@@ -256,7 +254,7 @@ export default function Home() {
           </ScrollReveal>
         </section>
 
-        {/* ═════════════════════ DESTINATION HIGHLIGHTS ═════════════════════ */}
+        {/* ═════════════════════ DESTINATION PREVIEW ═════════════════════ */}
         <section id="destinations" className="py-20 md:py-32 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
@@ -264,7 +262,7 @@ export default function Home() {
                 eyebrow="Where we roam"
                 title="Nine landscapes."
                 highlight="One region."
-                intro="From the oldest desert on earth to the smoke that thunders. Image-led. Editorial. Real."
+                intro="From the oldest desert on earth to the rivers of the Caprivi. Image-led. Editorial. Real."
               />
             </ScrollReveal>
 
@@ -315,7 +313,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ PULL QUOTE ═════════════════════ */}
+        {/* ═════════════════════ PULL QUOTE — clearly editorial, not a testimonial ═════════════════════ */}
         <section className="py-24 md:py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
           <motion.div
             animate={{ x: [0, 20, 0] }}
@@ -332,71 +330,63 @@ export default function Home() {
                 provides the only scale.&rdquo;
               </blockquote>
               <p className="wp-subhead text-sm tracking-[0.2em] text-[#E8854A]">
-                Etosha · 04:12 AM · Dry Season
+                An impression of Etosha at dawn
+              </p>
+              <p className="wp-script text-lg mt-2 text-[#F2EDE3]/80">
+                Editorial — not a guest testimonial
               </p>
             </ScrollReveal>
           </div>
         </section>
 
-        {/* ═════════════════════ FIELD NOTES PREVIEW ═════════════════════ */}
+        {/* ═════════════════════ FIELD NOTES PREVIEW — clearly editorial ═════════════════════ */}
         <section id="field-notes" className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-5xl mx-auto">
             <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
                 <p className="wp-script text-2xl text-[#9E4214] mb-3">Field notes</p>
                 <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9]">
-                  Dispatches from
+                  Destination
                   <br />
-                  <span className="text-[#9E4214]">the field.</span>
+                  <span className="text-[#9E4214]">inspiration.</span>
                 </h2>
               </div>
               <Link
                 href="/field-notes"
                 className="text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-300 text-xs font-bold tracking-[0.18em] uppercase flex items-center gap-2 border-b border-[#1A1A1A]/40 pb-1"
               >
-                All dispatches <ArrowRight size={14} />
+                All field notes <ArrowRight size={14} />
               </Link>
             </ScrollReveal>
 
             <div className="space-y-px bg-[#1A1A1A]/12">
               {[
                 {
-                  title: 'On the geology of silence',
+                  title: 'When to visit Sossusvlei',
                   excerpt:
-                    'Why the Namib sounds different from the Kalahari, and what that means for the way we route our expeditions.',
-                  date: 'March 2026',
-                  readTime: '6 min',
-                  category: 'Fieldcraft',
-                  featured: true,
+                    'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
+                  category: 'Destination guide',
                   image: '/images/illustrations/v2/10-note-early-light.webp',
                 },
                 {
-                  title: 'Tracking the desert-adapted elephant',
+                  title: 'Etosha in the dry and wet seasons',
                   excerpt:
-                    'Three days following a breeding herd through the Huab riverbed. Notes from our lead guide.',
-                  date: 'February 2026',
-                  readTime: '9 min',
-                  category: 'Wildlife',
-                  featured: false,
+                    'How wildlife viewing shifts between the dry winter months and the greener, quieter summer — and what each season rewards.',
+                  category: 'Destination guide',
                   image: '/images/illustrations/v2/12-note-desert-elephants.webp',
                 },
                 {
-                  title: 'Building with what the land gives',
+                  title: 'Packing for Namibia',
                   excerpt:
-                    'How the Stone Escarpment Chalets were sited, oriented, and roofed using only materials quarried within four kilometres.',
-                  date: 'January 2026',
-                  readTime: '4 min',
-                  category: 'Architecture',
-                  featured: false,
+                    'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
+                  category: 'Travel preparation',
                   image: '/images/illustrations/v2/11-note-ancient-paths.webp',
                 },
               ].map((n, i) => (
                 <ScrollReveal key={n.title} delay={i * 0.1}>
                   <Link
                     href="/field-notes"
-                    className={`block bg-[#F2EDE3] group hover:bg-[#E8E3D5] transition-colors duration-300 ${
-                      n.featured ? 'p-8 md:p-12' : 'p-6 md:p-8'
-                    }`}
+                    className={`block bg-[#F2EDE3] group hover:bg-[#E8E3D5] transition-colors duration-300 p-6 md:p-8`}
                   >
                     <div className="grid md:grid-cols-3 gap-6 items-center">
                       <div className="relative aspect-[4/3] overflow-hidden bg-[#1A1A1A]/5">
@@ -411,12 +401,8 @@ export default function Home() {
                       <div className="md:col-span-2">
                         <div className="flex items-center gap-3 mb-4 text-[0.65rem] tracking-[0.2em] uppercase font-bold">
                           <span className="text-[#9E4214]">{n.category}</span>
-                          <span className="w-1 h-1 rounded-full bg-[#1A1A1A]/30" />
-                          <span className="text-[#1A1A1A]/70">{n.date}</span>
-                          <span className="w-1 h-1 rounded-full bg-[#1A1A1A]/30" />
-                          <span className="text-[#1A1A1A]/70">{n.readTime}</span>
                         </div>
-                        <h3 className={`font-serif ${n.featured ? 'text-3xl md:text-4xl' : 'text-2xl'} text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-colors duration-300`}>
+                        <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-colors duration-300">
                           {n.title}
                         </h3>
                         <p className="text-[#1A1A1A]/75 leading-relaxed max-w-2xl text-sm md:text-base">
@@ -449,7 +435,7 @@ export default function Home() {
             </h2>
             <p className="text-lg text-[#1A1A1A]/80 max-w-lg mx-auto leading-relaxed mb-10">
               We will draft a route, a season, and a pace. No brochures, no scripts.
-              Write to us directly — by WhatsApp or email.
+              Write to us by WhatsApp or email, or send an enquiry.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <a
@@ -465,7 +451,7 @@ export default function Home() {
                 href="/contact"
                 className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
               >
-                Plan Your Safari
+                Plan Your Journey
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
             </div>
