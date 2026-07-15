@@ -45,7 +45,7 @@ export default function Home() {
               transition={{ duration: 0.6, ease: EASE_PREMIUM, delay: 0.15 }}
               className="text-center mb-8 md:mb-12"
             >
-              <Wordmark size="xl" />
+              <Wordmark size="xl" withBadge />
             </motion.div>
 
             <motion.div
@@ -425,7 +425,7 @@ export default function Home() {
         <section className="py-24 md:py-36 px-6 md:px-12 bg-[#E8E3D5]">
           <ScrollReveal className="max-w-7xl mx-auto text-center">
             <div className="mb-10">
-              <Wordmark size="lg" />
+              <Wordmark size="lg" withBadge />
             </div>
             <p className="wp-script text-3xl text-[#9E4214] mb-4">The map is waiting</p>
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-6">

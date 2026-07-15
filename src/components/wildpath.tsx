@@ -22,22 +22,43 @@ const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 
 // ═══════════════════════════════════════════════════════════
-// WORDMARK — TEXT ONLY. Never a badge, never an icon.
+// WORDMARK — TEXT ONLY is the primary logo.
 // WILDPATH: Anton, dominant, uppercase
 // ADVENTURES: Oswald Bold, smaller, vertically centred on midline
-// Badge exists ONLY as favicon / browser icon / app icon.
+//
+// BADGE COMPANION (optional, opt-in via withBadge prop):
+//   When `withBadge` is true, the Wildpath badge (a hexagonal vintage
+//   travel badge with a Namibian landscape silhouette — acacia trees,
+//   mountains, sun, footprints) is rendered as a companion mark IN
+//   FRONT OF the wordmark text. Sized relative to the wordmark —
+//   bigger than the favicon, smaller than the hero illustration.
+//
+//   The badge is NEVER a replacement for the wordmark; it is a
+//   companion. The wordmark text remains primary and readable.
+//
+//   Badge as favicon/browser icon: handled by src/app/icon.png
+//   (Next.js App Router convention, auto-served at /icon).
 // ═══════════════════════════════════════════════════════════
+
+const BADGE_SIZE_MAP = {
+  sm: { badge: 'w-7 h-7', gap: 'gap-2' },
+  md: { badge: 'w-10 h-10', gap: 'gap-3' },
+  lg: { badge: 'w-14 h-14 md:w-16 md:h-16', gap: 'gap-4 md:gap-5' },
+  xl: { badge: 'w-20 h-20 md:w-24 md:h-24', gap: 'gap-5 md:gap-7' },
+} as const;
 
 export function Wordmark({
   className = '',
   size = 'md',
   inverted = false,
   animate = false,
+  withBadge = false,
 }: {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   inverted?: boolean;
   animate?: boolean;
+  withBadge?: boolean;
 }) {
   const color = inverted ? 'text-[#F2EDE3]' : 'text-[#1A1A1A]';
 
@@ -49,9 +70,10 @@ export function Wordmark({
   };
 
   const s = sizes[size];
+  const b = BADGE_SIZE_MAP[size];
 
-  const content = (
-    <span className={`inline-flex items-center ${s.gap} ${color} ${className}`}>
+  const wordmarkText = (
+    <span className={`inline-flex items-center ${s.gap} ${color}`}>
       <span
         className={`wp-display leading-none ${s.wildpath}`}
         style={{ letterSpacing: '-0.01em', fontFamily: 'var(--font-anton), sans-serif' }}
@@ -65,6 +87,23 @@ export function Wordmark({
         ADVENTURES
       </span>
     </span>
+  );
+
+  const content = withBadge ? (
+    <span className={`inline-flex items-center ${b.gap} ${className}`}>
+      <Image
+        src="/images/brand/wildpath-badge.webp"
+        alt=""
+        width={96}
+        height={96}
+        priority
+        className={`${b.badge} shrink-0 object-contain`}
+        aria-hidden="true"
+      />
+      {wordmarkText}
+    </span>
+  ) : (
+    <span className={className}>{wordmarkText}</span>
   );
 
   if (!animate) return content;
@@ -329,7 +368,7 @@ export function Footer() {
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="mb-16 pb-12 border-b border-[#F2EDE3]/15">
-            <Wordmark size="lg" inverted />
+            <Wordmark size="lg" inverted withBadge />
             <p className="wp-script text-2xl text-[#E8854A] mt-4">{SITE.tagline}</p>
           </div>
 

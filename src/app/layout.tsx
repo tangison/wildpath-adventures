@@ -65,6 +65,23 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
+  // Icons — served as static files from /public for reliability across
+  // dev and production. The master 512x512 badge is at /favicon.png;
+  // sized variants at /favicon-32.png, /favicon-16.png, /apple-touch-icon.png.
+  // PWA icons at /android-chrome-192.png and /android-chrome-512.png.
+  // src/app/icon.png and src/app/apple-icon.png also exist for Next.js
+  // App Router file-convention auto-detection (served at /icon, /apple-icon).
+  icons: {
+    icon: [
+      { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
+      { url: '/favicon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16.png', sizes: '16x16', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: `${SITE.name} — ${SITE.tagline}`,
     description:

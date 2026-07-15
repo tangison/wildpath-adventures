@@ -175,7 +175,7 @@ export default function AboutPage() {
         <section className="py-24 md:py-36 px-6 md:px-12">
           <ScrollReveal className="max-w-7xl mx-auto text-center">
             <div className="mb-10">
-              <Wordmark size="lg" />
+              <Wordmark size="lg" withBadge />
             </div>
             <p className="wp-script text-3xl text-[#9E4214] mb-4">Travel with us</p>
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-8">
