@@ -59,7 +59,7 @@ export default function JourneysPage() {
                       alt={`${j.name} — ${j.route.map(r => r.name).join(', ')}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 60vw"
-                      className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                      className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                     />
                     <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                       <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">

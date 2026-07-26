@@ -61,7 +61,7 @@ export default function DestinationsPage() {
                 fill
                 priority
                 sizes="100vw"
-                className="object-cover group-hover:brightness-110 transition-[filter] duration-[1000ms] ease-out"
+                className={`${namibia[0].imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[1000ms] ease-out`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/30 to-transparent" />
               <div className="absolute inset-0 p-8 md:p-14 flex flex-col justify-end text-[#F2EDE3]">
@@ -94,7 +94,7 @@ export default function DestinationsPage() {
                     alt={`${d.name} — ${d.country}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">
@@ -142,7 +142,7 @@ export default function DestinationsPage() {
                     alt={`${d.name} — ${d.country}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">

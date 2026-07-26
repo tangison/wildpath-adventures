@@ -102,14 +102,14 @@ export default function FieldNotesPage() {
         <section className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="group grid md:grid-cols-2 gap-0 bg-[#E8E3D5] overflow-hidden">
-              <div className="relative aspect-[4/3] md:aspect-auto md:min-h-[400px] bg-[#1A1A1A] overflow-hidden">
+              <div className="relative aspect-[3/2] md:aspect-auto md:min-h-[400px] bg-[#1A1A1A] overflow-hidden">
                 <Image
                   src={featured.image}
                   alt={`Illustration for: ${featured.title}`}
                   fill
                   priority
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-contain"
                 />
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -140,13 +140,13 @@ export default function FieldNotesPage() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {rest.map((n) => (
                 <div key={n.slug} className="group block bg-[#E8E3D5] overflow-hidden">
-                  <div className="relative aspect-[16/10] bg-[#1A1A1A] overflow-hidden">
+                  <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
                     <Image
                       src={n.image}
                       alt={`Illustration for: ${n.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:opacity-90 transition-[opacity] duration-500"
+                      className="object-contain group-hover:opacity-90 transition-[opacity] duration-500"
                     />
                   </div>
                   <div className="p-6 md:p-8">

@@ -51,7 +51,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
             fill
             priority
             sizes="100vw"
-            className="object-cover opacity-70"
+            className="object-cover object-center opacity-70"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/40 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -210,13 +210,13 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
                   href={`/journeys/${j.slug}`}
                   className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
                 >
-                  <div className="relative aspect-[4/3] bg-[#1A1A1A] overflow-hidden">
+                  <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
                     <Image
                       src={j.cardImage}
                       alt={j.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                      className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                     />
                     <div className="absolute top-3 left-3 bg-[#F2EDE3] px-2.5 py-1">
                       <p className="wp-subhead text-[0.55rem] tracking-[0.2em] text-[#9E4214]">

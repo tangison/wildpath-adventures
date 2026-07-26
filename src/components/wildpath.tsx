@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
-import { Menu, X, MapPin, ArrowRight, MessageCircle, ChevronDown } from 'lucide-react';
+import { Menu, X, MapPin, ArrowRight, MessageCircle, ChevronDown, Search } from 'lucide-react';
 import {
   SITE,
   SITE_EMAIL,
@@ -218,15 +218,16 @@ export function ScrollReveal({
 }
 
 // ═══════════════════════════════════════════════════════════
-// NAVIGATION — N9 Edge-aligned minimal pattern
-// Desktop: wordmark left, "Plan Your Journey" CTA right,
-// nav links accessed via a "Menu" affordance → slide-down sheet.
-// Mobile: hamburger icon → full-screen overlay.
-// No inline nav links visible on desktop at rest.
+// NAVIGATION — Floating, 2-line Collins pattern with search
+//
+// Line 1: Wordmark left, Search + CTA right
+// Line 2: Primary nav links (Journeys, Destinations, About, Field Notes, Brand)
+// Floating: inset from edges, glass-morphism on scroll, rounded corners
+// Mobile: hamburger → full-screen overlay with search
 // REDUCED MOTION: Nav entrance animation skipped when preferred.
 // ═══════════════════════════════════════════════════════════
 
-const NAV_LINKS = [
+const NAV_LINKS_PRIMARY = [
   { name: 'Journeys', href: '/journeys' },
   { name: 'Destinations', href: '/destinations' },
   { name: 'About', href: '/about' },
@@ -234,308 +235,312 @@ const NAV_LINKS = [
   { name: 'Brand', href: '/brand' },
 ];
 
+const SEARCH_PAGES = [
+  { name: 'Journeys', href: '/journeys', desc: 'Four flagship expeditions through Namibia and Southern Africa' },
+  { name: 'Classic Namibia Route', href: '/journeys/classic-namibia', desc: 'The full loop — south to the canyon, north to the pan' },
+  { name: 'Northern Caprivi Route', href: '/journeys/untamed-northern-caprivi', desc: 'North into the rivers — Okavango, Kwando, Chobe, Zambezi' },
+  { name: 'Central Route', href: '/journeys/untamed-central', desc: 'Etosha, Damaraland, and the cold Atlantic coast' },
+  { name: 'Desert Route', href: '/journeys/untamed-desert', desc: 'Red sand, the cold coast, the plateau, and the great white pan' },
+  { name: 'Destinations', href: '/destinations', desc: 'Nine landscapes across Namibia and Southern Africa' },
+  { name: 'Sossusvlei', href: '/destinations/sossusvlei', desc: 'Red dunes rising from a white clay pan' },
+  { name: 'Etosha', href: '/destinations/etosha', desc: 'A salt flat the size of a small country' },
+  { name: 'Damaraland', href: '/destinations/damaraland', desc: 'Granite inselbergs and 6,000-year-old rock art' },
+  { name: 'Skeleton Coast', href: '/destinations/skeleton-coast', desc: 'Fog-bound shoreline, shipwrecks half-swallowed by sand' },
+  { name: 'About', href: '/about', desc: 'Namibian-owned. Personally planned.' },
+  { name: 'Contact', href: '/contact', desc: 'Every route starts with a conversation' },
+  { name: 'Field Notes', href: '/field-notes', desc: 'Destination inspiration and travel guidance' },
+  { name: 'Brand', href: '/brand', desc: 'The mark, the map, the mandate' },
+  { name: 'FAQ', href: '/faq', desc: 'Frequently asked questions' },
+];
+
 export function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [desktopSheetOpen, setDesktopSheetOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const prefersReducedMotion = useReducedMotion();
-  const sheetRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => setIsScrolled(window.scrollY > 40);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close desktop sheet on outside click
+  // Close search on Escape
   useEffect(() => {
-    if (!desktopSheetOpen) return;
-    const handleClickOutside = (e: MouseEvent) => {
-      if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
-        setDesktopSheetOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, [desktopSheetOpen]);
-
-  // Close desktop sheet on Escape
-  useEffect(() => {
-    if (!desktopSheetOpen) return;
+    if (!searchOpen) return;
     const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setDesktopSheetOpen(false);
+      if (e.key === 'Escape') setSearchOpen(false);
     };
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
-  }, [desktopSheetOpen]);
+  }, [searchOpen]);
 
-  const navContent = (
-    <nav
-      className={`fixed w-full z-50 transition-shadow duration-300 ${
+  // Focus search input when opened
+  useEffect(() => {
+    if (searchOpen && searchInputRef.current) {
+      searchInputRef.current.focus();
+    }
+  }, [searchOpen]);
+
+  const filteredResults = searchQuery.trim().length > 0
+    ? SEARCH_PAGES.filter((p) =>
+        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.desc.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
+
+  // ── Floating nav bar ──
+  const navBar = (
+    <div
+      className={`fixed top-4 left-4 right-4 md:left-6 md:right-6 z-50 rounded-xl transition-all duration-400 ${
         isScrolled
-          ? 'bg-[#F2EDE3] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.06)]'
-          : 'bg-transparent py-5 shadow-none'
+          ? 'bg-[#F2EDE3]/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
+          : 'bg-[#F2EDE3]/60 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.04)]'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      {/* ── Line 1: Wordmark + Search + CTA ── */}
+      <div className="max-w-7xl mx-auto px-5 md:px-10 pt-4 pb-2 flex justify-between items-center">
         {/* Left — wordmark */}
-        <Link href="/" className="group" aria-label="Wildpath Adventures — home">
+        <Link href="/" className="group shrink-0" aria-label="Wildpath Adventures — home">
           <Wordmark size="sm" />
         </Link>
 
-        {/* Right — CTA + Menu affordance (desktop) */}
-        <div className="hidden md:flex items-center gap-4">
+        {/* Right — Search + CTA (desktop) */}
+        <div className="hidden md:flex items-center gap-3">
+          <button
+            onClick={() => setSearchOpen(!searchOpen)}
+            className="w-9 h-9 rounded-lg border border-[#1A1A1A]/15 flex items-center justify-center hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+            aria-label="Search"
+            aria-expanded={searchOpen}
+          >
+            <Search size={16} className="text-[#1A1A1A]/70" />
+          </button>
+          <a
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="border border-[#1A1A1A]/15 text-[#1A1A1A] px-4 py-2 text-[0.65rem] font-bold tracking-[0.15em] uppercase hover:bg-[#1A1A1A]/5 transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
+          >
+            <MessageCircle size={13} /> WhatsApp
+          </a>
           <Link
             href="/contact"
-            className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2"
+            className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
           >
             Plan Your Journey
           </Link>
-          <button
-            onClick={() => setDesktopSheetOpen(!desktopSheetOpen)}
-            className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
-            aria-label="Toggle navigation menu"
-            aria-expanded={desktopSheetOpen}
-          >
-            Menu
-            <ChevronDown
-              size={14}
-              className={`transition-transform duration-200 ${desktopSheetOpen ? 'rotate-180' : ''}`}
-            />
-          </button>
         </div>
 
-        {/* Mobile — hamburger */}
-        <button
-          className="md:hidden text-[#1A1A1A]"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
+        {/* Mobile — Search + hamburger */}
+        <div className="flex md:hidden items-center gap-2">
+          <button
+            onClick={() => setSearchOpen(!searchOpen)}
+            className="w-9 h-9 rounded-lg border border-[#1A1A1A]/15 flex items-center justify-center"
+            aria-label="Search"
+          >
+            <Search size={16} className="text-[#1A1A1A]/70" />
+          </button>
+          <button
+            className="w-9 h-9 rounded-lg border border-[#1A1A1A]/15 flex items-center justify-center"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileMenuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
-      {/* Desktop slide-down sheet */}
+      {/* ── Line 2: Primary nav links ── */}
+      <div className="hidden md:block max-w-7xl mx-auto px-5 md:px-10 pb-3 border-t border-[#1A1A1A]/8">
+        <div className="flex items-center gap-6 pt-2">
+          {NAV_LINKS_PRIMARY.map((link) => (
+            <Link
+              key={link.name}
+              href={link.href}
+              className="text-[0.7rem] tracking-[0.14em] uppercase font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200"
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* ── Search overlay (desktop, slides down within nav) ── */}
       <AnimatePresence>
-        {desktopSheetOpen && (
+        {searchOpen && (
           <motion.div
-            ref={sheetRef}
             initial={prefersReducedMotion ? { opacity: 1 } : { height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: EASE_PREMIUM }}
-            className="hidden md:block overflow-hidden bg-[#F2EDE3] border-b border-[#1A1A1A]/8"
+            transition={{ duration: 0.25, ease: EASE_PREMIUM }}
+            className="border-t border-[#1A1A1A]/10 overflow-hidden"
           >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center gap-8">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setDesktopSheetOpen(false)}
-                  className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm tracking-wide font-medium text-[#1A1A1A]/60 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
-                onClick={() => setDesktopSheetOpen(false)}
-              >
-                <MessageCircle size={14} /> WhatsApp
-              </a>
+            <div className="max-w-7xl mx-auto px-5 md:px-10 py-4">
+              <div className="flex items-center gap-3 bg-[#F2EDE3] border border-[#1A1A1A]/15 rounded-lg px-4 py-2.5">
+                <Search size={18} className="text-[#1A1A1A]/50 shrink-0" />
+                <input
+                  ref={searchInputRef}
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search journeys, destinations, field notes..."
+                  className="flex-1 text-sm bg-transparent outline-none text-[#1A1A1A] placeholder:text-[#1A1A1A]/40"
+                  aria-label="Search"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => { setSearchQuery(''); searchInputRef.current?.focus(); }}
+                    className="text-[#1A1A1A]/40 hover:text-[#1A1A1A] transition-colors"
+                    aria-label="Clear search"
+                  >
+                    <X size={16} />
+                  </button>
+                )}
+              </div>
+
+              {/* Search results */}
+              {filteredResults.length > 0 && (
+                <div className="mt-3 space-y-0.5">
+                  {filteredResults.map((result) => (
+                    <Link
+                      key={result.href}
+                      href={result.href}
+                      onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
+                      className="group flex items-center gap-3 py-2.5 px-3 rounded-lg hover:bg-[#1A1A1A]/5 transition-colors duration-200"
+                    >
+                      <ArrowRight size={14} className="text-[#9E4214]/50 group-hover:text-[#9E4214] transition-colors shrink-0" />
+                      <div>
+                        <p className="text-sm font-medium text-[#1A1A1A] group-hover:text-[#9E4214] transition-colors">{result.name}</p>
+                        <p className="text-xs text-[#1A1A1A]/50 leading-relaxed">{result.desc}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              )}
+
+              {searchQuery.trim().length > 0 && filteredResults.length === 0 && (
+                <p className="mt-3 text-sm text-[#1A1A1A]/50 text-center py-4">
+                  No results found for &ldquo;{searchQuery}&rdquo;
+                </p>
+              )}
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </nav>
+    </div>
   );
 
+  // ── Mobile full-screen overlay ──
+  const mobileOverlay = (
+    <AnimatePresence>
+      {mobileMenuOpen && (
+        <motion.div
+          initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0 }}
+          transition={{ duration: 0.3, ease: EASE_PREMIUM }}
+          className="fixed inset-0 z-40 bg-[#F2EDE3] pt-20 px-6 flex flex-col overflow-y-auto"
+        >
+          {/* Mobile search */}
+          <div className="flex items-center gap-3 bg-[#E8E3D5] border border-[#1A1A1A]/15 rounded-lg px-4 py-3 mb-6">
+            <Search size={18} className="text-[#1A1A1A]/50 shrink-0" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search..."
+              className="flex-1 text-base bg-transparent outline-none text-[#1A1A1A] placeholder:text-[#1A1A1A]/40"
+              aria-label="Search on mobile"
+            />
+          </div>
+
+          {/* Mobile search results */}
+          {searchQuery.trim().length > 0 ? (
+            <div className="space-y-1 mb-6">
+              {filteredResults.length > 0 ? filteredResults.map((result) => (
+                <Link
+                  key={result.href}
+                  href={result.href}
+                  onClick={() => { setMobileMenuOpen(false); setSearchQuery(''); }}
+                  className="group flex items-center gap-3 py-3 px-4 rounded-lg hover:bg-[#E8E3D5] transition-colors"
+                >
+                  <ArrowRight size={16} className="text-[#9E4214]" />
+                  <div>
+                    <p className="text-lg font-medium text-[#1A1A1A]">{result.name}</p>
+                    <p className="text-xs text-[#1A1A1A]/50">{result.desc}</p>
+                  </div>
+                </Link>
+              )) : (
+                <p className="text-sm text-[#1A1A1A]/50 text-center py-6">No results found</p>
+              )}
+            </div>
+          ) : null}
+
+          {/* Nav links */}
+          {NAV_LINKS_PRIMARY.map((link, i) => (
+            <motion.div
+              key={link.name}
+              initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, ease: EASE_DECELERATE, delay: 0.05 * i }}
+            >
+              <Link
+                href={link.href}
+                onClick={() => setMobileMenuOpen(false)}
+                className="text-3xl wp-display text-[#1A1A1A] hover:text-[#9E4214] transition-colors block py-2"
+              >
+                {link.name}
+              </Link>
+            </motion.div>
+          ))}
+
+          <motion.div
+            initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.4, ease: EASE_DECELERATE, delay: 0.3 }}
+            className="pt-6 border-t border-[#1A1A1A]/15 mt-4"
+          >
+            <Link
+              href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
+              className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block rounded-lg"
+            >
+              Plan Your Journey
+            </Link>
+            <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 text-lg text-[#1A1A1A]/80">
+              <MessageCircle size={16} /> WhatsApp · {SITE.phone}
+            </a>
+            <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80 break-all">
+              {SITE_EMAIL}
+            </a>
+          </motion.div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
+  // ── Reduced motion variant ──
   if (prefersReducedMotion) {
     return (
       <>
-        {navContent}
-        <AnimatePresence>
-          {mobileMenuOpen && (
-            <div
-              className="fixed inset-0 z-40 bg-[#F2EDE3] pt-24 px-6 flex flex-col space-y-4 overflow-y-auto"
-            >
-              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mb-6">
-                <Wordmark size="md" />
-              </Link>
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl wp-display text-[#1A1A1A] hover:text-[#9E4214] transition-colors block"
-                >
-                  {link.name}
-                </Link>
-              ))}
-              <div className="pt-6 border-t border-[#1A1A1A]/15">
-                <Link
-                  href="/contact"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block"
-                >
-                  Plan Your Journey
-                </Link>
-                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 text-lg text-[#1A1A1A]/80">
-                  <MessageCircle size={16} /> WhatsApp · {SITE.phone}
-                </a>
-                <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80 break-all">
-                  {SITE_EMAIL}
-                </a>
-              </div>
-            </div>
-          )}
-        </AnimatePresence>
+        {navBar}
+        {mobileOverlay}
       </>
     );
   }
 
   return (
     <>
-      <motion.nav
+      <motion.div
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-        className={`fixed w-full z-50 transition-shadow duration-300 ${
-          isScrolled
-            ? 'bg-[#F2EDE3] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.06)]'
-            : 'bg-transparent py-5 shadow-none'
-        }`}
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          {/* Left — wordmark */}
-          <Link href="/" className="group" aria-label="Wildpath Adventures — home">
-            <Wordmark size="sm" />
-          </Link>
-
-          {/* Right — CTA + Menu affordance (desktop) */}
-          <div className="hidden md:flex items-center gap-4">
-            <Link
-              href="/contact"
-              className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2"
-            >
-              Plan Your Journey
-            </Link>
-            <button
-              onClick={() => setDesktopSheetOpen(!desktopSheetOpen)}
-              className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
-              aria-label="Toggle navigation menu"
-              aria-expanded={desktopSheetOpen}
-            >
-              Menu
-              <ChevronDown
-                size={14}
-                className={`transition-transform duration-200 ${desktopSheetOpen ? 'rotate-180' : ''}`}
-              />
-            </button>
-          </div>
-
-          {/* Mobile — hamburger */}
-          <button
-            className="md:hidden text-[#1A1A1A]"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X /> : <Menu />}
-          </button>
-        </div>
-
-        {/* Desktop slide-down sheet */}
-        <AnimatePresence>
-          {desktopSheetOpen && (
-            <motion.div
-              ref={sheetRef}
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: 'auto', opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3, ease: EASE_PREMIUM }}
-              className="hidden md:block overflow-hidden bg-[#F2EDE3] border-b border-[#1A1A1A]/8"
-            >
-              <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center gap-8">
-                {NAV_LINKS.map((link) => (
-                  <Link
-                    key={link.name}
-                    href={link.href}
-                    onClick={() => setDesktopSheetOpen(false)}
-                    className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200"
-                  >
-                    {link.name}
-                  </Link>
-                ))}
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm tracking-wide font-medium text-[#1A1A1A]/60 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
-                  onClick={() => setDesktopSheetOpen(false)}
-                >
-                  <MessageCircle size={14} /> WhatsApp
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
-
-      {/* Mobile full-screen overlay */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3, ease: EASE_PREMIUM }}
-            className="fixed inset-0 z-40 bg-[#F2EDE3] pt-24 px-6 flex flex-col space-y-4 overflow-y-auto"
-          >
-            <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mb-6">
-              <Wordmark size="md" />
-            </Link>
-            {NAV_LINKS.map((link, i) => (
-              <motion.div
-                key={link.name}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.4, ease: EASE_DECELERATE, delay: 0.05 * i }}
-              >
-                <Link
-                  href={link.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="text-3xl wp-display text-[#1A1A1A] hover:text-[#9E4214] transition-colors block"
-                >
-                  {link.name}
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.4, ease: EASE_DECELERATE, delay: 0.3 }}
-              className="pt-6 border-t border-[#1A1A1A]/15"
-            >
-              <Link
-                href="/contact"
-                onClick={() => setMobileMenuOpen(false)}
-                className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block"
-              >
-                Plan Your Journey
-              </Link>
-              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 text-lg text-[#1A1A1A]/80">
-                <MessageCircle size={16} /> WhatsApp · {SITE.phone}
-              </a>
-              <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80 break-all">
-                {SITE_EMAIL}
-              </a>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+        {navBar}
+      </motion.div>
+      {mobileOverlay}
     </>
   );
 }
@@ -560,7 +565,7 @@ export function Footer() {
           alt="Namibian savannah horizon illustration"
           fill
           sizes="100vw"
-          className="object-cover opacity-30"
+          className="object-cover opacity-30 object-center"
         />
       </div>
 
@@ -569,13 +574,13 @@ export function Footer() {
         <div className="max-w-3xl mx-auto text-center">
 
           {/* Wildpath approved circular logo mark — footer (dark variant) */}
-          <div className="flex justify-center mb-8">
+          <div className="flex justify-center mb-10">
             <img
               src="/images/brand/wildpath-circle-dark.svg"
               alt="Wildpath Adventures"
-              width={64}
-              height={64}
-              className="w-16 h-16"
+              width={160}
+              height={160}
+              className="w-40 h-40 md:w-56 md:h-56"
             />
           </div>
 

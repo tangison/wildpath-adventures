@@ -88,7 +88,7 @@ export default function Home() {
             </div>
 
             {/* Right column — hero illustration, full-bleed feel */}
-            <div className="md:col-span-7 md:order-2 relative aspect-[4/3] md:aspect-[16/9] overflow-hidden">
+            <div className="md:col-span-7 md:order-2 relative aspect-[3/2] md:aspect-[16/9] overflow-hidden bg-[#E8E3D5]">
               <Image
                 src="/images/illustrations/approved/wildpath-hero-main.webp"
                 alt="Hand-drawn vintage screen-print illustration of the Namibian savannah — acacia tree, gravel road, elephants, birds, and sunset"
@@ -97,7 +97,7 @@ export default function Home() {
                 loading="eager"
                 fetchPriority="high"
                 sizes="(max-width: 768px) 100vw, 58vw"
-                className="object-cover object-center"
+                className="object-contain object-center"
               />
             </div>
           </div>
@@ -126,13 +126,13 @@ export default function Home() {
                   href={`/journeys/${j.slug}`}
                   className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-[background-color] duration-300 overflow-hidden"
                 >
-                  <div className="relative aspect-[16/10] bg-[#1A1A1A] overflow-hidden">
+                  <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
                     <Image
                       src={j.cardImage}
                       alt={`${j.name} — illustration`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:opacity-90 transition-[opacity] duration-500"
+                      className="object-contain group-hover:opacity-90 transition-[opacity] duration-500"
                     />
                     <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                       <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
@@ -241,13 +241,13 @@ export default function Home() {
           </div>
 
           <div className="max-w-7xl mx-auto mt-16">
-            <div className="relative w-full aspect-[16/6] md:aspect-[16/5] overflow-hidden">
+            <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#E8E3D5]">
               <Image
                 src="/images/illustrations/approved/page-about.webp"
                 alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
                 fill
                 sizes="100vw"
-                className="object-cover"
+                className="object-contain object-center"
               />
             </div>
           </div>
@@ -274,7 +274,7 @@ export default function Home() {
                     alt={`${d.name} — ${d.country}`}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:brightness-110 transition-[filter] duration-500"
+                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-500`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-[#1A1A1A]/20 to-transparent" />
                   <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end text-[#F2EDE3]">
@@ -385,13 +385,13 @@ export default function Home() {
                   className="block bg-[#F2EDE3] group hover:bg-[#E8E3D5] transition-[background-color] duration-300 p-6 md:p-8"
                 >
                   <div className="grid md:grid-cols-3 gap-6 items-center">
-                    <div className="relative aspect-[4/3] overflow-hidden bg-[#1A1A1A]/5">
+                    <div className="relative aspect-[3/2] overflow-hidden bg-[#E8E3D5]">
                       <Image
                         src={n.image}
                         alt={`Illustration for: ${n.title}`}
                         fill
                         sizes="(max-width: 768px) 100vw, 33vw"
-                        className="object-cover opacity-90 group-hover:opacity-100 transition-[opacity] duration-500"
+                        className="object-contain opacity-90 group-hover:opacity-100 transition-[opacity] duration-500"
                       />
                     </div>
                     <div className="md:col-span-2">

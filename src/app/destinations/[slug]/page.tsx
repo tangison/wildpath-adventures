@@ -44,7 +44,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
             fill
             priority
             sizes="100vw"
-            className="object-cover"
+            className={`${dest.imageKind === 'illustration' ? 'object-contain object-center' : 'object-cover object-center'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/30 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -154,7 +154,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                     alt={journey.name}
                     fill
                     sizes="(max-width: 768px) 100vw, 45vw"
-                    className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                   />
                   <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                     <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
@@ -217,7 +217,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                     alt={d.name}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className="object-cover group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-[#F2EDE3]">

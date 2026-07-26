@@ -45,13 +45,13 @@ export default function ContactPage() {
         {/* ═════════════════════ ATMOSPHERE ═════════════════════ */}
         <section className="px-6 md:px-12 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">
-            <div className="relative w-full aspect-[16/7] md:aspect-[16/5] overflow-hidden">
+            <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
               <Image
                 src="/images/illustrations/approved/page-contact.webp"
                 alt="Hand-drawn illustration of the Namibian landscape with open sky on the left side"
                 fill
                 sizes="100vw"
-                className="object-cover object-left"
+                className="object-contain object-center"
               />
             </div>
           </div>
