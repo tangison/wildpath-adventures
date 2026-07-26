@@ -42,6 +42,21 @@ export default function ContactPage() {
           </div>
         </section>
 
+        {/* ═════════════════════ ATMOSPHERE ═════════════════════ */}
+        <section className="px-6 md:px-12 pb-12 md:pb-16">
+          <div className="max-w-7xl mx-auto">
+            <div className="relative w-full aspect-[16/7] md:aspect-[16/5] overflow-hidden">
+              <Image
+                src="/images/illustrations/approved/page-contact.webp"
+                alt="Hand-drawn illustration of the Namibian landscape with open sky on the left side"
+                fill
+                sizes="100vw"
+                className="object-cover object-left"
+              />
+            </div>
+          </div>
+        </section>
+
         <div className="py-4">
           <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
         </div>

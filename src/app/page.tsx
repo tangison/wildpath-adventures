@@ -90,7 +90,7 @@ export default function Home() {
             {/* Right column — hero illustration, full-bleed feel */}
             <div className="md:col-span-7 md:order-2 relative aspect-[4/3] md:aspect-[16/9] overflow-hidden">
               <Image
-                src="/images/illustrations/v2/01-hero.webp"
+                src="/images/illustrations/approved/wildpath-hero-main.webp"
                 alt="Hand-drawn vintage screen-print illustration of the Namibian savannah — acacia tree, gravel road, elephants, birds, and sunset"
                 fill
                 priority
@@ -243,7 +243,7 @@ export default function Home() {
           <div className="max-w-7xl mx-auto mt-16">
             <div className="relative w-full aspect-[16/6] md:aspect-[16/5] overflow-hidden">
               <Image
-                src="/images/illustrations/v2/08-manifesto-atmosphere.webp"
+                src="/images/illustrations/approved/page-about.webp"
                 alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
                 fill
                 sizes="100vw"
@@ -362,21 +362,21 @@ export default function Home() {
                   excerpt:
                     'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
                   category: 'Destination guide',
-                  image: '/images/illustrations/v2/10-note-early-light.webp',
+                  image: '/images/illustrations/approved/field-note-sossusvlei.webp',
                 },
                 {
                   title: 'Etosha in the dry and wet seasons',
                   excerpt:
                     'How wildlife viewing shifts between the dry winter months and the greener, quieter summer — and what each season rewards.',
                   category: 'Destination guide',
-                  image: '/images/illustrations/v2/12-note-desert-elephants.webp',
+                  image: '/images/illustrations/approved/field-note-etosha-seasons.webp',
                 },
                 {
                   title: 'Packing for Namibia',
                   excerpt:
                     'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
                   category: 'Travel preparation',
-                  image: '/images/illustrations/v2/11-note-ancient-paths.webp',
+                  image: '/images/illustrations/approved/field-note-packing.webp',
                 },
               ].map((n) => (
                 <Link

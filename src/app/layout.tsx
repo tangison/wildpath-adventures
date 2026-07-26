@@ -90,11 +90,20 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: SITE_URL,
+    images: [
+      {
+        url: '/images/social/og-master.webp',
+        width: 1731,
+        height: 909,
+        alt: `${SITE.name} — ${SITE.tagline}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: SITE.name,
     description: SITE.tagline,
+    images: ['/images/social/og-master.webp'],
   },
 };
 
@@ -126,6 +135,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* LCP preload — homepage hero illustration is the primary above-the-fold image */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/illustrations/approved/wildpath-hero-main.webp"
+          type="image/webp"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

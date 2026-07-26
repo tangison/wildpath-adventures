@@ -52,7 +52,7 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto">
             <div className="relative w-full aspect-[16/7] md:aspect-[16/5] overflow-hidden">
               <Image
-                src="/images/illustrations/v2/08-manifesto-atmosphere.webp"
+                src="/images/illustrations/approved/page-about.webp"
                 alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
                 fill
                 sizes="100vw"

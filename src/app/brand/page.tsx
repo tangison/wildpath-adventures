@@ -157,7 +157,7 @@ export default function BrandPage() {
               <div className="md:col-span-8">
                 <div className="relative w-full aspect-square bg-[#E8E3D5]">
                   <Image
-                    src="/images/illustrations/v2/03-showcase.webp"
+                    src="/images/illustrations/approved/wildpath-hero-main.webp"
                     alt="Wildpath illustration — acacia tree, gravel road, elephants, birds, sunset"
                     fill
                     priority

@@ -1,13 +1,11 @@
-// One-off script: generate legacy favicon.ico (32x32) and a small 16x16 PNG
-// from the master 512x512 mark.
+// One-off script: generate favicon variants from the approved circular logo mark.
+// Source: wildpath-circle-dark.png (transparent PNG fallback from the approved asset kit).
+// This replaces the previous wildpath-badge.png source which was rejected.
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-// NOTE: The SRC path currently points to wildpath-badge.png as a placeholder.
-// Once the circular SVG mark (wildpath-circle-dark.svg) arrives with the asset kit,
-// this should be updated to use that source instead.
-const SRC = path.resolve('public/images/brand/wildpath-badge.png');
+const SRC = path.resolve('public/images/brand/wildpath-circle-dark.png');
 const OUT_DIR = path.resolve('public');
 
 async function main() {
@@ -25,8 +23,7 @@ async function main() {
     .png()
     .toFile(path.join(OUT_DIR, 'favicon-16.png'));
 
-  // 180x180 for apple-touch-icon (already have src/app/apple-icon.png,
-  // but this is the public fallback)
+  // 180x180 for apple-touch-icon
   await sharp(SRC)
     .resize(180, 180, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
     .png()
@@ -44,7 +41,26 @@ async function main() {
     .png()
     .toFile(path.join(OUT_DIR, 'android-chrome-512.png'));
 
-  console.log('Favicon variants generated:');
+  // 512x512 master favicon (transparent)
+  await sharp(SRC)
+    .resize(512, 512, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toFile(path.join(OUT_DIR, 'favicon.png'));
+
+  // src/app/icon.png (Next.js App Router convention)
+  await fs.mkdir(path.resolve('src/app'), { recursive: true });
+  await sharp(SRC)
+    .resize(512, 512, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toFile(path.resolve('src/app/icon.png'));
+
+  // src/app/apple-icon.png (Next.js App Router convention)
+  await sharp(SRC)
+    .resize(180, 180, { fit: 'contain', background: { r: 0, g: 0, b: 0, alpha: 0 } })
+    .png()
+    .toFile(path.resolve('src/app/apple-icon.png'));
+
+  console.log('Favicon variants generated from approved circular logo:');
   const files = await fs.readdir(OUT_DIR);
   for (const f of files) {
     if (f.match(/favicon|apple-touch|android-chrome/)) {

@@ -28,8 +28,13 @@ const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 //
 // The Wildpath logo is not an icon, badge, shield, or emblem.
 // It is a typographic wordmark — two words, one line.
-// The circular mark (used in footer and as favicon) is a companion,
-// never a replacement. The wordmark text remains primary and readable.
+// The approved circular mark (wildpath-circle-dark.svg / light.svg) is a
+// companion, never a replacement. The wordmark text remains primary and
+// readable.
+//
+// Footer: wildpath-circle-dark.svg on dark backgrounds.
+// Light sections: wildpath-circle-light.svg on light backgrounds.
+// Watermark: either variant at 0.04–0.08 opacity, aria-hidden="true".
 //
 // Mark as favicon/browser icon: handled by src/app/icon.png
 // (Next.js App Router convention, auto-served at /icon).
@@ -551,7 +556,7 @@ export function Footer() {
       {/* Illustration strip — footer landscape accent */}
       <div className="relative w-full h-24 md:h-32 overflow-hidden border-b border-[#F2EDE3]/10">
         <Image
-          src="/images/illustrations/v2/02-banner-namibia.webp"
+          src="/images/illustrations/approved/wildpath-hero-main.webp"
           alt="Namibian savannah horizon illustration"
           fill
           sizes="100vw"
@@ -563,13 +568,15 @@ export function Footer() {
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-3xl mx-auto text-center">
 
-          {/* Wildpath circular logo mark — footer variant */}
+          {/* Wildpath approved circular logo mark — footer (dark variant) */}
           <div className="flex justify-center mb-8">
-            <svg viewBox="0 0 100 100" className="w-16 h-16" aria-hidden="true" fill="none">
-              <circle cx="50" cy="50" r="46" stroke="#F2EDE3" strokeWidth="2" />
-              <circle cx="50" cy="50" r="38" stroke="#F2EDE3" strokeWidth="0.5" opacity="0.4" />
-              <text x="50" y="55" textAnchor="middle" fontSize="28" fill="#F2EDE3" fontFamily="serif" fontWeight="bold" stroke="none">W</text>
-            </svg>
+            <img
+              src="/images/brand/wildpath-circle-dark.svg"
+              alt="Wildpath Adventures"
+              width={64}
+              height={64}
+              className="w-16 h-16"
+            />
           </div>
 
           {/* Tagline — the publication's colophon line */}
@@ -866,7 +873,7 @@ export function ComingSoon({
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] relative overflow-hidden">
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/illustrations/v2/09-coming-soon.webp"
+          src="/images/illustrations/approved/page-about.webp"
           alt=""
           fill
           sizes="100vw"
@@ -986,17 +993,30 @@ export function ComingSoon({
 
 // ═══════════════════════════════════════════════════════════
 // WATERMARK — Decorative circular logo mark, very low opacity
-// Placeholder inline SVG — will be replaced with the actual
-// wildpath-circle-dark.svg when the asset kit arrives.
+// Uses the approved wildpath-circle-light.svg (for light backgrounds)
+// or wildpath-circle-dark.svg (for dark backgrounds).
+// Opacity range: 0.04–0.08. Decorative instances are aria-hidden.
 // ═══════════════════════════════════════════════════════════
 
-export function WildpathWatermark({ className = '' }: { className?: string }) {
+export function WildpathWatermark({
+  className = '',
+  variant = 'light',
+}: {
+  className?: string;
+  variant?: 'light' | 'dark';
+}) {
+  const src = variant === 'dark'
+    ? '/images/brand/wildpath-circle-dark.svg'
+    : '/images/brand/wildpath-circle-light.svg';
   return (
-    <svg viewBox="0 0 100 100" className={`opacity-[0.06] ${className}`} aria-hidden="true" fill="none">
-      <circle cx="50" cy="50" r="46" stroke="#1A1A1A" strokeWidth="2" />
-      <circle cx="50" cy="50" r="38" stroke="#1A1A1A" strokeWidth="0.5" opacity="0.4" />
-      <text x="50" y="55" textAnchor="middle" fontSize="28" fill="#1A1A1A" fontFamily="serif" fontWeight="bold" stroke="none">W</text>
-    </svg>
+    <img
+      src={src}
+      alt=""
+      width={200}
+      height={200}
+      className={`opacity-[0.06] ${className}`}
+      aria-hidden="true"
+    />
   );
 }
 

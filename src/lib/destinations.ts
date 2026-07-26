@@ -112,7 +112,7 @@ export const DESTINATIONS: Destination[] = [
     landscape: 'Fog, dunes dropping into the sea, basalt, shipwrecks.',
     suggestedJourney: 'classic-namibia',
     // No verified real photograph in current assets — use branded illustration placeholder.
-    image: '/images/illustrations/v2/08-manifesto-atmosphere.webp',
+    image: '/images/illustrations/approved/destination-skeleton-coast.webp',
     imageKind: 'illustration',
   },
   {
@@ -142,7 +142,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Hippo', 'Buffalo', 'Elephant', 'Wattled crane', 'African fish eagle', 'Sable antelope'],
     landscape: 'Rivers, floodplains, mopane woodland. Green Namibia.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/v2/06-card-charters.webp',
+    image: '/images/illustrations/approved/destination-caprivi.webp',
     imageKind: 'illustration',
   },
   {
@@ -157,7 +157,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant', 'Lion', 'Leopard', 'Buffalo', 'Puku', 'Hippo'],
     landscape: 'River, floodplain, woodland. Botswana at its most accessible.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/v2/06-card-charters.webp',
+    image: '/images/illustrations/approved/destination-chobe.webp',
     imageKind: 'illustration',
   },
   {
@@ -172,7 +172,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant (in town itself)', 'Hippo', 'Crocodile', 'Birdlife'],
     landscape: 'Basalt gorge, rainforest from the spray, the Zambezi above and below.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/v2/08-manifesto-atmosphere.webp',
+    image: '/images/illustrations/approved/destination-victoria-falls.webp',
     imageKind: 'illustration',
   },
 ];

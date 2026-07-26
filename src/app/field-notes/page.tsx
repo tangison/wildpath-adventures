@@ -22,7 +22,7 @@ const NOTES = [
     excerpt:
       'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
     category: 'Destination guide',
-    image: '/images/illustrations/v2/10-note-early-light.webp',
+    image: '/images/illustrations/approved/field-note-sossusvlei.webp',
   },
   {
     slug: 'etosha-dry-and-wet-seasons',
@@ -30,7 +30,7 @@ const NOTES = [
     excerpt:
       'How wildlife viewing shifts between the dry winter months and the greener, quieter summer — and what each season rewards.',
     category: 'Destination guide',
-    image: '/images/illustrations/v2/12-note-desert-elephants.webp',
+    image: '/images/illustrations/approved/field-note-etosha-seasons.webp',
   },
   {
     slug: 'packing-for-namibia',
@@ -38,7 +38,7 @@ const NOTES = [
     excerpt:
       'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
     category: 'Travel preparation',
-    image: '/images/illustrations/v2/11-note-ancient-paths.webp',
+    image: '/images/illustrations/approved/field-note-packing.webp',
   },
   {
     slug: 'self-drive-namibia',
@@ -46,7 +46,7 @@ const NOTES = [
     excerpt:
       'Distances, road conditions, and the rhythm of a self-drive route. A practical introduction for first-time visitors.',
     category: 'Travel preparation',
-    image: '/images/illustrations/v2/08-manifesto-atmosphere.webp',
+    image: '/images/illustrations/approved/field-note-self-drive.webp',
   },
   {
     slug: 'responsible-wildlife-viewing',
@@ -54,7 +54,7 @@ const NOTES = [
     excerpt:
       'How to watch wildlife well — distance, patience, and the habits that keep both animals and visitors safe.',
     category: 'Travel preparation',
-    image: '/images/illustrations/v2/03-showcase.webp',
+    image: '/images/illustrations/approved/field-note-responsible-wildlife.webp',
   },
   {
     slug: 'zambezi-region-route',
@@ -62,7 +62,7 @@ const NOTES = [
     excerpt:
       'The Caprivi Strip rewoven — rivers, parks, and the practical logistics of travelling Namibia\'s wet north-east.',
     category: 'Destination guide',
-    image: '/images/illustrations/v2/06-card-charters.webp',
+    image: '/images/illustrations/approved/field-note-zambezi-route.webp',
   },
 ];
 
