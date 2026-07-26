@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useReducedMotion } from 'framer-motion';
+import { Menu, X, MapPin, ArrowRight, MessageCircle, ChevronDown } from 'lucide-react';
 import {
   SITE,
   SITE_EMAIL,
@@ -38,6 +38,9 @@ const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 //
 //   Badge as favicon/browser icon: handled by src/app/icon.png
 //   (Next.js App Router convention, auto-served at /icon).
+//
+// REDUCED MOTION: When the user prefers reduced motion, the entrance
+// animation is skipped — the wordmark renders at final state immediately.
 // ═══════════════════════════════════════════════════════════
 
 const BADGE_SIZE_MAP = {
@@ -60,6 +63,7 @@ export function Wordmark({
   animate?: boolean;
   withBadge?: boolean;
 }) {
+  const prefersReducedMotion = useReducedMotion();
   const color = inverted ? 'text-[#F2EDE3]' : 'text-[#1A1A1A]';
 
   const sizes = {
@@ -106,7 +110,7 @@ export function Wordmark({
     <span className={className}>{wordmarkText}</span>
   );
 
-  if (!animate) return content;
+  if (!animate || prefersReducedMotion) return content;
 
   return (
     <motion.span
@@ -198,6 +202,14 @@ export function FootprintsMark({ className = '' }: { className?: string }) {
 
 // ═══════════════════════════════════════════════════════════
 // SCROLL REVEAL — premium entrance for sections
+//
+// ⚠️ HALLMARK AUDIT NOTE:
+// Only use for hero wordmark entrance and the first section heading
+// per page. Not for every element. Overuse (47+ instances across
+// pages) is the #1 "AI scroll-reveal" fingerprint. See HALLMARK_AUDIT.md.
+//
+// REDUCED MOTION: When the user prefers reduced motion, children
+// are rendered directly without the motion.div animation wrapper.
 // ═══════════════════════════════════════════════════════════
 export function ScrollReveal({
   children,
@@ -210,6 +222,12 @@ export function ScrollReveal({
   y?: number;
   className?: string;
 }) {
+  const prefersReducedMotion = useReducedMotion();
+
+  if (prefersReducedMotion) {
+    return <div className={className}>{children}</div>;
+  }
+
   return (
     <motion.div
       initial={{ opacity: 0, y }}
@@ -224,8 +242,12 @@ export function ScrollReveal({
 }
 
 // ═══════════════════════════════════════════════════════════
-// NAVIGATION — no Lodges. About replaces Ethos.
-// Primary CTA: "Plan Your Journey" (WhatsApp deep link)
+// NAVIGATION — N9 Edge-aligned minimal pattern
+// Desktop: wordmark+badge left, "Plan Your Journey" CTA right,
+// nav links accessed via a "Menu" affordance → slide-down sheet.
+// Mobile: hamburger icon → full-screen overlay.
+// No inline nav links visible on desktop at rest.
+// REDUCED MOTION: Nav entrance animation skipped when preferred.
 // ═══════════════════════════════════════════════════════════
 
 const NAV_LINKS = [
@@ -239,6 +261,9 @@ const NAV_LINKS = [
 export function Nav() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [desktopSheetOpen, setDesktopSheetOpen] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
+  const sheetRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
@@ -246,39 +271,197 @@ export function Nav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close desktop sheet on outside click
+  useEffect(() => {
+    if (!desktopSheetOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (sheetRef.current && !sheetRef.current.contains(e.target as Node)) {
+        setDesktopSheetOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [desktopSheetOpen]);
+
+  // Close desktop sheet on Escape
+  useEffect(() => {
+    if (!desktopSheetOpen) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setDesktopSheetOpen(false);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [desktopSheetOpen]);
+
+  const navContent = (
+    <nav
+      className={`fixed w-full z-50 transition-shadow duration-300 ${
+        isScrolled
+          ? 'bg-[#F2EDE3] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.06)]'
+          : 'bg-transparent py-5 shadow-none'
+      }`}
+    >
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        {/* Left — wordmark+badge */}
+        <Link href="/" className="group" aria-label="Wildpath Adventures — home">
+          <Wordmark size="sm" withBadge />
+        </Link>
+
+        {/* Right — CTA + Menu affordance (desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          <Link
+            href="/contact"
+            className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2"
+          >
+            Plan Your Journey
+          </Link>
+          <button
+            onClick={() => setDesktopSheetOpen(!desktopSheetOpen)}
+            className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
+            aria-label="Toggle navigation menu"
+            aria-expanded={desktopSheetOpen}
+          >
+            Menu
+            <ChevronDown
+              size={14}
+              className={`transition-transform duration-200 ${desktopSheetOpen ? 'rotate-180' : ''}`}
+            />
+          </button>
+        </div>
+
+        {/* Mobile — hamburger */}
+        <button
+          className="md:hidden text-[#1A1A1A]"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+        >
+          {mobileMenuOpen ? <X /> : <Menu />}
+        </button>
+      </div>
+
+      {/* Desktop slide-down sheet */}
+      <AnimatePresence>
+        {desktopSheetOpen && (
+          <motion.div
+            ref={sheetRef}
+            initial={prefersReducedMotion ? { opacity: 1 } : { height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={prefersReducedMotion ? { opacity: 0 } : { height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: EASE_PREMIUM }}
+            className="hidden md:block overflow-hidden bg-[#F2EDE3] border-b border-[#1A1A1A]/8"
+          >
+            <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center gap-8">
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setDesktopSheetOpen(false)}
+                  className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm tracking-wide font-medium text-[#1A1A1A]/60 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
+                onClick={() => setDesktopSheetOpen(false)}
+              >
+                <MessageCircle size={14} /> WhatsApp
+              </a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </nav>
+  );
+
+  if (prefersReducedMotion) {
+    return (
+      <>
+        {navContent}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <div
+              className="fixed inset-0 z-40 bg-[#F2EDE3] pt-24 px-6 flex flex-col space-y-4 overflow-y-auto"
+            >
+              <Link href="/" onClick={() => setMobileMenuOpen(false)} className="mb-6">
+                <Wordmark size="md" />
+              </Link>
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-3xl wp-display text-[#1A1A1A] hover:text-[#9E4214] transition-colors block"
+                >
+                  {link.name}
+                </Link>
+              ))}
+              <div className="pt-6 border-t border-[#1A1A1A]/15">
+                <Link
+                  href="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block"
+                >
+                  Plan Your Journey
+                </Link>
+                <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 mt-4 text-lg text-[#1A1A1A]/80">
+                  <MessageCircle size={16} /> WhatsApp · {SITE.phone}
+                </a>
+                <a href={`mailto:${SITE_EMAIL}`} className="block mt-1 text-lg text-[#1A1A1A]/80 break-all">
+                  {SITE_EMAIL}
+                </a>
+              </div>
+            </div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
+
   return (
     <>
       <motion.nav
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-        className={`fixed w-full z-50 transition-all duration-300 ${
-          isScrolled ? 'bg-[#F2EDE3] py-3 border-b border-[#1A1A1A]/10' : 'bg-transparent py-5'
+        className={`fixed w-full z-50 transition-shadow duration-300 ${
+          isScrolled
+            ? 'bg-[#F2EDE3] py-3 shadow-[0_1px_8px_rgba(0,0,0,0.06)]'
+            : 'bg-transparent py-5 shadow-none'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+          {/* Left — wordmark+badge */}
           <Link href="/" className="group" aria-label="Wildpath Adventures — home">
-            <Wordmark size="sm" />
+            <Wordmark size="sm" withBadge />
           </Link>
 
-          <div className="hidden md:flex space-x-7 items-center">
-            {NAV_LINKS.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200"
-              >
-                {link.name}
-              </Link>
-            ))}
+          {/* Right — CTA + Menu affordance (desktop) */}
+          <div className="hidden md:flex items-center gap-4">
             <Link
               href="/contact"
               className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2"
             >
               Plan Your Journey
             </Link>
+            <button
+              onClick={() => setDesktopSheetOpen(!desktopSheetOpen)}
+              className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
+              aria-label="Toggle navigation menu"
+              aria-expanded={desktopSheetOpen}
+            >
+              Menu
+              <ChevronDown
+                size={14}
+                className={`transition-transform duration-200 ${desktopSheetOpen ? 'rotate-180' : ''}`}
+              />
+            </button>
           </div>
 
+          {/* Mobile — hamburger */}
           <button
             className="md:hidden text-[#1A1A1A]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -287,8 +470,45 @@ export function Nav() {
             {mobileMenuOpen ? <X /> : <Menu />}
           </button>
         </div>
+
+        {/* Desktop slide-down sheet */}
+        <AnimatePresence>
+          {desktopSheetOpen && (
+            <motion.div
+              ref={sheetRef}
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: EASE_PREMIUM }}
+              className="hidden md:block overflow-hidden bg-[#F2EDE3] border-b border-[#1A1A1A]/8"
+            >
+              <div className="max-w-7xl mx-auto px-6 md:px-12 py-6 flex items-center gap-8">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    onClick={() => setDesktopSheetOpen(false)}
+                    className="text-sm tracking-wide font-medium text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+                <a
+                  href={WHATSAPP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm tracking-wide font-medium text-[#1A1A1A]/60 hover:text-[#9E4214] transition-colors duration-200 inline-flex items-center gap-1.5"
+                  onClick={() => setDesktopSheetOpen(false)}
+                >
+                  <MessageCircle size={14} /> WhatsApp
+                </a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.nav>
 
+      {/* Mobile full-screen overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
@@ -345,7 +565,10 @@ export function Nav() {
 }
 
 // ═══════════════════════════════════════════════════════════
-// FOOTER — real contact only. No fake social links.
+// FOOTER — Ft5 Statement pattern
+// A single typographic closing statement that reads like a
+// travel publication's colophon — not a SaaS footer.
+// Contact details are embedded in the statement itself.
 // Social icons render ONLY if official accounts are configured in .env.
 // ═══════════════════════════════════════════════════════════
 
@@ -365,110 +588,86 @@ export function Footer() {
         />
       </div>
 
+      {/* Statement — single typographic closing */}
       <div className="pt-16 pb-10 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="mb-16 pb-12 border-b border-[#F2EDE3]/15">
-            <Wordmark size="lg" inverted withBadge />
-            <p className="wp-script text-2xl text-[#E8854A] mt-4">{SITE.tagline}</p>
+        <div className="max-w-3xl mx-auto text-center">
+
+          {/* Tagline — the publication's colophon line */}
+          <p className="wp-script text-3xl md:text-4xl text-[#E8854A] mb-10" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
+            Travel the untamed beauty.
+          </p>
+
+          {/* Contact details — embedded in the statement */}
+          <p className="text-base md:text-lg text-[#F2EDE3]/80 leading-relaxed mb-6">
+            <span className="text-[#F2EDE3]">{SITE.location.city}, {SITE.location.country}</span>
+            <span className="text-[#F2EDE3]/40 mx-3">·</span>
+            <a
+              href={`mailto:${SITE_EMAIL}`}
+              className="text-[#F2EDE3]/80 hover:text-[#E8854A] transition-colors break-all"
+            >
+              {SITE_EMAIL}
+            </a>
+            <span className="text-[#F2EDE3]/40 mx-3">·</span>
+            <a
+              href={TEL_URL}
+              className="text-[#F2EDE3]/80 hover:text-[#E8854A] transition-colors"
+            >
+              {SITE.phone}
+            </a>
+            <span className="text-[#F2EDE3]/40 mx-3">·</span>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#F2EDE3]/80 hover:text-[#E8854A] transition-colors inline-flex items-center gap-1.5"
+            >
+              <MessageCircle size={14} /> WhatsApp
+            </a>
+          </p>
+
+          {/* Social links — only rendered if officially configured */}
+          {socials.length > 0 && (
+            <div className="flex gap-3 justify-center mb-8">
+              {socials.map((s) => (
+                <a
+                  key={s.short}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={s.label}
+                  className="w-9 h-9 border border-[#F2EDE3]/25 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.6rem] font-bold tracking-wider"
+                >
+                  {s.short}
+                </a>
+              ))}
+            </div>
+          )}
+
+          {/* Legal links — single subtle row */}
+          <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/50 mb-8">
+            <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
+            <Link href="/privacy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
+            <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
+            <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-            <div className="md:col-span-2">
-              <p className="text-[#F2EDE3]/75 max-w-sm mb-8 leading-relaxed text-sm">
-                A Namibian-owned tour operator creating personalised journeys
-                across Namibia and Southern Africa. Every itinerary is tailored
-                around the landscapes, wildlife, and pace that make this part of
-                Africa unforgettable.
-              </p>
-              {/* Social links — only rendered if officially configured */}
-              {socials.length > 0 ? (
-                <div className="flex gap-3">
-                  {socials.map((s) => (
-                    <a
-                      key={s.short}
-                      href={s.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={s.label}
-                      className="w-10 h-10 border border-[#F2EDE3]/30 flex items-center justify-center hover:bg-[#C5511A] hover:border-[#C5511A] transition-colors text-[0.65rem] font-bold tracking-wider"
-                    >
-                      {s.short}
-                    </a>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35">
-                  Official social accounts to follow
-                </p>
-              )}
-            </div>
+          {/* Copyright */}
+          <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35 mb-6">
+            &copy; {new Date().getFullYear()} {SITE.name} · All routes reserved
+          </p>
 
-            <div>
-              <h3 className="wp-subhead text-xs text-[#E8854A] mb-5">Explore</h3>
-              <ul className="space-y-3 text-[#F2EDE3]/75 text-sm">
-                <li><Link href="/journeys" className="hover:text-[#E8854A] transition-colors">Journeys</Link></li>
-                <li><Link href="/destinations" className="hover:text-[#E8854A] transition-colors">Destinations</Link></li>
-                <li><Link href="/about" className="hover:text-[#E8854A] transition-colors">About</Link></li>
-                <li><Link href="/field-notes" className="hover:text-[#E8854A] transition-colors">Field Notes</Link></li>
-                <li><Link href="/brand" className="hover:text-[#E8854A] transition-colors">Brand Identity</Link></li>
-              </ul>
-            </div>
-
-            <div>
-              <h3 className="wp-subhead text-xs text-[#E8854A] mb-5">Contact</h3>
-              <ul className="space-y-3 text-[#F2EDE3]/75 text-sm">
-                <li className="flex items-start gap-2">
-                  <MapPin className="w-4 h-4 shrink-0 text-[#E8854A] mt-0.5" />
-                  <span>{SITE.location.city}, {SITE.location.country}</span>
-                </li>
-                <li>
-                  <a href={`mailto:${SITE_EMAIL}`} className="hover:text-[#E8854A] transition-colors block break-all">
-                    {SITE_EMAIL}
-                  </a>
-                </li>
-                <li>
-                  <a href={TEL_URL} className="hover:text-[#E8854A] transition-colors block">
-                    {SITE.phone}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-[#E8854A] transition-colors inline-flex items-center gap-2"
-                  >
-                    <MessageCircle size={13} /> WhatsApp
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="flex flex-col md:flex-row justify-between items-center text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/50 gap-4 pt-8 border-t border-[#F2EDE3]/10">
-            <p>&copy; {new Date().getFullYear()} {SITE.name} · All routes reserved</p>
-            <div className="flex gap-6 flex-wrap justify-center">
-              <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
-              <Link href="/privacy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
-              <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
-              <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
-            </div>
-          </div>
-
-          {/* Tangison Studio credit — subtle, premium, clickable */}
-          <div className="mt-8 text-center">
-            <p className="text-[0.6rem] tracking-[0.2em] uppercase text-[#F2EDE3]/35">
-              Designed &amp; Built by{' '}
-              <a
-                href={SITE.studio.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#F2EDE3]/60 hover:text-[#E8854A] transition-colors"
-              >
-                {SITE.studio.name}
-              </a>
-            </p>
-          </div>
+          {/* Tangison Studio credit — colophon */}
+          <p className="text-[0.55rem] tracking-[0.2em] uppercase text-[#F2EDE3]/30">
+            Designed &amp; Built by{' '}
+            <a
+              href={SITE.studio.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#F2EDE3]/50 hover:text-[#E8854A] transition-colors"
+            >
+              {SITE.studio.name}
+            </a>
+          </p>
         </div>
       </div>
     </footer>
@@ -671,6 +870,7 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
 
 // ═══════════════════════════════════════════════════════════
 // COMING SOON — editorial locked screen (preserved for future use)
+// REDUCED MOTION: Entrance animations skipped when preferred.
 // ═══════════════════════════════════════════════════════════
 
 export function ComingSoon({
@@ -680,6 +880,8 @@ export function ComingSoon({
   title: string;
   subtitle: string;
 }) {
+  const prefersReducedMotion = useReducedMotion();
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] relative overflow-hidden">
       <div className="absolute inset-0 z-0">
@@ -709,49 +911,89 @@ export function ComingSoon({
 
       <main className="relative z-10 flex-1 flex items-center px-6 md:px-12">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.2 }}
-            className="md:col-span-4"
-          >
-            <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
-            <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-          </motion.div>
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.35 }}
-            className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20"
-          >
-            <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-              The route is being charted
-            </p>
-            <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
-              {title}
-            </h1>
-            <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-              {subtitle}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href="/contact"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
+          {prefersReducedMotion ? (
+            <>
+              <div className="md:col-span-4">
+                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
+                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
+              </div>
+              <div className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20">
+                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
+                  The route is being charted
+                </p>
+                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
+                  {title}
+                </h1>
+                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
+                  {subtitle}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/contact"
+                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
+                  >
+                    Plan Your Journey
+                    <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
+                  >
+                    <MessageCircle size={15} />
+                    WhatsApp Us
+                  </a>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.2 }}
+                className="md:col-span-4"
               >
-                Plan Your Journey
-                <ArrowRight size={16} />
-              </Link>
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
+                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
+                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.35 }}
+                className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20"
               >
-                <MessageCircle size={15} />
-                WhatsApp Us
-              </a>
-            </div>
-          </motion.div>
+                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
+                  The route is being charted
+                </p>
+                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
+                  {title}
+                </h1>
+                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
+                  {subtitle}
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/contact"
+                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
+                  >
+                    Plan Your Journey
+                    <ArrowRight size={16} />
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
+                  >
+                    <MessageCircle size={15} />
+                    WhatsApp Us
+                  </a>
+                </div>
+              </motion.div>
+            </>
+          )}
         </div>
       </main>
 
@@ -764,6 +1006,11 @@ export function ComingSoon({
 
 // ═══════════════════════════════════════════════════════════
 // SECTION HEADING — consistent editorial heading pattern
+//
+// ⚠️ HALLMARK AUDIT NOTE:
+// Eyebrow should be used at most 1-2 times per page. Most sections
+// should let headings stand alone without an eyebrow. Overuse (30+
+// instances) is the #2 "AI eyebrow" fingerprint.
 // ═══════════════════════════════════════════════════════════
 
 export function SectionHeading({

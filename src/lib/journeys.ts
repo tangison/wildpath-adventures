@@ -81,7 +81,7 @@ export const JOURNEYS: Journey[] = [
       { name: 'Fish River Canyon', description: 'The second-largest canyon in the world — 160 kilometres long, up to 27 kilometres wide, 550 metres deep. Best viewed at sunrise or sunset.' },
       { name: 'Wild Horses & Kolmanskop', description: 'The wild horses of the Namib, descended from abandoned farm stock a century ago. Kolmanskop — a diamond-mining town the desert swallowed.' },
       { name: 'Sossusvlei', description: 'Red dunes rising from a white clay pan. Dune 45, Deadvlei, and some of the most photographed desert landscape on earth.' },
-      { name: 'Swakopmund', description: 'The cold Atlantic coast. German colonial architecture on African shores — fog, flamingos, and theWalvis Bay lagoon.' },
+      { name: 'Swakopmund', description: 'The cold Atlantic coast. German colonial architecture on African shores — fog, flamingos, and the Walvis Bay lagoon.' },
       { name: 'Damaraland', description: 'Granite inselbergs, 6,000-year-old rock engravings at Twyfelfontein, and desert-adapted wildlife in a wild landscape.' },
       { name: 'Etosha National Park', description: 'A salt flat the size of a small country. In the dry season, the waterholes become theatre — rhino, elephant, lion, all in a single evening.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },

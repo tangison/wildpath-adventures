@@ -11,9 +11,10 @@ import { SITE } from '@/lib/site';
 // Sanitization:   All string inputs trimmed and length-capped
 // Spam protection: Honeypot field ("website") — bots fill it, we reject
 // Rate limiting:  In-memory per-IP, 5 submissions per hour
-// Storage:        Optional JSON file append (ENQUIRY_STORE_PATH env)
-// Email:          Optional SMTP send (SMTP_URL env) — not yet implemented
-//                  (placeholder documented in TODO below)
+// Storage:        JSON file append (ENQUIRY_STORE_PATH env)
+// Email:          journeys@wildpathnamibia.com is a redirect address only —
+//                  no SMTP delivery. Enquiries are stored to ENQUIRY_STORE_PATH
+//                  and the ops team retrieves them from there.
 // Privacy:        Enquiry data is never logged to console in production
 // ═══════════════════════════════════════════════════════════
 
@@ -103,20 +104,10 @@ async function appendEnquiryToStore(data: Record<string, unknown>) {
   }
 }
 
-// TODO (SMTP): When SMTP_URL is configured, import nodemailer and send mail:
-//
-//   if (SITE.smtpUrl) {
-//     const transporter = nodemailer.createTransport(SITE.smtpUrl);
-//     await transporter.sendMail({
-//       from: SITE.email,
-//       to: SITE.enquiryRecipient,
-//       subject: `New enquiry: ${data.name} — ${data.journey}`,
-//       text: JSON.stringify(data, null, 2),
-//     });
-//   }
-//
-// Until then, the enquiry is persisted to ENQUIRY_STORE_PATH (if set)
-// and the ops team retrieves it from there.
+// Enquiry delivery: The email journeys@wildpathnamibia.com is a redirect —
+// no SMTP transport is used. All enquiries are persisted to the JSON file
+// at ENQUIRY_STORE_PATH, and the ops team retrieves them from that store.
+// There is no TODO for SMTP; this is the intended, permanent flow.
 
 export async function POST(request: Request) {
   try {
@@ -195,6 +186,5 @@ export async function GET() {
     ok: true,
     service: 'wildpath-enquiry',
     storage: SITE.enquiryStorePath ? 'file' : 'none',
-    smtp: SITE.smtpUrl ? 'configured' : 'not-configured',
   });
 }

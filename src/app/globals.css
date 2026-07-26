@@ -220,3 +220,72 @@
     repeating-linear-gradient(0deg, rgba(26,26,26,0.03) 0px, transparent 1px, transparent 3px),
     repeating-linear-gradient(90deg, rgba(26,26,26,0.03) 0px, transparent 1px, transparent 3px);
 }
+
+/* ═══ Prose — Legal pages (privacy, terms, cancellation) ═══ */
+.prose-wildpath {
+  font-family: var(--font-geist-sans), sans-serif;
+  line-height: 1.7;
+  max-width: 48rem;
+  color: #1A1A1A;
+}
+
+.prose-wildpath h1,
+.prose-wildpath h2 {
+  font-family: var(--font-anton), sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1.1;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.prose-wildpath h1 {
+  font-size: 2rem;
+}
+
+.prose-wildpath h2 {
+  font-size: 1.5rem;
+}
+
+.prose-wildpath h3 {
+  font-family: var(--font-archivo), sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 1rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-wildpath p {
+  margin-bottom: 1.5rem;
+}
+
+.prose-wildpath a {
+  color: #9E4214;
+  text-decoration: none;
+  transition: text-decoration 0.2s ease;
+}
+
+.prose-wildpath a:hover {
+  text-decoration: underline;
+}
+
+.prose-wildpath ul,
+.prose-wildpath ol {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+.prose-wildpath li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-wildpath blockquote {
+  border-left: 3px solid #9E4214;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  color: #1A1A1A;
+  font-style: italic;
+}

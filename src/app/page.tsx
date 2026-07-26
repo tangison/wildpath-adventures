@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
-import { ArrowRight, Compass, MessageCircle } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 import {
   Nav,
   Footer,
@@ -22,38 +22,71 @@ const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 
 // ═══════════════════════════════════════════════════════════
 // WILDPATH ADVENTURES — HOME
-// Editorial safari journal. Illustration-led. Wordmark primary.
-// All public claims audited against Juliet's supplied profile.
+// Hallmark · macrostructure: asymmetric-hero-editorial · genre: atmospheric · theme: wildpath-custom
+//
+// Critical structural fixes applied:
+//   1. Hero: asymmetric (wordmark+copy left, illustration right) — breaks centered template
+//   2. "Why Wildpath": numbered left-margin list (S1) — breaks 3-column card grid
+//   3. ScrollReveal: only on hero wordmark entrance + first section heading per page
+//   4. Eyebrows: max 1 per page
+//   5. Section padding: varied rhythm (py-16, py-28, py-36) — breaks metronome
+//   6. Hover signals: one per card type (no universal scale-105)
+//
+// All public claims audited against client profile.
 // No invented conservation partnerships, percentages, or staff.
 // ═══════════════════════════════════════════════════════════
 
 export default function Home() {
   const featuredJourneys = JOURNEYS;
   const featuredDestinations = DESTINATIONS.filter((d) => d.imageKind === 'photo').slice(0, 4);
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
       <main className="flex-1">
-        {/* ═════════════════════ HERO ═════════════════════ */}
-        <section className="pt-32 md:pt-40 pb-12 md:pb-16 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: EASE_PREMIUM, delay: 0.15 }}
-              className="text-center mb-8 md:mb-12"
-            >
-              <Wordmark size="xl" withBadge />
-            </motion.div>
+        {/* ═════════════════════ HERO — Asymmetric: copy left, illustration right ═════════════════════ */}
+        <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+            {/* Left column — wordmark, tagline, copy, CTAs */}
+            <div className="md:col-span-5 md:order-1">
+              <motion.div
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: EASE_PREMIUM, delay: 0.15 }}
+              >
+                <Wordmark size="xl" withBadge />
+              </motion.div>
 
-            <motion.div
-              initial={{ opacity: 1 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0 }}
-              className="relative w-full aspect-[16/7] md:aspect-[16/6] mb-6 md:mb-8 overflow-hidden"
-            >
+              <p className="wp-script text-2xl md:text-3xl text-[#6B5E3D] mt-6 mb-4">
+                Travel the untamed beauty
+              </p>
+              <p className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
+                A Namibian-owned tour operator creating personalised journeys
+                across Namibia and Southern Africa. Every itinerary is tailored
+                around the landscapes, wildlife, and pace that make this part of
+                Africa unforgettable.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  href="/journeys"
+                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-[background-color] duration-300 inline-flex items-center gap-3 justify-center"
+                >
+                  Choose Your Journey
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform] duration-200" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-[background-color,color] duration-300 inline-flex items-center gap-3 justify-center"
+                >
+                  Plan Your Journey
+                </Link>
+              </div>
+            </div>
+
+            {/* Right column — hero illustration, full-bleed feel */}
+            <div className="md:col-span-7 md:order-2 relative aspect-[16/10] md:aspect-[16/9] overflow-hidden">
               <Image
                 src="/images/illustrations/v2/01-hero.webp"
                 alt="Hand-drawn vintage screen-print illustration of the Namibian savannah — acacia tree, gravel road, elephants, birds, and sunset"
@@ -61,56 +94,23 @@ export default function Home() {
                 priority
                 loading="eager"
                 fetchPriority="high"
-                sizes="100vw"
+                sizes="(max-width: 768px) 100vw, 58vw"
                 className="object-cover"
               />
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, ease: EASE_PREMIUM, delay: 0.7 }}
-              className="text-center"
-            >
-              <p className="wp-script text-2xl md:text-3xl text-[#6B5E3D] mb-4">
-                Travel the untamed beauty
-              </p>
-              <p className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-2xl mx-auto leading-relaxed">
-                A Namibian-owned tour operator creating personalised journeys
-                across Namibia and Southern Africa. Every itinerary is tailored
-                around the landscapes, wildlife, and pace that make this part of
-                Africa unforgettable.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/journeys"
-                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
-                >
-                  Choose Your Journey
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link
-                  href="/contact"
-                  className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
-                >
-                  Plan Your Journey
-                </Link>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
         {/* ═════════════════════ CONTOUR DIVIDER ═════════════════════ */}
-        <div className="py-4">
-          <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
+        <div className="py-3">
+          <ContourLines className="w-full h-10 text-[#1A1A1A]/15" />
         </div>
 
         {/* ═════════════════════ FEATURED JOURNEYS ═════════════════════ */}
-        <section id="journeys" className="py-20 md:py-32 px-6 md:px-12">
+        <section id="journeys" className="py-28 md:py-36 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <ScrollReveal>
               <SectionHeading
-                eyebrow="Four flagship journeys"
                 title="Routes drawn by geology,"
                 highlight="not by tourism."
                 intro="Each journey is a complete arc — tailored around the people on it, the season, and the land. Self-drive, guided, or a mix of both."
@@ -118,130 +118,127 @@ export default function Home() {
             </ScrollReveal>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {featuredJourneys.map((j, i) => (
-                <ScrollReveal key={j.slug} delay={i * 0.08}>
-                  <Link
-                    href={`/journeys/${j.slug}`}
-                    className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
-                  >
-                    <div className="relative aspect-[16/10] bg-[#1A1A1A] overflow-hidden">
-                      <Image
-                        src={j.cardImage}
-                        alt={`${j.name} — illustration`}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        className="object-cover group-hover:scale-105 transition-transform duration-[800ms] ease-out"
-                      />
-                      <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
-                        <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
-                          {j.duration}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="p-6 md:p-8">
-                      <p className="wp-script text-lg text-[#9E4214] mb-1">{j.travelStyle}</p>
-                      <h3 className="wp-display text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-colors">
-                        {j.name}
-                      </h3>
-                      <p className="text-sm text-[#1A1A1A]/75 leading-relaxed mb-4">
-                        {j.tagline}
+              {featuredJourneys.map((j) => (
+                <Link
+                  key={j.slug}
+                  href={`/journeys/${j.slug}`}
+                  className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-[background-color] duration-300 overflow-hidden"
+                >
+                  <div className="relative aspect-[16/10] bg-[#1A1A1A] overflow-hidden">
+                    <Image
+                      src={j.cardImage}
+                      alt={`${j.name} — illustration`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                      className="object-cover group-hover:opacity-90 transition-[opacity] duration-500"
+                    />
+                    <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
+                      <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
+                        {j.duration}
                       </p>
-                      <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.18em] uppercase text-[#1A1A1A]/70">
-                        <span>{j.startPoint} → {j.endPoint}</span>
-                        <span className="flex-1 h-px bg-[#1A1A1A]/15" />
-                        <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:text-[#9E4214] transition-all" />
-                      </div>
                     </div>
-                  </Link>
-                </ScrollReveal>
+                  </div>
+                  <div className="p-6 md:p-8">
+                    <p className="wp-script text-lg text-[#9E4214] mb-1">{j.travelStyle}</p>
+                    <h3 className="wp-display text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-[color] duration-200">
+                      {j.name}
+                    </h3>
+                    <p className="text-sm text-[#1A1A1A]/75 leading-relaxed mb-4">
+                      {j.tagline}
+                    </p>
+                    <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.18em] uppercase text-[#1A1A1A]/70">
+                      <span>{j.startPoint} → {j.endPoint}</span>
+                      <span className="flex-1 h-px bg-[#1A1A1A]/15" />
+                      <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:text-[#9E4214] transition-[transform,color] duration-200" />
+                    </div>
+                  </div>
+                </Link>
               ))}
             </div>
 
-            <div className="mt-12 text-center">
+            <div className="mt-10 text-center">
               <Link
                 href="/journeys"
-                className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-colors border-b border-[#1A1A1A] pb-1"
+                className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-[color] duration-200 border-b border-[#1A1A1A] pb-1"
               >
                 See all journeys
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-[transform] duration-200" />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ WHY WILDPATH — confirmed strengths only ═════════════════════ */}
-        <section className="py-20 md:py-32 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <SectionHeading
-                eyebrow="Why travel with Wildpath"
-                title="Namibian-owned."
-                highlight="Personally planned."
-                intro="A small, dedicated team based in Windhoek. Every itinerary is shaped by local destination knowledge and trusted partners across the region."
-                dark
-              />
-            </ScrollReveal>
+        {/* ═════════════════════ WHY WILDPATH — S1 numbered left-margin list (breaks 3-column grid) ═════════════════════ */}
+        <section className="py-20 md:py-28 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
+          <div className="max-w-5xl mx-auto">
+            <SectionHeading
+              eyebrow="What we stand on"
+              title="Namibian-owned."
+              highlight="Personally planned."
+              intro="A small, dedicated team based in Windhoek. Every itinerary is shaped by local destination knowledge and trusted partners across the region."
+              dark
+            />
 
-            <div className="grid md:grid-cols-3 gap-px bg-[#F2EDE3]/10">
+            {/* S1 pattern: numbered left-margin list with hanging headings */}
+            <div className="space-y-0">
               {[
-                { title: 'Namibian ownership', body: 'A Namibian-owned tour operator based in Windhoek. We plan every journey from inside the country we travel in.' },
-                { title: 'Personalised planning', body: 'Every itinerary is drafted around your dates, your pace, and the people travelling with you. No two journeys are the same.' },
-                { title: 'Self-drive & guided', body: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
-                { title: 'Local destination knowledge', body: 'Our journeys are shaped by local destination knowledge and trusted partners across Namibia and Southern Africa.' },
-                { title: 'Flexible routes', body: 'Combine destinations. Add a transfer. Walk further. Stay longer. Every published route is a starting point, not a fixed script.' },
-                { title: 'Responsible travel', body: 'We aim to work with responsible local partners and support travel practices that respect Namibia’s wildlife, landscapes, and communities.' },
-              ].map((v, i) => (
-                <ScrollReveal key={v.title} delay={i * 0.05}>
-                  <div className="bg-[#1A1A1A] p-8 md:p-10 h-full">
-                    <h3 className="wp-display text-xl md:text-2xl text-[#F2EDE3] mb-4 leading-tight">
+                { num: '01', title: 'Namibian ownership', body: 'A Namibian-owned tour operator based in Windhoek. We plan every journey from inside the country we travel in.' },
+                { num: '02', title: 'Personalised planning', body: 'Every itinerary is drafted around your dates, your pace, and the people travelling with you. No two journeys are the same.' },
+                { num: '03', title: 'Self-drive & guided', body: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
+                { num: '04', title: 'Local destination knowledge', body: 'Our journeys are shaped by local destination knowledge and trusted partners across Namibia and Southern Africa.' },
+                { num: '05', title: 'Flexible routes', body: 'Combine destinations. Add a transfer. Walk further. Stay longer. Every published route is a starting point, not a fixed script.' },
+                { num: '06', title: 'Responsible travel', body: 'We aim to work with responsible local partners and support travel practices that respect Namibia\u2019s wildlife, landscapes, and communities.' },
+              ].map((v) => (
+                <div
+                  key={v.num}
+                  className="grid grid-cols-[3rem_1fr] gap-x-6 py-6 border-b border-[#F2EDE3]/10 last:border-b-0"
+                >
+                  <span className="wp-display text-2xl md:text-3xl text-[#E8854A]/60 leading-none pt-1">
+                    {v.num}
+                  </span>
+                  <div>
+                    <h3 className="wp-display text-xl md:text-2xl text-[#F2EDE3] mb-2 leading-tight">
                       {v.title}
                     </h3>
                     <p className="text-sm text-[#F2EDE3]/75 leading-relaxed">{v.body}</p>
                   </div>
-                </ScrollReveal>
+                </div>
               ))}
             </div>
           </div>
         </section>
 
         {/* ═════════════════════ ACACIA DIVIDER ═════════════════════ */}
-        <div className="py-6 flex justify-center">
+        <div className="py-4 flex justify-center">
           <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
         </div>
 
         {/* ═════════════════════ TAILOR-MADE EXPLANATION ═════════════════════ */}
-        <section id="philosophy" className="py-20 md:py-32 px-6 md:px-12">
+        <section id="philosophy" className="py-36 md:py-44 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Tailor-made journeys</p>
-              <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-10">
-                Every route is
-                <br />
-                <span className="text-[#9E4214]">drafted around you.</span>
-              </h2>
-            </ScrollReveal>
+            <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-10">
+              Every route is
+              <br />
+              <span className="text-[#9E4214]">drafted around you.</span>
+            </h2>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-lg leading-relaxed text-[#1A1A1A]/80">
-              <ScrollReveal delay={0.15}>
-                <p>
-                  The four flagship routes above are starting points. Combine
-                  destinations, change the duration, add a transfer or a guided
-                  section. Depending on the journey, transport may include
-                  self-drive, guided road travel, transfers, or regional
-                  connections arranged on request.
-                </p>
-              </ScrollReveal>
-              <ScrollReveal delay={0.25}>
-                <p>
-                  We plan every itinerary personally — from the first enquiry to
-                  your return home. Accommodation is arranged according to route
-                  and budget, with full details confirmed in your personalised
-                  proposal. No scripts, no coaches, no fixed departures.
-                </p>
-              </ScrollReveal>
+              <p>
+                The four flagship routes above are starting points. Combine
+                destinations, change the duration, add a transfer or a guided
+                section. Depending on the journey, transport may include
+                self-drive, guided road travel, transfers, or regional
+                connections arranged on request.
+              </p>
+              <p>
+                We plan every itinerary personally — from the first enquiry to
+                your return home. Accommodation is arranged according to route
+                and budget, with full details confirmed in your personalised
+                proposal. No scripts, no coaches, no fixed departures.
+              </p>
             </div>
           </div>
 
-          <ScrollReveal delay={0.2} className="max-w-7xl mx-auto mt-16">
+          <div className="max-w-7xl mx-auto mt-16">
             <div className="relative w-full aspect-[16/6] md:aspect-[16/5] overflow-hidden">
               <Image
                 src="/images/illustrations/v2/08-manifesto-atmosphere.webp"
@@ -251,100 +248,97 @@ export default function Home() {
                 className="object-cover"
               />
             </div>
-          </ScrollReveal>
+          </div>
         </section>
 
         {/* ═════════════════════ DESTINATION PREVIEW ═════════════════════ */}
-        <section id="destinations" className="py-20 md:py-32 px-6 md:px-12 bg-[#E8E3D5]">
+        <section id="destinations" className="py-20 md:py-28 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <SectionHeading
-                eyebrow="Where we roam"
-                title="Nine landscapes."
-                highlight="One region."
-                intro="From the oldest desert on earth to the rivers of the Caprivi. Image-led. Editorial. Real."
-              />
-            </ScrollReveal>
+            <SectionHeading
+              title="Nine landscapes."
+              highlight="One region."
+              intro="From the oldest desert on earth to the rivers of the Caprivi. Image-led. Editorial. Real."
+            />
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {featuredDestinations.map((d, i) => (
-                <ScrollReveal key={d.slug} delay={i * 0.08}>
-                  <Link
-                    href={`/destinations/${d.slug}`}
-                    className="group relative block aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-[#1A1A1A]"
-                  >
-                    <Image
-                      src={d.image}
-                      alt={`${d.name} — ${d.country}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-[800ms] ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-[#1A1A1A]/20 to-transparent" />
-                    <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end text-[#F2EDE3]">
-                      <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-2">
-                        {d.country}
-                      </p>
-                      <h3 className="wp-display text-2xl md:text-4xl leading-[0.95] mb-2">
-                        {d.name}
-                      </h3>
-                      <p className="text-sm text-[#F2EDE3]/85 max-w-md leading-relaxed">
-                        {d.shortLine}
-                      </p>
-                      <p className="mt-4 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                        Explore
-                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                      </p>
-                    </div>
-                  </Link>
-                </ScrollReveal>
+              {featuredDestinations.map((d) => (
+                <Link
+                  key={d.slug}
+                  href={`/destinations/${d.slug}`}
+                  className="group relative block aspect-[4/5] md:aspect-[3/4] overflow-hidden bg-[#1A1A1A]"
+                >
+                  <Image
+                    src={d.image}
+                    alt={`${d.name} — ${d.country}`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="object-cover group-hover:brightness-110 transition-[filter] duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/80 via-[#1A1A1A]/20 to-transparent" />
+                  <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end text-[#F2EDE3]">
+                    <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-2">
+                      {d.country}
+                    </p>
+                    <h3 className="wp-display text-2xl md:text-4xl leading-[0.95] mb-2">
+                      {d.name}
+                    </h3>
+                    <p className="text-sm text-[#F2EDE3]/85 max-w-md leading-relaxed">
+                      {d.shortLine}
+                    </p>
+                    <p className="mt-4 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
+                      Explore
+                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-[transform] duration-200" />
+                    </p>
+                  </div>
+                </Link>
               ))}
             </div>
 
-            <div className="mt-12 text-center">
+            <div className="mt-10 text-center">
               <Link
                 href="/destinations"
-                className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-colors border-b border-[#1A1A1A] pb-1"
+                className="group inline-flex items-center gap-3 text-sm font-bold tracking-[0.15em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-[color] duration-200 border-b border-[#1A1A1A] pb-1"
               >
                 See all destinations
-                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-[transform] duration-200" />
               </Link>
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ PULL QUOTE — clearly editorial, not a testimonial ═════════════════════ */}
-        <section className="py-24 md:py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
+        {/* ═════════════════════ PULL QUOTE — editorial, not testimonial ═════════════════════ */}
+        <section className="py-28 md:py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
           <motion.div
-            animate={{ x: [0, 20, 0] }}
+            animate={prefersReducedMotion ? { x: 0 } : { x: [0, 20, 0] }}
             transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
             className="absolute top-12 left-1/2 -translate-x-1/2"
           >
             <BirdFlock className="w-48 h-12 text-[#E8854A]/40" />
           </motion.div>
           <div className="relative max-w-4xl mx-auto text-center pt-8">
-            <ScrollReveal>
-              <Compass className="w-10 h-10 mx-auto mb-8 text-[#E8854A]" strokeWidth={1.5} />
-              <blockquote className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-8 italic font-light">
-                &ldquo;Where the salt pans meet the sky, and the lone acacia tree
-                provides the only scale.&rdquo;
-              </blockquote>
-              <p className="wp-subhead text-sm tracking-[0.2em] text-[#E8854A]">
-                An impression of Etosha at dawn
-              </p>
-              <p className="wp-script text-lg mt-2 text-[#F2EDE3]/80">
-                Editorial — not a guest testimonial
-              </p>
-            </ScrollReveal>
+            <svg className="w-10 h-10 mx-auto mb-8 text-[#E8854A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M 12 2 L 14.5 12 L 12 22 L 9.5 12 Z" fill="currentColor" />
+              <text x="12" y="2" textAnchor="middle" fontSize="3" fill="currentColor" stroke="none" fontFamily="serif">N</text>
+            </svg>
+            <blockquote className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-8 italic font-light">
+              &ldquo;Where the salt pans meet the sky, and the lone acacia tree
+              provides the only scale.&rdquo;
+            </blockquote>
+            <p className="wp-subhead text-sm tracking-[0.2em] text-[#E8854A]">
+              An impression of Etosha at dawn
+            </p>
+            <p className="wp-script text-lg mt-2 text-[#F2EDE3]/80">
+              Editorial — not a guest testimonial
+            </p>
           </div>
         </section>
 
-        {/* ═════════════════════ FIELD NOTES PREVIEW — clearly editorial ═════════════════════ */}
-        <section id="field-notes" className="py-20 md:py-32 px-6 md:px-12">
+        {/* ═════════════════════ FIELD NOTES PREVIEW ═════════════════════ */}
+        <section id="field-notes" className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-5xl mx-auto">
-            <ScrollReveal className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
               <div>
-                <p className="wp-script text-2xl text-[#9E4214] mb-3">Field notes</p>
                 <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9]">
                   Destination
                   <br />
@@ -353,11 +347,11 @@ export default function Home() {
               </div>
               <Link
                 href="/field-notes"
-                className="text-[#1A1A1A]/80 hover:text-[#9E4214] transition-colors duration-300 text-xs font-bold tracking-[0.18em] uppercase flex items-center gap-2 border-b border-[#1A1A1A]/40 pb-1"
+                className="text-[#1A1A1A]/80 hover:text-[#9E4214] transition-[color] duration-300 text-xs font-bold tracking-[0.18em] uppercase flex items-center gap-2 border-b border-[#1A1A1A]/40 pb-1"
               >
                 All field notes <ArrowRight size={14} />
               </Link>
-            </ScrollReveal>
+            </div>
 
             <div className="space-y-px bg-[#1A1A1A]/12">
               {[
@@ -382,52 +376,50 @@ export default function Home() {
                   category: 'Travel preparation',
                   image: '/images/illustrations/v2/11-note-ancient-paths.webp',
                 },
-              ].map((n, i) => (
-                <ScrollReveal key={n.title} delay={i * 0.1}>
-                  <Link
-                    href="/field-notes"
-                    className={`block bg-[#F2EDE3] group hover:bg-[#E8E3D5] transition-colors duration-300 p-6 md:p-8`}
-                  >
-                    <div className="grid md:grid-cols-3 gap-6 items-center">
-                      <div className="relative aspect-[4/3] overflow-hidden bg-[#1A1A1A]/5">
-                        <Image
-                          src={n.image}
-                          alt={`Illustration for: ${n.title}`}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 33vw"
-                          className="object-cover opacity-90 group-hover:opacity-100 transition-opacity duration-500"
-                        />
+              ].map((n) => (
+                <Link
+                  key={n.title}
+                  href="/field-notes"
+                  className="block bg-[#F2EDE3] group hover:bg-[#E8E3D5] transition-[background-color] duration-300 p-6 md:p-8"
+                >
+                  <div className="grid md:grid-cols-3 gap-6 items-center">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-[#1A1A1A]/5">
+                      <Image
+                        src={n.image}
+                        alt={`Illustration for: ${n.title}`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover opacity-90 group-hover:opacity-100 transition-[opacity] duration-500"
+                      />
+                    </div>
+                    <div className="md:col-span-2">
+                      <div className="flex items-center gap-3 mb-4 text-[0.65rem] tracking-[0.2em] uppercase font-bold">
+                        <span className="text-[#9E4214]">{n.category}</span>
                       </div>
-                      <div className="md:col-span-2">
-                        <div className="flex items-center gap-3 mb-4 text-[0.65rem] tracking-[0.2em] uppercase font-bold">
-                          <span className="text-[#9E4214]">{n.category}</span>
-                        </div>
-                        <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-colors duration-300">
-                          {n.title}
-                        </h3>
-                        <p className="text-[#1A1A1A]/75 leading-relaxed max-w-2xl text-sm md:text-base">
-                          {n.excerpt}
-                        </p>
-                        <div className="mt-4 flex items-center gap-2 text-[0.65rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
-                          Read
-                          <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-200" />
-                        </div>
+                      <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-[color] duration-300">
+                        {n.title}
+                      </h3>
+                      <p className="text-[#1A1A1A]/75 leading-relaxed max-w-2xl text-sm md:text-base">
+                        {n.excerpt}
+                      </p>
+                      <div className="mt-4 flex items-center gap-2 text-[0.65rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
+                        Read
+                        <ArrowRight size={12} className="group-hover:translate-x-1 transition-[transform] duration-200" />
                       </div>
                     </div>
-                  </Link>
-                </ScrollReveal>
+                  </div>
+                </Link>
               ))}
             </div>
           </div>
         </section>
 
         {/* ═════════════════════ CTA ═════════════════════ */}
-        <section className="py-24 md:py-36 px-6 md:px-12 bg-[#E8E3D5]">
-          <ScrollReveal className="max-w-7xl mx-auto text-center">
+        <section className="py-36 md:py-48 px-6 md:px-12 bg-[#E8E3D5]">
+          <div className="max-w-7xl mx-auto text-center">
             <div className="mb-10">
               <Wordmark size="lg" withBadge />
             </div>
-            <p className="wp-script text-3xl text-[#9E4214] mb-4">The map is waiting</p>
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-6">
               Tell us where the
               <br />
@@ -442,20 +434,20 @@ export default function Home() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-[background-color] duration-300 inline-flex items-center gap-3 justify-center"
               >
                 <MessageCircle size={16} />
                 WhatsApp Us
               </a>
               <Link
                 href="/contact"
-                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-[background-color,color] duration-300 inline-flex items-center gap-3 justify-center"
               >
                 Plan Your Journey
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform] duration-200" />
               </Link>
             </div>
-          </ScrollReveal>
+          </div>
         </section>
       </main>
 

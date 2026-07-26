@@ -105,7 +105,7 @@ export const DESTINATIONS: Destination[] = [
     country: 'Namibia',
     shortLine: 'Fog-bound shoreline. Shipwrecks half-swallowed by sand. The end-of-the-world coast.',
     overview:
-      'A long stretch of coast where the Namib desert meets the cold Atlantic. Portuguese sailors called it "the gates of hell" — fog, surf, and no shelter. Today the wrecks of whalers and fishing boats litter the sand, slowly consumed by the dunes.',
+      'A long stretch of coast where the Namib desert meets the cold Atlantic. Portuguese sailors called it “the gates of hell” — fog, surf, and no shelter. Today the wrecks of whalers and fishing boats litter the sand, slowly consumed by the dunes.',
     highlights: ['Shipwreck trail', 'Cape Cross seal colony', 'Scenic flights over the coast'],
     bestTime: 'Year-round — fog is constant. June to September for cooler temperatures.',
     wildlife: ['Brown hyena', 'Cape fur seal', 'Black-backed jackal'],
@@ -166,7 +166,7 @@ export const DESTINATIONS: Destination[] = [
     country: 'Zimbabwe / Zambia',
     shortLine: 'Mosi-oa-Tunya — the smoke that thunders. One of the largest sheets of falling water in the world.',
     overview:
-      'The Kololo people called it Mosi-oa-Tunya — "the smoke that thunders" — and the spray is visible from a great distance. The falls mark the border between Zimbabwe and Zambia, and a natural endpoint or extension to any southern African journey.',
+      'The Kololo people called it Mosi-oa-Tunya — “the smoke that thunders” — and the spray is visible from a great distance. The falls mark the border between Zimbabwe and Zambia, and a natural endpoint or extension to any southern African journey.',
     highlights: ['Falls walk — full length', 'Helicopter flight', 'Zambezi sunset cruise', 'Victoria Falls Bridge'],
     bestTime: 'February to May — peak flow. September to October — low flow, less spray, clearer views.',
     wildlife: ['Elephant (in town itself)', 'Hippo', 'Crocodile', 'Birdlife'],
