@@ -1,0 +1,54 @@
+{
+  "brand": "Wildpath Adventures",
+  "site": "https://wildpath.tangison.com",
+  "palette": {
+    "deepCharcoal": "#1A1A1A",
+    "warmIvory": "#F2EDE3",
+    "burntOrange": "#D45914",
+    "brightOrange": "#E8792A",
+    "dustSand": "#D2B48C",
+    "mutedEarth": "#6B5E3D"
+  },
+  "logos": [
+    {
+      "file": "assets/logos/wildpath-circle-light.svg",
+      "fallback": "assets/logos/wildpath-circle-light.png",
+      "background": "light",
+      "transparent": true,
+      "use": ["light footer", "light section mark", "watermark"]
+    },
+    {
+      "file": "assets/logos/wildpath-circle-dark.svg",
+      "fallback": "assets/logos/wildpath-circle-dark.png",
+      "background": "dark",
+      "transparent": true,
+      "use": ["main dark footer", "dark CTA", "dark watermark"]
+    }
+  ],
+  "illustrations": [
+    {"file":"assets/illustrations/wildpath-hero-main.webp","width":1638,"height":960,"role":"homepage hero","critical":true},
+    {"file":"assets/illustrations/journey-classic-namibia.webp","width":1586,"height":992,"role":"Classic Namibia route"},
+    {"file":"assets/illustrations/journey-northern-caprivi.webp","width":1586,"height":992,"role":"Northern Caprivi route"},
+    {"file":"assets/illustrations/journey-central.webp","width":1586,"height":992,"role":"Central route"},
+    {"file":"assets/illustrations/journey-desert.webp","width":1586,"height":992,"role":"Desert route"},
+    {"file":"assets/illustrations/page-about.webp","width":1586,"height":992,"role":"About manifesto"},
+    {"file":"assets/illustrations/page-contact.webp","width":1586,"height":992,"role":"Contact hero"},
+    {"file":"assets/illustrations/og-master.webp","width":1731,"height":909,"role":"default OG background"},
+    {"file":"assets/illustrations/field-note-sossusvlei.webp","width":1586,"height":992,"role":"Field Note: Sossusvlei"},
+    {"file":"assets/illustrations/field-note-etosha-seasons.webp","width":1586,"height":992,"role":"Field Note: Etosha seasons"},
+    {"file":"assets/illustrations/field-note-packing.webp","width":1586,"height":992,"role":"Field Note: packing"},
+    {"file":"assets/illustrations/field-note-self-drive.webp","width":1586,"height":992,"role":"Field Note: self-drive"},
+    {"file":"assets/illustrations/field-note-responsible-wildlife.webp","width":1586,"height":992,"role":"Field Note: responsible wildlife"},
+    {"file":"assets/illustrations/field-note-zambezi-route.webp","width":1586,"height":992,"role":"Field Note: Zambezi route"},
+    {"file":"assets/illustrations/destination-skeleton-coast.webp","width":1586,"height":992,"role":"destination editorial fallback"},
+    {"file":"assets/illustrations/destination-caprivi.webp","width":1586,"height":992,"role":"destination editorial fallback"},
+    {"file":"assets/illustrations/destination-chobe.webp","width":1586,"height":992,"role":"destination editorial fallback"},
+    {"file":"assets/illustrations/destination-victoria-falls.webp","width":1586,"height":992,"role":"destination editorial fallback"}
+  ],
+  "destinationPolicy": {
+    "finalMedia": "real photography only",
+    "searchProvider": "Tavily",
+    "requirements": ["geographically accurate", "licensed or legally reusable", "no visible watermark", "high resolution", "source recorded"],
+    "illustrationFallbacksAllowedFor": ["loading", "empty", "error", "OG", "temporary unapproved state"]
+  }
+}
