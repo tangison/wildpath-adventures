@@ -47,8 +47,8 @@ export default function Home() {
 
       <main className="flex-1">
         {/* ═════════════════════ HERO — Asymmetric: copy left, illustration right ═════════════════════ */}
-        <section className="pt-28 md:pt-36 pb-16 md:pb-20 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+        <section className="pt-24 md:pt-36 pb-12 md:pb-20 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-6 md:gap-12 items-center">
             {/* Left column — wordmark, tagline, copy, CTAs */}
             <div className="md:col-span-5 md:order-1">
               <motion.div
@@ -56,13 +56,15 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE_PREMIUM, delay: 0.15 }}
               >
-                <Wordmark size="xl" withBadge />
+                {/* Hero wordmark: lg on mobile (no duplicate feel with nav sm), xl on desktop */}
+                <Wordmark size="lg" className="md:hidden" />
+                <Wordmark size="xl" className="hidden md:inline-flex" />
               </motion.div>
 
-              <p className="wp-script text-2xl md:text-3xl text-[#6B5E3D] mt-6 mb-4">
+              <p className="wp-script text-xl md:text-3xl text-[#6B5E3D] mt-4 md:mt-6 mb-3 md:mb-4">
                 Travel the untamed beauty
               </p>
-              <p className="text-lg md:text-xl text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
+              <p className="text-base md:text-xl text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-6 md:mb-8">
                 A Namibian-owned tour operator creating personalised journeys
                 across Namibia and Southern Africa. Every itinerary is tailored
                 around the landscapes, wildlife, and pace that make this part of
@@ -86,7 +88,7 @@ export default function Home() {
             </div>
 
             {/* Right column — hero illustration, full-bleed feel */}
-            <div className="md:col-span-7 md:order-2 relative aspect-[16/10] md:aspect-[16/9] overflow-hidden">
+            <div className="md:col-span-7 md:order-2 relative aspect-[4/3] md:aspect-[16/9] overflow-hidden">
               <Image
                 src="/images/illustrations/v2/01-hero.webp"
                 alt="Hand-drawn vintage screen-print illustration of the Namibian savannah — acacia tree, gravel road, elephants, birds, and sunset"
@@ -95,7 +97,7 @@ export default function Home() {
                 loading="eager"
                 fetchPriority="high"
                 sizes="(max-width: 768px) 100vw, 58vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
           </div>
@@ -418,7 +420,7 @@ export default function Home() {
         <section className="py-36 md:py-48 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-10">
-              <Wordmark size="lg" withBadge />
+              <Wordmark size="lg" />
             </div>
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-6">
               Tell us where the

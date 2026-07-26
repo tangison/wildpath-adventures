@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   // Icons — served as static files from /public for reliability across
-  // dev and production. The master 512x512 badge is at /favicon.png;
+  // dev and production. The master 512x512 mark is at /favicon.png;
   // sized variants at /favicon-32.png, /favicon-16.png, /apple-touch-icon.png.
   // PWA icons at /android-chrome-192.png and /android-chrome-512.png.
   // src/app/icon.png and src/app/apple-icon.png also exist for Next.js

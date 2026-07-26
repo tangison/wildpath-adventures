@@ -1,9 +1,12 @@
 // One-off script: generate legacy favicon.ico (32x32) and a small 16x16 PNG
-// from the master 512x512 badge.
+// from the master 512x512 mark.
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 import path from 'path';
 
+// NOTE: The SRC path currently points to wildpath-badge.png as a placeholder.
+// Once the circular SVG mark (wildpath-circle-dark.svg) arrives with the asset kit,
+// this should be updated to use that source instead.
 const SRC = path.resolve('public/images/brand/wildpath-badge.png');
 const OUT_DIR = path.resolve('public');
 

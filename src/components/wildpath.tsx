@@ -26,42 +26,29 @@ const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 // WILDPATH: Anton, dominant, uppercase
 // ADVENTURES: Oswald Bold, smaller, vertically centred on midline
 //
-// BADGE COMPANION (optional, opt-in via withBadge prop):
-//   When `withBadge` is true, the Wildpath badge (a hexagonal vintage
-//   travel badge with a Namibian landscape silhouette — acacia trees,
-//   mountains, sun, footprints) is rendered as a companion mark IN
-//   FRONT OF the wordmark text. Sized relative to the wordmark —
-//   bigger than the favicon, smaller than the hero illustration.
+// The Wildpath logo is not an icon, badge, shield, or emblem.
+// It is a typographic wordmark — two words, one line.
+// The circular mark (used in footer and as favicon) is a companion,
+// never a replacement. The wordmark text remains primary and readable.
 //
-//   The badge is NEVER a replacement for the wordmark; it is a
-//   companion. The wordmark text remains primary and readable.
-//
-//   Badge as favicon/browser icon: handled by src/app/icon.png
-//   (Next.js App Router convention, auto-served at /icon).
+// Mark as favicon/browser icon: handled by src/app/icon.png
+// (Next.js App Router convention, auto-served at /icon).
+// The master 512x512 mark is at /favicon.png.
 //
 // REDUCED MOTION: When the user prefers reduced motion, the entrance
 // animation is skipped — the wordmark renders at final state immediately.
 // ═══════════════════════════════════════════════════════════
-
-const BADGE_SIZE_MAP = {
-  sm: { badge: 'w-7 h-7', gap: 'gap-2' },
-  md: { badge: 'w-10 h-10', gap: 'gap-3' },
-  lg: { badge: 'w-14 h-14 md:w-16 md:h-16', gap: 'gap-4 md:gap-5' },
-  xl: { badge: 'w-20 h-20 md:w-24 md:h-24', gap: 'gap-5 md:gap-7' },
-} as const;
 
 export function Wordmark({
   className = '',
   size = 'md',
   inverted = false,
   animate = false,
-  withBadge = false,
 }: {
   className?: string;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   inverted?: boolean;
   animate?: boolean;
-  withBadge?: boolean;
 }) {
   const prefersReducedMotion = useReducedMotion();
   const color = inverted ? 'text-[#F2EDE3]' : 'text-[#1A1A1A]';
@@ -74,7 +61,6 @@ export function Wordmark({
   };
 
   const s = sizes[size];
-  const b = BADGE_SIZE_MAP[size];
 
   const wordmarkText = (
     <span className={`inline-flex items-center ${s.gap} ${color}`}>
@@ -93,22 +79,7 @@ export function Wordmark({
     </span>
   );
 
-  const content = withBadge ? (
-    <span className={`inline-flex items-center ${b.gap} ${className}`}>
-      <Image
-        src="/images/brand/wildpath-badge.webp"
-        alt=""
-        width={96}
-        height={96}
-        priority
-        className={`${b.badge} shrink-0 object-contain`}
-        aria-hidden="true"
-      />
-      {wordmarkText}
-    </span>
-  ) : (
-    <span className={className}>{wordmarkText}</span>
-  );
+  const content = <span className={className}>{wordmarkText}</span>;
 
   if (!animate || prefersReducedMotion) return content;
 
@@ -243,7 +214,7 @@ export function ScrollReveal({
 
 // ═══════════════════════════════════════════════════════════
 // NAVIGATION — N9 Edge-aligned minimal pattern
-// Desktop: wordmark+badge left, "Plan Your Journey" CTA right,
+// Desktop: wordmark left, "Plan Your Journey" CTA right,
 // nav links accessed via a "Menu" affordance → slide-down sheet.
 // Mobile: hamburger icon → full-screen overlay.
 // No inline nav links visible on desktop at rest.
@@ -302,9 +273,9 @@ export function Nav() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-        {/* Left — wordmark+badge */}
+        {/* Left — wordmark */}
         <Link href="/" className="group" aria-label="Wildpath Adventures — home">
-          <Wordmark size="sm" withBadge />
+          <Wordmark size="sm" />
         </Link>
 
         {/* Right — CTA + Menu affordance (desktop) */}
@@ -434,9 +405,9 @@ export function Nav() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
-          {/* Left — wordmark+badge */}
+          {/* Left — wordmark */}
           <Link href="/" className="group" aria-label="Wildpath Adventures — home">
-            <Wordmark size="sm" withBadge />
+            <Wordmark size="sm" />
           </Link>
 
           {/* Right — CTA + Menu affordance (desktop) */}
@@ -591,6 +562,15 @@ export function Footer() {
       {/* Statement — single typographic closing */}
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-3xl mx-auto text-center">
+
+          {/* Wildpath circular logo mark — footer variant */}
+          <div className="flex justify-center mb-8">
+            <svg viewBox="0 0 100 100" className="w-16 h-16" aria-hidden="true" fill="none">
+              <circle cx="50" cy="50" r="46" stroke="#F2EDE3" strokeWidth="2" />
+              <circle cx="50" cy="50" r="38" stroke="#F2EDE3" strokeWidth="0.5" opacity="0.4" />
+              <text x="50" y="55" textAnchor="middle" fontSize="28" fill="#F2EDE3" fontFamily="serif" fontWeight="bold" stroke="none">W</text>
+            </svg>
+          </div>
 
           {/* Tagline — the publication's colophon line */}
           <p className="wp-script text-3xl md:text-4xl text-[#E8854A] mb-10" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
@@ -1001,6 +981,22 @@ export function ComingSoon({
         &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country}
       </div>
     </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════
+// WATERMARK — Decorative circular logo mark, very low opacity
+// Placeholder inline SVG — will be replaced with the actual
+// wildpath-circle-dark.svg when the asset kit arrives.
+// ═══════════════════════════════════════════════════════════
+
+export function WildpathWatermark({ className = '' }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 100 100" className={`opacity-[0.06] ${className}`} aria-hidden="true" fill="none">
+      <circle cx="50" cy="50" r="46" stroke="#1A1A1A" strokeWidth="2" />
+      <circle cx="50" cy="50" r="38" stroke="#1A1A1A" strokeWidth="0.5" opacity="0.4" />
+      <text x="50" y="55" textAnchor="middle" fontSize="28" fill="#1A1A1A" fontFamily="serif" fontWeight="bold" stroke="none">W</text>
+    </svg>
   );
 }
 
