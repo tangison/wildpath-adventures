@@ -28,12 +28,12 @@ const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 //
 // The Wildpath logo is not an icon, badge, shield, or emblem.
 // It is a typographic wordmark — two words, one line.
-// The approved circular mark (wildpath-circle-dark.svg / light.svg) is a
+// The approved logo mark (wildpath-logo-dark-theme.svg / light-theme.svg) is a
 // companion, never a replacement. The wordmark text remains primary and
 // readable.
 //
-// Footer: wildpath-circle-dark.svg on dark backgrounds.
-// Light sections: wildpath-circle-light.svg on light backgrounds.
+// Footer: wildpath-logo-dark-theme.svg on dark backgrounds.
+// Light sections: wildpath-logo-light-theme.svg on light backgrounds.
 // Watermark: either variant at 0.04–0.08 opacity, aria-hidden="true".
 //
 // Mark as favicon/browser icon: handled by src/app/icon.png
@@ -573,10 +573,10 @@ export function Footer() {
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-3xl mx-auto text-center">
 
-          {/* Wildpath approved circular logo mark — footer (dark variant) */}
+          {/* Wildpath approved logo mark — footer (dark variant) */}
           <div className="flex justify-center mb-10">
             <img
-              src="/images/brand/wildpath-circle-dark.svg"
+              src="/images/brand/wildpath-logo-dark-theme.svg"
               alt="Wildpath Adventures"
               width={160}
               height={160}
@@ -997,9 +997,9 @@ export function ComingSoon({
 }
 
 // ═══════════════════════════════════════════════════════════
-// WATERMARK — Decorative circular logo mark, very low opacity
-// Uses the approved wildpath-circle-light.svg (for light backgrounds)
-// or wildpath-circle-dark.svg (for dark backgrounds).
+// WATERMARK — Decorative logo mark, very low opacity
+// Uses the approved wildpath-logo-light-theme.svg (for light backgrounds)
+// or wildpath-logo-dark-theme.svg (for dark backgrounds).
 // Opacity range: 0.04–0.08. Decorative instances are aria-hidden.
 // ═══════════════════════════════════════════════════════════
 
@@ -1011,8 +1011,8 @@ export function WildpathWatermark({
   variant?: 'light' | 'dark';
 }) {
   const src = variant === 'dark'
-    ? '/images/brand/wildpath-circle-dark.svg'
-    : '/images/brand/wildpath-circle-light.svg';
+    ? '/images/brand/wildpath-logo-dark-theme.svg'
+    : '/images/brand/wildpath-logo-light-theme.svg';
   return (
     <img
       src={src}

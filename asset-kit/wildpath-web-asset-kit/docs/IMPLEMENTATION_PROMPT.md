@@ -66,8 +66,8 @@ Read `assets-manifest.json` and `docs/ASSET_USAGE.md` before changing media.
 
 1. Copy `assets/illustrations/*` into the repository's production media directory without renaming unless the current architecture requires a central mapping module.
 2. Preserve the existing horizontal `WILDPATH ADVENTURES` wordmark in the header.
-3. Use `assets/logos/wildpath-circle-dark.svg` as the main logo in the dark footer.
-4. Use `assets/logos/wildpath-circle-light.svg` on light sections.
+3. Use `assets/logos/wildpath-logo-dark-theme.svg` as the main logo in the dark footer.
+4. Use `assets/logos/wildpath-logo-light-theme.svg` on light sections.
 5. Use either circular SVG as a decorative watermark only at `0.04` to `0.08` opacity. Mark decorative instances `aria-hidden="true"`.
 6. Never rasterise the SVG logos.
 7. Replace current repeated or mismatched `/images/illustrations/v2/*` placeholders with the exact packaged asset assigned to each route or section.

@@ -18,8 +18,8 @@ Before implementation, read:
 
 - Remove every placeholder circular mark and every remaining rejected shield or badge asset.
 - The header uses only the horizontal typographic `WILDPATH ADVENTURES` wordmark.
-- The dark footer uses `wildpath-circle-dark.svg`.
-- Light sections use `wildpath-circle-light.svg` when a circular mark is appropriate.
+- The dark footer uses `wildpath-logo-dark-theme.svg`.
+- Light sections use `wildpath-logo-light-theme.svg` when a circular mark is appropriate.
 - Only the supplied circular SVG may be used as a decorative watermark.
 - Never substitute another logo or illustration.
 - Never rasterise the supplied SVG logos for normal website use.

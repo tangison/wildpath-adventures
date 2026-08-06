@@ -15,6 +15,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { WHATSAPP_URL, SITE_EMAIL } from '@/lib/site';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -73,12 +74,34 @@ const FAQS = [
   },
 ];
 
+// FAQ structured data (FAQPage schema) for Google rich results
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQS.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.a,
+    },
+  })),
+};
+
 export default function FAQPage() {
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      {/* FAQ structured data for search engines */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'FAQ', url: '/faq' }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">

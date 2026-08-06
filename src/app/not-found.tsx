@@ -20,7 +20,7 @@ export default function NotFound() {
         </div>
       </header>
 
-      <main className="flex-1 flex items-center px-6 md:px-12">
+      <main id="main-content" className="flex-1 flex items-center px-6 md:px-12">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-4">
             <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />

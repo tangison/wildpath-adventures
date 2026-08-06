@@ -4,9 +4,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, AcaciaMark, ScrollReveal } from '@/components/wildpath';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { getJourney } from '@/lib/journeys';
-import { WHATSAPP_URL } from '@/lib/site';
+import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
   return DESTINATIONS.map((d) => ({ slug: d.slug }));
@@ -19,6 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: dest.name,
     description: dest.overview,
+    alternates: { canonical: `/destinations/${slug}` },
   };
 }
 
@@ -35,7 +37,9 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Destinations', url: '/destinations' }, { name: dest.name, url: `/destinations/${slug}` }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO PHOTOGRAPHY ═════════════════════ */}
         <section className="relative h-[55vh] md:h-[70vh] min-h-[450px] bg-[#1A1A1A] overflow-hidden">
           <Image

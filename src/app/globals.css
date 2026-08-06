@@ -289,3 +289,29 @@
   color: #1A1A1A;
   font-style: italic;
 }
+
+/* ═══════════════════════════════════════════════════════════
+ * ACCESSIBILITY — Visible focus rings for keyboard navigation
+ * Only shown when user is navigating via keyboard (not mouse)
+ * Uses :focus-visible to avoid showing rings on click
+ * ═══════════════════════════════════════════════════════════ */
+
+/* Focus ring for interactive elements using keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible {
+  outline: 2px solid #C5511A;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Remove default outline, rely on focus-visible above */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible),
+[role="button"]:focus:not(:focus-visible) {
+  outline: none;
+}

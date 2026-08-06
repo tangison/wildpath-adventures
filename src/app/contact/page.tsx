@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import { MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
 import { Nav, Footer, AcaciaMark, ContourLines, ScrollReveal } from '@/components/wildpath';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { ContactForm } from '@/components/contact-form';
 import { SITE, SITE_EMAIL, WHATSAPP_URL, TEL_URL } from '@/lib/site';
 
@@ -23,7 +24,9 @@ export default function ContactPage() {
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Contact', url: '/contact' }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">

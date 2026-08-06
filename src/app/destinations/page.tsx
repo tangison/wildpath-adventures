@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Nav, Footer, ContourLines, ScrollReveal } from '@/components/wildpath';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { DESTINATIONS } from '@/lib/destinations';
 
 export const metadata: Metadata = {
@@ -20,7 +21,9 @@ export default function DestinationsPage() {
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Destinations', url: '/destinations' }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">

@@ -16,6 +16,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/privacy', priority: 0.3 },
     { path: '/terms', priority: 0.3 },
     { path: '/cancellation', priority: 0.3 },
+    { path: '/cookies', priority: 0.3 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map((p) => ({

@@ -5,8 +5,8 @@ This package is for the existing site at `wildpath.tangison.com`. It is not a ne
 ## Identity rules
 
 - Keep the existing horizontal `WILDPATH ADVENTURES` wordmark in the header.
-- Use `wildpath-circle-dark.svg` in the main dark footer.
-- Use `wildpath-circle-light.svg` on warm ivory or other light backgrounds.
+- Use `wildpath-logo-dark-theme.svg` in the main dark footer.
+- Use `wildpath-logo-light-theme.svg` on warm ivory or other light backgrounds.
 - Matching transparent PNG fallbacks are included for systems that cannot ingest SVG.
 - The circular mark may appear as a watermark at `0.04` to `0.08` opacity. Mark decorative watermark instances `aria-hidden="true"`.
 - Never rasterise the SVG logos for ordinary website use.

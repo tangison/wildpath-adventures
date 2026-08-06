@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Geist, Anton, Oswald, Archivo, Caveat } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
+import { CookieConsent } from "@/components/cookie-consent";
+import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL } from "@/lib/site";
 
 const geistSans = Geist({
@@ -71,6 +73,7 @@ export const metadata: Metadata = {
   // PWA icons at /android-chrome-192.png and /android-chrome-512.png.
   // src/app/icon.png and src/app/apple-icon.png also exist for Next.js
   // App Router file-convention auto-detection (served at /icon, /apple-icon).
+  // Logo source: wildpath-logo-dark-theme.svg / wildpath-logo-light-theme.svg
   icons: {
     icon: [
       { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
@@ -107,7 +110,7 @@ export const metadata: Metadata = {
   },
 };
 
-// JSON-LD structured data — TravelAgency schema
+// JSON-LD structured data — TravelAgency schema with local business details
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
@@ -124,7 +127,19 @@ const jsonLd = {
     addressRegion: SITE.location.region,
     addressCountry: SITE.location.country,
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -22.5609,
+    longitude: 17.0658,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    opens: "08:00",
+    closes: "17:00",
+  },
   slogan: SITE.tagline,
+  priceRange: "$$$$",
 };
 
 export default function RootLayout({
@@ -150,8 +165,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
       >
+        {/* Skip-to-content link — accessibility: keyboard users can bypass navigation */}
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#C5511A] focus:text-[#F2EDE3] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:tracking-wider focus:uppercase focus:outline-none"
+        >
+          Skip to content
+        </a>
         {children}
         <Toaster />
+        <CookieConsent />
+        <Analytics />
       </body>
     </html>
   );

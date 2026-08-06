@@ -45,7 +45,7 @@ export default function Home() {
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1">
+      <main id="main-content" className="flex-1">
         {/* ═════════════════════ HERO — Asymmetric: copy left, illustration right ═════════════════════ */}
         <section className="pt-24 md:pt-36 pb-12 md:pb-20 px-6 md:px-12">
           <div className="max-w-7xl mx-auto grid md:grid-cols-12 gap-6 md:gap-12 items-center">

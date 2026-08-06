@@ -11,15 +11,15 @@
   },
   "logos": [
     {
-      "file": "assets/logos/wildpath-circle-light.svg",
-      "fallback": "assets/logos/wildpath-circle-light.png",
+      "file": "assets/logos/wildpath-logo-light-theme.svg",
+      "fallback": "assets/logos/wildpath-logo-light-theme.png",
       "background": "light",
       "transparent": true,
       "use": ["light footer", "light section mark", "watermark"]
     },
     {
-      "file": "assets/logos/wildpath-circle-dark.svg",
-      "fallback": "assets/logos/wildpath-circle-dark.png",
+      "file": "assets/logos/wildpath-logo-dark-theme.svg",
+      "fallback": "assets/logos/wildpath-logo-dark-theme.png",
       "background": "dark",
       "transparent": true,
       "use": ["main dark footer", "dark CTA", "dark watermark"]

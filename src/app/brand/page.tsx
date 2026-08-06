@@ -47,7 +47,7 @@ export default function BrandPage() {
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">

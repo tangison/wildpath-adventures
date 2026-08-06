@@ -12,6 +12,7 @@ import {
   JourneySnapshot,
   JourneyRouteTimeline,
 } from '@/components/wildpath';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { JOURNEYS, getJourney } from '@/lib/journeys';
 import { WHATSAPP_URL } from '@/lib/site';
 
@@ -42,7 +43,9 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Journeys', url: '/journeys' }, { name: journey.name, url: `/journeys/${slug}` }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO ═════════════════════ */}
         <section className="relative h-[50vh] md:h-[65vh] min-h-[400px] bg-[#1A1A1A] overflow-hidden">
           <Image

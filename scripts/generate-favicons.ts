@@ -1,11 +1,11 @@
-// One-off script: generate favicon variants from the approved circular logo mark.
-// Source: wildpath-circle-dark.png (transparent PNG fallback from the approved asset kit).
-// This replaces the previous wildpath-badge.png source which was rejected.
+// One-off script: generate favicon variants from the approved logo mark.
+// Source: wildpath-logo-dark-theme.png (transparent PNG fallback from the approved asset kit).
+// This replaces the previous wildpath-circle-dark.png source (now wildpath-logo-dark-theme.png).
 import sharp from 'sharp';
 import { promises as fs } from 'fs';
 import path from 'path';
 
-const SRC = path.resolve('public/images/brand/wildpath-circle-dark.png');
+const SRC = path.resolve('public/images/brand/wildpath-logo-dark-theme.png');
 const OUT_DIR = path.resolve('public');
 
 async function main() {

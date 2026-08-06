@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, ScrollReveal } from '@/components/wildpath';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -26,7 +27,9 @@ export default function AboutPage() {
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
-      <main className="flex-1 pt-32">
+      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }]} />
+
+      <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">

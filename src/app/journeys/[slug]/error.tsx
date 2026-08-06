@@ -4,7 +4,11 @@ import { Nav, Footer } from '@/components/wildpath';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { WHATSAPP_URL } from '@/lib/site';
 
-export default function Error({
+/**
+ * Sub-route error boundary for /journeys/[slug].
+ * Catches data-fetch failures (invalid slug, missing journey) gracefully.
+ */
+export default function JourneyError({
   error,
   reset,
 }: {
@@ -18,16 +22,16 @@ export default function Error({
       <main id="main-content" className="flex-1 flex items-center justify-center px-6 md:px-12 py-16">
         <div className="max-w-lg w-full text-center">
           <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-            The route hit a snag
+            Journey not found
           </p>
 
           <h1 className="wp-display text-5xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-6">
-            Something went wrong.
+            This route is unmapped.
           </h1>
 
           <p className="text-lg text-[#1A1A1A]/70 leading-relaxed mb-8">
-            We could not load this page. You can try again below, or reach us
-            directly on WhatsApp for immediate help.
+            We could not find this journey. It may have been removed or the link may be incorrect.
+            Try again or browse all journeys.
           </p>
 
           {error.digest && (
