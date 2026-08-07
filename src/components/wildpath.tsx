@@ -21,6 +21,9 @@ import type { RouteStop } from '@/lib/journeys';
 const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 
+// Logo asset version — bump to force CDN/browser cache bust after logo updates
+const LOGO_V = '?v=2026-08';
+
 // ═══════════════════════════════════════════════════════════
 // WORDMARK — TEXT ONLY is the primary logo.
 // WILDPATH: Anton, dominant, uppercase
@@ -576,11 +579,11 @@ export function Footer() {
           {/* Wildpath approved logo mark — footer (dark variant) */}
           <div className="flex justify-center mb-10">
             <img
-              src="/images/brand/wildpath-logo-dark-theme.svg"
+              src={`/images/brand/wildpath-logo-dark-theme.svg${LOGO_V}`}
               alt="Wildpath Adventures"
               width={160}
-              height={160}
-              className="w-40 h-40 md:w-56 md:h-56"
+              height={180}
+              className="w-40 h-[11.3rem] md:w-56 md:h-[15.8rem]"
             />
           </div>
 
@@ -1011,14 +1014,14 @@ export function WildpathWatermark({
   variant?: 'light' | 'dark';
 }) {
   const src = variant === 'dark'
-    ? '/images/brand/wildpath-logo-dark-theme.svg'
-    : '/images/brand/wildpath-logo-light-theme.svg';
+    ? `/images/brand/wildpath-logo-dark-theme.svg${LOGO_V}`
+    : `/images/brand/wildpath-logo-light-theme.svg${LOGO_V}`;
   return (
     <img
       src={src}
       alt=""
       width={200}
-      height={200}
+      height={226}
       className={`opacity-[0.06] ${className}`}
       aria-hidden="true"
     />
