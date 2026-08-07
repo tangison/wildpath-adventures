@@ -60,7 +60,7 @@ async function main() {
     .png()
     .toFile(path.resolve('src/app/apple-icon.png'));
 
-  console.log('Favicon variants generated from approved circular logo:');
+  console.log('Favicon variants generated from approved WildPath logo (dark theme):');
   const files = await fs.readdir(OUT_DIR);
   for (const f of files) {
     if (f.match(/favicon|apple-touch|android-chrome/)) {
