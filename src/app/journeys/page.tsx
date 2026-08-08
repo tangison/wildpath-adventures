@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: 'Journeys',
   description:
     'Four flagship expeditions through Namibia and Southern Africa. Self-drive, guided, and private departures. Tailored around the land, not the brochure.',
+  alternates: { canonical: '/journeys' },
 };
 
 export default function JourneysPage() {

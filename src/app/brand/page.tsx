@@ -7,7 +7,9 @@ import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, CompassMark
 export const metadata: Metadata = {
   title: 'Brand Identity — Wildpath Adventures',
   description:
-    'The Wildpath Adventures brand system: wordmark, illustration, palette, typography, voice, and tonality.',
+    'Discover the visual identity behind Wildpath Adventures — our Namibian-inspired palette, editorial voice, and design principles.',
+  alternates: { canonical: '/brand' },
+  robots: { index: false, follow: true },
 };
 
 const PALETTE = [

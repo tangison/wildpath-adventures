@@ -9,6 +9,7 @@ import { SITE, SITE_URL } from "@/lib/site";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const antonDisplay = Anton({
@@ -65,7 +66,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: SITE.name }],
   alternates: {
-    canonical: '/',
+    canonical: SITE_URL,
   },
   // Icons — served as static files from /public for reliability across
   // dev and production. The master 512x512 mark is at /favicon.png;

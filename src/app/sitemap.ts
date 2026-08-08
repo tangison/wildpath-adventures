@@ -4,6 +4,9 @@ import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  // Fixed build date for lastModified — avoids every build appearing as "just modified"
+  const lastMod = new Date('2026-08-08');
+
   const staticPages = [
     { path: '', priority: 1 },
     { path: '/journeys', priority: 0.9 },
@@ -21,21 +24,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map((p) => ({
     url: `${SITE_URL}${p.path}`,
-    lastModified: new Date(),
+    lastModified: lastMod,
     changeFrequency: 'monthly' as const,
     priority: p.priority,
   }));
 
   const journeyEntries: MetadataRoute.Sitemap = JOURNEYS.map((j) => ({
     url: `${SITE_URL}/journeys/${j.slug}`,
-    lastModified: new Date(),
+    lastModified: lastMod,
     changeFrequency: 'monthly' as const,
     priority: 0.8,
   }));
 
   const destinationEntries: MetadataRoute.Sitemap = DESTINATIONS.map((d) => ({
     url: `${SITE_URL}/destinations/${d.slug}`,
-    lastModified: new Date(),
+    lastModified: lastMod,
     changeFrequency: 'monthly' as const,
     priority: 0.7,
   }));

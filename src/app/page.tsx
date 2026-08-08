@@ -56,6 +56,8 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: EASE_PREMIUM, delay: 0.15 }}
               >
+                {/* Accessible h1 for SEO and screen readers — visually hidden, Wordmark renders visually */}
+                <h1 className="sr-only">Wildpath Adventures — Travel the untamed beauty</h1>
                 {/* Hero wordmark: lg on mobile (no duplicate feel with nav sm), xl on desktop */}
                 <Wordmark size="lg" className="md:hidden" />
                 <Wordmark size="xl" className="hidden md:inline-flex" />

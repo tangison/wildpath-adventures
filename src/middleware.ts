@@ -19,13 +19,17 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Content Security Policy — allows Google Fonts, images from same origin,
-  // and WhatsApp/sharer links. Strict but permissive for a marketing site.
+  // and WhatsApp/sharer links. Production-hardened: no unsafe-inline/eval.
+  const isDev = process.env.NODE_ENV === 'development';
+  const scriptSrc = isDev
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live"
+    : "script-src 'self' https://vercel.live";
   const csp = [
     "default-src 'self'",
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live", // unsafe-inline needed for next.js dev; vercel.live for deployments
+    scriptSrc,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // inline styles for Tailwind + framer-motion
     "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: blob: https:", // data: for inline SVGs, https: for any external images
+    "img-src 'self' data: blob: https://wildpathnamibia.com",
     "connect-src 'self' https://wa.me",
     "frame-ancestors 'none'", // equivalent to X-Frame-Options: DENY
     "form-action 'self' https://wa.me", // allow form posts to self + WhatsApp

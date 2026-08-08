@@ -10,6 +10,7 @@ export const metadata: Metadata = {
   title: 'Destinations',
   description:
     'Nine landscapes across Namibia and Southern Africa — from the oldest desert on earth to the smoke that thunders. Image-led. Editorial. Real.',
+  alternates: { canonical: '/destinations' },
 };
 
 export default function DestinationsPage() {

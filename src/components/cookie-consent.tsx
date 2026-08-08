@@ -38,6 +38,7 @@ export function CookieConsent() {
       className="fixed bottom-0 left-0 right-0 z-50 bg-[#1A1A1A] text-[#F2EDE3] border-t border-[#F2EDE3]/10"
       role="dialog"
       aria-label="Cookie consent"
+      aria-modal="true"
     >
       <div className="max-w-5xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <p className="text-sm text-[#F2EDE3]/80 leading-relaxed flex-1">
