@@ -19,11 +19,19 @@ export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
   // Content Security Policy — allows Google Fonts, images from same origin,
-  // and WhatsApp/sharer links. Production-hardened: no unsafe-inline/eval.
+  // and WhatsApp/sharer links.
+  //
+  // NOTE on 'unsafe-inline' in script-src: Next.js App Router ships its RSC
+  // streaming payload as inline <script> tags (self.__next_f.push). With a
+  // strict script-src and no nonce support for those payload scripts, the
+  // browser blocks them, React never hydrates, and the page stays stuck on
+  // the loading fallback. 'unsafe-inline' is the standard trade-off for
+  // Next.js App Router deployments (Next.js docs); 'unsafe-eval' is NOT
+  // included, which keeps the meaningful hardening.
   const isDev = process.env.NODE_ENV === 'development';
   const scriptSrc = isDev
     ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live"
-    : "script-src 'self' https://vercel.live";
+    : "script-src 'self' 'unsafe-inline' https://vercel.live";
   const csp = [
     "default-src 'self'",
     scriptSrc,
