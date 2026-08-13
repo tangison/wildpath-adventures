@@ -42,10 +42,33 @@ const INITIAL: FormState = {
   website: '',
 };
 
+/**
+ * Builds a wa.me link prefilled with the full enquiry, so WhatsApp works as a
+ * real submission channel (not just a chat link). Used for the channel-choice
+ * button, the error fallback, and the post-submission confirmation.
+ */
+function buildWhatsAppUrl(f: FormState): string {
+  const journeyName =
+    (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
+  const lines = [
+    `New enquiry from ${f.name || '—'} (${f.country || '—'})`,
+    `Email: ${f.email || '—'} · Phone/WhatsApp: ${f.phone || '—'}`,
+    `Journey: ${journeyName} · Travel: ${f.travelMonth || '—'} · Travellers: ${f.travellers}`,
+  ];
+  if (f.travelStyle) lines.push(`Style: ${f.travelStyle}`);
+  if (f.duration) lines.push(`Duration: ${f.duration}`);
+  if (f.interests) lines.push(`Interests: ${f.interests}`);
+  lines.push(`Message: ${f.message || '—'}`);
+  return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
+}
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [error, setError] = useState('');
+  // Snapshot of the submitted enquiry — the form resets on success, but the
+  // confirmation screen still offers WhatsApp with the enquiry prefilled.
+  const [lastEnquiry, setLastEnquiry] = useState<FormState | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((f) => ({ ...f, [key]: value }));
@@ -74,6 +97,7 @@ export function ContactForm() {
       if (!res.ok) {
         throw new Error(data.error || 'Something went wrong. Please try WhatsApp instead.');
       }
+      setLastEnquiry({ ...form });
       setStatus('success');
       setForm(INITIAL);
     } catch (err) {
@@ -104,7 +128,7 @@ export function ContactForm() {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href={WHATSAPP_URL}
+            href={buildWhatsAppUrl(lastEnquiry ?? INITIAL)}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
@@ -330,6 +354,17 @@ export function ContactForm() {
       {error && (
         <div className="bg-[#C5511A]/10 border border-[#C5511A]/30 px-4 py-3 text-sm text-[#9E4214]">
           {error}
+          {status === 'error' && (
+            <a
+              href={buildWhatsAppUrl(form)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-flex items-center gap-2 bg-[#1A1A1A] text-[#F2EDE3] px-4 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#9E4214] transition-colors"
+            >
+              <MessageCircle size={14} />
+              Send this enquiry via WhatsApp instead
+            </a>
+          )}
         </div>
       )}
 
@@ -352,7 +387,7 @@ export function ContactForm() {
           )}
         </button>
         <a
-          href={WHATSAPP_URL}
+          href={buildWhatsAppUrl(form)}
           target="_blank"
           rel="noopener noreferrer"
           className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"

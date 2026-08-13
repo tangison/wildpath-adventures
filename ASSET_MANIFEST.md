@@ -35,6 +35,21 @@ destination photography is not yet available.
 **Licence:** Owned by Wildpath Adventures. All rights reserved.
 **Download date:** Cloned from github.com/tangison/wildpath-adventures on 2026-07-13.
 
+## Brand logos & favicons (deployed set — 2026-08-13)
+
+Official logo pack (`wildpath-logo-svg-pack.zip` from client, verified checksum-identical to `asset-kit/`). All source files remain byte-exact; the site serves them via `next/image` for runtime WebP/AVIF optimisation.
+
+| File | Used on | Notes |
+| --- | --- | --- |
+| `/public/images/brand/wildpath-logo-dark-theme.png` | Footer logo, dark-background watermark (via `next/image`) | Ivory artwork for dark backgrounds |
+| `/public/images/brand/wildpath-logo-light-theme.png` | Light-background watermark (via `next/image`) | Dark-ink artwork for light backgrounds |
+| `/public/images/brand/wildpath-logo-*-theme.svg` + `-editable-vector.svg` | Master copies (not served) | Delivered pack — full-res + traced vector |
+| `/public/favicon.png`, `/favicon-32.png`, `/favicon-16.png` | Browser favicons | Generated from light-theme artwork (dark ink on transparent) |
+| `/public/apple-touch-icon.png`, `/src/app/apple-icon.png` | iOS / Apple devices | Light-theme artwork on ivory `#F2EDE3` background |
+| `/public/android-chrome-192.png`, `/android-chrome-512.png`, `/src/app/icon.png` | PWA icons + Next.js icon convention | Light-theme artwork on transparent |
+
+**Favicon composition:** artwork fitted to 92% of canvas height, centred, LANCZOS-resampled from the 1255×1415 master.
+
 ## Destination photography
 
 | File | Destination | Used on | Source | Licence | Status |

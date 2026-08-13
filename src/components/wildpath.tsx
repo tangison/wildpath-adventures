@@ -21,8 +21,9 @@ import type { RouteStop } from '@/lib/journeys';
 const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
 const EASE_DECELERATE = [0.05, 0.7, 0.1, 1] as const;
 
-// Logo asset version — bump to force CDN/browser cache bust after logo updates
-const LOGO_V = '?v=2026-08';
+// Logo assets — official pack (wildpath-logo-*-theme.png) served via next/image:
+// exact delivered artwork, runtime-optimized to WebP/AVIF at display size.
+// Full-resolution PNG/SVG masters live in public/images/brand/ (untouched).
 
 // ═══════════════════════════════════════════════════════════
 // WORDMARK — TEXT ONLY is the primary logo.
@@ -576,14 +577,15 @@ export function Footer() {
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-3xl mx-auto text-center">
 
-          {/* Wildpath approved logo mark — footer (dark variant) */}
+          {/* Wildpath approved logo mark — footer (dark variant, ivory artwork for dark bg) */}
           <div className="flex justify-center mb-10">
-            <img
-              src={`/images/brand/wildpath-logo-dark-theme.svg${LOGO_V}`}
+            <Image
+              src="/images/brand/wildpath-logo-dark-theme.png"
               alt="Wildpath Adventures"
-              width={160}
-              height={180}
-              className="w-40 h-[11.3rem] md:w-56 md:h-[15.8rem]"
+              width={1255}
+              height={1415}
+              sizes="(min-width: 768px) 224px, 160px"
+              className="w-40 h-[11.3rem] md:w-56 md:h-[15.8rem] object-contain"
             />
           </div>
 
@@ -1014,14 +1016,14 @@ export function WildpathWatermark({
   variant?: 'light' | 'dark';
 }) {
   const src = variant === 'dark'
-    ? `/images/brand/wildpath-logo-dark-theme.svg${LOGO_V}`
-    : `/images/brand/wildpath-logo-light-theme.svg${LOGO_V}`;
+    ? '/images/brand/wildpath-logo-dark-theme.png'
+    : '/images/brand/wildpath-logo-light-theme.png';
   return (
-    <img
+    <Image
       src={src}
       alt=""
-      width={200}
-      height={226}
+      width={1255}
+      height={1415}
       className={`opacity-[0.06] ${className}`}
       aria-hidden="true"
     />
