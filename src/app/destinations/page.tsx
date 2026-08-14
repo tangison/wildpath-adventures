@@ -9,7 +9,7 @@ import { DESTINATIONS } from '@/lib/destinations';
 export const metadata: Metadata = {
   title: 'Destinations',
   description:
-    'Nine landscapes across Namibia and Southern Africa — from the oldest desert on earth to the smoke that thunders. Image-led. Editorial. Real.',
+    'Nine landscapes across Namibia and Southern Africa, from the oldest desert on earth to the smoke that thunders. Image-led. Editorial. Real.',
   alternates: { canonical: '/destinations' },
 };
 
@@ -129,7 +129,7 @@ export default function DestinationsPage() {
               Across the borders.
             </h2>
             <p className="mb-12 text-base text-[#1A1A1A]/70 max-w-xl leading-relaxed">
-              The Caprivi route continues east — into Botswana, Zimbabwe, and
+              The Caprivi route continues east, into Botswana, Zimbabwe, and
               Zambia. Different countries, the same river.
             </p>
 

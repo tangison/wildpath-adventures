@@ -16,9 +16,9 @@ export const metadata: Metadata = {
 const STRENGTHS = [
   { name: 'Namibian ownership', desc: 'A Namibian-owned tour operator, based in Windhoek. We plan every journey from inside the country we travel in.' },
   { name: 'Tailor-made journeys', desc: 'Every itinerary is drafted around your dates, your pace, and the people travelling with you. No two journeys are the same.' },
-  { name: 'Namibia and Southern Africa', desc: 'From the Namib desert to the Zambezi, from Etosha to Chobe and Victoria Falls — we plan across the region.' },
+  { name: 'Namibia and Southern Africa', desc: 'From the Namib desert to the Zambezi, from Etosha to Chobe and Victoria Falls. We plan across the region.' },
   { name: 'Self-drive and guided', desc: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
-  { name: 'Personal planning', desc: 'We plan every itinerary personally — from the first enquiry to your return home. Accommodation arranged according to route and budget.' },
+  { name: 'Personal planning', desc: 'We plan every itinerary personally, from the first enquiry to your return home. Accommodation arranged according to route and budget.' },
   { name: 'Responsible tourism', desc: 'We aim to work with responsible local partners and support travel practices that respect Namibia\'s wildlife, landscapes, and communities.' },
 ];
 
@@ -85,7 +85,7 @@ export default function AboutPage() {
                 Accommodation is arranged according to route and budget, with
                 full details confirmed in your personalised proposal. We
                 support you from the first enquiry through to your return home
-                — and we plan every itinerary personally.
+                , and we plan every itinerary personally.
               </p>
             </div>
           </div>
@@ -143,7 +143,7 @@ export default function AboutPage() {
               </p>
               <p>
                 The way we plan routes, choose stops, and pace journeys is
-                designed to leave room for the land — for the silence of the
+                designed to leave room for the land, for the silence of the
                 desert, the space of the pans, and the rhythms of the wildlife
                 that live here year-round.
               </p>

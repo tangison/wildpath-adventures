@@ -575,7 +575,14 @@ export function Footer() {
 
       {/* Statement — single typographic closing */}
       <div className="pt-16 pb-10 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+        <div className="max-w-4xl mx-auto text-center">
+
+          {/* Closing statement — oversized type, colophon scale */}
+          <p className="wp-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.9] tracking-[-0.01em] text-[#F2EDE3] mb-14">
+            Travel the{' '}
+            <em className="font-serif italic font-light text-[#E8854A]">untamed</em>{' '}
+            beauty<span className="text-[#C5511A]">.</span>
+          </p>
 
           {/* Wildpath approved logo mark — footer (dark variant, ivory artwork for dark bg) */}
           <div className="flex justify-center mb-10">
@@ -588,11 +595,6 @@ export function Footer() {
               className="w-40 h-[11.3rem] md:w-56 md:h-[15.8rem] object-contain"
             />
           </div>
-
-          {/* Tagline — the publication's colophon line */}
-          <p className="wp-script text-3xl md:text-4xl text-[#E8854A] mb-10" style={{ fontFamily: 'var(--font-caveat), cursive' }}>
-            Travel the untamed beauty.
-          </p>
 
           {/* Contact details — embedded in the statement */}
           <p className="text-base md:text-lg text-[#F2EDE3]/80 leading-relaxed mb-6">

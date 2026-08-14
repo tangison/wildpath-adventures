@@ -26,31 +26,31 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: 'Is Namibia safe to travel in?',
-    a: 'Yes. Namibia is one of the safest countries in Africa for travellers. Crime against tourists is rare. The usual big-city precautions apply in Windhoek. In the bush, the risks are environmental — sun, dust, distance — and your guide manages those.',
+    a: 'Yes. Namibia is one of the safest countries in Africa for travellers. Crime against tourists is rare. The usual big-city precautions apply in Windhoek. In the bush, the risks are environmental, such as sun, dust, and distance, and your guide manages those.',
   },
   {
     q: 'Do I need a visa?',
-    a: 'Most nationalities — including EU, UK, US, Canada, Australia, and most of SADC — do not need a visa for stays up to 90 days. You will get a visa-on-arrival stamp at Hosea Kutako International Airport. We confirm current requirements for your nationality before you book.',
+    a: 'Most nationalities, including EU, UK, US, Canada, Australia, and most of SADC, do not need a visa for stays up to 90 days. You will get a visa-on-arrival stamp at Hosea Kutako International Airport. We confirm current requirements for your nationality before you book.',
   },
   {
     q: 'Is it safe to self-drive?',
-    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing and a 4×4 arranged for your route. We do not recommend self-drive for the Skeleton Coast or remote Damaraland — there, a guided vehicle is better.',
+    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing and a 4×4 arranged for your route. We do not recommend self-drive for the Skeleton Coast or remote Damaraland; there, a guided vehicle is better.',
   },
   {
     q: 'What about malaria?',
-    a: 'The northern parts of Namibia — Etosha, the Caprivi, and the river regions — are malaria-risk in the wet season (November–April). The desert, coast, and south are malaria-free. We advise on the current situation for your dates; you consult your doctor or travel clinic.',
+    a: 'The northern parts of Namibia, Etosha, the Caprivi, and the river regions, are malaria-risk in the wet season (November–April). The desert, coast, and south are malaria-free. We advise on the current situation for your dates; you consult your doctor or travel clinic.',
   },
   {
     q: 'What is the best time to visit?',
-    a: 'May to October is the dry season — cool days, cold nights, wildlife concentrated at waterholes. This is peak season. November to April is the wet season — greener landscapes, fewer visitors, baby animals, but hotter and harder game viewing. Each season has its own case.',
+    a: 'May to October is the dry season: cool days, cold nights, wildlife concentrated at waterholes. This is peak season. November to April is the wet season: greener landscapes, fewer visitors, baby animals, but hotter and harder game viewing. Each season has its own case.',
   },
   {
     q: 'How fit do I need to be?',
-    a: 'Most journeys are not strenuous. Game drives, scenic flights, and lodge-based itineraries require no special fitness. Walking safaris — Damaraland, Erongo, Okonjima — require moderate fitness. We rate each journey and can adjust pace to your party.',
+    a: 'Most journeys are not strenuous. Game drives, scenic flights, and lodge-based itineraries require no special fitness. Walking safaris, such as Damaraland, Erongo, and Okonjima, require moderate fitness. We rate each journey and can adjust pace to your party.',
   },
   {
     q: 'What should I pack?',
-    a: 'We send a full packing list tailored to your journey. In general: neutral-coloured clothing (khaki, olive, sand — no brights), layers for cold mornings and hot middays, sturdy closed shoes, a wide-brimmed hat, sunscreen, and binoculars. Soft bags, not hard cases, for charter flights.',
+    a: 'We send a full packing list tailored to your journey. In general: neutral-coloured clothing (khaki, olive, sand, no brights), layers for cold mornings and hot middays, sturdy closed shoes, a wide-brimmed hat, sunscreen, and binoculars. Soft bags, not hard cases, for charter flights.',
   },
   {
     q: 'Can you accommodate dietary needs?',
@@ -62,11 +62,11 @@ const FAQS = [
   },
   {
     q: 'How far in advance should I book?',
-    a: 'For peak season (July–October), book 6–12 months ahead — the best lodges fill a year out. For shoulder season (May, June, November), 3–6 months. For last-minute, we can often find something — but choice is limited.',
+    a: 'For peak season (July–October), book 6–12 months ahead; the best lodges fill a year out. For shoulder season (May, June, November), 3–6 months. For last-minute, we can often find something, but choice is limited.',
   },
   {
     q: 'Do you arrange international flights?',
-    a: 'We do not book international flights directly, but we advise on routings and the best airlines into Windhoek (Hosea Kutako — WDH) and Victoria Falls (VFA). For internal charter flights within Namibia, we handle everything.',
+    a: 'We do not book international flights directly, but we advise on routings and the best airlines into Windhoek (Hosea Kutako, WDH) and Victoria Falls (VFA). For internal charter flights within Namibia, we handle everything.',
   },
   {
     q: 'What if there is an emergency?',

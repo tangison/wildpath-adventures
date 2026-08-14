@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Anton, Oswald, Archivo, Caveat } from "next/font/google";
+import { Geist, Anton, Oswald, Archivo, Caveat, Fraunces } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { CookieConsent } from "@/components/cookie-consent";
@@ -9,6 +9,13 @@ import { SITE, SITE_URL } from "@/lib/site";
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+  display: "swap",
+});
+
+const frauncesSerif = Fraunces({
+  variable: "--font-fraunces",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -44,7 +51,7 @@ const caveatScript = Caveat({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${SITE.name} — ${SITE.tagline}`,
+    default: `${SITE.name} · ${SITE.tagline}`,
     template: `%s · ${SITE.name}`,
   },
   description:
@@ -164,7 +171,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
+        className={`${geistSans.variable} ${frauncesSerif.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
       >
         {/* Skip-to-content link — accessibility: keyboard users can bypass navigation */}
         <a

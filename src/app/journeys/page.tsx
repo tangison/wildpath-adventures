@@ -33,7 +33,7 @@ export default function JourneysPage() {
                 <span className="text-[#9E4214]">not by tourism.</span>
               </h1>
               <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                Four flagship expeditions. Each one a complete arc — the red south,
+                Four flagship expeditions. Each one a complete arc: the red south,
                 the central corridor, the rivers of the Caprivi, or the classic loop.
                 Every itinerary is drafted around the people on it.
               </p>
@@ -107,7 +107,7 @@ export default function JourneysPage() {
               </h2>
               <p className="text-base md:text-lg text-[#F2EDE3]/75 max-w-xl mx-auto leading-relaxed mb-8">
                 Combine destinations. Add a charter. Walk further. Stay longer.
-                Every itinerary above is a starting point — not a fixed route.
+                Every itinerary above is a starting point, not a fixed route.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <Link

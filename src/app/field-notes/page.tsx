@@ -29,7 +29,7 @@ const NOTES = [
     slug: 'etosha-dry-and-wet-seasons',
     title: 'Etosha in the dry and wet seasons',
     excerpt:
-      'How wildlife viewing shifts between the dry winter months and the greener, quieter summer — and what each season rewards.',
+      'How wildlife viewing shifts between the dry winter months and the greener, quieter summer, and what each season rewards.',
     category: 'Destination guide',
     image: '/images/illustrations/approved/field-note-etosha-seasons.webp',
   },
@@ -53,7 +53,7 @@ const NOTES = [
     slug: 'responsible-wildlife-viewing',
     title: 'Responsible wildlife viewing',
     excerpt:
-      'How to watch wildlife well — distance, patience, and the habits that keep both animals and visitors safe.',
+      'How to watch wildlife well: distance, patience, and the habits that keep both animals and visitors safe.',
     category: 'Travel preparation',
     image: '/images/illustrations/approved/field-note-responsible-wildlife.webp',
   },
@@ -61,7 +61,7 @@ const NOTES = [
     slug: 'zambezi-region-route',
     title: 'Planning a route through the Zambezi Region',
     excerpt:
-      'The Caprivi Strip rewoven — rivers, parks, and the practical logistics of travelling Namibia\'s wet north-east.',
+      'The Caprivi Strip rewoven: rivers, parks, and the practical logistics of travelling Namibia\'s wet north-east.',
     category: 'Destination guide',
     image: '/images/illustrations/approved/field-note-zambezi-route.webp',
   },
@@ -90,7 +90,7 @@ export default function FieldNotesPage() {
               </h1>
               <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
                 Short editorial guides for travelling well in Namibia and
-                Southern Africa — when to go, what to pack, and what to expect.
+                Southern Africa: when to go, what to pack, and what to expect.
                 Written as destination inspiration, not as company history.
               </p>
             </ScrollReveal>

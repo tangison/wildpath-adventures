@@ -9,12 +9,12 @@ import { SITE, SITE_EMAIL, WHATSAPP_URL, TEL_URL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Contact',
   description:
-    'Plan your journey. WhatsApp, phone, or enquiry form — every Wildpath journey starts with a conversation.',
+    'Plan your journey. WhatsApp, phone, or enquiry form. Every Wildpath journey starts with a conversation.',
   alternates: { canonical: '/contact' },
 };
 
 const PROCESS_STEPS = [
-  { n: '01', t: 'We reply', b: 'Within two days — usually faster on WhatsApp. We ask a few questions, you answer in your own words.' },
+  { n: '01', t: 'We reply', b: 'Within two days, usually faster on WhatsApp. We ask a few questions, you answer in your own words.' },
   { n: '02', t: 'First draft', b: 'A tailored itinerary sketch, drawn around your dates, your pace, and the people on the journey.' },
   { n: '03', t: 'We refine', b: 'Two or three rounds of edits. Then a final itinerary, with selected accommodation, logistics, and pricing.' },
 ];
@@ -88,13 +88,13 @@ export default function ContactPage() {
                   </div>
                   <div className="flex-1">
                     <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-1">
-                      Primary — WhatsApp
+                      Primary · WhatsApp
                     </p>
                     <p className="wp-display text-xl md:text-2xl text-[#F2EDE3] mb-1">
                       {SITE.phone}
                     </p>
                     <p className="text-xs text-[#F2EDE3]/70 leading-relaxed">
-                      Tap to start a chat. We answer WhatsApp fastest — usually
+                      Tap to start a chat. We answer WhatsApp fastest, usually
                       within hours during Namibian business hours.
                     </p>
                   </div>

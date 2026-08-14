@@ -5,7 +5,7 @@ import { ArrowRight, Footprints, Compass, Sun, MapPin } from 'lucide-react';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, CompassMark } from '@/components/wildpath';
 
 export const metadata: Metadata = {
-  title: 'Brand Identity — Wildpath Adventures',
+  title: 'Brand Identity · Wildpath Adventures',
   description:
     'Discover the visual identity behind Wildpath Adventures — our Namibian-inspired palette, editorial voice, and design principles.',
   alternates: { canonical: '/brand' },
