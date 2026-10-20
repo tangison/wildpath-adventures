@@ -15,6 +15,7 @@ export const PHOTOS: Record<string, PhotoRecord> = {
   'acacia-savanna': { id: 'acacia-savanna', dir: '/images/places', widths: [1920, 1440, 960, 640], w: 2000, h: 1500, alt: 'A camelthorn acacia on open savanna grassland.' },
   'caprivi-mokoro-golden-reeds': { id: 'caprivi-mokoro-golden-reeds', dir: '/images/photos', widths: [640, 960, 1440, 1920], w: 3888, h: 2592, alt: 'A guide poling a mokoro with two guests through golden reeds on a quiet Caprivi waterway.' },
   'chobe-elephants-riverbank': { id: 'chobe-elephants-riverbank', dir: '/images/photos', widths: [640, 960, 1440, 1920], w: 1920, h: 1010, alt: 'Elephants moving along a Chobe riverbank as a safari boat watches from the water.' },
+  'chobe-river-elephants-dusk': { id: 'chobe-river-elephants-dusk', dir: '/images/photos', widths: [640, 960, 1440, 1920], w: 1920, h: 1440, alt: 'Elephants moving along the Chobe riverbank at dusk through warm haze.' },
   'damaraland': { id: 'damaraland', dir: '/images/places', widths: [1920, 1440, 960, 640], w: 2000, h: 1333, alt: 'Granite hills and open plains in Damaraland.' },
   'damaraland-lodge-granite-hill': { id: 'damaraland-lodge-granite-hill', dir: '/images/photos', widths: [640, 960], w: 1280, h: 960, alt: 'Thatched bungalows on stilts beneath a granite hill in Damaraland.' },
   'deadvlei-trees-dune-shadow': { id: 'deadvlei-trees-dune-shadow', dir: '/images/photos', widths: [640, 960, 1440, 1920], w: 2560, h: 1920, alt: 'Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.' },

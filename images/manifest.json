@@ -661,6 +661,24 @@
       "attribution": "Africa Geographic (web source)",
       "alt": "Victoria Falls in full flow with a double rainbow spanning the gorge.",
       "exif": "stripped"
+    },
+    {
+      "id": "chobe-river-elephants-dusk",
+      "source_file": "chobe-river-elephants-dusk.webp",
+      "source_size": [
+        1920,
+        1440
+      ],
+      "final_size": [
+        1920,
+        1440
+      ],
+      "origin": "Pexels (retrieved 2026-10-20 during earlier rebuild iteration; re-adopted with variants)",
+      "licence": "Pexels Licence (free to use, no attribution required; recorded as good practice)",
+      "retrieved": "2026-10-20",
+      "attribution": "Uncredited Pexels contributor",
+      "alt": "Elephants moving along the Chobe riverbank at dusk through warm haze.",
+      "exif": "stripped"
     }
   ]
 }

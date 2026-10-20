@@ -69,6 +69,7 @@ export function WpPicture({
 const HERO_SLIDES = [
   'landcruiser-dune-crest',
   'deadvlei-white-pan-red-dunes',
+  'chobe-river-elephants-dusk',
   'giraffes-walking-etosha',
   'rhino-ostrich-etosha',
   'deadvlei-trees-dune-shadow',
@@ -79,10 +80,12 @@ const SLIDE_INTERVAL_MS = 6000;
 export function HeroSlider({ className = '' }: { className?: string }) {
   const prefersReducedMotion = useReducedMotion();
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const timer = useRef<ReturnType<typeof setInterval> | null>(null);
+  const touchStartX = useRef<number | null>(null);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || paused) return;
     timer.current = setInterval(() => {
       if (document.hidden) return;
       setIndex((i) => (i + 1) % HERO_SLIDES.length);
@@ -90,12 +93,29 @@ export function HeroSlider({ className = '' }: { className?: string }) {
     return () => {
       if (timer.current) clearInterval(timer.current);
     };
-  }, [prefersReducedMotion]);
+  }, [prefersReducedMotion, paused]);
 
   return (
     <div
       className={`absolute inset-0 overflow-hidden bg-[#1A1A1A] ${className}`}
       aria-hidden="true"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={(e) => {
+        touchStartX.current = e.touches[0].clientX;
+      }}
+      onTouchEnd={(e) => {
+        if (touchStartX.current === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX.current;
+        if (Math.abs(dx) > 48) {
+          setIndex((i) =>
+            dx < 0
+              ? (i + 1) % HERO_SLIDES.length
+              : (i - 1 + HERO_SLIDES.length) % HERO_SLIDES.length
+          );
+        }
+        touchStartX.current = null;
+      }}
     >
       {HERO_SLIDES.map((id, i) => {
         const active = i === index;
