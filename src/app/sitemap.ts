@@ -3,6 +3,9 @@ import { SITE_URL } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
 
+// Static export: this route is pre-rendered at build time.
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Fixed build date for lastModified — avoids every build appearing as "just modified"
   const lastMod = new Date('2026-08-08');
@@ -16,7 +19,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/contact', priority: 0.8 },
     { path: '/brand', priority: 0.4 },
     { path: '/faq', priority: 0.6 },
-    { path: '/privacy', priority: 0.3 },
+    { path: '/privacy-policy', priority: 0.3 },
     { path: '/terms', priority: 0.3 },
     { path: '/cancellation', priority: 0.3 },
     { path: '/cookies', priority: 0.3 },

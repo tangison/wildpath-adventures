@@ -44,36 +44,20 @@ export default function CookiePage() {
             <div>
               <h2 className="wp-display text-2xl text-[#1A1A1A] mb-4">Cookies we use</h2>
               <p className="mb-4">
-                {SITE.name} uses only essential technical functionality. We do not use
-                third-party analytics cookies, advertising cookies, or tracking cookies
+                {SITE.name} sets no cookies on this site. There is no login, no
+                shopping basket, and no advertising. We do not use third-party
+                analytics cookies, advertising cookies, or tracking cookies
                 from services such as Google Analytics, Facebook Pixel, or advertising networks.
               </p>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm border-t border-[#1A1A1A]/15">
-                  <thead>
-                    <tr className="border-b border-[#1A1A1A]/15">
-                      <th className="text-left py-3 pr-4 text-[#1A1A1A]">Cookie / Storage</th>
-                      <th className="text-left py-3 pr-4 text-[#1A1A1A]">Purpose</th>
-                      <th className="text-left py-3 pr-4 text-[#1A1A1A]">Duration</th>
-                      <th className="text-left py-3 text-[#1A1A1A]">Type</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b border-[#1A1A1A]/10">
-                      <td className="py-3 pr-4 font-mono text-xs">wildpath-cookie-consent</td>
-                      <td className="py-3 pr-4">Records your cookie consent choice</td>
-                      <td className="py-3 pr-4">Persistent (localStorage)</td>
-                      <td className="py-3">Essential</td>
-                    </tr>
-                    <tr className="border-b border-[#1A1A1A]/10">
-                      <td className="py-3 pr-4 font-mono text-xs">Next.js session cookies</td>
-                      <td className="py-3 pr-4">Server-side session management</td>
-                      <td className="py-3 pr-4">Session</td>
-                      <td className="py-3">Essential</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <p className="mb-4 text-[#1A1A1A]/70">
+                The traffic counter we use (Vercel Analytics) is cookieless: it
+                counts page views without storing or reading anything on your
+                device, and it does not build a profile of you.
+              </p>
+              <p className="mb-4">
+                Because no cookies are set, there is no cookie table to list and
+                no consent banner on this site.
+              </p>
             </div>
 
             <div>
@@ -92,13 +76,8 @@ export default function CookiePage() {
               <p className="mb-4">
                 You can manage or delete cookies through your browser settings. Most browsers
                 allow you to block cookies entirely, delete existing cookies, or alert you when
-                a cookie is being set. Please note that blocking all cookies may affect the
-                functionality of this and other websites you visit.
-              </p>
-              <p className="mb-4">
-                On this website, you can decline non-essential cookies using the consent banner
-                that appears on your first visit. Because we do not use tracking cookies,
-                declining will not significantly affect your experience.
+                a cookie is being set. Since this site sets none, blocking them will not change
+                how the site works for you.
               </p>
             </div>
 

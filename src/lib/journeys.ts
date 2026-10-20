@@ -37,9 +37,9 @@ export type Journey = {
   bestFor: string;
   highlights: string[];
   overview: string;           // 2-3 sentences on the shape of the journey
-  route: RouteStop[];         // the visual route sequence — destination by destination
-  cardImage: string;          // illustration for the journey card (brand-section appropriate)
-  heroImage: string;          // large hero image — real destination photography
+  route: RouteStop[];         // the visual route sequence, destination by destination
+  cardImage: string;          // photo-library ID for the journey card (rendered via <WpPicture>)
+  heroImage: string;          // photo-library ID for the large journey hero
   availability: string;
   mealsNote: string;
   /**
@@ -56,7 +56,7 @@ export const JOURNEYS: Journey[] = [
   {
     slug: 'classic-namibia',
     name: 'Classic Namibia Route',
-    tagline: 'The full loop — south to the canyon, north to the pan, and the cold coast between.',
+    tagline: 'The full loop, south to the canyon, north to the pan, and the cold coast between.',
     duration: 'Approximately 15 days',
     durationDays: 15,
     travelStyle: 'Self-drive or guided',
@@ -74,20 +74,20 @@ export const JOURNEYS: Journey[] = [
       'Etosha National Park',
     ],
     overview:
-      'The complete Namibian arc — from the red south and the world’s second-largest canyon, through the ghost towns of the Sperrgebiet, up the cold Atlantic coast, into the rock-art country of Damaraland, and finishing on the great white pan of Etosha. A full loop that returns to Windhoek.',
+      'The complete Namibian arc, from the red south and the world’s second-largest canyon, through the ghost towns of the Sperrgebiet, up the cold Atlantic coast, into the rock-art country of Damaraland, and finishing on the great white pan of Etosha. A full loop that returns to Windhoek.',
     route: [
-      { name: 'Windhoek', description: 'The starting point. A small capital in the highlands — German architecture, wide streets, the first of many long horizons.' },
+      { name: 'Windhoek', description: 'The starting point. A small capital in the highlands, German architecture, wide streets, the first of many long horizons.' },
       { name: 'Kalahari Desert', description: 'Red sand plains and camelthorn acacia. The San people have read this landscape by sound for thousands of years.' },
-      { name: 'Fish River Canyon', description: 'The second-largest canyon in the world — 160 kilometres long, up to 27 kilometres wide, 550 metres deep. Best viewed at sunrise or sunset.' },
-      { name: 'Wild Horses & Kolmanskop', description: 'The wild horses of the Namib, descended from abandoned farm stock a century ago. Kolmanskop — a diamond-mining town the desert swallowed.' },
+      { name: 'Fish River Canyon', description: 'The second-largest canyon in the world, 160 kilometres long, up to 27 kilometres wide, 550 metres deep. Best viewed at sunrise or sunset.' },
+      { name: 'Wild Horses & Kolmanskop', description: 'The wild horses of the Namib, descended from abandoned farm stock a century ago. Kolmanskop, a diamond-mining town the desert swallowed.' },
       { name: 'Sossusvlei', description: 'Red dunes rising from a white clay pan. Dune 45, Deadvlei, and some of the most photographed desert landscape on earth.' },
-      { name: 'Swakopmund', description: 'The cold Atlantic coast. German colonial architecture on African shores — fog, flamingos, and the Walvis Bay lagoon.' },
+      { name: 'Swakopmund', description: 'The cold Atlantic coast. German colonial architecture on African shores, fog, flamingos, and the Walvis Bay lagoon.' },
       { name: 'Damaraland', description: 'Granite inselbergs, 6,000-year-old rock engravings at Twyfelfontein, and desert-adapted wildlife in a wild landscape.' },
-      { name: 'Etosha National Park', description: 'A salt flat the size of a small country. In the dry season, the waterholes become theatre — rhino, elephant, lion, all in a single evening.' },
+      { name: 'Etosha National Park', description: 'A salt flat the size of a small country. In the dry season, the waterholes become theatre, rhino, elephant, lion, all in a single evening.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-classic-namibia.webp',
-    heroImage: '/images/places/sossusvlei.webp',
+    cardImage: 'sossusvlei',
+    heroImage: 'deadvlei-white-pan-red-dunes',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
@@ -102,7 +102,7 @@ export const JOURNEYS: Journey[] = [
   {
     slug: 'untamed-northern-caprivi',
     name: 'Untamed Northern Caprivi Route',
-    tagline: 'North into the rivers — Okavango, Kwando, Chobe, and the Zambezi. A different Namibia entirely.',
+    tagline: 'North into the rivers, Okavango, Kwando, Chobe, and the Zambezi. A different Namibia entirely.',
     duration: '14 days',
     durationDays: 14,
     travelStyle: 'Guided',
@@ -118,24 +118,24 @@ export const JOURNEYS: Journey[] = [
       'Zambezi River',
     ],
     overview:
-      'The forgotten north-east — a panhandle of rivers and floodplains between Angola, Botswana, Zambia, and Zimbabwe. Where most of Namibia is dry, the Caprivi is wet, green, and full of birds. The route continues into Botswana and the Chobe river before returning.',
+      'The forgotten north-east, a panhandle of rivers and floodplains between Angola, Botswana, Zambia, and Zimbabwe. Where most of Namibia is dry, the Caprivi is wet, green, and full of birds. The route continues into Botswana and the Chobe river before returning.',
     route: [
       { name: 'Windhoek', description: 'Starting point. Briefing on the route and the days ahead.' },
-      { name: 'Etosha National Park', description: 'A first taste of wildlife on the great white pan — rhino, elephant, lion at the waterholes.' },
+      { name: 'Etosha National Park', description: 'A first taste of wildlife on the great white pan, rhino, elephant, lion at the waterholes.' },
       { name: 'Rundu & the Okavango River', description: 'The border with Angola. The Okavango river runs wide and slow here, before it becomes the delta in Botswana.' },
       { name: 'Kwando River', description: 'A green ribbon of river and floodplain. Hippo, buffalo, elephant, and some of the best birding in southern Africa.' },
-      { name: 'Bwabwata National Park', description: 'A park without fences — elephant, buffalo, wild dog, and the wattled crane. Few vehicles, fewer people.' },
-      { name: 'Chobe River', description: 'Across the border into Botswana. Chobe has the densest elephant population in Africa — 120,000 at the last count.' },
+      { name: 'Bwabwata National Park', description: 'A park without fences, elephant, buffalo, wild dog, and the wattled crane. Few vehicles, fewer people.' },
+      { name: 'Chobe River', description: 'Across the border into Botswana. Chobe has the densest elephant population in Africa, 120,000 at the last count.' },
       { name: 'Zambezi River', description: 'The Zambezi before the falls. Wide, slow, and loud with hippo and fish eagle.' },
       { name: 'Windhoek', description: 'The return. Transfer connections arranged on request.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-northern-caprivi.webp',
-    heroImage: '/images/places/acacia-savanna.webp',
+    cardImage: 'chobe-elephants-riverbank',
+    heroImage: 'caprivi-mokoro-golden-reeds',
     availability: 'Best travelled May to October. Private departures arranged on request.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
       'Confirm whether route ends in Windhoek or extends to Victoria Falls (client source ends at Zambezi River).',
-      'Confirm border-crossing logistics for Chobe (Botswana) — visa requirements vary by nationality.',
+      'Confirm border-crossing logistics for Chobe (Botswana), visa requirements vary by nationality.',
     ],
   },
 
@@ -147,7 +147,7 @@ export const JOURNEYS: Journey[] = [
   {
     slug: 'untamed-central',
     name: 'Untamed Central Route',
-    tagline: 'The central corridor — Etosha, Damaraland, and the cold Atlantic coast.',
+    tagline: 'The central corridor, Etosha, Damaraland, and the cold Atlantic coast.',
     duration: 'Approximately 11 days',
     durationDays: 11,
     travelStyle: 'Self-drive or guided',
@@ -162,7 +162,7 @@ export const JOURNEYS: Journey[] = [
       'Walvis Bay lagoon',
     ],
     overview:
-      'The central corridor — north to the pan, west into the rock-art country of Damaraland, and down to the cold Atlantic coast. A shorter loop for travellers who want the wildlife and the desert without the long southern drive.',
+      'The central corridor, north to the pan, west into the rock-art country of Damaraland, and down to the cold Atlantic coast. A shorter loop for travellers who want the wildlife and the desert without the long southern drive.',
     route: [
       { name: 'Windhoek', description: 'Starting point. Briefing on the route ahead.' },
       { name: 'Etosha National Park', description: 'The great white pan and its waterholes. Rhino, elephant, lion, and the full complement of plains game.' },
@@ -170,8 +170,8 @@ export const JOURNEYS: Journey[] = [
       { name: 'Swakopmund', description: 'The cold Atlantic coast. Fog, flamingos, and German colonial architecture on African shores.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-central.webp',
-    heroImage: '/images/places/damaraland.webp',
+    cardImage: 'rhino-ostrich-etosha',
+    heroImage: 'damaraland-lodge-granite-hill',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
@@ -186,7 +186,7 @@ export const JOURNEYS: Journey[] = [
   {
     slug: 'untamed-desert',
     name: 'Untamed Desert Route',
-    tagline: 'Red sand, the cold coast, the plateau, and the great white pan — the classic desert traverse.',
+    tagline: 'Red sand, the cold coast, the plateau, and the great white pan, the classic desert traverse.',
     duration: '13 days',
     durationDays: 13,
     travelStyle: 'Self-drive or guided',
@@ -202,7 +202,7 @@ export const JOURNEYS: Journey[] = [
       'Etosha National Park',
     ],
     overview:
-      'The classic desert traverse — south into the red dunes, west to the cold coast, north-east to the Waterberg plateau and Okonjima, and finally north to Etosha. The shape of Namibia in thirteen days.',
+      'The classic desert traverse, south into the red dunes, west to the cold coast, north-east to the Waterberg plateau and Okonjima, and finally north to Etosha. The shape of Namibia in thirteen days.',
     route: [
       { name: 'Windhoek', description: 'Starting point. Briefing on the route, the vehicle, and the days ahead.' },
       { name: 'Kalahari Desert', description: 'Red sand plains and camelthorn acacia. A landscape the San have read by sound for thousands of years.' },
@@ -213,8 +213,8 @@ export const JOURNEYS: Journey[] = [
       { name: 'Etosha National Park', description: 'The great white pan. In the dry season, every animal in the park comes to the waterholes.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-desert.webp',
-    heroImage: '/images/places/etosha.webp',
+    cardImage: 'namib-red-dunes-green-plains',
+    heroImage: 'deadvlei-trees-dune-shadow',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [

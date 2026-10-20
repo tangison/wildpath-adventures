@@ -113,7 +113,7 @@ export default function FAQPage() {
                 <span className="text-[#9E4214]">set off.</span>
               </h1>
               <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                The questions we hear most. If yours is not here, write to us —
+                The questions we hear most. If yours is not here, write to us,
                 we answer everything.
               </p>
             </ScrollReveal>

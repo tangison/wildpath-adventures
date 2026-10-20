@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, ContourLines, AcaciaMark, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { WpPicture } from '@/components/wildpath-widgets';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ const NOTES = [
     excerpt:
       'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
     category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-sossusvlei.webp',
+    image: 'deadvlei-trees-dune-shadow',
   },
   {
     slug: 'etosha-dry-and-wet-seasons',
@@ -31,7 +31,7 @@ const NOTES = [
     excerpt:
       'How wildlife viewing shifts between the dry winter months and the greener, quieter summer, and what each season rewards.',
     category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-etosha-seasons.webp',
+    image: 'giraffes-walking-etosha',
   },
   {
     slug: 'packing-for-namibia',
@@ -39,7 +39,7 @@ const NOTES = [
     excerpt:
       'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
     category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-packing.webp',
+    image: 'game-drive-red-sand-track',
   },
   {
     slug: 'self-drive-namibia',
@@ -47,7 +47,7 @@ const NOTES = [
     excerpt:
       'Distances, road conditions, and the rhythm of a self-drive route. A practical introduction for first-time visitors.',
     category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-self-drive.webp',
+    image: 'kalahari-cabin-red-dune',
   },
   {
     slug: 'responsible-wildlife-viewing',
@@ -55,7 +55,7 @@ const NOTES = [
     excerpt:
       'How to watch wildlife well: distance, patience, and the habits that keep both animals and visitors safe.',
     category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-responsible-wildlife.webp',
+    image: 'oryx-dusk-golden-grass',
   },
   {
     slug: 'zambezi-region-route',
@@ -63,7 +63,7 @@ const NOTES = [
     excerpt:
       'The Caprivi Strip rewoven: rivers, parks, and the practical logistics of travelling Namibia\'s wet north-east.',
     category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-zambezi-route.webp',
+    image: 'victoria-falls-rainbow',
   },
 ];
 
@@ -106,13 +106,11 @@ export default function FieldNotesPage() {
           <div className="max-w-7xl mx-auto">
             <div className="group grid md:grid-cols-2 gap-0 bg-[#E8E3D5] overflow-hidden">
               <div className="relative aspect-[3/2] md:aspect-auto md:min-h-[400px] bg-[#1A1A1A] overflow-hidden">
-                <Image
-                  src={featured.image}
-                  alt={`Illustration for: ${featured.title}`}
-                  fill
-                  priority
+                <WpPicture
+                  photo={featured.image}
                   sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain"
+                  priority
+                  imgClassName="absolute inset-0 h-full w-full object-cover object-center"
                 />
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
@@ -134,7 +132,7 @@ export default function FieldNotesPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ GRID OF NOTES — 2-column varied ═════════════════════ */}
+        {/* ═════════════════════ GRID OF NOTES, 2-column varied ═════════════════════ */}
         <section className="pb-16 md:pb-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <h2 className="wp-display text-2xl md:text-4xl text-[#1A1A1A] leading-[0.9] mb-10">
@@ -144,12 +142,10 @@ export default function FieldNotesPage() {
               {rest.map((n) => (
                 <div key={n.slug} className="group block bg-[#E8E3D5] overflow-hidden">
                   <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
-                    <Image
-                      src={n.image}
-                      alt={`Illustration for: ${n.title}`}
-                      fill
+                    <WpPicture
+                      photo={n.image}
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain group-hover:opacity-90 transition-[opacity] duration-500"
+                      imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:opacity-90 transition-[opacity] duration-500"
                     />
                   </div>
                   <div className="p-6 md:p-8">
@@ -180,7 +176,7 @@ export default function FieldNotesPage() {
               Editorial, not a brochure.
             </h2>
             <p className="text-base text-[#1A1A1A]/75 leading-relaxed max-w-xl mx-auto mb-8">
-              These field notes are written as destination inspiration — short,
+              These field notes are written as destination inspiration, short,
               useful guides for travelling well in Namibia and Southern Africa.
               We publish when there is something worth publishing, not on a
               schedule. Have a question in the meantime?

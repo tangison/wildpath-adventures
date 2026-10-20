@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Anton, Oswald, Archivo, Caveat, Fraunces } from "next/font/google";
+import { Geist, Anton, Oswald } from "next/font/google";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
-import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@vercel/analytics/react";
+import { ScrollToTop } from "@/components/wildpath-widgets";
 import { SITE, SITE_URL } from "@/lib/site";
 
+// Font policy: three families total.
+//   Anton  — display headlines and the WILDPATH wordmark
+//   Oswald — the ADVENTURES line of the wordmark (per approved logo spec)
+//   Geist  — body text and subheads
+// Editorial italic accents use the system serif stack (zero webfont bytes).
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: "swap",
-});
-
-const frauncesSerif = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -29,22 +26,7 @@ const antonDisplay = Anton({
 const oswaldCondensed = Oswald({
   variable: "--font-oswald",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const archivoCondensed = Archivo({
-  variable: "--font-archivo",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const caveatScript = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "700",
   display: "swap",
 });
 
@@ -55,7 +37,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description:
-    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa. Travel the untamed beauty.",
+    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa. Slow down. Breathe. Discover Namibia.",
   keywords: [
     "Namibia",
     "Kalahari",
@@ -75,13 +57,6 @@ export const metadata: Metadata = {
   alternates: {
     canonical: SITE_URL,
   },
-  // Icons — served as static files from /public for reliability across
-  // dev and production. The master 512x512 mark is at /favicon.png;
-  // sized variants at /favicon-32.png, /favicon-16.png, /apple-touch-icon.png.
-  // PWA icons at /android-chrome-192.png and /android-chrome-512.png.
-  // src/app/icon.png and src/app/apple-icon.png also exist for Next.js
-  // App Router file-convention auto-detection (served at /icon, /apple-icon).
-  // Logo source: wildpath-logo-dark-theme.svg / wildpath-logo-light-theme.svg
   icons: {
     icon: [
       { url: '/favicon.png', sizes: '512x512', type: 'image/png' },
@@ -94,7 +69,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} · ${SITE.tagline}`,
     description:
       "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa.",
     siteName: SITE.name,
@@ -106,7 +81,7 @@ export const metadata: Metadata = {
         url: '/images/social/og-master.webp',
         width: 1731,
         height: 909,
-        alt: `${SITE.name} — ${SITE.tagline}`,
+        alt: `${SITE.name} · ${SITE.tagline}`,
       },
     ],
   },
@@ -158,12 +133,15 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* LCP preload — homepage hero illustration is the primary above-the-fold image */}
+        {/* LCP preload — first frame of the homepage hero slider (AVIF, 960w
+            covers the largest early viewport; the slider's later frames load lazily) */}
         <link
           rel="preload"
           as="image"
-          href="/images/illustrations/approved/wildpath-hero-main.webp"
-          type="image/webp"
+          href="/images/photos/landcruiser-dune-crest-960.avif"
+          type="image/avif"
+          imageSrcSet="/images/photos/landcruiser-dune-crest-640.avif 640w, /images/photos/landcruiser-dune-crest-960.avif 960w, /images/photos/landcruiser-dune-crest-1440.avif 1440w, /images/photos/landcruiser-dune-crest-1920.avif 1920w"
+          imageSizes="100vw"
         />
         <script
           type="application/ld+json"
@@ -171,7 +149,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${frauncesSerif.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
+        className={`${geistSans.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
       >
         {/* Skip-to-content link — accessibility: keyboard users can bypass navigation */}
         <a
@@ -181,8 +159,7 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
-        <Toaster />
-        <CookieConsent />
+        <ScrollToTop />
         <Analytics />
       </body>
     </html>

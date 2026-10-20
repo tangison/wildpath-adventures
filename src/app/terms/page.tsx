@@ -58,7 +58,7 @@ export default function TermsPage() {
                   </p>
                   <p>
                     Exact deposit percentages, balance due dates, accepted
-                    currencies, and payment methods are confirmed per booking —
+                    currencies, and payment methods are confirmed per booking,
                     they vary with the partners and services involved.
                   </p>
                 </div>
@@ -84,7 +84,7 @@ export default function TermsPage() {
                   <p>
                     You must hold a passport valid for at least six months beyond
                     your return date, with at least two blank pages. Visa
-                    requirements vary by nationality — we advise, you confirm.
+                    requirements vary by nationality, we advise, you confirm.
                     Travel insurance covering medical evacuation is mandatory.
                   </p>
                 </div>
@@ -101,7 +101,7 @@ export default function TermsPage() {
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">6. Changes to your journey</h2>
                   <p>
-                    We may need to change an itinerary — weather, road conditions,
+                    We may need to change an itinerary, weather, road conditions,
                     lodge availability, wildlife movements. We will always tell you
                     as early as possible and offer a comparable alternative. Any
                     major change before departure gives you the option to accept
@@ -112,7 +112,7 @@ export default function TermsPage() {
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">7. Your responsibilities</h2>
                   <p>
-                    You must follow the instructions of your guide at all times —
+                    You must follow the instructions of your guide at all times,
                     particularly around wildlife. We reserve the right to terminate
                     a journey, without refund, for behaviour that endangers
                     yourself, others, or the wildlife.
@@ -123,7 +123,7 @@ export default function TermsPage() {
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">8. Force majeure</h2>
                   <p>
                     We are not liable for failure to perform due to events beyond
-                    our control — natural disasters, political instability,
+                    our control, natural disasters, political instability,
                     pandemics, airline failures. We will work with you to rearrange
                     or refund fairly.
                   </p>

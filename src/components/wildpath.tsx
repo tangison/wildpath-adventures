@@ -12,6 +12,8 @@ import {
   TEL_URL,
   configuredSocialLinks,
 } from '@/lib/site';
+import { JOURNEYS } from '@/lib/journeys';
+import { DESTINATIONS } from '@/lib/destinations';
 import type { RouteStop } from '@/lib/journeys';
 
 // ═══════════════════════════════════════════════════════════
@@ -241,8 +243,8 @@ const NAV_LINKS_PRIMARY = [
 
 const SEARCH_PAGES = [
   { name: 'Journeys', href: '/journeys', desc: 'Four flagship expeditions through Namibia and Southern Africa' },
-  { name: 'Classic Namibia Route', href: '/journeys/classic-namibia', desc: 'The full loop — south to the canyon, north to the pan' },
-  { name: 'Northern Caprivi Route', href: '/journeys/untamed-northern-caprivi', desc: 'North into the rivers — Okavango, Kwando, Chobe, Zambezi' },
+  { name: 'Classic Namibia Route', href: '/journeys/classic-namibia', desc: 'The full loop, south to the canyon, north to the pan' },
+  { name: 'Northern Caprivi Route', href: '/journeys/untamed-northern-caprivi', desc: 'North into the rivers, Okavango, Kwando, Chobe, Zambezi' },
   { name: 'Central Route', href: '/journeys/untamed-central', desc: 'Etosha, Damaraland, and the cold Atlantic coast' },
   { name: 'Desert Route', href: '/journeys/untamed-desert', desc: 'Red sand, the cold coast, the plateau, and the great white pan' },
   { name: 'Destinations', href: '/destinations', desc: 'Nine landscapes across Namibia and Southern Africa' },
@@ -262,8 +264,10 @@ export function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const prefersReducedMotion = useReducedMotion();
   const searchInputRef = useRef<HTMLInputElement>(null);
+  const closeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 40);
@@ -280,6 +284,16 @@ export function Nav() {
     document.addEventListener('keydown', handleEscape);
     return () => document.removeEventListener('keydown', handleEscape);
   }, [searchOpen]);
+
+  // Close dropdowns on Escape
+  useEffect(() => {
+    if (!openDropdown) return;
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setOpenDropdown(null);
+    };
+    document.addEventListener('keydown', handleEscape);
+    return () => document.removeEventListener('keydown', handleEscape);
+  }, [openDropdown]);
 
   // Focus search input when opened
   useEffect(() => {
@@ -298,20 +312,20 @@ export function Nav() {
   // ── Floating nav bar ──
   const navBar = (
     <div
-      className={`fixed top-4 left-4 right-4 md:left-6 md:right-6 z-50 rounded-xl transition-all duration-400 ${
+      className={`fixed top-4 left-4 right-4 md:left-6 md:right-6 z-50 transition-[background-color,box-shadow] duration-300 ${
         isScrolled
-          ? 'bg-[#F2EDE3]/90 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
-          : 'bg-[#F2EDE3]/60 backdrop-blur-sm shadow-[0_2px_12px_rgba(0,0,0,0.04)]'
+          ? 'bg-[#F2EDE3] shadow-[0_4px_24px_rgba(0,0,0,0.08)]'
+          : 'bg-[#F2EDE3] shadow-[0_2px_12px_rgba(0,0,0,0.04)]'
       }`}
     >
       {/* ── Line 1: Wordmark + Search + CTA ── */}
       <div className="max-w-7xl mx-auto px-5 md:px-10 pt-4 pb-2 flex justify-between items-center">
-        {/* Left — wordmark */}
-        <Link href="/" className="group shrink-0" aria-label="Wildpath Adventures — home">
+        {/* Left, wordmark */}
+        <Link href="/" className="group shrink-0" aria-label="Wildpath Adventures, home">
           <Wordmark size="sm" />
         </Link>
 
-        {/* Right — Search + CTA (desktop) */}
+        {/* Right, Search + CTA (desktop) */}
         <div className="hidden md:flex items-center gap-3">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
@@ -337,7 +351,7 @@ export function Nav() {
           </Link>
         </div>
 
-        {/* Mobile — Search + hamburger */}
+        {/* Mobile, Search + hamburger */}
         <div className="flex md:hidden items-center gap-2">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
@@ -356,18 +370,88 @@ export function Nav() {
         </div>
       </div>
 
-      {/* ── Line 2: Primary nav links ── */}
+      {/* ── Line 2: Primary nav links with dropdowns ── */}
       <div className="hidden md:block max-w-7xl mx-auto px-5 md:px-10 pb-3 border-t border-[#1A1A1A]/8">
         <div className="flex items-center gap-6 pt-2">
-          {NAV_LINKS_PRIMARY.map((link) => (
-            <Link
-              key={link.name}
-              href={link.href}
-              className="text-[0.7rem] tracking-[0.14em] uppercase font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200"
-            >
-              {link.name}
-            </Link>
-          ))}
+          {NAV_LINKS_PRIMARY.map((link) => {
+            const items =
+              link.href === '/journeys'
+                ? JOURNEYS.map((j) => ({ name: j.name, href: `/journeys/${j.slug}`, desc: j.duration }))
+                : link.href === '/destinations'
+                  ? DESTINATIONS.map((d) => ({ name: d.name, href: `/destinations/${d.slug}`, desc: d.country }))
+                  : null;
+            const open = openDropdown === link.name;
+            if (!items) {
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  className="text-[0.7rem] tracking-[0.14em] uppercase font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200"
+                >
+                  {link.name}
+                </Link>
+              );
+            }
+            return (
+              <div
+                key={link.name}
+                className="relative"
+                onMouseEnter={() => {
+                  if (closeTimeout.current) clearTimeout(closeTimeout.current);
+                  setOpenDropdown(link.name);
+                }}
+                onMouseLeave={() => {
+                  closeTimeout.current = setTimeout(() => setOpenDropdown(null), 120);
+                }}
+              >
+                <button
+                  type="button"
+                  aria-expanded={open}
+                  aria-haspopup="true"
+                  onClick={() => setOpenDropdown(open ? null : link.name)}
+                  className={`text-[0.7rem] tracking-[0.14em] uppercase font-medium inline-flex items-center gap-1 transition-colors duration-200 ${
+                    open ? 'text-[#9E4214]' : 'text-[#1A1A1A]/70 hover:text-[#9E4214]'
+                  }`}
+                >
+                  {link.name}
+                  <ChevronDown
+                    size={12}
+                    aria-hidden="true"
+                    className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+                  />
+                </button>
+                <AnimatePresence>
+                  {open && (
+                    <motion.div
+                      initial={prefersReducedMotion ? { opacity: 1 } : { opacity: 0, y: 6 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={prefersReducedMotion ? { opacity: 0 } : { opacity: 0, y: 6 }}
+                      transition={{ duration: 0.18, ease: EASE_PREMIUM }}
+                      className="absolute left-0 top-full pt-2 z-50"
+                    >
+                      <div className="bg-[#F2EDE3] border border-[#1A1A1A]/15 shadow-[0_8px_32px_rgba(0,0,0,0.12)] min-w-[19rem] py-2">
+                        {items.map((item) => (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setOpenDropdown(null)}
+                            className="group flex items-baseline justify-between gap-6 px-4 py-2.5 hover:bg-[#1A1A1A]/5 transition-colors duration-150"
+                          >
+                            <span className="text-sm font-medium text-[#1A1A1A] group-hover:text-[#9E4214] transition-colors">
+                              {item.name}
+                            </span>
+                            <span className="text-[0.6rem] tracking-[0.15em] uppercase text-[#1A1A1A]/45 whitespace-nowrap">
+                              {item.desc}
+                            </span>
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </div>
       </div>
 
@@ -497,6 +581,35 @@ export function Nav() {
               >
                 {link.name}
               </Link>
+              {/* Grouped dropdown content, reachable on mobile */}
+              {link.href === '/journeys' && (
+                <div className="pb-2">
+                  {JOURNEYS.map((j) => (
+                    <Link
+                      key={j.slug}
+                      href={`/journeys/${j.slug}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block py-1.5 pl-4 text-sm text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors"
+                    >
+                      {j.name} · {j.durationDays} days
+                    </Link>
+                  ))}
+                </div>
+              )}
+              {link.href === '/destinations' && (
+                <div className="pb-2">
+                  {DESTINATIONS.map((d) => (
+                    <Link
+                      key={d.slug}
+                      href={`/destinations/${d.slug}`}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="inline-block mr-4 py-1.5 text-sm text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors"
+                    >
+                      {d.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </motion.div>
           ))}
 
@@ -562,7 +675,7 @@ export function Footer() {
 
   return (
     <footer className="bg-[#1A1A1A] text-[#F2EDE3] mt-auto">
-      {/* Illustration strip — footer landscape accent */}
+      {/* Illustration strip, footer landscape accent */}
       <div className="relative w-full h-24 md:h-32 overflow-hidden border-b border-[#F2EDE3]/10">
         <Image
           src="/images/illustrations/approved/wildpath-hero-main.webp"
@@ -573,18 +686,20 @@ export function Footer() {
         />
       </div>
 
-      {/* Statement — single typographic closing */}
+      {/* Statement, single typographic closing */}
       <div className="pt-16 pb-10 px-6">
         <div className="max-w-4xl mx-auto text-center">
 
-          {/* Closing statement — oversized type, colophon scale */}
+          {/* Closing statement, oversized type, colophon scale.
+              Client philosophy (company profile): slow down, reconnect and breathe, and discover. */}
           <p className="wp-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.9] tracking-[-0.01em] text-[#F2EDE3] mb-14">
-            Travel the{' '}
-            <em className="font-serif italic font-light text-[#E8854A]">untamed</em>{' '}
-            beauty<span className="text-[#C5511A]">.</span>
+            Slow down. Breathe.
+            <br />
+            <em className="font-serif italic font-light text-[#E8854A]">Discover</em>{' '}
+            Namibia<span className="text-[#C5511A]">.</span>
           </p>
 
-          {/* Wildpath approved logo mark — footer (dark variant, ivory artwork for dark bg) */}
+          {/* Wildpath approved logo mark, footer (dark variant, ivory artwork for dark bg) */}
           <div className="flex justify-center mb-10">
             <Image
               src="/images/brand/wildpath-logo-dark-theme.png"
@@ -596,7 +711,7 @@ export function Footer() {
             />
           </div>
 
-          {/* Contact details — embedded in the statement */}
+          {/* Contact details, embedded in the statement */}
           <p className="text-base md:text-lg text-[#F2EDE3]/80 leading-relaxed mb-6">
             <span className="text-[#F2EDE3]">{SITE.location.city}, {SITE.location.country}</span>
             <span className="text-[#F2EDE3]/40 mx-3">·</span>
@@ -624,7 +739,7 @@ export function Footer() {
             </a>
           </p>
 
-          {/* Social links — only rendered if officially configured */}
+          {/* Social links, only rendered if officially configured */}
           {socials.length > 0 && (
             <div className="flex gap-3 justify-center mb-8">
               {socials.map((s) => (
@@ -642,22 +757,23 @@ export function Footer() {
             </div>
           )}
 
-          {/* Legal links — single subtle row */}
+          {/* Legal links, single subtle row */}
           <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/50 mb-8">
             <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
-            <Link href="/privacy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
+            <Link href="/privacy-policy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
             <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
             <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
+            <Link href="/brand" className="hover:text-[#F2EDE3] transition-colors">Brand</Link>
           </div>
 
-          {/* Copyright */}
+          {/* Copyright, trading name per company profile (no registration suffix stated in client documents) */}
           <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35 mb-6">
-            &copy; {new Date().getFullYear()} {SITE.name} · All routes reserved
+            &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country}
           </p>
 
-          {/* Tangison Studio credit — colophon */}
+          {/* Tangison Studio credit, colophon */}
           <p className="text-[0.55rem] tracking-[0.2em] uppercase text-[#F2EDE3]/30">
-            Designed &amp; Built by{' '}
+            Made by{' '}
             <a
               href={SITE.studio.url}
               target="_blank"
@@ -798,14 +914,14 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
             <span className="text-[#9E4214]">a spreadsheet.</span>
           </h2>
           <p className="mt-6 text-base text-[#1A1A1A]/70 max-w-xl leading-relaxed">
-            Below is the public arc of the journey — the destinations in sequence.
+            Below is the public arc of the journey, the destinations in sequence.
             The full day-by-day itinerary, with selected accommodation, meal plans,
             and logistics, is available on request.
           </p>
         </ScrollReveal>
 
         <div className="relative">
-          {/* Vertical line — the path */}
+          {/* Vertical line, the path */}
           <div className="absolute left-[28px] md:left-1/2 top-0 bottom-0 w-px bg-[#1A1A1A]/15 md:-translate-x-1/2" aria-hidden="true" />
 
           <div className="space-y-8 md:space-y-12">
@@ -816,7 +932,7 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
                     i % 2 === 1 ? 'md:[direction:rtl]' : ''
                   }`}
                 >
-                  {/* Stop marker — the footprint on the path */}
+                  {/* Stop marker, the footprint on the path */}
                   <div className="absolute left-0 md:left-1/2 md:-translate-x-1/2 top-2 z-10">
                     <div className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#F2EDE3] border-2 border-[#C5511A] flex items-center justify-center shadow-[0_0_0_6px_#F2EDE3]">
                       <span className="wp-display text-base md:text-lg text-[#9E4214]">
@@ -825,7 +941,7 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
                     </div>
                   </div>
 
-                  {/* Stop content — single column, alternating sides on desktop */}
+                  {/* Stop content, single column, alternating sides on desktop */}
                   <div className={`pl-20 md:pl-0 [direction:ltr] ${i % 2 === 1 ? 'md:order-2' : 'md:order-1'} ${i % 2 === 1 ? 'md:pr-12 md:text-right' : 'md:pl-12'}`}>
                     <p className="wp-subhead text-[0.6rem] tracking-[0.25em] text-[#9E4214] mb-2">
                       Stop {String(i + 1).padStart(2, '0')}
@@ -846,13 +962,13 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
           </div>
         </div>
 
-        {/* Continue journey — final marker */}
+        {/* Continue journey, final marker */}
         <div className="mt-16 flex flex-col items-center gap-4">
           <FootprintsMark className="w-6 h-12 text-[#9E4214]/40" />
           <p className="wp-script text-xl text-[#9E4214]">Continue the journey</p>
           <p className="text-sm text-[#1A1A1A]/60 max-w-md text-center leading-relaxed">
-            The full day-by-day itinerary — with selected accommodation, logistics,
-            and inclusions — is available on request.
+            The full day-by-day itinerary, with selected accommodation, logistics,
+            and inclusions, is available on request.
           </p>
           <Link
             href="/contact"
@@ -864,171 +980,6 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
         </div>
       </div>
     </section>
-  );
-}
-
-// ═══════════════════════════════════════════════════════════
-// COMING SOON — editorial locked screen (preserved for future use)
-// REDUCED MOTION: Entrance animations skipped when preferred.
-// ═══════════════════════════════════════════════════════════
-
-export function ComingSoon({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) {
-  const prefersReducedMotion = useReducedMotion();
-
-  return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/illustrations/approved/page-about.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F2EDE3]/60 via-[#F2EDE3]/80 to-[#F2EDE3]" />
-      </div>
-
-      <div className="relative z-10 pt-10 px-6 md:px-12 border-b border-[#1A1A1A]/15">
-        <div className="max-w-7xl mx-auto flex justify-between items-center pb-6">
-          <Link href="/" aria-label="Home">
-            <Wordmark size="sm" />
-          </Link>
-          <Link
-            href="/"
-            className="text-[0.65rem] tracking-[0.2em] uppercase font-bold text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors flex items-center gap-2"
-          >
-            Back to Home <ArrowRight size={12} />
-          </Link>
-        </div>
-      </div>
-
-      <main className="relative z-10 flex-1 flex items-center px-6 md:px-12">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
-          {prefersReducedMotion ? (
-            <>
-              <div className="md:col-span-4">
-                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
-                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-              </div>
-              <div className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20">
-                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-                  The route is being charted
-                </p>
-                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
-                  {title}
-                </h1>
-                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-                  {subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/contact"
-                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    Plan Your Journey
-                    <ArrowRight size={16} />
-                  </Link>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    <MessageCircle size={15} />
-                    WhatsApp Us
-                  </a>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.2 }}
-                className="md:col-span-4"
-              >
-                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
-                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.35 }}
-                className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20"
-              >
-                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-                  The route is being charted
-                </p>
-                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
-                  {title}
-                </h1>
-                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-                  {subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/contact"
-                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    Plan Your Journey
-                    <ArrowRight size={16} />
-                  </Link>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    <MessageCircle size={15} />
-                    WhatsApp Us
-                  </a>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </div>
-      </main>
-
-      <div className="relative z-10 py-6 px-6 text-center text-[0.6rem] tracking-[0.2em] uppercase text-[#1A1A1A]/45 border-t border-[#1A1A1A]/10">
-        &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country}
-      </div>
-    </div>
-  );
-}
-
-// ═══════════════════════════════════════════════════════════
-// WATERMARK — Decorative logo mark, very low opacity
-// Uses the approved wildpath-logo-light-theme.svg (for light backgrounds)
-// or wildpath-logo-dark-theme.svg (for dark backgrounds).
-// Opacity range: 0.04–0.08. Decorative instances are aria-hidden.
-// ═══════════════════════════════════════════════════════════
-
-export function WildpathWatermark({
-  className = '',
-  variant = 'light',
-}: {
-  className?: string;
-  variant?: 'light' | 'dark';
-}) {
-  const src = variant === 'dark'
-    ? '/images/brand/wildpath-logo-dark-theme.png'
-    : '/images/brand/wildpath-logo-light-theme.png';
-  return (
-    <Image
-      src={src}
-      alt=""
-      width={1255}
-      height={1415}
-      className={`opacity-[0.06] ${className}`}
-      aria-hidden="true"
-    />
   );
 }
 

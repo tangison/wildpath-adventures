@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import { MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
 import { Nav, Footer, AcaciaMark, ContourLines, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { ContactForm } from '@/components/contact-form';
+import { WpPicture } from '@/components/wildpath-widgets';
 import { SITE, SITE_EMAIL, WHATSAPP_URL, TEL_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -49,13 +49,11 @@ export default function ContactPage() {
         <section className="px-6 md:px-12 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
-              <Image
-                src="/images/illustrations/approved/page-contact.webp"
-                alt="Hand-drawn illustration of the Namibian landscape with open sky on the left side"
-                fill
-                sizes="100vw"
-                className="object-contain object-center"
-              />
+              <WpPicture
+                  photo="namib-red-dunes-green-plains"
+                  sizes="100vw"
+                  imgClassName="absolute inset-0 h-full w-full object-cover object-center"
+                />
             </div>
           </div>
         </section>
@@ -67,7 +65,7 @@ export default function ContactPage() {
         {/* ═════════════════════ CONTACT GRID ═════════════════════ */}
         <section className="py-12 md:py-20 px-6 md:px-12">
           <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 md:gap-12">
-            {/* LEFT — direct contact + WhatsApp primary */}
+            {/* LEFT, direct contact + WhatsApp primary */}
             <div className="lg:col-span-5">
               <h2 className="wp-display text-3xl md:text-4xl text-[#1A1A1A] leading-[0.95] mb-8">
                 We are here,
@@ -75,7 +73,7 @@ export default function ContactPage() {
                 <span className="text-[#9E4214]">in Windhoek.</span>
               </h2>
 
-              {/* WhatsApp — primary CTA */}
+              {/* WhatsApp, primary CTA */}
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
@@ -169,7 +167,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* RIGHT — Enquiry form */}
+            {/* RIGHT, Enquiry form */}
             <div className="lg:col-span-7">
               <div className="bg-[#E8E3D5] p-6 md:p-8 mb-6">
                 <h3 className="wp-display text-2xl md:text-3xl text-[#1A1A1A] leading-tight">
@@ -195,7 +193,7 @@ export default function ContactPage() {
               <span className="text-[#E8854A]">to the road.</span>
             </h2>
 
-            {/* Process steps — editorial numbered list */}
+            {/* Process steps, editorial numbered list */}
             <div className="max-w-2xl mx-auto text-left space-y-0">
               {PROCESS_STEPS.map((s) => (
                 <div

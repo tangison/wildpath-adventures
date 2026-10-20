@@ -1,39 +1,21 @@
 import type { NextConfig } from "next";
 
+/**
+ * Static site. `output: 'export'` produces a pure static build in ./out —
+ * no server, no API routes, no middleware. All images are pre-optimised
+ * WebP/AVIF with hand-tracked srcsets (see src/lib/photo-library.ts),
+ * so the Next image optimizer is switched off.
+ */
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* ── Build quality ──────────────────────────────────────
-   * reactStrictMode: detects unsafe lifecycle methods & legacy context API
-   * ignoreBuildErrors: MUST be false in production — type errors are bugs
-   * ─────────────────────────────────────────────────────── */
+  output: "export",
   reactStrictMode: true,
   typescript: {
     ignoreBuildErrors: false,
   },
-  /* ── Image optimisation ────────────────────────────────
-   * remotePatterns: allow externally-hosted images if needed
-   * formats: prefer AVIF then WebP for best compression
-   * ─────────────────────────────────────────────────────── */
   images: {
-    formats: ['image/avif', 'image/webp'],
+    unoptimized: true,
   },
-  /* ── Security headers ──────────────────────────────────
-   * Additional headers applied to every response.
-   * Primary security headers are set in src/middleware.ts.
-   * ─────────────────────────────────────────────────────── */
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'all', // explicitly allow indexing (override per-route if needed)
-          },
-        ],
-      },
-    ];
-  },
+  trailingSlash: false,
 };
 
 export default nextConfig;

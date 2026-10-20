@@ -1,10 +1,10 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, AcaciaMark, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { WpPicture } from '@/components/wildpath-widgets';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { getJourney } from '@/lib/journeys';
 import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
@@ -42,13 +42,11 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
       <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO PHOTOGRAPHY ═════════════════════ */}
         <section className="relative h-[55vh] md:h-[70vh] min-h-[450px] bg-[#1A1A1A] overflow-hidden">
-          <Image
-            src={dest.image}
-            alt={`${dest.name} — ${dest.country}`}
-            fill
-            priority
+          <WpPicture
+            photo={dest.image}
             sizes="100vw"
-            className={`${dest.imageKind === 'illustration' ? 'object-contain object-center' : 'object-cover object-center'}`}
+            priority
+            imgClassName="absolute inset-0 h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/30 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -66,13 +64,6 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
               </div>
             </div>
           </div>
-          {dest.imageKind === 'illustration' && (
-            <div className="absolute top-24 right-6 md:right-12 bg-[#F2EDE3]/90 px-3 py-1.5">
-              <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
-                Editorial illustration
-              </p>
-            </div>
-          )}
         </section>
 
         {/* ═════════════════════ OVERVIEW ═════════════════════ */}
@@ -153,12 +144,10 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                 className="group grid md:grid-cols-12 gap-0 bg-[#2A2A2A] hover:bg-[#333] transition-colors duration-300 overflow-hidden"
               >
                 <div className="relative md:col-span-5 aspect-[16/10] md:aspect-auto md:min-h-[340px] overflow-hidden">
-                  <Image
-                    src={journey.cardImage}
-                    alt={journey.name}
-                    fill
+                  <WpPicture
+                    photo={journey.cardImage}
                     sizes="(max-width: 768px) 100vw, 45vw"
-                    className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:brightness-110 transition-[filter] duration-500 ease-out"
                   />
                   <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                     <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
@@ -216,12 +205,10 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                   href={`/destinations/${d.slug}`}
                   className="group relative block aspect-[3/4] overflow-hidden bg-[#1A1A1A]"
                 >
-                  <Image
-                    src={d.image}
-                    alt={d.name}
-                    fill
+                  <WpPicture
+                    photo={d.image}
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
+                    imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:brightness-110 transition-[filter] duration-500 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-[#F2EDE3]">

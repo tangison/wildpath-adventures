@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, ArrowRight, Check, Loader2 } from 'lucide-react';
+import { MessageCircle, ArrowRight, Check, Mail } from 'lucide-react';
 import { AcaciaMark } from '@/components/wildpath';
-import { WHATSAPP_URL } from '@/lib/site';
+import { SITE_EMAIL, WHATSAPP_URL } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
 
 const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
@@ -62,6 +62,27 @@ function buildWhatsAppUrl(f: FormState): string {
   return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
 
+/**
+ * Builds a mailto: draft with the full enquiry. Static site: no server.
+ * The submit button hands the visitor to their own mail app with
+ * everything prefilled, addressed to the Wildpath enquiry inbox.
+ */
+function buildMailtoUrl(f: FormState): string {
+  const journeyName =
+    (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
+  const lines = [
+    `New enquiry from ${f.name || '—'} (${f.country || '—'})`,
+    `Email: ${f.email || '—'} · Phone/WhatsApp: ${f.phone || '—'}`,
+    `Journey: ${journeyName} · Travel: ${f.travelMonth || '—'} · Travellers: ${f.travellers}`,
+  ];
+  if (f.travelStyle) lines.push(`Style: ${f.travelStyle}`);
+  if (f.duration) lines.push(`Duration: ${f.duration}`);
+  if (f.interests) lines.push(`Interests: ${f.interests}`);
+  lines.push('', f.message || '—');
+  const subject = `Journey enquiry, ${f.name || 'via wildpathnamibia.com'}`;
+  return `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -74,9 +95,15 @@ export function ContactForm() {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === 'submitting') return;
+
+    // Honeypot: bots fill the hidden field. Show them the success state and
+    // send nothing anywhere.
+    if (form.website) {
+      setStatus('success');
+      return;
+    }
 
     // Client-side guard: consent required
     if (!form.consent) {
@@ -84,26 +111,12 @@ export function ContactForm() {
       return;
     }
 
-    setStatus('submitting');
     setError('');
-
-    try {
-      const res = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try WhatsApp instead.');
-      }
-      setLastEnquiry({ ...form });
-      setStatus('success');
-      setForm(INITIAL);
-    } catch (err) {
-      setStatus('error');
-      setError(err instanceof Error ? err.message : 'Something went wrong.');
-    }
+    setLastEnquiry({ ...form });
+    setStatus('success');
+    // Hand the enquiry to the visitor's mail app, fully prefilled.
+    window.location.href = buildMailtoUrl(form);
+    setForm(INITIAL);
   }
 
   // ═══ SUCCESS STATE ═══
@@ -120,11 +133,12 @@ export function ContactForm() {
         </div>
         <p className="wp-script text-2xl text-[#9E4214] mb-3">Thank you</p>
         <h3 className="wp-display text-3xl md:text-4xl text-[#1A1A1A] mb-4 leading-tight">
-          Your enquiry is on its way.
+          Your enquiry is drafted.
         </h3>
         <p className="text-base text-[#1A1A1A]/75 leading-relaxed max-w-md mx-auto mb-8">
-          We aim to reply within two business days. For an immediate response,
-          message us on WhatsApp.
+          Your mail app has opened with the enquiry filled in, press send and
+          it lands in the Wildpath inbox. No mail app? Send the same enquiry
+          straight to Juliet on WhatsApp.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
@@ -231,7 +245,7 @@ export function ContactForm() {
               </option>
             ))}
             <option value="custom">A custom journey</option>
-            <option value="not-sure">Not sure yet — help me choose</option>
+            <option value="not-sure">Not sure yet, help me choose</option>
           </select>
         </div>
         <div>
@@ -267,7 +281,7 @@ export function ContactForm() {
 
       {/* Optional fields */}
       <div className="pt-2 border-t border-[#1A1A1A]/10">
-        <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-4 pt-2">Optional — help us plan better</p>
+        <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-4 pt-2">Optional, help us plan better</p>
         <div className="grid md:grid-cols-2 gap-5">
           <div>
             <label htmlFor="travelStyle" className={labelClass}>Preferred travel style</label>
@@ -316,7 +330,7 @@ export function ContactForm() {
           rows={5}
           value={form.message}
           onChange={(e) => update('message', e.target.value)}
-          placeholder="Tell us about the journey you have in mind — what you want to see, what pace suits you, any must-haves or must-avoids. The more you share, the better the first draft."
+          placeholder="Tell us about the journey you have in mind, what you want to see, what pace suits you, any must-haves or must-avoids. The more you share, the better the first draft."
           className={`${inputClass} resize-none`}
         />
       </div>
@@ -333,12 +347,12 @@ export function ContactForm() {
         />
         <label htmlFor="consent" className="text-xs text-[#1A1A1A]/75 leading-relaxed">
           I agree to the{' '}
-          <a href="/privacy" className="text-[#9E4214] hover:underline">privacy policy</a>{' '}
+          <a href="/privacy-policy" className="text-[#9E4214] hover:underline">privacy policy</a>{' '}
           and consent to Wildpath Adventures responding to my enquiry.
         </label>
       </div>
 
-      {/* Honeypot — visually hidden, bots fill it */}
+      {/* Honeypot, visually hidden, bots fill it */}
       <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
         <label htmlFor="website">Website (leave empty)</label>
         <input
@@ -354,37 +368,17 @@ export function ContactForm() {
       {error && (
         <div className="bg-[#C5511A]/10 border border-[#C5511A]/30 px-4 py-3 text-sm text-[#9E4214]">
           {error}
-          {status === 'error' && (
-            <a
-              href={buildWhatsAppUrl(form)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-2 bg-[#1A1A1A] text-[#F2EDE3] px-4 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#9E4214] transition-colors"
-            >
-              <MessageCircle size={14} />
-              Send this enquiry via WhatsApp instead
-            </a>
-          )}
         </div>
       )}
 
       <div className="flex flex-col sm:flex-row gap-3 pt-2">
         <button
           type="submit"
-          disabled={status === 'submitting'}
-          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
-          {status === 'submitting' ? (
-            <>
-              <Loader2 size={15} className="animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              Request This Journey
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </>
-          )}
+          <Mail size={16} />
+          Request This Journey
+          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </button>
         <a
           href={buildWhatsAppUrl(form)}
@@ -398,8 +392,8 @@ export function ContactForm() {
       </div>
       <p className="text-xs text-[#1A1A1A]/55 pt-2">
         We aim to reply within two business days. Your details are only used to
-        plan your journey — see our{' '}
-        <a href="/privacy" className="underline hover:text-[#9E4214]">privacy policy</a>.
+        plan your journey, see our{' '}
+        <a href="/privacy-policy" className="underline hover:text-[#9E4214]">privacy policy</a>.
       </p>
     </form>
   );

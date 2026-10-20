@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle, MapPin } from 'lucide-react';
 import {
   Nav,
@@ -13,6 +12,7 @@ import {
   JourneyRouteTimeline,
 } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { WpPicture } from '@/components/wildpath-widgets';
 import { JOURNEYS, getJourney } from '@/lib/journeys';
 import { WHATSAPP_URL } from '@/lib/site';
 
@@ -48,13 +48,11 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
       <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO ═════════════════════ */}
         <section className="relative h-[50vh] md:h-[65vh] min-h-[400px] bg-[#1A1A1A] overflow-hidden">
-          <Image
-            src={journey.heroImage}
-            alt={`${journey.name} — ${journey.route.map(r => r.name).join(', ')}`}
-            fill
-            priority
+          <WpPicture
+            photo={journey.heroImage}
             sizes="100vw"
-            className="object-cover object-center opacity-70"
+            priority
+            imgClassName="absolute inset-0 h-full w-full object-cover object-center opacity-70"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/40 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -131,7 +129,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
           <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
         </div>
 
-        {/* ═════════════════════ HIGHLIGHTS — editorial numbered list ═════════════════════ */}
+        {/* ═════════════════════ HIGHLIGHTS, editorial numbered list ═════════════════════ */}
         <section className="py-36 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-4xl mx-auto">
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-16">
@@ -168,7 +166,7 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
             </h2>
             <p className="text-lg text-[#F2EDE3]/75 max-w-xl mx-auto leading-relaxed mb-10">
               We will send you the detailed route, selected accommodation, meal
-              plans, and pricing — drafted around your dates and your party.
+              plans, and pricing, drafted around your dates and your party.
               Full itinerary and accommodation details available on request.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -214,12 +212,10 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
                   className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
                 >
                   <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
-                    <Image
-                      src={j.cardImage}
-                      alt={j.name}
-                      fill
+                    <WpPicture
+                      photo={j.cardImage}
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                      imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:brightness-110 transition-[filter] duration-500 ease-out"
                     />
                     <div className="absolute top-3 left-3 bg-[#F2EDE3] px-2.5 py-1">
                       <p className="wp-subhead text-[0.55rem] tracking-[0.2em] text-[#9E4214]">

@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { WpPicture } from '@/components/wildpath-widgets';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -54,12 +54,10 @@ export default function AboutPage() {
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">
             <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
-              <Image
-                src="/images/illustrations/approved/page-about.webp"
-                alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
-                fill
+              <WpPicture
+                photo="oryx-dusk-golden-grass"
                 sizes="100vw"
-                className="object-contain object-center"
+                imgClassName="absolute inset-0 h-full w-full object-cover object-center"
               />
             </div>
           </div>
@@ -96,7 +94,7 @@ export default function AboutPage() {
           <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
         </div>
 
-        {/* ═════════════════════ STRENGTHS — editorial numbered list ═════════════════════ */}
+        {/* ═════════════════════ STRENGTHS, editorial numbered list ═════════════════════ */}
         <section className="py-28 px-6 md:px-12">
           <div className="max-w-4xl mx-auto">
             <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9] mb-16">

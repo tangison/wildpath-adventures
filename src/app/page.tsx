@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import {
@@ -10,6 +9,7 @@ import {
   BirdFlock,
   SectionHeading,
 } from '@/components/wildpath';
+import { WpPicture, HeroSlider } from '@/components/wildpath-widgets';
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
 import { WHATSAPP_URL } from '@/lib/site';
@@ -56,7 +56,7 @@ const FIELD_NOTES = [
 ];
 
 export default function Home() {
-  const featuredDestinations = DESTINATIONS.filter((d) => d.imageKind === 'photo').slice(0, 4);
+  const featuredDestinations = DESTINATIONS.slice(0, 4);
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -64,7 +64,7 @@ export default function Home() {
       <Nav />
 
       <main id="main-content" className="flex-1">
-        {/* ═════════════════════ HERO — one statement, type-first ═════════════════════ */}
+        {/* ═════════════════════ HERO, one statement, type-first ═════════════════════ */}
         <section className="pt-24 md:pt-32 pb-14 md:pb-20 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <motion.p
@@ -82,9 +82,9 @@ export default function Home() {
               transition={{ duration: 0.7, ease: EASE_PREMIUM, delay: 0.1 }}
               className="wp-display text-[clamp(3rem,10.5vw,10rem)] leading-[0.88] tracking-[-0.015em] text-[#1A1A1A] max-w-[12ch]"
             >
-              Travel the{' '}
-              <em className="font-serif italic font-light text-[#9E4214]">untamed</em>{' '}
-              beauty<span className="text-[#C5511A]">.</span>
+              Slow down. Breathe.{' '}
+              <em className="font-serif italic font-light text-[#9E4214]">Discover</em>{' '}
+              Namibia<span className="text-[#C5511A]">.</span>
             </motion.h1>
 
             <div className="mt-10 md:mt-14 grid md:grid-cols-12 gap-6 md:gap-8 items-end">
@@ -113,32 +113,25 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Hero illustration — editorial band with caption row */}
+            {/* Hero, full-bleed background slideshow of client photographs.
+                Crossfade + slow Ken Burns, compositor-only; reduced motion
+                renders a single static frame. */}
             <motion.div
               initial={prefersReducedMotion ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, ease: EASE_PREMIUM, delay: 0.25 }}
-              className="mt-12 md:mt-16 relative aspect-[16/10] md:aspect-[21/9] overflow-hidden bg-[#E8E3D5]"
+              className="mt-12 md:mt-16 relative aspect-[16/10] md:aspect-[21/9] overflow-hidden bg-[#1A1A1A]"
             >
-              <Image
-                src="/images/illustrations/approved/wildpath-hero-main.webp"
-                alt="Hand-drawn vintage screen-print illustration of the Namibian savannah with acacia tree, gravel road, elephants, birds, and sunset"
-                fill
-                priority
-                loading="eager"
-                fetchPriority="high"
-                sizes="(max-width: 768px) 100vw, 92vw"
-                className="object-contain object-center"
-              />
+              <HeroSlider />
+              <div className="absolute inset-x-0 bottom-0 p-4 md:p-5 flex justify-between text-[0.6rem] md:text-[0.65rem] tracking-[0.22em] uppercase text-[#F2EDE3]">
+                <span>Wildpath Adventures</span>
+                <span>Namibia, Southern Africa</span>
+              </div>
             </motion.div>
-            <div className="mt-3 flex justify-between text-[0.6rem] md:text-[0.65rem] tracking-[0.22em] uppercase text-[#1A1A1A]/45">
-              <span>Wildpath Adventures</span>
-              <span>Namibia, Southern Africa</span>
-            </div>
           </div>
         </section>
 
-        {/* ═════════════════════ MANIFESTO — secondary statement band ═════════════════════ */}
+        {/* ═════════════════════ MANIFESTO, secondary statement band ═════════════════════ */}
         <section className="border-y border-[#1A1A1A]/12 bg-[#E8E3D5] py-14 md:py-20 px-6 md:px-12">
           <div className="max-w-5xl mx-auto">
             <p className="wp-display text-3xl md:text-5xl lg:text-6xl leading-[1.05] text-[#1A1A1A]">
@@ -149,7 +142,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ JOURNEYS — type index with hover inversion ═════════════════════ */}
+        {/* ═════════════════════ JOURNEYS, type index with hover inversion ═════════════════════ */}
         <section id="journeys" className="py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-4">
@@ -197,7 +190,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ WHY WILDPATH — numbered list, dark band ═════════════════════ */}
+        {/* ═════════════════════ WHY WILDPATH, numbered list, dark band ═════════════════════ */}
         <section className="py-20 md:py-28 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
           <div className="max-w-5xl mx-auto">
             <SectionHeading
@@ -236,7 +229,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ THE LAND — destinations, ruled editorial grid ═════════════════════ */}
+        {/* ═════════════════════ THE LAND, destinations, ruled editorial grid ═════════════════════ */}
         <section id="destinations" className="py-20 md:py-28 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
             <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-8">
@@ -257,12 +250,11 @@ export default function Home() {
                 href={`/destinations/${featuredDestinations[0].slug}`}
                 className="group relative block aspect-[16/9] md:aspect-[21/8] overflow-hidden bg-[#1A1A1A] mb-6"
               >
-                <Image
-                  src={featuredDestinations[0].image}
-                  alt={`${featuredDestinations[0].name}, ${featuredDestinations[0].country}`}
-                  fill
+                <WpPicture
+                  photo={featuredDestinations[0].image}
                   sizes="100vw"
-                  className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-500"
+                  priority
+                  imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:brightness-110 transition-[filter] duration-500 ease-out"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                 <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-[#F2EDE3]">
@@ -290,12 +282,10 @@ export default function Home() {
                   href={`/destinations/${d.slug}`}
                   className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
                 >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name}, ${d.country}`}
-                    fill
+                  <WpPicture
+                    photo={d.image}
                     sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-500"
+                    imgClassName="absolute inset-0 h-full w-full object-cover object-center group-hover:brightness-110 transition-[filter] duration-500 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-6 flex flex-col justify-end text-[#F2EDE3]">
@@ -319,7 +309,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ FIELD NOTES — text row list ═════════════════════ */}
+        {/* ═════════════════════ FIELD NOTES, text row list ═════════════════════ */}
         <section id="field-notes" className="py-20 md:py-28 px-6 md:px-12">
           <div className="max-w-5xl mx-auto">
             <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-2">
@@ -363,7 +353,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ PULL QUOTE — editorial, not a testimonial ═════════════════════ */}
+        {/* ═════════════════════ PULL QUOTE, editorial, not a testimonial ═════════════════════ */}
         <section className="py-28 md:py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
           <motion.div
             animate={prefersReducedMotion ? { x: 0 } : { x: [0, 20, 0] }}
@@ -391,7 +381,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ═════════════════════ FINAL CTA — closing statement ═════════════════════ */}
+        {/* ═════════════════════ FINAL CTA, closing statement ═════════════════════ */}
         <section className="py-28 md:py-40 px-6 md:px-12">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="wp-display text-4xl md:text-7xl text-[#1A1A1A] leading-[0.92] mb-6">
