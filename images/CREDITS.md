@@ -106,3 +106,10 @@ Updated: 2026-10-20
 - Attribution: Africa Geographic (web source)
 - Retrieved: 2026-10-20
 - Alt: Victoria Falls in full flow with a double rainbow spanning the gorge.
+## chobe-river-elephants-dusk
+- Origin: Pexels (retrieved 2026-10-20 during the earlier rebuild iteration; re-adopted with full WebP+AVIF variant set)
+- Licence: Pexels Licence (free to use, no attribution required; recorded as good practice)
+- Attribution: Uncredited Pexels contributor
+- Retrieved: 2026-10-20
+- Alt: Elephants moving along the Chobe riverbank at dusk through warm haze.
+- Used on: Homepage hero slider (slide 3)
