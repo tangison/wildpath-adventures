@@ -288,14 +288,14 @@
       <image:caption>The wreck of the Eduard Bohlen stranded in Skeleton Coast sand.</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://wildpathnamibia.com/images/places/victoria-falls-1920.webp</image:loc>
-      <image:title>Wildpath Adventures</image:title>
-      <image:caption>Victoria Falls from the air, spray rising above the basalt gorge.</image:caption>
-    </image:image>
-    <image:image>
       <image:loc>https://wildpathnamibia.com/images/places/chobe-river-kasane-1920.webp</image:loc>
       <image:title>Wildpath Adventures</image:title>
       <image:caption>The Chobe River winding through green floodplains near Kasane.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpathnamibia.com/images/places/victoria-falls-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Victoria Falls from the air, spray rising above the basalt gorge.</image:caption>
     </image:image>
   </url>
   <url>

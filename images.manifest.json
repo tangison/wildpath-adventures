@@ -777,6 +777,19 @@
           "fmt": "webp"
         }
       ]
+    },
+    {
+      "base": "chobe-river-elephants-dusk",
+      "dir": "images/photos",
+      "alt": "Elephants moving along the Chobe riverbank at dusk through warm haze.",
+      "theme": "wildlife/chobe",
+      "orientation": "landscape",
+      "kind": "scouted-pexels",
+      "licence": "Pexels Licence (free to use; contributor uncredited on Pexels)",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline (Chobe River stop)",
+        "destinations/chobe:mosaic"
+      ]
     }
   ]
 }

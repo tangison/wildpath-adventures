@@ -101,6 +101,7 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Chobe River': [
         { base: 'chobe-river-kasane', alt: 'The Chobe River winding through green floodplains near Kasane.' },
+        { base: 'chobe-river-elephants-dusk', alt: 'Elephants moving along the Chobe riverbank at dusk through warm haze.' },
       ],
       'Zambezi River': [
         { base: 'zambezi-junction', alt: 'The Zambezi River where Namibia, Zambia, Zimbabwe and Botswana meet.' },
@@ -256,7 +257,9 @@ export const DESTINATION_MEDIA: Record<
   },
   'chobe': {
     hero: 'chobe-river-kasane',
-    mosaic: [],
+    mosaic: [
+      { base: 'chobe-river-elephants-dusk', alt: 'Elephants moving along the Chobe riverbank at dusk through warm haze.' },
+    ],
   },
   'victoria-falls': {
     hero: 'victoria-falls',

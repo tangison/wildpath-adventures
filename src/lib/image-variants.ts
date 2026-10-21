@@ -14,6 +14,11 @@ export const IMAGE_VARIANTS: Record<string, VariantFamily> = {
       1920
     ]
   },
+  "chobe-river-elephants-dusk": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
   "cape-cross-seals": {
     "dir": "images/places",
     "max": 640,

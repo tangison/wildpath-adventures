@@ -56,3 +56,11 @@ No third-party licence applies. Originals are kept untouched in `images/_origina
 - Served: 4 variants (WebP + AVIF)
 - Used on: Damaraland destination card; accommodation moment
 - Alt text: Thatched bungalows on stilts beneath a granite hill in Damaraland.
+
+## chobe-river-elephants-dusk
+- Origin: Pexels (retrieved 2026-10-20 during parallel build session; re-adopted into the video-era rebuild)
+- Licence: Pexels Licence (free to use, no attribution required; recorded as good practice)
+- Attribution: Uncredited Pexels contributor
+- Retrieved: 2026-10-20
+- Alt: Elephants moving along the Chobe riverbank at dusk through warm haze.
+- Used on: Caprivi journey Chobe River stop; Chobe destination mosaic
