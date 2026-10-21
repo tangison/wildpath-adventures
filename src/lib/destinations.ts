@@ -29,7 +29,7 @@ export type Destination = {
   wildlife: string[];
   landscape: string;
   suggestedJourney: string;
-  /** Real destination photography (tracked in ASSET_MANIFEST.md) OR branded illustration placeholder. */
+  /** Photo base name (resolved via IMAGE_VARIANTS). Real destination photography only. */
   image: string;
   /**
    * 'photo' = real destination photograph (source-tracked)
@@ -51,7 +51,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Desert-adapted elephant', 'Black rhino', 'Lion', 'Gemsbok', 'Springbok'],
     landscape: 'Red sand, white salt, granite, basalt. A land of geology.',
     suggestedJourney: 'classic-namibia',
-    image: '/images/places/sossusvlei.webp',
+    image: 'sossusvlei', // photo base
     imageKind: 'photo',
   },
   {
@@ -66,7 +66,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Ostrich', 'Springbok', 'Gemsbok', 'Brown hyena (rare)'],
     landscape: 'Red sand, white clay pan, dead trees. The purest desert image.',
     suggestedJourney: 'untamed-desert',
-    image: '/images/places/sossusvlei.webp',
+    image: 'sossusvlei', // photo base
     imageKind: 'photo',
   },
   {
@@ -81,7 +81,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Black rhino', 'Elephant', 'Lion', 'Leopard', 'Gemsbok', 'Springbok'],
     landscape: 'Salt pan, savannah, mopane woodland. Flat and open — perfect for game viewing.',
     suggestedJourney: 'untamed-desert',
-    image: '/images/places/etosha.webp',
+    image: 'etosha', // photo base
     imageKind: 'photo',
   },
   {
@@ -96,7 +96,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Desert-adapted elephant', 'Black rhino', 'Desert lion (rare)', 'Gemsbok', 'Springbok'],
     landscape: 'Granite inselbergs, gravel plains, dry riverbeds. Ancient geology.',
     suggestedJourney: 'untamed-central',
-    image: '/images/places/damaraland.webp',
+    image: 'damaraland', // photo base
     imageKind: 'photo',
   },
   {
@@ -112,8 +112,8 @@ export const DESTINATIONS: Destination[] = [
     landscape: 'Fog, dunes dropping into the sea, basalt, shipwrecks.',
     suggestedJourney: 'classic-namibia',
     // No verified real photograph in current assets — use branded illustration placeholder.
-    image: '/images/illustrations/approved/destination-skeleton-coast.webp',
-    imageKind: 'illustration',
+    image: 'skeleton-coast-wreck', // photo base
+    imageKind: 'photo',
   },
   {
     slug: 'kalahari',
@@ -127,7 +127,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Gemsbok', 'Springbok', 'Meerkat', 'Brown hyena'],
     landscape: 'Red sand, camelthorn acacia, long horizons.',
     suggestedJourney: 'classic-namibia',
-    image: '/images/places/kalahari.webp',
+    image: 'kalahari', // photo base
     imageKind: 'photo',
   },
   {
@@ -142,8 +142,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Hippo', 'Buffalo', 'Elephant', 'Wattled crane', 'African fish eagle', 'Sable antelope'],
     landscape: 'Rivers, floodplains, mopane woodland. Green Namibia.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-caprivi.webp',
-    imageKind: 'illustration',
+    image: 'zambezi-junction', // photo base
+    imageKind: 'photo',
   },
   {
     slug: 'chobe',
@@ -157,8 +157,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant', 'Lion', 'Leopard', 'Buffalo', 'Puku', 'Hippo'],
     landscape: 'River, floodplain, woodland. Botswana at its most accessible.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-chobe.webp',
-    imageKind: 'illustration',
+    image: 'chobe-river-kasane', // photo base
+    imageKind: 'photo',
   },
   {
     slug: 'victoria-falls',
@@ -172,8 +172,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant (in town itself)', 'Hippo', 'Crocodile', 'Birdlife'],
     landscape: 'Basalt gorge, rainforest from the spray, the Zambezi above and below.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-victoria-falls.webp',
-    imageKind: 'illustration',
+    image: 'victoria-falls', // photo base
+    imageKind: 'photo',
   },
 ];
 
