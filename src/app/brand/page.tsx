@@ -53,7 +53,7 @@ export default function BrandPage() {
         {/* ═════════════════════ HEADER ═════════════════════ */}
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">
-            <p className="wp-script text-2xl text-[#9E4214] mb-6">Brand identity kit</p>
+            <p className="wp-subhead text-2xl text-[#9E4214] mb-6">Brand identity kit</p>
             <h1 className="wp-display text-5xl md:text-7xl lg:text-[6rem] leading-[0.88] mb-6">
               The mark, the map,
               <br />
@@ -91,7 +91,7 @@ export default function BrandPage() {
                 <div className="bg-[#F2EDE3] py-16 md:py-24 px-8 text-center">
                   <Wordmark size="xl" />
                 </div>
-                <p className="wp-script text-lg text-[#6B5E3D] text-center mt-4">
+                <p className="wp-subhead text-lg text-[#6B5E3D] text-center mt-4">
                   Travel the untamed beauty
                 </p>
               </div>
@@ -271,7 +271,7 @@ export default function BrandPage() {
               </div>
               <div className="bg-[#F2EDE3] p-8 md:p-10">
                 <p className="wp-subhead text-xs text-[#9E4214] mb-4">Accent — Caveat</p>
-                <p className="wp-script text-6xl md:text-7xl text-[#9E4214] leading-[0.85] mb-6">
+                <p className="wp-subhead text-6xl md:text-7xl text-[#9E4214] leading-[0.85] mb-6">
                   beauty
                 </p>
                 <p className="text-[#1A1A1A]/80 leading-relaxed text-sm">
@@ -294,7 +294,7 @@ export default function BrandPage() {
           <div className="max-w-5xl mx-auto">
             <div className="mb-16">
               <p className="wp-subhead text-xs text-[#9E4214] mb-2">07</p>
-              <p className="wp-script text-2xl text-[#9E4214] mb-3">Voice</p>
+              <p className="wp-subhead text-2xl text-[#9E4214] mb-3">Voice</p>
               <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9]">
                 Four rules the
                 <br />
@@ -326,7 +326,7 @@ export default function BrandPage() {
           <div className="max-w-5xl mx-auto">
             <div className="mb-16">
               <p className="wp-subhead text-xs mb-2">08</p>
-              <p className="wp-script text-2xl mb-3">Tonality</p>
+              <p className="wp-subhead text-2xl mb-3">Tonality</p>
               <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9]">
                 Where we sit on
                 <br />
@@ -342,7 +342,7 @@ export default function BrandPage() {
                   </div>
                   <div>
                     <p className="text-[0.6rem] tracking-[0.25em] uppercase font-bold mb-1">Position</p>
-                    <p className="wp-script text-2xl">{t.position}</p>
+                    <p className="wp-subhead text-2xl">{t.position}</p>
                   </div>
                   <div>
                     <p className="text-[0.6rem] tracking-[0.25em] uppercase font-bold mb-1">Note</p>
@@ -359,7 +359,7 @@ export default function BrandPage() {
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
               <p className="wp-subhead text-xs text-[#9E4214] mb-2">09</p>
-              <p className="wp-script text-2xl text-[#9E4214] mb-3">Brand values</p>
+              <p className="wp-subhead text-2xl text-[#9E4214] mb-3">Brand values</p>
               <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9]">
                 What we
                 <br />
@@ -386,7 +386,7 @@ export default function BrandPage() {
           <BirdFlock className="absolute top-10 left-1/2 -translate-x-1/2 w-64 h-16 text-[#E8854A]/30" />
           <div className="relative max-w-5xl mx-auto text-center pt-8">
             <p className="wp-subhead text-xs text-[#E8854A] mb-2">10</p>
-            <p className="wp-script text-xl text-[#E8854A] mb-4">The forbidden list</p>
+            <p className="wp-subhead text-xl text-[#E8854A] mb-4">The forbidden list</p>
             <h3 className="wp-display text-3xl md:text-5xl lg:text-6xl leading-[0.95] mb-12">
               If a travel brochure uses it,
               <br />
@@ -420,7 +420,7 @@ export default function BrandPage() {
             <div className="mb-10">
               <Wordmark size="lg" />
             </div>
-            <p className="wp-script text-3xl text-[#9E4214] mb-4">The system is the standard</p>
+            <p className="wp-subhead text-3xl text-[#9E4214] mb-4">The system is the standard</p>
             <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-8">
               Every page answers
               <br />

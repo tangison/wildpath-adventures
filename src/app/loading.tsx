@@ -28,7 +28,10 @@ export default function Loading() {
           <circle cx="18" cy="18" r="1.5" fill="#1A1A1A" />
         </svg>
 
-        <p className="text-[0.65rem] tracking-[0.2em] uppercase text-[#1A1A1A]/50 wp-subhead">
+        <p
+          className="text-[0.65rem] tracking-[0.2em] uppercase text-[#1A1A1A]/50 wp-subhead"
+          aria-hidden="true"
+        >
           Loading&hellip;
         </p>
       </div>

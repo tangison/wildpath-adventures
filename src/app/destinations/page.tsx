@@ -1,176 +1,93 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
-import { Nav, Footer, ContourLines, ScrollReveal } from '@/components/wildpath';
-import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { Nav, Footer, SectionHeading } from '@/components/wildpath';
+import { Photo } from '@/components/photo';
 import { DESTINATIONS } from '@/lib/destinations';
+import { DESTINATION_MEDIA } from '@/lib/journey-media';
 
 export const metadata: Metadata = {
   title: 'Destinations',
   description:
-    'Nine landscapes across Namibia and Southern Africa, from the oldest desert on earth to the smoke that thunders. Image-led. Editorial. Real.',
+    'Nine landscapes across Namibia and Southern Africa: Sossusvlei, Etosha, Damaraland, the Skeleton Coast, the Kalahari, the Caprivi rivers, Chobe and Victoria Falls.',
   alternates: { canonical: '/destinations' },
 };
 
-export default function DestinationsPage() {
-  // Group destinations: Namibia first, then neighbouring countries
-  const namibia = DESTINATIONS.filter((d) => d.country === 'Namibia');
-  const neighbours = DESTINATIONS.filter((d) => d.country !== 'Namibia');
-
+export default function DestinationsIndex() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
       <Nav />
-
-      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Destinations', url: '/destinations' }]} />
-
-      <main id="main-content" className="flex-1 pt-32">
-        {/* ═════════════════════ HEADER ═════════════════════ */}
-        <section className="px-6 md:px-12 pb-16 md:pb-24">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Where we roam</p>
-              <h1 className="wp-display text-5xl md:text-7xl lg:text-[6rem] leading-[0.88] mb-6">
-                Nine landscapes.
-                <br />
-                <span className="text-[#9E4214]">One region.</span>
-              </h1>
-              <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                From the oldest desert on earth to the smoke that thunders.
-                Each destination is a different way of being in southern Africa.
-              </p>
-            </ScrollReveal>
+      <main id="main-content" className="flex-1">
+        {/* Photo header */}
+        <section className="relative">
+          <div className="wp-photo" style={{ aspectRatio: '21 / 9', minHeight: '320px' }}>
+            <Photo
+              base="sossusvlei-2"
+              alt="A walker on a dune crest high above the Namib sand sea."
+              aspect="21 / 9"
+              sizes="100vw"
+              priority
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#140C06]/70 via-[#140C06]/35 to-transparent" aria-hidden="true" />
           </div>
-        </section>
-
-        <div className="py-4">
-          <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
-        </div>
-
-        {/* ═════════════════════ NAMIBIA ═════════════════════ */}
-        <section className="py-16 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-12">
-              The home country.
-            </h2>
-
-            {/* Featured large card for Namibia itself */}
-            <Link
-              href={`/destinations/namibia`}
-              className="group relative block aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-[#1A1A1A] mb-8"
-            >
-              <Image
-                src={namibia[0].image}
-                alt={`${namibia[0].name} — ${namibia[0].country}`}
-                fill
-                priority
-                sizes="100vw"
-                className={`${namibia[0].imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[1000ms] ease-out`}
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/30 to-transparent" />
-              <div className="absolute inset-0 p-8 md:p-14 flex flex-col justify-end text-[#F2EDE3]">
-                <p className="wp-subhead text-[0.65rem] tracking-[0.22em] text-[#E8854A] mb-3">
-                  {namibia[0].country}
-                </p>
-                <h3 className="wp-display text-4xl md:text-7xl leading-[0.9] mb-4">
-                  {namibia[0].name}
-                </h3>
-                <p className="text-base md:text-lg text-[#F2EDE3]/85 max-w-xl leading-relaxed">
-                  {namibia[0].shortLine}
-                </p>
-                <p className="mt-6 text-[0.65rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                  Explore
-                  <ArrowRight size={12} className="group-hover:translate-x-1 transition-[transform]" />
-                </p>
-              </div>
-            </Link>
-
-            {/* Grid of other Namibian destinations — 2-column */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {namibia.slice(1).map((d) => (
-                <Link
-                  key={d.slug}
-                  href={`/destinations/${d.slug}`}
-                  className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
-                >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name} — ${d.country}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
-                  <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">
-                    <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-1.5">
-                      {d.country}
-                    </p>
-                    <h3 className="wp-display text-2xl md:text-3xl leading-[0.95] mb-2">
-                      {d.name}
-                    </h3>
-                    <p className="text-sm text-[#F2EDE3]/85 leading-relaxed line-clamp-2">
-                      {d.shortLine}
-                    </p>
-                    <p className="mt-4 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                      Explore
-                      <ArrowRight size={11} className="group-hover:translate-x-1 transition-[transform]" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-16 w-full">
+              <p className="wp-subhead text-[0.62rem] text-[#F2EDE3]/85 mb-4">Destinations</p>
+              <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95] max-w-[16ch]">
+                Nine landscapes, each its own country.
+              </h1>
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ NEIGHBOURS ═════════════════════ */}
-        <section className="py-28 px-6 md:px-12 bg-[#E8E3D5]">
+        {/* Cards — large image led */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-6">
-              Across the borders.
-            </h2>
-            <p className="mb-12 text-base text-[#1A1A1A]/70 max-w-xl leading-relaxed">
-              The Caprivi route continues east, into Botswana, Zimbabwe, and
-              Zambia. Different countries, the same river.
-            </p>
-
-            {/* Neighbours — 2-column varied layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {neighbours.map((d) => (
-                <Link
-                  key={d.slug}
-                  href={`/destinations/${d.slug}`}
-                  className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
-                >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name} — ${d.country}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
-                  <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">
-                    <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-1.5">
-                      {d.country}
-                    </p>
-                    <h3 className="wp-display text-2xl md:text-3xl leading-[0.95] mb-2">
-                      {d.name}
-                    </h3>
-                    <p className="text-sm text-[#F2EDE3]/85 leading-relaxed line-clamp-2">
-                      {d.shortLine}
-                    </p>
-                    <p className="mt-4 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                      Explore
-                      <ArrowRight size={11} className="group-hover:translate-x-1 transition-[transform]" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
+            <SectionHeading
+              title="See them first."
+              intro="Every destination page is a photograph of the place itself, then the short version of why it matters."
+            />
+            <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+              {DESTINATIONS.map((d) => {
+                const media = DESTINATION_MEDIA[d.slug];
+                return (
+                  <Link
+                    key={d.slug}
+                    href={`/destinations/${d.slug}`}
+                    className={`group relative block wp-photo wp-img-reveal ${d.slug === 'namibia' ? 'md:col-span-2' : ''}`}
+                    style={{ aspectRatio: d.slug === 'namibia' ? '21 / 9' : '3 / 2' }}
+                  >
+                    <Photo
+                      base={media?.hero ?? d.image}
+                      alt={media?.mosaic[0]?.alt ?? `${d.name}: ${d.shortLine}`}
+                      aspect={d.slug === 'namibia' ? '21 / 9' : '3 / 2'}
+                      sizes={d.slug === 'namibia' ? '100vw' : '(min-width: 768px) 50vw, 100vw'}
+                      reveal={false}
+                      imgClassName="transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="h-full"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/80 via-[#140C06]/20 to-transparent" aria-hidden="true" />
+                    <div className="absolute inset-x-0 bottom-0 p-5 md:p-7">
+                      <h2 className="wp-display text-2xl md:text-4xl text-[#F2EDE3] leading-none mb-2">
+                        {d.name}
+                      </h2>
+                      <p className="text-sm md:text-base text-[#F2EDE3]/80 leading-snug max-w-md">
+                        {d.shortLine}
+                      </p>
+                      <span className="mt-3 inline-flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#E8854A]">
+                        Open the guide
+                        <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

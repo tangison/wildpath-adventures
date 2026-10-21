@@ -2,10 +2,11 @@ import type { MetadataRoute } from 'next';
 import { SITE_URL } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
+import { FIELD_NOTES } from '@/lib/field-notes';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   // Fixed build date for lastModified — avoids every build appearing as "just modified"
-  const lastMod = new Date('2026-08-08');
+  const lastMod = new Date('2026-10-21');
 
   const staticPages = [
     { path: '', priority: 1 },
@@ -43,5 +44,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticEntries, ...journeyEntries, ...destinationEntries];
+  // Individual field-note articles (index is in staticPages)
+  const articleEntries: MetadataRoute.Sitemap = FIELD_NOTES.map((n) => ({
+    url: `${SITE_URL}/field-notes/${n.slug}`,
+    lastModified: lastMod,
+    changeFrequency: 'monthly' as const,
+    priority: 0.5,
+  }));
+
+  return [...staticEntries, ...journeyEntries, ...destinationEntries, ...articleEntries];
 }

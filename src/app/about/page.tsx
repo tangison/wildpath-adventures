@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, ScrollReveal } from '@/components/wildpath';
-import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { Nav, Footer, BirdFlock } from '@/components/wildpath';
+import { Photo } from '@/components/photo';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -19,180 +18,144 @@ const STRENGTHS = [
   { name: 'Namibia and Southern Africa', desc: 'From the Namib desert to the Zambezi, from Etosha to Chobe and Victoria Falls. We plan across the region.' },
   { name: 'Self-drive and guided', desc: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
   { name: 'Personal planning', desc: 'We plan every itinerary personally, from the first enquiry to your return home. Accommodation arranged according to route and budget.' },
-  { name: 'Responsible tourism', desc: 'We aim to work with responsible local partners and support travel practices that respect Namibia\'s wildlife, landscapes, and communities.' },
+  { name: 'Responsible tourism', desc: 'We aim to work with responsible local partners and support travel practices that respect Namibia\u2019s wildlife, landscapes, and communities.' },
 ];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
       <Nav />
-
-      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'About', url: '/about' }]} />
-
-      <main id="main-content" className="flex-1 pt-32">
-        {/* ═════════════════════ HEADER ═════════════════════ */}
-        <section className="px-6 md:px-12 pb-16 md:pb-24">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">About Wildpath</p>
-              <h1 className="wp-display text-5xl md:text-7xl lg:text-[6rem] leading-[0.88] mb-6">
+      <main id="main-content" className="flex-1">
+        {/* Photo header */}
+        <section className="relative">
+          <div className="wp-photo" style={{ aspectRatio: '21 / 9', minHeight: '320px' }}>
+            <Photo
+              base="safari-vehicle-red-dune"
+              alt="An open safari vehicle crossing a red Kalahari dune, acacia scrub behind."
+              aspect="21 / 9"
+              sizes="100vw"
+              priority
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#140C06]/70 via-[#140C06]/35 to-transparent" aria-hidden="true" />
+          </div>
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-16 w-full">
+              <p className="wp-subhead text-[0.62rem] text-[#F2EDE3]/85 mb-4">About Wildpath</p>
+              <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95]">
                 Namibian-owned.
                 <br />
-                <span className="text-[#9E4214]">Personally planned.</span>
+                <span className="text-[#E8854A]">Personally planned.</span>
               </h1>
-              <p className="text-lg md:text-xl text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                Wildpath Adventures is a Namibian-owned tour operator creating
-                personalised travel experiences across Namibia and Southern
-                Africa. Every itinerary is tailored around the landscapes,
-                wildlife, and pace that make this part of Africa unforgettable.
-              </p>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 
-        {/* ═════════════════════ ATMOSPHERE ═════════════════════ */}
-        <section className="px-6 md:px-12 pb-16 md:pb-24">
-          <div className="max-w-7xl mx-auto">
-            <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
-              <Image
-                src="/images/illustrations/approved/page-about.webp"
-                alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
-                fill
-                sizes="100vw"
-                className="object-contain object-center"
+        {/* Statement */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
+          <div className="max-w-4xl mx-auto wp-reveal">
+            <p className="wp-display text-2xl md:text-3xl leading-[1.25] text-[#1A1A1A]">
+              Wildpath Adventures is a Namibian-owned tour operator creating
+              personalised travel experiences across Namibia and Southern
+              Africa. Every itinerary is tailored around the landscapes,
+              wildlife, and pace that make this part of Africa unforgettable.
+            </p>
+            <p className="mt-8 text-base md:text-lg text-[#1A1A1A]/75 leading-relaxed max-w-2xl">
+              We are based in Windhoek, and we plan the way we travel: slowly,
+              with room for the country to surprise you. That means fewer
+              places on each route, real time at each one, and honest advice
+              about distances, seasons and what a day on the road actually
+              feels like. When you write to us, you write to the person who
+              will build your journey.
+            </p>
+            <BirdFlock className="w-40 h-12 text-[#9E4214]/40 mt-10" />
+          </div>
+        </section>
+
+        {/* How we work — image + text split */}
+        <section className="py-16 md:py-20 px-6 md:px-12 bg-[#E8E3D5]">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <div className="wp-photo wp-img-reveal order-2 md:order-1" style={{ aspectRatio: '4 / 3' }}>
+              <Photo
+                base="damaraland-lodge-granite-hill"
+                alt="A lodge of stone and thatch built into a granite hillside in Damaraland."
+                aspect="4 / 3"
+                sizes="(min-width: 768px) 50vw, 100vw"
+                reveal={false}
+                className="h-full"
               />
             </div>
-          </div>
-        </section>
-
-        {/* ═════════════════════ APPROACH ═════════════════════ */}
-        <section className="py-16 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.95] mb-10">
-              Every route is
-              <br />
-              <span className="text-[#9E4214]">drafted around you.</span>
-            </h2>
-            <div className="grid md:grid-cols-2 gap-8 md:gap-12 text-lg leading-relaxed text-[#1A1A1A]/80">
-              <p>
-                The four flagship routes on this site are starting points.
-                Combine destinations, change the duration, add a guided section
-                or a transfer. Depending on the journey, transport may include
-                self-drive, guided road travel, transfers, or regional
-                connections arranged on request.
+            <div className="order-1 md:order-2 wp-reveal">
+              <h2 className="wp-display text-3xl md:text-5xl leading-[0.98] mb-6">
+                Slow travel,
+                <br />
+                <span className="text-[#9E4214]">done properly.</span>
+              </h2>
+              <p className="text-base md:text-lg text-[#1A1A1A]/80 leading-relaxed mb-4">
+                We would rather show you one canyon properly than five canyons
+                through a window. Our routes build in long stays, dawn and dusk
+                outings when the light and the wildlife are at their best, and
+                quiet evenings where the biggest event is the stars coming out.
               </p>
-              <p>
-                Accommodation is arranged according to route and budget, with
-                full details confirmed in your personalised proposal. We
-                support you from the first enquiry through to your return home
-                , and we plan every itinerary personally.
+              <p className="text-base text-[#1A1A1A]/75 leading-relaxed">
+                Accommodation is chosen per route and budget, from intimate
+                desert lodges to bush camps inside the parks. We work with
+                partners we know, and we tell you exactly who you will be
+                staying with before you commit.
               </p>
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ CONTOUR DIVIDER ═════════════════════ */}
-        <div className="py-4">
-          <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
-        </div>
-
-        {/* ═════════════════════ STRENGTHS — editorial numbered list ═════════════════════ */}
-        <section className="py-28 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9] mb-16">
-              Six things we
-              <br />
-              <span className="text-[#9E4214]">do not compromise.</span>
+        {/* Strengths grid */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="wp-display text-3xl md:text-5xl leading-[0.98] mb-10 wp-reveal">
+              What you can expect <span className="text-[#9E4214]">from us.</span>
             </h2>
-            <div className="space-y-0">
-              {STRENGTHS.map((v, i) => (
-                <div
-                  key={v.name}
-                  className="grid grid-cols-[3rem_1fr] md:grid-cols-[4.5rem_1fr] gap-x-6 md:gap-x-10 py-8 md:py-10 border-b border-[#1A1A1A]/12 first:border-t"
-                >
-                  <span className="wp-display text-2xl md:text-3xl text-[#9E4214]/40 leading-none pt-0.5">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="wp-display text-xl md:text-2xl text-[#1A1A1A] mb-3 leading-tight">
-                      {v.name}
-                    </h3>
-                    <p className="text-[#1A1A1A]/80 leading-relaxed text-sm md:text-base">{v.desc}</p>
-                  </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1A1A1A]/12">
+              {STRENGTHS.map((s) => (
+                <div key={s.name} className="bg-[#F2EDE3] p-6 md:p-8 wp-reveal">
+                  <h3 className="wp-display text-xl mb-3">{s.name}</h3>
+                  <p className="text-sm text-[#1A1A1A]/75 leading-relaxed">{s.desc}</p>
                 </div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ RESPONSIBLE TOURISM ═════════════════════ */}
-        <section className="py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
-          <div className="max-w-5xl mx-auto">
-            <BirdFlock className="w-32 h-8 text-[#E8854A]/50 mb-8" />
-            <h2 className="wp-display text-4xl md:text-6xl leading-[0.9] mb-10">
-              Respecting the
-              <br />
-              <span className="text-[#E8854A]">land we travel in.</span>
+        {/* CTA */}
+        <section className="py-16 md:py-20 px-6 md:px-12 bg-[#1A1A1A]">
+          <div className="max-w-3xl mx-auto text-center wp-reveal">
+            <h2 className="wp-display text-3xl md:text-5xl text-[#F2EDE3] leading-[0.98]">
+              The first conversation costs nothing.
             </h2>
-            <div className="space-y-6 text-base md:text-lg text-[#F2EDE3]/80 leading-relaxed max-w-3xl">
-              <p>
-                We aim to work with responsible local partners and support
-                travel practices that respect Namibia&apos;s wildlife, landscapes,
-                and communities. Our journeys are shaped by local destination
-                knowledge and trusted partners across the region.
-              </p>
-              <p>
-                The way we plan routes, choose stops, and pace journeys is
-                designed to leave room for the land, for the silence of the
-                desert, the space of the pans, and the rhythms of the wildlife
-                that live here year-round.
-              </p>
-              <p className="pt-4 text-sm text-[#F2EDE3]/60">
-                Specific conservation partnerships, sustainability reporting,
-                and certifications will be added here once confirmed.
-              </p>
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════════════ ACACIA DIVIDER ═════════════════════ */}
-        <div className="py-6 flex justify-center">
-          <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
-        </div>
-
-        {/* ═════════════════════ CTA ═════════════════════ */}
-        <section className="py-24 md:py-36 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="mb-10">
-              <Wordmark size="lg" />
-            </div>
-            <h2 className="wp-display text-4xl md:text-6xl text-[#1A1A1A] leading-[0.9] mb-8">
-              Every route starts
-              <br />
-              <span className="text-[#9E4214]">with a conversation.</span>
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <p className="mt-4 text-base text-[#F2EDE3]/75 leading-relaxed">
+              Tell us when you are coming, for how long, and what you want to
+              feel. We will answer with a plan.
+            </p>
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
               <Link
-                href="/journeys"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                href="/contact"
+                className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
               >
-                See the Journeys
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform]" />
+                Plan your journey
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                className="border border-[#F2EDE3]/50 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
               >
                 <MessageCircle size={15} />
-                WhatsApp Us
+                WhatsApp us
               </a>
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

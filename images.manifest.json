@@ -1,0 +1,782 @@
+{
+  "generated": "2026-10-21",
+  "rules": [
+    "Every real photo family must be used on at least one page before reuse elsewhere.",
+    "Photos map to destinations/journeys by subject; ambiguous-location shots go to the general home gallery and are flagged.",
+    "The only cartoon illustration permitted is public/images/illustrations/approved/wildpath-hero-main.webp (footer strip)."
+  ],
+  "families": [
+    {
+      "base": "sossusvlei",
+      "dir": "images/places",
+      "alt": "Red Sossusvlei dunes rising behind acacia trees on the gravel plain.",
+      "theme": "desert/sossusvlei",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:hero+timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/sossusvlei:mosaic",
+        "home:mosaic",
+        "field-notes/when-to-visit-sossusvlei:inline"
+      ]
+    },
+    {
+      "base": "etosha",
+      "dir": "images/places",
+      "alt": "A close view of an elephant feeding on pale Etosha grass.",
+      "theme": "wildlife/etosha",
+      "orientation": "portrait",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/untamed-central:card+timeline",
+        "journeys/untamed-northern-caprivi:gallery",
+        "journeys/untamed-desert:gallery",
+        "journeys/classic-namibia:gallery",
+        "destinations/etosha:hero+mosaic"
+      ]
+    },
+    {
+      "base": "damaraland",
+      "dir": "images/places",
+      "alt": "A granite koppie glowing red above dry Damaraland grassland.",
+      "theme": "rock/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/untamed-central:hero+timeline",
+        "destinations/damaraland:hero",
+        "home:mosaic"
+      ]
+    },
+    {
+      "base": "kalahari",
+      "dir": "images/places",
+      "alt": "A deep orange sunset over Kalahari thornveld and a winding road.",
+      "theme": "desert/kalahari",
+      "orientation": "portrait",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-desert:gallery",
+        "destinations/kalahari:hero",
+        "home:mosaic",
+        "field-notes/self-drive-in-namibia:card"
+      ]
+    },
+    {
+      "base": "dune-detail",
+      "dir": "images/places",
+      "alt": "Ridges of red dune sea rolling to the horizon.",
+      "theme": "desert/dunes",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:gallery",
+        "journeys/untamed-desert:gallery",
+        "journeys:header",
+        "destinations/namibia:hero",
+        "home:gallery"
+      ]
+    },
+    {
+      "base": "etosha-detail",
+      "dir": "images/places",
+      "alt": "A breeding herd of elephants moving across red Kalahari earth.",
+      "theme": "wildlife/etosha",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:gallery",
+        "destinations/etosha:mosaic",
+        "faq:header"
+      ]
+    },
+    {
+      "base": "namib-texture",
+      "dir": "images/places",
+      "alt": "Gravel plain scattered with stones, dunes on the far horizon.",
+      "theme": "desert/plain",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline (Aus gravel plains)"
+      ]
+    },
+    {
+      "base": "sossusvlei-1",
+      "dir": "images/places",
+      "alt": "Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.",
+      "theme": "desert/sossusvlei",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/sossusvlei:mosaic",
+        "field-notes/when-to-visit-sossusvlei:card"
+      ]
+    },
+    {
+      "base": "sossusvlei-2",
+      "dir": "images/places",
+      "alt": "A walker descending a dune crest towards Deadvlei's white pan.",
+      "theme": "desert/deadvlei",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "destinations/sossusvlei:mosaic",
+        "home:cta+gallery",
+        "destinations:header",
+        "contact:header"
+      ]
+    },
+    {
+      "base": "etosha-1",
+      "dir": "images/places",
+      "alt": "Two cheetahs resting beside a termite mound in Etosha.",
+      "theme": "wildlife/etosha",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-northern-caprivi:timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/etosha:mosaic"
+      ]
+    },
+    {
+      "base": "etosha-2",
+      "dir": "images/places",
+      "alt": "Lions drinking at an Etosha waterhole, mirrored in still water.",
+      "theme": "wildlife/etosha",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/etosha:mosaic",
+        "field-notes/responsible-wildlife-viewing:card"
+      ]
+    },
+    {
+      "base": "kalahari-2",
+      "dir": "images/places",
+      "alt": "Hoodia plants holding a red Kalahari dune slipface.",
+      "theme": "desert/kalahari",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline+gallery",
+        "journeys/untamed-desert:timeline",
+        "destinations/kalahari:mosaic"
+      ]
+    },
+    {
+      "base": "damaraland-1",
+      "dir": "images/places",
+      "alt": "Boulder-strewn Damaraland hills with a lone shepherd's tree.",
+      "theme": "rock/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:timeline+gallery",
+        "destinations/damaraland:mosaic"
+      ]
+    },
+    {
+      "base": "dune-lodge",
+      "dir": "images/places",
+      "alt": "A stilted cabin with a green roof on a red Kalahari dune.",
+      "theme": "stay/kalahari",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "destinations/kalahari:mosaic"
+      ]
+    },
+    {
+      "base": "thatched-hillside",
+      "dir": "images/places",
+      "alt": "Thatched chalets on poles at the foot of a granite hill.",
+      "theme": "stay/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:gallery",
+        "destinations/damaraland:mosaic",
+        "contact:section",
+        "home:gallery"
+      ]
+    },
+    {
+      "base": "fish-river-canyon",
+      "dir": "images/places",
+      "alt": "Fish River Canyon from the main viewpoint, layered rock walls and a dry riverbed below.",
+      "theme": "south/canyon",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 3.0 RudiBosbouer via Wikimedia Commons",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "destinations/namibia:mosaic",
+        "home:mosaic"
+      ]
+    },
+    {
+      "base": "kolmanskop-ghost-town",
+      "dir": "images/places",
+      "alt": "The sand-buried houses of Kolmanskop ghost town near Luederitz.",
+      "theme": "south/luderitz",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 4.0 SkyPixels via Wikimedia Commons",
+      "usage": [
+        "journeys/classic-namibia:timeline"
+      ]
+    },
+    {
+      "base": "swakopmund-jetty",
+      "dir": "images/places",
+      "alt": "Swakopmund's beachfront and jetty from the air, the old lighthouse at centre.",
+      "theme": "coast/swakopmund",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 4.0 Olga Ernst via Wikimedia Commons",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/skeleton-coast:mosaic",
+        "destinations/namibia:mosaic",
+        "home:mosaic"
+      ]
+    },
+    {
+      "base": "chobe-river-kasane",
+      "dir": "images/places",
+      "alt": "The Chobe River winding through green floodplains near Kasane.",
+      "theme": "river/chobe",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 4.0 Dicklyon via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-northern-caprivi:card+timeline",
+        "destinations/chobe:hero",
+        "home:mosaic",
+        "field-notes/the-zambezi-route:inline"
+      ]
+    },
+    {
+      "base": "victoria-falls",
+      "dir": "images/places",
+      "alt": "Victoria Falls from the air, spray rising above the basalt gorge.",
+      "theme": "river/vicfalls",
+      "orientation": "portrait",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 4.0 Diego Delso via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline+gallery",
+        "destinations/victoria-falls:hero",
+        "home:mosaic"
+      ]
+    },
+    {
+      "base": "windhoek-christ-church",
+      "dir": "images/places",
+      "alt": "Christuskirche and central Windhoek from above.",
+      "theme": "city/windhoek",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 2.0 Christoph Strässler via Wikimedia Commons",
+      "usage": [
+        "journeys/*/timeline (Windhoek)",
+        "field-notes/self-drive-in-namibia:inline"
+      ]
+    },
+    {
+      "base": "quiver-tree",
+      "dir": "images/places",
+      "alt": "A quiver tree in rocky ground under a blue sky, southern Namibia.",
+      "theme": "south/quivertree",
+      "orientation": "portrait",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 4.0 Bjørn Christian Tørrissen via Wikimedia Commons",
+      "usage": [
+        "journeys/classic-namibia:timeline"
+      ]
+    },
+    {
+      "base": "zambezi-junction",
+      "dir": "images/places",
+      "alt": "The Zambezi River where Namibia, Zambia, Zimbabwe and Botswana meet.",
+      "theme": "river/caprivi",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY-SA 2.5 Brian McMorrow via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-northern-caprivi:hero+timeline",
+        "destinations/caprivi:hero",
+        "destinations/victoria-falls:mosaic",
+        "home:mosaic",
+        "field-notes/the-zambezi-route:card"
+      ]
+    },
+    {
+      "base": "skeleton-coast-wreck",
+      "dir": "images/places",
+      "alt": "The wreck of the Eduard Bohlen stranded in Skeleton Coast sand.",
+      "theme": "coast/skeleton",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY 3.0 Anagoria via Wikimedia Commons",
+      "usage": [
+        "destinations/skeleton-coast:hero",
+        "home:mosaic"
+      ]
+    },
+    {
+      "base": "cape-cross-seals",
+      "dir": "images/places",
+      "alt": "Cape fur seals crowded on the rocks at Cape Cross.",
+      "theme": "coast/capecross",
+      "orientation": "landscape",
+      "kind": "scouted-commons",
+      "licence": "CC BY 2.0 betty x1138 from NYC, USA via Wikimedia Commons",
+      "usage": [
+        "destinations/skeleton-coast:mosaic"
+      ]
+    },
+    {
+      "base": "waterberg-plateau",
+      "dir": "images/places",
+      "alt": "The red sandstone cliffs of the Waterberg plateau rising over green bush.",
+      "theme": "plateau/waterberg",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "CC BY-SA 2.5 Harald Süpfle via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-desert:timeline"
+      ]
+    },
+    {
+      "base": "bwabwata-elephant",
+      "dir": "images/places",
+      "alt": "A breeding herd of elephants crossing golden grass in Bwabwata National Park.",
+      "theme": "wildlife/caprivi",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "CC BY-SA 3.0 Marco Schmidt[1] via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline+gallery",
+        "destinations/caprivi:mosaic"
+      ]
+    },
+    {
+      "base": "okavango-river",
+      "dir": "images/places",
+      "alt": "The Okavango River running wide and green under a blue sky.",
+      "theme": "river/okavango",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "CC BY-SA 4.0 Zairon via Wikimedia Commons",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline",
+        "destinations/caprivi:mosaic"
+      ]
+    },
+    {
+      "base": "safari-vehicle-red-dune",
+      "dir": "images/photos",
+      "alt": "An open safari vehicle crossing a red Kalahari dune, acacia scrub behind.",
+      "theme": "vehicle/safari",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission",
+      "usage": [
+        "about:hero"
+      ]
+    },
+    {
+      "base": "giraffes-walking-etosha",
+      "dir": "images/photos",
+      "alt": "Three giraffes walking through green Etosha scrubland under an overcast sky.",
+      "theme": "Etosha destination card; etosha-waterhole alternate",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:gallery",
+        "journeys/untamed-desert:timeline",
+        "journeys/untamed-northern-caprivi:timeline",
+        "destinations/etosha:mosaic",
+        "field-notes/etosha-dry-and-wet-seasons:card",
+        "home:gallery"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        },
+        {
+          "w": 1440,
+          "fmt": "avif"
+        },
+        {
+          "w": 1440,
+          "fmt": "webp"
+        },
+        {
+          "w": 1920,
+          "fmt": "avif"
+        },
+        {
+          "w": 1920,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "rhino-ostrich-etosha",
+      "dir": "images/photos",
+      "alt": "A rhino grazing beside an ostrich in green bush, photographed from a distance.",
+      "theme": "Field Notes thumbnail only, never hero",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:timeline",
+        "destinations/etosha:mosaic",
+        "field-notes/responsible-wildlife-viewing:inline"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        },
+        {
+          "w": 1440,
+          "fmt": "avif"
+        },
+        {
+          "w": 1440,
+          "fmt": "webp"
+        },
+        {
+          "w": 1920,
+          "fmt": "avif"
+        },
+        {
+          "w": 1920,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "deadvlei-white-pan-red-dunes",
+      "dir": "images/photos",
+      "alt": "Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes and a clear blue sky.",
+      "theme": "Sossusvlei / Deadvlei destination card",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "home:journey-card-classic",
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-desert:gallery",
+        "destinations/sossusvlei:hero"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        },
+        {
+          "w": 1440,
+          "fmt": "avif"
+        },
+        {
+          "w": 1440,
+          "fmt": "webp"
+        },
+        {
+          "w": 1920,
+          "fmt": "avif"
+        },
+        {
+          "w": 1920,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "deadvlei-trees-dune-shadow",
+      "dir": "images/photos",
+      "alt": "Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.",
+      "theme": "Deadvlei alternate; journey page support",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:timeline+gallery",
+        "journeys/untamed-desert:timeline",
+        "destinations/sossusvlei:mosaic",
+        "field-notes:header"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        },
+        {
+          "w": 1440,
+          "fmt": "avif"
+        },
+        {
+          "w": 1440,
+          "fmt": "webp"
+        },
+        {
+          "w": 1920,
+          "fmt": "avif"
+        },
+        {
+          "w": 1920,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "kalahari-cabin-red-dune",
+      "dir": "images/photos",
+      "alt": "Wooden cabin with a green roof on a red Kalahari dune, looking over green savanna.",
+      "theme": "Self-Drive Sanctuaries card; Southern Renewal journey (kalahari-farm)",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/untamed-desert:card+timeline",
+        "journeys/classic-namibia:timeline",
+        "destinations/kalahari:mosaic",
+        "field-notes/packing-for-namibia:inline"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "oryx-dusk-golden-grass",
+      "dir": "images/photos",
+      "alt": "A gemsbok oryx standing in golden grass at dusk, mountains behind.",
+      "theme": "Wildlife moment; destination or journey card",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:gallery",
+        "destinations/kalahari:mosaic",
+        "home:gallery (flagged: subject location ambiguous)"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "game-drive-red-sand-track",
+      "dir": "images/photos",
+      "alt": "Open safari vehicle with guests on a red sand track in the Kalahari.",
+      "theme": "road-4x4; guided journey pages",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-central:timeline",
+        "destinations/etosha:mosaic",
+        "field-notes/packing-for-namibia:card",
+        "home:gallery"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "namib-red-dunes-green-plains",
+      "dir": "images/photos",
+      "alt": "Red dunes rising over green plains after rain, seen from a gravel road.",
+      "theme": "Namib destination support; journey page support",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/classic-namibia:timeline",
+        "journeys/untamed-desert:timeline",
+        "destinations/sossusvlei:mosaic"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        }
+      ]
+    },
+    {
+      "base": "damaraland-lodge-granite-hill",
+      "dir": "images/photos",
+      "alt": "Thatched bungalows on stilts beneath a granite hill in Damaraland.",
+      "theme": "Damaraland destination card; accommodation moment",
+      "orientation": "landscape",
+      "kind": "client",
+      "licence": "Client's own photograph, used with permission; no third-party licence required",
+      "usage": [
+        "journeys/untamed-central:timeline",
+        "destinations/damaraland:mosaic",
+        "about:section"
+      ],
+      "variants": [
+        {
+          "w": 640,
+          "fmt": "avif"
+        },
+        {
+          "w": 640,
+          "fmt": "webp"
+        },
+        {
+          "w": 960,
+          "fmt": "avif"
+        },
+        {
+          "w": 960,
+          "fmt": "webp"
+        }
+      ]
+    }
+  ]
+}

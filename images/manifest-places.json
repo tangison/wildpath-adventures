@@ -1,0 +1,1383 @@
+{
+  "sossusvlei": {
+    "base": "sossusvlei",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Red Sossusvlei dunes rising behind acacia trees on the gravel plain.",
+    "theme": "desert/sossusvlei",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 216.6
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 172.5
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 166.7
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 163.2
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 78.6
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 78.9
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 36.2
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 34.4
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "etosha": {
+    "base": "etosha",
+    "dir": "images/places",
+    "maxWidth": 1333,
+    "orientation": "portrait",
+    "alt": "A close view of an elephant feeding on pale Etosha grass.",
+    "theme": "wildlife/etosha",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 135.3
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 86.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 87.1
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 69.6
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "damaraland": {
+    "base": "damaraland",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "A granite koppie glowing red above dry Damaraland grassland.",
+    "theme": "rock/damaraland",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 211.9
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 210.3
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 125.7
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 125.9
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 56.5
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 57.6
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 25.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 25.2
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "kalahari": {
+    "base": "kalahari",
+    "dir": "images/places",
+    "maxWidth": 1333,
+    "orientation": "portrait",
+    "alt": "A deep orange sunset over Kalahari thornveld and a winding road.",
+    "theme": "desert/kalahari",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 29.8
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 21.4
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 15.4
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 11.1
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "dune-detail": {
+    "base": "dune-detail",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Ridges of red dune sea rolling to the horizon.",
+    "theme": "desert/dunes",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 104.4
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 80.8
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 69.7
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 54.3
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 35.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 28.8
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 16.3
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 14.1
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "etosha-detail": {
+    "base": "etosha-detail",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "A breeding herd of elephants moving across red Kalahari earth.",
+    "theme": "wildlife/etosha",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 221.6
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 193.4
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 163.9
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 123.7
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 103.6
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 100.9
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 49.7
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 49.5
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "namib-texture": {
+    "base": "namib-texture",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Gravel plain scattered with stones, dunes on the far horizon.",
+    "theme": "desert/plain",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 167.8
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 155.6
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 107.1
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 101.0
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 53.8
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 52.1
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 25.8
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 24.9
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "sossusvlei-1": {
+    "base": "sossusvlei-1",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.",
+    "theme": "desert/sossusvlei",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 72.3
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 54.0
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 52.0
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 42.0
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 31.8
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 23.8
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 13.8
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 11.2
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "sossusvlei-2": {
+    "base": "sossusvlei-2",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "A walker descending a dune crest towards Deadvlei's white pan.",
+    "theme": "desert/deadvlei",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 100.4
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 83.6
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 64.1
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 54.8
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 33.1
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 28.0
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 16.8
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 14.0
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "etosha-1": {
+    "base": "etosha-1",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Two cheetahs resting beside a termite mound in Etosha.",
+    "theme": "wildlife/etosha",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 225.8
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 236.9
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 151.0
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 172.4
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 103.3
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 93.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 53.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 48.0
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "etosha-2": {
+    "base": "etosha-2",
+    "dir": "images/places",
+    "maxWidth": 1732,
+    "orientation": "landscape",
+    "alt": "Lions drinking at an Etosha waterhole, mirrored in still water.",
+    "theme": "wildlife/etosha",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 99.6
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 91.5
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 47.1
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 45.1
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 20.9
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 20.4
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "kalahari-2": {
+    "base": "kalahari-2",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Hoodia plants holding a red Kalahari dune slipface.",
+    "theme": "desert/kalahari",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 144.5
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 110.7
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 102.6
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 82.9
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 62.0
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 53.7
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 36.9
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 32.6
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "damaraland-1": {
+    "base": "damaraland-1",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Boulder-strewn Damaraland hills with a lone shepherd's tree.",
+    "theme": "rock/damaraland",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 198.1
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 181.9
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 132.3
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 122.7
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 68.1
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 64.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 34.4
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 32.6
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "dune-lodge": {
+    "base": "dune-lodge",
+    "dir": "images/places",
+    "maxWidth": 1600,
+    "orientation": "landscape",
+    "alt": "A stilted cabin with a green roof on a red Kalahari dune.",
+    "theme": "stay/kalahari",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 125.1
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 109.9
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 62.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 58.7
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 30.1
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 27.9
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "thatched-hillside": {
+    "base": "thatched-hillside",
+    "dir": "images/places",
+    "maxWidth": 1600,
+    "orientation": "landscape",
+    "alt": "Thatched chalets on poles at the foot of a granite hill.",
+    "theme": "stay/damaraland",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 184.6
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 176.5
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 93.5
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 94.3
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 45.6
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 45.1
+      }
+    ],
+    "licence": "Project asset"
+  },
+  "fish-river-canyon": {
+    "base": "fish-river-canyon",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Fish River Canyon from the main viewpoint, layered rock walls and a dry riverbed below.",
+    "theme": "south/canyon",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 242.5
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 248.5
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 175.3
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 179.5
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 73.4
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 74.7
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 30.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 31.6
+      }
+    ],
+    "licence": "CC BY-SA 3.0 RudiBosbouer via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fish%20River%20Canyon%20from%20Main%20View%20Point.jpg"
+  },
+  "kolmanskop-ghost-town": {
+    "base": "kolmanskop-ghost-town",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The sand-buried houses of Kolmanskop ghost town near Luederitz.",
+    "theme": "south/luderitz",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 227.0
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 221.8
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 176.9
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 172.4
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 66.3
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 67.4
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 28.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 29.3
+      }
+    ],
+    "licence": "CC BY-SA 4.0 SkyPixels via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Kolmanskop%20Ghost%20Town.jpg"
+  },
+  "swakopmund-jetty": {
+    "base": "swakopmund-jetty",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Swakopmund's beachfront and jetty from the air, the old lighthouse at centre.",
+    "theme": "coast/swakopmund",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 249.3
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 210.6
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 220.6
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 163.0
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 128.8
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 105.6
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 69.2
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 66.3
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Olga Ernst via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Mole%2C%20Jetty%20and%20Lighthouse%20Swakopmund%2C%20Namibia.jpg"
+  },
+  "chobe-river-kasane": {
+    "base": "chobe-river-kasane",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The Chobe River winding through green floodplains near Kasane.",
+    "theme": "river/chobe",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 184.9
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 176.5
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 123.9
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 114.4
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 66.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 63.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 33.3
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 31.8
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Dicklyon via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Chobe%20River%20at%20Kasane.jpg"
+  },
+  "victoria-falls": {
+    "base": "victoria-falls",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "portrait",
+    "alt": "Victoria Falls from the air, spray rising above the basalt gorge.",
+    "theme": "river/vicfalls",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 244.3
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 249.8
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 247.0
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 162.4
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 167.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 111.9
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 87.4
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 84.7
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Diego Delso via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cataratas%20Victoria%2C%20Zambia-Zimbabue%2C%202018-07-27%2C%20DD%2004.jpg"
+  },
+  "windhoek-christ-church": {
+    "base": "windhoek-christ-church",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "Christuskirche and central Windhoek from above.",
+    "theme": "city/windhoek",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 247.4
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 216.9
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 216.9
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 166.1
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 125.0
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 109.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 68.6
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 68.4
+      }
+    ],
+    "licence": "CC BY-SA 2.0 Christoph Strässler via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Christ%20Church%20in%20Windhoek%2C%20Namibia.jpg"
+  },
+  "quiver-tree": {
+    "base": "quiver-tree",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "portrait",
+    "alt": "A quiver tree in rocky ground under a blue sky, southern Namibia.",
+    "theme": "south/quivertree",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 244.2
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 242.8
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 249.0
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 229.0
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 180.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 109.2
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 91.3
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 93.2
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Bjørn Christian Tørrissen via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:QuiverTree-Namibia-2015.JPG"
+  },
+  "zambezi-junction": {
+    "base": "zambezi-junction",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The Zambezi River at the four-nations corner, wide and brown-green under a big sky.",
+    "theme": "river/caprivi",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 238.3
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 122.0
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 51.6
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 21.0
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Ymblanter via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Zambezi_River,_four_nations_corner.jpg"
+  },
+  "skeleton-coast-wreck": {
+    "base": "skeleton-coast-wreck",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The wreck of the Eduard Bohlen stranded in Skeleton Coast sand.",
+    "theme": "coast/skeleton",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 239.7
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 169.6
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 163.9
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 152.5
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 58.3
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 54.7
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 24.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 22.7
+      }
+    ],
+    "licence": "CC BY 3.0 Anagoria via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Eduard%20Bohlen%20anagoria.jpg"
+  },
+  "cape-cross-seals": {
+    "base": "cape-cross-seals",
+    "dir": "images/places",
+    "maxWidth": 640,
+    "orientation": "landscape",
+    "alt": "Cape fur seals crowded on the rocks at Cape Cross.",
+    "theme": "coast/capecross",
+    "kind": "scouted-commons",
+    "variants": [
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 62.0
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 61.6
+      }
+    ],
+    "licence": "CC BY 2.0 betty x1138 from NYC, USA via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Cape%20Cross%20Seal%20Colony.jpg"
+  },
+  "waterberg-plateau": {
+    "base": "waterberg-plateau",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The red sandstone cliffs of the Waterberg plateau rising over green bush.",
+    "theme": "plateau/waterberg",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 240.9
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 211.8
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 245.0
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 136.1
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 190.5
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 195.9
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 80.7
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 83.0
+      }
+    ],
+    "licence": "CC BY-SA 2.5 Harald Süpfle via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Plateau%20Waterberg.jpg"
+  },
+  "bwabwata-elephant": {
+    "base": "bwabwata-elephant",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "A breeding herd of elephants crossing golden grass in Bwabwata National Park.",
+    "theme": "wildlife/caprivi",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 161.4
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 67.4
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 211.1
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 196.5
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 110.6
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 107.3
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 51.9
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 50.6
+      }
+    ],
+    "licence": "CC BY-SA 3.0 Marco Schmidt[1] via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Loxodonta%20africana%20MS%2010093s.jpg"
+  },
+  "okavango-river": {
+    "base": "okavango-river",
+    "dir": "images/places",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "The Okavango River running wide and green under a blue sky.",
+    "theme": "river/okavango",
+    "kind": "photo",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "webp",
+        "kb": 244.2
+      },
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 134.6
+      },
+      {
+        "w": 1440,
+        "fmt": "webp",
+        "kb": 142.5
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 71.2
+      },
+      {
+        "w": 960,
+        "fmt": "webp",
+        "kb": 122.7
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 117.5
+      },
+      {
+        "w": 640,
+        "fmt": "webp",
+        "kb": 52.5
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 50.1
+      }
+    ],
+    "licence": "CC BY-SA 4.0 Zairon via Wikimedia Commons",
+    "sourceUrl": "https://commons.wikimedia.org/wiki/File:Namibia%20Okavango%202.jpg"
+  },
+  "safari-vehicle-red-dune": {
+    "base": "safari-vehicle-red-dune",
+    "dir": "images/photos",
+    "maxWidth": 1920,
+    "orientation": "landscape",
+    "alt": "An open safari vehicle crossing a red Kalahari dune, acacia scrub behind.",
+    "theme": "vehicle/safari",
+    "kind": "client",
+    "variants": [
+      {
+        "w": 1920,
+        "fmt": "avif",
+        "kb": 203.8
+      },
+      {
+        "w": 1440,
+        "fmt": "avif",
+        "kb": 125.9
+      },
+      {
+        "w": 960,
+        "fmt": "avif",
+        "kb": 60.8
+      },
+      {
+        "w": 640,
+        "fmt": "avif",
+        "kb": 28.3
+      }
+    ],
+    "licence": "Client's own photograph, used with permission"
+  }
+}

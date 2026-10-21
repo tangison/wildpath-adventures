@@ -24,7 +24,7 @@ export default function NotFound() {
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-4">
             <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-            <p className="wp-script text-2xl text-[#9E4214] mt-4">404</p>
+            <p className="wp-subhead text-2xl text-[#9E4214] mt-4">404</p>
           </div>
           <div className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20">
             <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">

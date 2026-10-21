@@ -18,6 +18,14 @@ import type { NextRequest } from 'next/server';
 export function middleware(request: NextRequest) {
   const response = NextResponse.next();
 
+  // Staging guard — anything that is not the production domain must be
+  // noindex/nofollow so staging builds never enter search indexes.
+  const host = request.headers.get('host') || '';
+  const isProduction = host.startsWith('wildpathnamibia.com') || host.startsWith('www.wildpathnamibia.com');
+  if (!isProduction) {
+    response.headers.set('X-Robots-Tag', 'noindex, nofollow');
+  }
+
   // Content Security Policy — allows Google Fonts, images from same origin,
   // and WhatsApp/sharer links.
   //
