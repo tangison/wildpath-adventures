@@ -1,14 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { motion } from 'framer-motion';
-import { MessageCircle, ArrowRight, Check, Loader2 } from 'lucide-react';
-import { AcaciaMark } from '@/components/wildpath';
-import { WHATSAPP_URL } from '@/lib/site';
+import { MessageCircle, Mail, ArrowRight } from 'lucide-react';
 import { JOURNEYS } from '@/lib/journeys';
+import { SITE, SITE_EMAIL, WHATSAPP_URL } from '@/lib/site';
 
-const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
-
+/**
+ * ContactForm — static-site enquiry form.
+ * There is no backend: the form composes a structured enquiry and hands it
+ * to WhatsApp (primary, the channel the client answers fastest) with a
+ * mailto fallback. Every field is validated natively before hand-off.
+ */
 type FormState = {
   name: string;
   email: string;
@@ -17,389 +19,237 @@ type FormState = {
   journey: string;
   travelMonth: string;
   travellers: string;
-  message: string;
   travelStyle: string;
   duration: string;
   interests: string;
+  message: string;
   consent: boolean;
-  // Honeypot — bots fill this, humans don't
+  // honeypot — bots fill it, humans never see it
   website: string;
 };
 
-const INITIAL: FormState = {
-  name: '',
-  email: '',
-  phone: '',
-  country: '',
-  journey: '',
-  travelMonth: '',
-  travellers: '2',
-  message: '',
-  travelStyle: '',
-  duration: '',
-  interests: '',
-  consent: false,
-  website: '',
+const EMPTY: FormState = {
+  name: '', email: '', phone: '', country: '', journey: '', travelMonth: '',
+  travellers: '2', travelStyle: '', duration: '', interests: '', message: '',
+  consent: false, website: '',
 };
 
-/**
- * Builds a wa.me link prefilled with the full enquiry, so WhatsApp works as a
- * real submission channel (not just a chat link). Used for the channel-choice
- * button, the error fallback, and the post-submission confirmation.
- */
-function buildWhatsAppUrl(f: FormState): string {
-  const journeyName =
-    (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
-  const lines = [
-    `New enquiry from ${f.name || '—'} (${f.country || '—'})`,
-    `Email: ${f.email || '—'} · Phone/WhatsApp: ${f.phone || '—'}`,
-    `Journey: ${journeyName} · Travel: ${f.travelMonth || '—'} · Travellers: ${f.travellers}`,
-  ];
-  if (f.travelStyle) lines.push(`Style: ${f.travelStyle}`);
-  if (f.duration) lines.push(`Duration: ${f.duration}`);
-  if (f.interests) lines.push(`Interests: ${f.interests}`);
-  lines.push(`Message: ${f.message || '—'}`);
-  return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
-}
+const inputClass =
+  'w-full bg-[#F2EDE3] border border-[#1A1A1A]/15 px-4 py-3 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/40 focus:outline-none focus:border-[#C5511A] focus:ring-1 focus:ring-[#C5511A] transition-colors';
+const labelClass = 'wp-subhead text-[0.58rem] text-[#9E4214] mb-2 block';
 
 export function ContactForm() {
-  const [form, setForm] = useState<FormState>(INITIAL);
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
-  const [error, setError] = useState('');
-  // Snapshot of the submitted enquiry — the form resets on success, but the
-  // confirmation screen still offers WhatsApp with the enquiry prefilled.
-  const [lastEnquiry, setLastEnquiry] = useState<FormState | null>(null);
+  const [form, setForm] = useState<FormState>(EMPTY);
+  const [error, setError] = useState<string | null>(null);
+  const [handedOff, setHandedOff] = useState<'whatsapp' | 'email' | null>(null);
 
-  function update<K extends keyof FormState>(key: K, value: FormState[K]) {
+  const set = <K extends keyof FormState>(key: K, value: FormState[K]) =>
     setForm((f) => ({ ...f, [key]: value }));
-  }
 
-  async function handleSubmit(e: React.FormEvent) {
+  const buildSummary = (f: FormState) => {
+    const lines = [
+      `New journey enquiry from the website`,
+      ``,
+      `Name: ${f.name}`,
+      `Email: ${f.email}`,
+      `Phone/WhatsApp: ${f.phone}`,
+      `Country: ${f.country}`,
+      `Journey of interest: ${f.journey}`,
+      `Travel month: ${f.travelMonth}`,
+      `Travellers: ${f.travellers}`,
+      f.travelStyle ? `Travel style: ${f.travelStyle}` : '',
+      f.duration ? `Duration: ${f.duration}` : '',
+      f.interests ? `Special interests: ${f.interests}` : '',
+      ``,
+      `Message:`,
+      f.message,
+    ].filter((l) => l !== '');
+    return lines.join('\n');
+  };
+
+  const submit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (status === 'submitting') return;
+    setError(null);
 
-    // Client-side guard: consent required
-    if (!form.consent) {
-      setError('Please agree to the privacy policy so we can respond to your enquiry.');
+    // Honeypot: pretend success for bots.
+    if (form.website) {
+      setHandedOff('whatsapp');
       return;
     }
 
-    setStatus('submitting');
-    setError('');
-
-    try {
-      const res = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try WhatsApp instead.');
-      }
-      setLastEnquiry({ ...form });
-      setStatus('success');
-      setForm(INITIAL);
-    } catch (err) {
-      setStatus('error');
-      setError(err instanceof Error ? err.message : 'Something went wrong.');
+    if (!form.name.trim() || !form.email.trim() || !form.phone.trim() || !form.country.trim()) {
+      setError('Please fill in your name, email, phone and country of residence.');
+      return;
     }
-  }
+    if (!form.journey || !form.travelMonth || !form.travellers) {
+      setError('Please choose a journey, a travel month and the number of travellers.');
+      return;
+    }
+    if (!form.message.trim()) {
+      setError('Please add a short message about your trip.');
+      return;
+    }
+    if (!form.consent) {
+      setError('Please accept the privacy notice so we may reply to you.');
+      return;
+    }
 
-  // ═══ SUCCESS STATE ═══
-  if (status === 'success') {
+    const summary = buildSummary(form);
+    const wa = `${WHATSAPP_URL}?text=${encodeURIComponent(summary)}`;
+    window.open(wa, '_blank', 'noopener,noreferrer');
+    setHandedOff('whatsapp');
+  };
+
+  const emailFallback = () => {
+    const subject = `Journey enquiry: ${form.journey || 'Namibia'} \u2014 ${form.name || 'website'}`;
+    const body = buildSummary(form);
+    window.location.href = `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    setHandedOff('email');
+  };
+
+  if (handedOff) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-        className="bg-[#E8E3D5] p-8 md:p-12 text-center"
-      >
-        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#C5511A] flex items-center justify-center">
-          <Check size={28} className="text-[#F2EDE3]" strokeWidth={2.5} />
-        </div>
-        <p className="wp-script text-2xl text-[#9E4214] mb-3">Thank you</p>
-        <h3 className="wp-display text-3xl md:text-4xl text-[#1A1A1A] mb-4 leading-tight">
-          Your enquiry is on its way.
-        </h3>
-        <p className="text-base text-[#1A1A1A]/75 leading-relaxed max-w-md mx-auto mb-8">
-          We aim to reply within two business days. For an immediate response,
-          message us on WhatsApp.
+      <div className="bg-[#F2EDE3] border border-[#1A1A1A]/15 p-8 md:p-10">
+        <p className="wp-subhead text-[0.6rem] text-[#9E4214] mb-3">
+          {handedOff === 'whatsapp' ? 'WhatsApp opened' : 'Email draft opened'}
         </p>
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a
-            href={buildWhatsAppUrl(lastEnquiry ?? INITIAL)}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
-          >
-            <MessageCircle size={15} />
-            Continue on WhatsApp
-          </a>
-          <button
-            type="button"
-            onClick={() => setStatus('idle')}
-            className="border border-[#1A1A1A] text-[#1A1A1A] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors"
-          >
-            Send another enquiry
-          </button>
-        </div>
-      </motion.div>
+        <h3 className="wp-display text-2xl md:text-3xl mb-4">Your enquiry is ready to send.</h3>
+        <p className="text-base text-[#1A1A1A]/75 leading-relaxed mb-6">
+          {handedOff === 'whatsapp'
+            ? 'Press send in WhatsApp and it lands with us instantly. A person replies, usually the same day.'
+            : 'Press send in your mail app and we will reply within two business days.'}
+        </p>
+        <button
+          onClick={() => { setForm(EMPTY); setHandedOff(null); }}
+          className="text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-2"
+        >
+          Write another enquiry <ArrowRight size={14} />
+        </button>
+      </div>
     );
   }
 
-  // ═══ FORM ═══
-  const inputClass =
-    'w-full bg-[#F2EDE3] border border-[#1A1A1A]/15 px-4 py-3 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/40 focus:outline-none focus:border-[#C5511A] focus:ring-1 focus:ring-[#C5511A] transition-colors';
-  const labelClass = 'wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-2 block';
-
   return (
-    <form onSubmit={handleSubmit} className="bg-[#F2EDE3] p-6 md:p-10 space-y-5">
-      {/* Required fields */}
-      <div className="grid md:grid-cols-2 gap-5">
+    <form onSubmit={submit} className="relative bg-[#F2EDE3] border border-[#1A1A1A]/15 p-6 md:p-10">
+      {/* Honeypot — hidden from humans */}
+      <div className="absolute -left-[9999px]" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input id="website" type="text" tabIndex={-1} autoComplete="off"
+          value={form.website} onChange={(e) => set('website', e.target.value)} />
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-x-5 gap-y-5">
         <div>
           <label htmlFor="name" className={labelClass}>Full name *</label>
-          <input
-            id="name"
-            type="text"
-            required
-            autoComplete="name"
-            value={form.name}
-            onChange={(e) => update('name', e.target.value)}
-            placeholder="Your full name"
-            className={inputClass}
-          />
+          <input id="name" type="text" required autoComplete="name" className={inputClass}
+            placeholder="Your full name" value={form.name} onChange={(e) => set('name', e.target.value)} />
         </div>
         <div>
           <label htmlFor="email" className={labelClass}>Email *</label>
-          <input
-            id="email"
-            type="email"
-            required
-            autoComplete="email"
-            value={form.email}
-            onChange={(e) => update('email', e.target.value)}
-            placeholder="you@example.com"
-            className={inputClass}
-          />
+          <input id="email" type="email" required autoComplete="email" className={inputClass}
+            placeholder="you@example.com" value={form.email} onChange={(e) => set('email', e.target.value)} />
         </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="phone" className={labelClass}>Phone or WhatsApp *</label>
-          <input
-            id="phone"
-            type="tel"
-            required
-            autoComplete="tel"
-            value={form.phone}
-            onChange={(e) => update('phone', e.target.value)}
-            placeholder="+country code and number"
-            className={inputClass}
-          />
+          <input id="phone" type="tel" required autoComplete="tel" className={inputClass}
+            placeholder="+ country code and number" value={form.phone} onChange={(e) => set('phone', e.target.value)} />
         </div>
         <div>
           <label htmlFor="country" className={labelClass}>Country of residence *</label>
-          <input
-            id="country"
-            type="text"
-            required
-            autoComplete="country-name"
-            value={form.country}
-            onChange={(e) => update('country', e.target.value)}
-            placeholder="e.g. Germany, South Africa, USA"
-            className={inputClass}
-          />
+          <input id="country" type="text" required autoComplete="country-name" className={inputClass}
+            placeholder="e.g. Germany, South Africa, USA" value={form.country} onChange={(e) => set('country', e.target.value)} />
         </div>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="journey" className={labelClass}>Journey of interest *</label>
-          <select
-            id="journey"
-            required
-            value={form.journey}
-            onChange={(e) => update('journey', e.target.value)}
-            className={inputClass}
-          >
-            <option value="">Select a journey</option>
+          <select id="journey" required className={inputClass} value={form.journey}
+            onChange={(e) => set('journey', e.target.value)}>
+            <option value="">Choose one</option>
             {JOURNEYS.map((j) => (
-              <option key={j.slug} value={j.slug}>
-                {j.name} ({j.duration})
-              </option>
+              <option key={j.slug} value={j.name}>{j.name}</option>
             ))}
-            <option value="custom">A custom journey</option>
-            <option value="not-sure">Not sure yet — help me choose</option>
+            <option value="Custom journey">A custom journey</option>
+            <option value="Not sure yet">Not sure yet</option>
           </select>
         </div>
         <div>
           <label htmlFor="travelMonth" className={labelClass}>Estimated travel month *</label>
-          <input
-            id="travelMonth"
-            type="text"
-            required
-            value={form.travelMonth}
-            onChange={(e) => update('travelMonth', e.target.value)}
-            placeholder="e.g. July 2026, or flexible"
-            className={inputClass}
-          />
+          <input id="travelMonth" type="text" required className={inputClass}
+            placeholder="e.g. July 2026, or flexible" value={form.travelMonth}
+            onChange={(e) => set('travelMonth', e.target.value)} />
         </div>
-      </div>
-
-      <div>
-        <label htmlFor="travellers" className={labelClass}>Number of travellers *</label>
-        <select
-          id="travellers"
-          required
-          value={form.travellers}
-          onChange={(e) => update('travellers', e.target.value)}
-          className={inputClass}
-        >
-          <option value="1">1 traveller</option>
-          <option value="2">2 travellers</option>
-          <option value="3-4">3–4 travellers</option>
-          <option value="5-6">5–6 travellers</option>
-          <option value="7+">7+ travellers (group)</option>
-        </select>
-      </div>
-
-      {/* Optional fields */}
-      <div className="pt-2 border-t border-[#1A1A1A]/10">
-        <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-4 pt-2">Optional — help us plan better</p>
-        <div className="grid md:grid-cols-2 gap-5">
-          <div>
-            <label htmlFor="travelStyle" className={labelClass}>Preferred travel style</label>
-            <select
-              id="travelStyle"
-              value={form.travelStyle}
-              onChange={(e) => update('travelStyle', e.target.value)}
-              className={inputClass}
-            >
-              <option value="">No preference</option>
-              <option value="self-drive">Self-drive</option>
-              <option value="guided">Guided</option>
-              <option value="mixed">A mix of both</option>
-            </select>
-          </div>
-          <div>
-            <label htmlFor="duration" className={labelClass}>Approximate duration</label>
-            <input
-              id="duration"
-              type="text"
-              value={form.duration}
-              onChange={(e) => update('duration', e.target.value)}
-              placeholder="e.g. 10–14 days"
-              className={inputClass}
-            />
-          </div>
+        <div>
+          <label htmlFor="travellers" className={labelClass}>Number of travellers *</label>
+          <input id="travellers" type="number" min={1} max={12} required className={inputClass}
+            value={form.travellers} onChange={(e) => set('travellers', e.target.value)} />
         </div>
-        <div className="mt-5">
+        <div>
+          <label htmlFor="travelStyle" className={labelClass}>Preferred travel style</label>
+          <select id="travelStyle" className={inputClass} value={form.travelStyle}
+            onChange={(e) => set('travelStyle', e.target.value)}>
+            <option value="">No preference</option>
+            <option value="Self-drive">Self-drive</option>
+            <option value="Guided">Guided</option>
+            <option value="Mix of both">A mix of both</option>
+          </select>
+        </div>
+        <div>
+          <label htmlFor="duration" className={labelClass}>Approximate duration</label>
+          <input id="duration" type="text" className={inputClass}
+            placeholder="e.g. 10 to 14 days" value={form.duration} onChange={(e) => set('duration', e.target.value)} />
+        </div>
+        <div>
           <label htmlFor="interests" className={labelClass}>Special interests</label>
-          <input
-            id="interests"
-            type="text"
-            value={form.interests}
-            onChange={(e) => update('interests', e.target.value)}
-            placeholder="e.g. photography, birding, hiking, cultural experiences"
-            className={inputClass}
-          />
+          <input id="interests" type="text" className={inputClass}
+            placeholder="e.g. photography, birding, hiking, culture" value={form.interests}
+            onChange={(e) => set('interests', e.target.value)} />
         </div>
       </div>
 
-      <div>
+      <div className="mt-5">
         <label htmlFor="message" className={labelClass}>Your message *</label>
-        <textarea
-          id="message"
-          required
-          rows={5}
-          value={form.message}
-          onChange={(e) => update('message', e.target.value)}
-          placeholder="Tell us about the journey you have in mind — what you want to see, what pace suits you, any must-haves or must-avoids. The more you share, the better the first draft."
-          className={`${inputClass} resize-none`}
-        />
+        <textarea id="message" required rows={5} className={inputClass}
+          placeholder="Tell us about the trip you have in mind: pace, must-see places, celebrations, anything that matters."
+          value={form.message} onChange={(e) => set('message', e.target.value)} />
       </div>
 
-      {/* Consent checkbox */}
-      <div className="flex items-start gap-3">
-        <input
-          id="consent"
-          type="checkbox"
-          checked={form.consent}
-          onChange={(e) => update('consent', e.target.checked)}
-          className="mt-1 w-4 h-4 accent-[#C5511A]"
-          required
-        />
-        <label htmlFor="consent" className="text-xs text-[#1A1A1A]/75 leading-relaxed">
-          I agree to the{' '}
-          <a href="/privacy" className="text-[#9E4214] hover:underline">privacy policy</a>{' '}
-          and consent to Wildpath Adventures responding to my enquiry.
+      <div className="mt-5 flex items-start gap-3">
+        <input id="consent" type="checkbox" required checked={form.consent}
+          onChange={(e) => set('consent', e.target.checked)}
+          className="mt-1 w-4 h-4 accent-[#C5511A]" />
+        <label htmlFor="consent" className="text-xs text-[#1A1A1A]/70 leading-relaxed">
+          I agree that Wildpath Adventures may use these details to reply to my
+          enquiry, as described in the privacy notice. *
         </label>
       </div>
 
-      {/* Honeypot — visually hidden, bots fill it */}
-      <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', top: 'auto', width: 1, height: 1, overflow: 'hidden' }}>
-        <label htmlFor="website">Website (leave empty)</label>
-        <input
-          id="website"
-          type="text"
-          tabIndex={-1}
-          autoComplete="off"
-          value={form.website}
-          onChange={(e) => update('website', e.target.value)}
-        />
-      </div>
-
       {error && (
-        <div className="bg-[#C5511A]/10 border border-[#C5511A]/30 px-4 py-3 text-sm text-[#9E4214]">
+        <p role="alert" className="mt-4 text-sm text-[#9E4214] bg-[#9E4214]/10 border border-[#9E4214]/25 px-4 py-3">
           {error}
-          {status === 'error' && (
-            <a
-              href={buildWhatsAppUrl(form)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-2 bg-[#1A1A1A] text-[#F2EDE3] px-4 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#9E4214] transition-colors"
-            >
-              <MessageCircle size={14} />
-              Send this enquiry via WhatsApp instead
-            </a>
-          )}
-        </div>
+        </p>
       )}
 
-      <div className="flex flex-col sm:flex-row gap-3 pt-2">
+      <div className="mt-7 flex flex-col sm:flex-row gap-3">
         <button
           type="submit"
-          disabled={status === 'submitting'}
-          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center disabled:opacity-60 disabled:cursor-not-allowed"
-        >
-          {status === 'submitting' ? (
-            <>
-              <Loader2 size={15} className="animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              Request This Journey
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </>
-          )}
-        </button>
-        <a
-          href={buildWhatsAppUrl(form)}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
           <MessageCircle size={15} />
-          Or WhatsApp Us
-        </a>
+          Send enquiry on WhatsApp
+        </button>
+        <button
+          type="button"
+          onClick={emailFallback}
+          className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+        >
+          <Mail size={15} />
+          Send by email instead
+        </button>
       </div>
-      <p className="text-xs text-[#1A1A1A]/55 pt-2">
-        We aim to reply within two business days. Your details are only used to
-        plan your journey — see our{' '}
-        <a href="/privacy" className="underline hover:text-[#9E4214]">privacy policy</a>.
+
+      <p className="mt-4 text-xs text-[#1A1A1A]/55 leading-relaxed">
+        WhatsApp opens with your enquiry pre-filled. Nothing is sent until you
+        press send there. Prefer email? Use the second button, or write directly
+        to {SITE.email}. We aim to reply within two business days.
       </p>
     </form>
   );
