@@ -1,8 +1,4 @@
-'use client';
-
 import Link from 'next/link';
-import Image from 'next/image';
-import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import {
   Nav,
@@ -10,416 +6,294 @@ import {
   BirdFlock,
   SectionHeading,
 } from '@/components/wildpath';
+import { HeroVideo } from '@/components/hero-video';
+import { Gallery } from '@/components/lightbox';
+import { Photo } from '@/components/photo';
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
-import { WHATSAPP_URL } from '@/lib/site';
-
-const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
+import { HOME_MOSAIC, HOME_GALLERY, CTA_PHOTO } from '@/lib/journey-media';
+import { SITE, WHATSAPP_URL } from '@/lib/site';
+import { FIELD_NOTES } from '@/lib/field-notes';
 
 // ═══════════════════════════════════════════════════════════
-// WILDPATH ADVENTURES — HOME
-// Layout direction: typographic statement-led editorial, inspired by
-// wearecollins.com (giant statement hero, type-index rows with hover
-// inversion, ruled hairlines, serif italic accents, minimal chrome).
-// Mapped onto the Wildpath brand tokens: ivory #F2EDE3, ink #1A1A1A,
-// burnt orange #C5511A, serif accents via Fraunces (--font-fraunces).
+// WILDPATH ADVENTURES — HOME (image-first rebuild)
+// Full-bleed video hero, photo-led journey cards, destination
+// mosaic, field-notes strip, lightbox gallery, photo CTA.
 //
-// Copy rules (Tangison house style):
-//   No em dashes, no exclamation points, no invented claims.
-//   CTAs follow [verb + what you get]. All copy below is audited
-//   against the approved content in src/lib/journeys.ts, src/lib/destinations.ts,
-//   and the client claims audit. Nothing fabricated.
-//
-// Motion: entrance only on the hero; hover states are CSS. Reduced
-// motion disables the hero entrance.
+// Copy rules (Tangison house style): no em dashes, no exclamation
+// points, no invented claims. Every claim traceable to
+// src/lib/journeys.ts, src/lib/destinations.ts or the client brief.
 // ═══════════════════════════════════════════════════════════
-
-const FIELD_NOTES = [
-  {
-    title: 'When to visit Sossusvlei',
-    excerpt:
-      'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
-    category: 'Destination guide',
-  },
-  {
-    title: 'Etosha in the dry and wet seasons',
-    excerpt:
-      'How wildlife viewing shifts between the dry winter months and the greener, quieter summer, and what each season rewards.',
-    category: 'Destination guide',
-  },
-  {
-    title: 'Packing for Namibia',
-    excerpt:
-      'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
-    category: 'Travel preparation',
-  },
-];
 
 export default function Home() {
-  const featuredDestinations = DESTINATIONS.filter((d) => d.imageKind === 'photo').slice(0, 4);
-  const prefersReducedMotion = useReducedMotion();
+  const featured = DESTINATIONS.filter((d) => d.slug !== 'namibia').slice(0, 8);
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
       <main id="main-content" className="flex-1">
-        {/* ═════════════════════ HERO — one statement, type-first ═════════════════════ */}
-        <section className="pt-24 md:pt-32 pb-14 md:pb-20 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <motion.p
-              initial={prefersReducedMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, ease: EASE_PREMIUM }}
-              className="wp-subhead text-[0.65rem] md:text-xs tracking-[0.3em] uppercase text-[#9E4214] mb-6 md:mb-8"
-            >
-              Wildpath Adventures · Windhoek, Namibia
-            </motion.p>
+        {/* ═══════════ HERO — full-bleed video loop ═══════════ */}
+        <section className="relative min-h-[92svh] flex flex-col justify-end overflow-hidden">
+          <HeroVideo posterAlt="A sandy four-by-four track winding through red Sossusvlei dunes and camelthorn trees." />
 
-            <motion.h1
-              initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: EASE_PREMIUM, delay: 0.1 }}
-              className="wp-display text-[clamp(3rem,10.5vw,10rem)] leading-[0.88] tracking-[-0.015em] text-[#1A1A1A] max-w-[12ch]"
-            >
-              Travel the{' '}
-              <em className="font-serif italic font-light text-[#9E4214]">untamed</em>{' '}
-              beauty<span className="text-[#C5511A]">.</span>
-            </motion.h1>
-
-            <div className="mt-10 md:mt-14 grid md:grid-cols-12 gap-6 md:gap-8 items-end">
-              <p className="md:col-span-5 text-base md:text-lg text-[#1A1A1A]/70 leading-relaxed max-w-md">
-                Personalised journeys across Namibia and Southern Africa, planned
-                by a Namibian team that knows the land. Self-drive, guided, or a
-                mix of both.
+          <div className="relative z-10 px-6 md:px-12 pb-14 md:pb-20 pt-40">
+            <div className="max-w-7xl mx-auto">
+              <p className="wp-subhead text-[0.62rem] md:text-xs text-[#F2EDE3]/90 mb-6">
+                Wildpath Adventures · Windhoek, Namibia
               </p>
-              <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
-                <Link
-                  href="/contact"
-                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-[background-color] duration-300 inline-flex items-center gap-3 justify-center"
-                >
-                  Start Planning My Journey
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform] duration-200" />
-                </Link>
-                <Link
-                  href="/journeys"
-                  className="group border border-[#1A1A1A]/25 text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
-                >
-                  Explore Journeys
-                </Link>
+
+              <h1 className="wp-display text-[clamp(2.6rem,8.5vw,8.5rem)] leading-[0.92] text-[#F2EDE3] max-w-[14ch] drop-shadow-[0_2px_18px_rgba(0,0,0,0.35)]">
+                Slow down. Breathe.{' '}
+                <em className="font-serif italic font-light text-[#E8854A]">Discover</em>{' '}
+                Namibia<span className="text-[#E8854A]">.</span>
+              </h1>
+
+              <div className="mt-8 md:mt-12 grid md:grid-cols-12 gap-6 items-end">
+                <p className="md:col-span-5 text-base md:text-lg text-[#F2EDE3]/90 leading-relaxed max-w-md drop-shadow-[0_1px_8px_rgba(0,0,0,0.4)]">
+                  Personalised journeys across Namibia and Southern Africa,
+                  planned by a Namibian team that knows the land. Self-drive,
+                  guided, or a mix of both.
+                </p>
+                <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
+                  <Link
+                    href="/journeys"
+                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  >
+                    Explore the journeys
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <a
+                    href={WHATSAPP_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  >
+                    <MessageCircle size={15} />
+                    WhatsApp us
+                  </a>
+                </div>
               </div>
-              <p className="md:col-span-3 md:text-right text-[0.65rem] tracking-[0.22em] uppercase text-[#1A1A1A]/50">
-                4 journeys · 9 destinations · planned in Windhoek
-              </p>
-            </div>
-
-            {/* Hero illustration — editorial band with caption row */}
-            <motion.div
-              initial={prefersReducedMotion ? false : { opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, ease: EASE_PREMIUM, delay: 0.25 }}
-              className="mt-12 md:mt-16 relative aspect-[16/10] md:aspect-[21/9] overflow-hidden bg-[#E8E3D5]"
-            >
-              <Image
-                src="/images/illustrations/approved/wildpath-hero-main.webp"
-                alt="Hand-drawn vintage screen-print illustration of the Namibian savannah with acacia tree, gravel road, elephants, birds, and sunset"
-                fill
-                priority
-                loading="eager"
-                fetchPriority="high"
-                sizes="(max-width: 768px) 100vw, 92vw"
-                className="object-contain object-center"
-              />
-            </motion.div>
-            <div className="mt-3 flex justify-between text-[0.6rem] md:text-[0.65rem] tracking-[0.22em] uppercase text-[#1A1A1A]/45">
-              <span>Wildpath Adventures</span>
-              <span>Namibia, Southern Africa</span>
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ MANIFESTO — secondary statement band ═════════════════════ */}
-        <section className="border-y border-[#1A1A1A]/12 bg-[#E8E3D5] py-14 md:py-20 px-6 md:px-12">
-          <div className="max-w-5xl mx-auto">
-            <p className="wp-display text-3xl md:text-5xl lg:text-6xl leading-[1.05] text-[#1A1A1A]">
-              Four journeys. Nine landscapes.
-              <br />
-              <span className="text-[#9E4214]">One region, planned from inside it.</span>
+        {/* ═══════════ INTRO — one short editorial beat ═══════════ */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
+          <div className="max-w-4xl mx-auto wp-reveal">
+            <p className="wp-display text-2xl md:text-4xl leading-[1.15] text-[#1A1A1A]">
+              Namibia is a country of long distances and bigger silences.
+              We plan journeys that give it room to speak: red dunes at
+              sunrise, cold Atlantic fog, a waterhole at dusk with your
+              breath held. <span className="text-[#9E4214]">Slow travel,
+              done properly.</span>
             </p>
+            <BirdFlock className="w-40 h-12 text-[#9E4214]/40 mt-8" />
           </div>
         </section>
 
-        {/* ═════════════════════ JOURNEYS — type index with hover inversion ═════════════════════ */}
-        <section id="journeys" className="py-20 md:py-28 px-6 md:px-12">
+        {/* ═══════════ JOURNEYS — image-led cards ═══════════ */}
+        <section className="py-16 md:py-24 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-4">
-              <p className="wp-subhead text-[0.65rem] tracking-[0.25em] uppercase text-[#1A1A1A]/60">
-                01 · The Journeys
-              </p>
-              <Link
-                href="/journeys"
-                className="group inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-colors duration-200"
-              >
-                All Journeys (4)
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
-            </div>
+            <SectionHeading
+              title="Four journeys,"
+              highlight="one country deep."
+              intro="Each route is built around real nights in real places. Pick the shape of trip that fits, then we tailor it around you."
+            />
 
-            <div>
+            <div className="grid md:grid-cols-2 gap-5 md:gap-6">
               {JOURNEYS.map((j, i) => (
                 <Link
                   key={j.slug}
                   href={`/journeys/${j.slug}`}
-                  className="group grid grid-cols-[2.5rem_1fr_auto] md:grid-cols-[5rem_1fr_13rem_2rem] items-center gap-4 md:gap-8 py-7 md:py-10 px-2 md:px-4 -mx-2 md:-mx-4 border-b border-[#1A1A1A]/15 last:border-b-0 hover:bg-[#1A1A1A] transition-colors duration-300"
+                  className="group relative block wp-photo wp-img-reveal"
+                  style={{ aspectRatio: i === 0 ? '16 / 10' : '16 / 10' }}
                 >
-                  <span className="wp-display text-lg md:text-3xl text-[#1A1A1A]/40 group-hover:text-[#E8854A]/80 transition-colors duration-300">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <div>
-                    <h3 className="wp-display text-3xl md:text-6xl leading-[0.9] text-[#1A1A1A] group-hover:text-[#F2EDE3] transition-colors duration-300">
+                  <Photo
+                    base={j.cardImage}
+                    alt={`${j.name}: ${j.tagline}`}
+                    aspect="16 / 10"
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    priority={i === 0}
+                    reveal={false}
+                    imgClassName="transition-transform duration-700 group-hover:scale-[1.02]"
+                    className="h-full"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/85 via-[#140C06]/25 to-transparent" aria-hidden="true" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                    <p className="wp-subhead text-[0.58rem] text-[#E8854A] mb-2">
+                      {j.duration} · {j.travelStyle}
+                    </p>
+                    <h3 className="wp-display text-2xl md:text-4xl text-[#F2EDE3] leading-[0.95] mb-2">
                       {j.name}
                     </h3>
-                    <p className="mt-2 md:mt-3 text-sm md:text-base text-[#1A1A1A]/65 group-hover:text-[#F2EDE3]/75 leading-snug max-w-xl transition-colors duration-300">
+                    <p className="text-sm md:text-base text-[#F2EDE3]/80 leading-relaxed max-w-md hidden md:block">
                       {j.tagline}
                     </p>
+                    <span className="mt-3 inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#F2EDE3]">
+                      View the route
+                      <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+                    </span>
                   </div>
-                  <div className="hidden md:block text-right text-[0.65rem] tracking-[0.2em] uppercase text-[#1A1A1A]/55 group-hover:text-[#F2EDE3]/60 transition-colors duration-300">
-                    <p>{j.duration}</p>
-                    <p className="mt-1">{j.travelStyle}</p>
-                  </div>
-                  <ArrowRight
-                    size={20}
-                    className="text-[#1A1A1A] group-hover:text-[#C5511A] group-hover:translate-x-1.5 transition-all duration-200"
-                  />
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ WHY WILDPATH — numbered list, dark band ═════════════════════ */}
-        <section className="py-20 md:py-28 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
-          <div className="max-w-5xl mx-auto">
-            <SectionHeading
-              eyebrow="What we stand on"
-              title="Namibian-owned."
-              highlight="Personally planned."
-              intro="A small, dedicated team based in Windhoek. Every itinerary is shaped by local destination knowledge and trusted partners across the region."
-              dark
-            />
-
-            <div className="space-y-0">
-              {[
-                { num: '01', title: 'Namibian ownership', body: 'A Namibian-owned tour operator based in Windhoek. We plan every journey from inside the country we travel in.' },
-                { num: '02', title: 'Personalised planning', body: 'Every itinerary is drafted around your dates, your pace, and the people travelling with you. No two journeys are the same.' },
-                { num: '03', title: 'Self-drive & guided', body: 'Choose self-drive with a thorough briefing, a guided vehicle, or a mix of both. We arrange what suits your route.' },
-                { num: '04', title: 'Local destination knowledge', body: 'Our journeys are shaped by local destination knowledge and trusted partners across Namibia and Southern Africa.' },
-                { num: '05', title: 'Flexible routes', body: 'Combine destinations. Add a transfer. Walk further. Stay longer. Every published route is a starting point, not a fixed script.' },
-                { num: '06', title: 'Responsible travel', body: 'We aim to work with responsible local partners and support travel practices that respect Namibia\u2019s wildlife, landscapes, and communities.' },
-              ].map((v) => (
-                <div
-                  key={v.num}
-                  className="grid grid-cols-[3rem_1fr] gap-x-6 py-6 border-b border-[#F2EDE3]/10 last:border-b-0"
-                >
-                  <span className="wp-display text-2xl md:text-3xl text-[#E8854A]/60 leading-none pt-1">
-                    {v.num}
-                  </span>
-                  <div>
-                    <h3 className="wp-display text-xl md:text-2xl text-[#F2EDE3] mb-2 leading-tight">
-                      {v.title}
-                    </h3>
-                    <p className="text-sm text-[#F2EDE3]/75 leading-relaxed">{v.body}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════════════ THE LAND — destinations, ruled editorial grid ═════════════════════ */}
-        <section id="destinations" className="py-20 md:py-28 px-6 md:px-12 bg-[#E8E3D5]">
+        {/* ═══════════ DESTINATION MOSAIC ═══════════ */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-8">
-              <p className="wp-subhead text-[0.65rem] tracking-[0.25em] uppercase text-[#1A1A1A]/60">
-                02 · The Land
-              </p>
+            <SectionHeading
+              title="The places themselves."
+              intro="Dunes, pans, rivers, wrecks and falls. Every destination page is built from photographs of the place itself."
+            />
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              {featured.map((d, i) => {
+                const mosaic = HOME_MOSAIC[i];
+                return (
+                  <Link
+                    key={d.slug}
+                    href={`/destinations/${d.slug}`}
+                    className={`group relative block wp-photo wp-img-reveal ${
+                      i === 0 ? 'col-span-2 row-span-2' : ''
+                    }`}
+                    style={{ aspectRatio: i === 0 ? '1 / 1' : '2 / 3' }}
+                  >
+                    {mosaic && (
+                      <Photo
+                        base={mosaic.base}
+                        alt={mosaic.alt}
+                        aspect={i === 0 ? '1 / 1' : '2 / 3'}
+                        sizes={i === 0 ? '(min-width: 768px) 50vw, 100vw' : '(min-width: 768px) 25vw, 50vw'}
+                        reveal={false}
+                        imgClassName="transition-transform duration-700 group-hover:scale-[1.02]"
+                        className="h-full"
+                      />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/80 via-transparent to-transparent" aria-hidden="true" />
+                    <div className="absolute inset-x-0 bottom-0 p-4 md:p-5">
+                      <h3 className="wp-display text-lg md:text-2xl text-[#F2EDE3] leading-none">
+                        {d.name}
+                      </h3>
+                      <p className="text-[0.7rem] text-[#F2EDE3]/70 mt-1 hidden md:block leading-snug">
+                        {d.shortLine}
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+            <div className="mt-8">
               <Link
                 href="/destinations"
-                className="group inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-colors duration-200"
+                className="group inline-flex items-center gap-3 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] hover:text-[#1A1A1A] transition-colors"
               >
-                All Destinations (9)
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
+                All destinations
+                <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-            </div>
-
-            {featuredDestinations.length > 0 && (
-              <Link
-                href={`/destinations/${featuredDestinations[0].slug}`}
-                className="group relative block aspect-[16/9] md:aspect-[21/8] overflow-hidden bg-[#1A1A1A] mb-6"
-              >
-                <Image
-                  src={featuredDestinations[0].image}
-                  alt={`${featuredDestinations[0].name}, ${featuredDestinations[0].country}`}
-                  fill
-                  sizes="100vw"
-                  className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
-                <div className="absolute inset-0 p-6 md:p-10 flex flex-col justify-end text-[#F2EDE3]">
-                  <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-2">
-                    {featuredDestinations[0].country}
-                  </p>
-                  <h3 className="wp-display text-3xl md:text-6xl leading-[0.9] mb-2">
-                    {featuredDestinations[0].name}
-                  </h3>
-                  <p className="text-sm md:text-base text-[#F2EDE3]/85 max-w-xl leading-relaxed">
-                    {featuredDestinations[0].shortLine}
-                  </p>
-                  <p className="mt-4 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                    Explore
-                    <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </p>
-                </div>
-              </Link>
-            )}
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {featuredDestinations.slice(1).map((d) => (
-                <Link
-                  key={d.slug}
-                  href={`/destinations/${d.slug}`}
-                  className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
-                >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name}, ${d.country}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-500"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
-                  <div className="absolute inset-0 p-6 flex flex-col justify-end text-[#F2EDE3]">
-                    <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#E8854A] mb-2">
-                      {d.country}
-                    </p>
-                    <h3 className="wp-display text-2xl md:text-3xl leading-[0.95] mb-2">
-                      {d.name}
-                    </h3>
-                    <p className="text-sm text-[#F2EDE3]/85 leading-relaxed">
-                      {d.shortLine}
-                    </p>
-                    <p className="mt-3 text-[0.6rem] tracking-[0.22em] uppercase text-[#E8854A] flex items-center gap-2">
-                      Explore
-                      <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-200" />
-                    </p>
-                  </div>
-                </Link>
-              ))}
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ FIELD NOTES — text row list ═════════════════════ */}
-        <section id="field-notes" className="py-20 md:py-28 px-6 md:px-12">
-          <div className="max-w-5xl mx-auto">
-            <div className="flex items-end justify-between border-b border-[#1A1A1A]/15 pb-4 mb-2">
-              <p className="wp-subhead text-[0.65rem] tracking-[0.25em] uppercase text-[#1A1A1A]/60">
-                03 · Field Notes
-              </p>
-              <Link
-                href="/field-notes"
-                className="group inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#1A1A1A] hover:text-[#9E4214] transition-colors duration-200"
-              >
-                All Field Notes
-                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
-            </div>
-
-            <div>
-              {FIELD_NOTES.map((n) => (
+        {/* ═══════════ FIELD NOTES — photo strip ═══════════ */}
+        <section className="py-16 md:py-24 px-6 md:px-12 bg-[#E8E3D5]">
+          <div className="max-w-7xl mx-auto">
+            <SectionHeading
+              title="Field notes."
+              intro="Short, honest guides from the road: seasons, light, packing, and what to expect."
+            />
+            <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+              {FIELD_NOTES.map((n, i) => (
                 <Link
-                  key={n.title}
-                  href="/field-notes"
-                  className="group grid md:grid-cols-[11rem_1fr_auto] gap-2 md:gap-8 items-baseline py-7 md:py-9 px-2 md:px-4 -mx-2 md:-mx-4 border-b border-[#1A1A1A]/15 last:border-b-0 hover:bg-[#E8E3D5] transition-colors duration-300"
+                  key={n.slug}
+                  href={`/field-notes/${n.slug}`}
+                  className="group block"
                 >
-                  <p className="wp-subhead text-[0.6rem] tracking-[0.22em] uppercase text-[#9E4214]">
+                  <div className="wp-photo wp-img-reveal" style={{ aspectRatio: '4 / 3' }}>
+                    <Photo
+                      base={n.image}
+                      alt={n.imageAlt}
+                      aspect="4 / 3"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      reveal={false}
+                      imgClassName="transition-transform duration-700 group-hover:scale-[1.02]"
+                      className="h-full"
+                    />
+                  </div>
+                  <p className="wp-subhead text-[0.55rem] text-[#9E4214] mt-4 mb-2">
                     {n.category}
                   </p>
-                  <div>
-                    <h3 className="font-serif text-2xl md:text-4xl text-[#1A1A1A] leading-tight group-hover:text-[#9E4214] transition-colors duration-300">
-                      {n.title}
-                    </h3>
-                    <p className="mt-2 text-sm text-[#1A1A1A]/70 leading-relaxed max-w-2xl">
-                      {n.excerpt}
-                    </p>
-                  </div>
-                  <span className="flex items-center gap-2 text-[0.65rem] tracking-[0.2em] uppercase font-bold text-[#1A1A1A]/70 group-hover:text-[#9E4214] transition-colors duration-300">
-                    Read
-                    <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform duration-200" />
-                  </span>
+                  <h3 className="wp-display text-xl md:text-2xl text-[#1A1A1A] leading-tight group-hover:text-[#9E4214] transition-colors">
+                    {n.title}
+                  </h3>
+                  <p className="text-sm text-[#1A1A1A]/70 leading-relaxed mt-2">
+                    {n.excerpt}
+                  </p>
                 </Link>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ═════════════════════ PULL QUOTE — editorial, not a testimonial ═════════════════════ */}
-        <section className="py-28 md:py-36 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
-          <motion.div
-            animate={prefersReducedMotion ? { x: 0 } : { x: [0, 20, 0] }}
-            transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
-            className="absolute top-12 left-1/2 -translate-x-1/2"
-          >
-            <BirdFlock className="w-48 h-12 text-[#E8854A]/40" />
-          </motion.div>
-          <div className="relative max-w-4xl mx-auto text-center pt-8">
-            <svg className="w-10 h-10 mx-auto mb-8 text-[#E8854A]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-              <circle cx="12" cy="12" r="10" />
-              <path d="M 12 2 L 14.5 12 L 12 22 L 9.5 12 Z" fill="currentColor" />
-              <text x="12" y="2" textAnchor="middle" fontSize="3" fill="currentColor" stroke="none" fontFamily="serif">N</text>
-            </svg>
-            <blockquote className="font-serif text-3xl md:text-5xl lg:text-6xl leading-[1.1] mb-8 italic font-light">
-              &ldquo;Where the salt pans meet the sky, and the lone acacia tree
-              provides the only scale.&rdquo;
-            </blockquote>
-            <p className="wp-subhead text-sm tracking-[0.2em] text-[#E8854A]">
-              An impression of Etosha at dawn
-            </p>
-            <p className="wp-script text-lg mt-2 text-[#F2EDE3]/80">
-              Editorial, not a guest testimonial
-            </p>
+        {/* ═══════════ GALLERY — lightbox strip ═══════════ */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <SectionHeading
+              title="Postcards,"
+              highlight="uncaptioned."
+              intro="Tap any frame to open it full-size. Then imagine the smell of the rain on the red sand."
+            />
+            <Gallery
+              images={HOME_GALLERY.map((g) => ({
+                base: g.base,
+                alt: g.alt,
+                caption: g.alt,
+              }))}
+              aspect="4 / 5"
+            />
           </div>
         </section>
 
-        {/* ═════════════════════ FINAL CTA — closing statement ═════════════════════ */}
-        <section className="py-28 md:py-40 px-6 md:px-12">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="wp-display text-4xl md:text-7xl text-[#1A1A1A] leading-[0.92] mb-6">
-              Tell us where the{' '}
-              <span className="font-serif italic font-light text-[#9E4214]">silence</span>{' '}
-              calls you.
-            </h2>
-            <p className="text-base md:text-lg text-[#1A1A1A]/75 max-w-lg mx-auto leading-relaxed mb-10">
-              We will draft a route, a season, and a pace. No brochures, no scripts.
-              Write to us by WhatsApp or email, or send an enquiry.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <a
-                href={WHATSAPP_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-[background-color] duration-300 inline-flex items-center gap-3 justify-center"
-              >
-                <MessageCircle size={16} />
-                WhatsApp Us
-              </a>
-              <Link
-                href="/contact"
-                className="group border border-[#1A1A1A]/25 text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:border-[#1A1A1A] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
-              >
-                Start Planning My Journey
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-              </Link>
+        {/* ═══════════ CTA — full-width photo ═══════════ */}
+        <section className="relative overflow-hidden">
+          <div className="wp-photo wp-parallax" style={{ aspectRatio: '21 / 9' }}>
+            <Photo
+              base={CTA_PHOTO.base}
+              alt={CTA_PHOTO.alt}
+              aspect="21 / 9"
+              sizes="100vw"
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#140C06]/75 via-[#140C06]/45 to-[#140C06]/20" aria-hidden="true" />
+          </div>
+          <div className="absolute inset-0 flex items-center">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 w-full">
+              <div className="max-w-xl wp-reveal">
+                <h2 className="wp-display text-3xl md:text-6xl text-[#F2EDE3] leading-[0.95]">
+                  Your route starts with a conversation.
+                </h2>
+                <p className="mt-4 text-base md:text-lg text-[#F2EDE3]/85 leading-relaxed">
+                  Tell us how you travel. We answer with a plan, honestly priced,
+                  and built for the season you are going.
+                </p>
+                <div className="mt-7 flex flex-col sm:flex-row gap-3">
+                  <Link
+                    href="/contact"
+                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  >
+                    Plan your journey
+                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  </Link>
+                  <a
+                    href={`mailto:${SITE.email}`}
+                    className="border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  >
+                    {SITE.email}
+                  </a>
+                </div>
+              </div>
             </div>
           </div>
         </section>

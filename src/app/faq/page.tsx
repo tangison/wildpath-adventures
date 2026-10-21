@@ -1,21 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import {
-  Nav,
-  Footer,
-  AcaciaMark,
-  ContourLines,
-  ScrollReveal,
-} from '@/components/wildpath';
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
+import { ArrowRight, MessageCircle, Plus } from 'lucide-react';
+import { Nav, Footer } from '@/components/wildpath';
+import { Photo } from '@/components/photo';
 import { WHATSAPP_URL, SITE_EMAIL } from '@/lib/site';
-import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 
 export const metadata: Metadata = {
   title: 'FAQ',
@@ -34,11 +22,11 @@ const FAQS = [
   },
   {
     q: 'Is it safe to self-drive?',
-    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing and a 4×4 arranged for your route. We do not recommend self-drive for the Skeleton Coast or remote Damaraland; there, a guided vehicle is better.',
+    a: 'Yes, with preparation. Roads are good in most places; distances are real. We provide a thorough handover briefing and a 4\u00d74 arranged for your route. We do not recommend self-drive for the Skeleton Coast or remote Damaraland; there, a guided vehicle is better.',
   },
   {
     q: 'What about malaria?',
-    a: 'The northern parts of Namibia, Etosha, the Caprivi, and the river regions, are malaria-risk in the wet season (November–April). The desert, coast, and south are malaria-free. We advise on the current situation for your dates; you consult your doctor or travel clinic.',
+    a: 'The northern parts of Namibia, Etosha, the Caprivi, and the river regions, are malaria-risk in the wet season (November to April). The desert, coast, and south are malaria-free. We advise on the current situation for your dates; you consult your doctor or travel clinic.',
   },
   {
     q: 'What is the best time to visit?',
@@ -62,7 +50,7 @@ const FAQS = [
   },
   {
     q: 'How far in advance should I book?',
-    a: 'For peak season (July–October), book 6–12 months ahead; the best lodges fill a year out. For shoulder season (May, June, November), 3–6 months. For last-minute, we can often find something, but choice is limited.',
+    a: 'For peak season (July to October), book 6 to 12 months ahead; the best lodges fill a year out. For shoulder season (May, June, November), 3 to 6 months. For last-minute, we can often find something, but choice is limited.',
   },
   {
     q: 'Do you arrange international flights?',
@@ -74,129 +62,97 @@ const FAQS = [
   },
 ];
 
-// FAQ structured data (FAQPage schema) for Google rich results
 const faqJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: FAQS.map((faq) => ({
     '@type': 'Question',
     name: faq.q,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: faq.a,
-    },
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
   })),
 };
 
 export default function FAQPage() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       <Nav />
-
-      {/* FAQ structured data for search engines */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
-      />
-
-      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'FAQ', url: '/faq' }]} />
-
-      <main id="main-content" className="flex-1 pt-32">
-        {/* ═════════════════════ HEADER ═════════════════════ */}
-        <section className="px-6 md:px-12 pb-12 md:pb-16">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Questions</p>
-              <h1 className="wp-display text-5xl md:text-7xl lg:text-[6rem] leading-[0.88] mb-6">
-                Before you
-                <br />
-                <span className="text-[#9E4214]">set off.</span>
+      <main id="main-content" className="flex-1">
+        {/* Photo header */}
+        <section className="relative">
+          <div className="wp-photo" style={{ aspectRatio: '21 / 9', minHeight: '300px' }}>
+            <Photo
+              base="etosha-detail"
+              alt="A breeding herd of elephants moving across red earth in Etosha."
+              aspect="21 / 9"
+              sizes="100vw"
+              priority
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#140C06]/70 via-[#140C06]/35 to-transparent" aria-hidden="true" />
+          </div>
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-16 w-full">
+              <p className="wp-subhead text-[0.62rem] text-[#F2EDE3]/85 mb-4">Questions</p>
+              <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95]">
+                Asked often, answered straight.
               </h1>
-              <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                The questions we hear most. If yours is not here, write to us —
-                we answer everything.
-              </p>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 
-        <div className="py-4">
-          <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
-        </div>
-
-        {/* ═════════════════════ FAQ LIST ═════════════════════ */}
-        <section className="py-16 md:py-24 px-6 md:px-12">
+        {/* Accordion — native details/summary, keyboard accessible, no JS */}
+        <section className="py-14 md:py-20 px-6 md:px-12">
           <div className="max-w-3xl mx-auto">
-            <ScrollReveal>
-              <Accordion type="single" collapsible className="border-t border-[#1A1A1A]/15">
-                {FAQS.map((faq, i) => (
-                  <AccordionItem
-                    key={i}
-                    value={`item-${i}`}
-                    className="border-b border-[#1A1A1A]/15"
-                  >
-                    <AccordionTrigger className="text-left hover:no-underline py-6 group">
-                      <span className="flex gap-4 items-start">
-                        <span className="wp-display text-base text-[#9E4214]/50 group-hover:text-[#9E4214] transition-colors mt-0.5 shrink-0">
-                          {String(i + 1).padStart(2, '0')}
-                        </span>
-                        <span className="wp-display text-lg md:text-xl text-[#1A1A1A] leading-tight">
-                          {faq.q}
-                        </span>
-                      </span>
-                    </AccordionTrigger>
-                    <AccordionContent className="text-base text-[#1A1A1A]/75 leading-relaxed pb-6 pl-10">
-                      {faq.a}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </ScrollReveal>
-          </div>
-        </section>
+            {FAQS.map((faq) => (
+              <details key={faq.q} className="group border-b border-[#1A1A1A]/15">
+                <summary className="flex items-center justify-between gap-4 py-5 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+                  <span className="wp-display text-lg md:text-xl leading-snug group-hover:text-[#9E4214] transition-colors">
+                    {faq.q}
+                  </span>
+                  <Plus
+                    size={18}
+                    className="shrink-0 text-[#9E4214] transition-transform duration-300 group-open:rotate-45"
+                    aria-hidden="true"
+                  />
+                </summary>
+                <p className="pb-6 pr-8 text-base text-[#1A1A1A]/80 leading-relaxed">
+                  {faq.a}
+                </p>
+              </details>
+            ))}
 
-        {/* ═════════════════════ STILL HAVE QUESTIONS ═════════════════════ */}
-        <section className="py-20 md:py-32 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
-          <div className="max-w-3xl mx-auto text-center">
-            <ScrollReveal>
-              <AcaciaMark className="w-24 h-16 mx-auto text-[#E8854A]/50 mb-6" />
-              <p className="wp-script text-2xl text-[#E8854A] mb-3">Still have questions?</p>
-              <h2 className="wp-display text-3xl md:text-5xl leading-[0.9] mb-8">
-                We answer
-                <br />
-                <span className="text-[#E8854A]">everything.</span>
-              </h2>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <div className="mt-12 wp-reveal">
+              <p className="text-base text-[#1A1A1A]/70 leading-relaxed">
+                Not answered here? Write to{' '}
+                <a href={`mailto:${SITE_EMAIL}`} className="text-[#9E4214] hover:underline">
+                  {SITE_EMAIL}
+                </a>{' '}
+                or send a WhatsApp. A person answers, usually the same day.
+              </p>
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
                 <a
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-[#C5511A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
+                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
                   <MessageCircle size={15} />
-                  Ask on WhatsApp
+                  WhatsApp us
                 </a>
-                <a
-                  href={`mailto:${SITE_EMAIL}`}
-                  className="group border border-[#F2EDE3]/40 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
-                >
-                  Email Us
-                  <ArrowRight size={15} />
-                </a>
-              </div>
-              <div className="mt-6">
                 <Link
                   href="/contact"
-                  className="text-sm text-[#F2EDE3]/70 hover:text-[#E8854A] transition-colors underline underline-offset-4"
+                  className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
-                  Or fill in the enquiry form
+                  Contact page
+                  <ArrowRight size={14} />
                 </Link>
               </div>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

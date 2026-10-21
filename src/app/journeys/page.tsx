@@ -1,137 +1,117 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Nav, Footer, ContourLines, AcaciaMark, ScrollReveal } from '@/components/wildpath';
-import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { ArrowRight } from 'lucide-react';
+import { Nav, Footer, SectionHeading } from '@/components/wildpath';
+import { Photo } from '@/components/photo';
 import { JOURNEYS } from '@/lib/journeys';
+import { JOURNEY_MEDIA } from '@/lib/journey-media';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Journeys',
   description:
-    'Four flagship expeditions through Namibia and Southern Africa. Self-drive, guided, and private departures. Tailored around the land, not the brochure.',
+    'Four flagship Namibian journeys: the full Classic Route, the river country of the Caprivi, the Central Corridor and the Desert Traverse. Slow travel, personally planned.',
   alternates: { canonical: '/journeys' },
 };
 
-export default function JourneysPage() {
+export default function JourneysIndex() {
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
       <Nav />
-
-      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Journeys', url: '/journeys' }]} />
-
-      <main id="main-content" className="flex-1 pt-32">
-        {/* ═════════════════════ HEADER ═════════════════════ */}
-        <section className="px-6 md:px-12 pb-16 md:pb-24">
-          <div className="max-w-7xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Choose your journey</p>
-              <h1 className="wp-display text-5xl md:text-7xl lg:text-[6rem] leading-[0.88] mb-6">
-                Routes drawn by geology,
-                <br />
-                <span className="text-[#9E4214]">not by tourism.</span>
+      <main id="main-content" className="flex-1">
+        {/* Photo header */}
+        <section className="relative">
+          <div className="wp-photo" style={{ aspectRatio: '21 / 9', minHeight: '320px' }}>
+            <Photo
+              base="dune-detail"
+              alt="Ridges of red dune sea rolling to the horizon in the Namib."
+              aspect="21 / 9"
+              sizes="100vw"
+              priority
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#140C06]/70 via-[#140C06]/35 to-transparent" aria-hidden="true" />
+          </div>
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-16 w-full">
+              <p className="wp-subhead text-[0.62rem] text-[#F2EDE3]/85 mb-4">The journeys</p>
+              <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95] max-w-[16ch]">
+                Four ways across the country.
               </h1>
-              <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-                Four flagship expeditions. Each one a complete arc: the red south,
-                the central corridor, the rivers of the Caprivi, or the classic loop.
-                Every itinerary is drafted around the people on it.
-              </p>
-            </ScrollReveal>
+            </div>
           </div>
         </section>
 
-        <div className="py-4">
-          <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
-        </div>
-
-        {/* ═════════════════════ ALL JOURNEYS ═════════════════════ */}
-        <section className="py-28 px-6 md:px-12">
+        {/* Cards */}
+        <section className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="space-y-12 md:space-y-20">
-              {JOURNEYS.map((j, i) => (
-                <Link
-                  key={j.slug}
-                  href={`/journeys/${j.slug}`}
-                  className={`group grid md:grid-cols-12 gap-0 bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 ${
-                    i % 2 === 1 ? 'md:[direction:rtl]' : ''
-                  }`}
-                >
-                  <div className="relative md:col-span-7 aspect-[16/10] md:aspect-auto md:min-h-[420px] bg-[#1A1A1A] overflow-hidden [direction:ltr]">
-                    <Image
-                      src={j.heroImage}
-                      alt={`${j.name} — ${j.route.map(r => r.name).join(', ')}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 60vw"
-                      className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
-                    />
-                    <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
-                      <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
-                        {j.duration}
+            <SectionHeading
+              title="Pick a shape."
+              intro="Every route below is a starting point. Nights, lodges and pacing get tailored in the proposal."
+            />
+            <div className="space-y-6 md:space-y-10">
+              {JOURNEYS.map((j) => {
+                const media = JOURNEY_MEDIA[j.slug];
+                return (
+                  <Link
+                    key={j.slug}
+                    href={`/journeys/${j.slug}`}
+                    className="group grid md:grid-cols-12 gap-5 md:gap-8 items-center border-b border-[#1A1A1A]/10 pb-8 md:pb-10"
+                  >
+                    <div className={`md:col-span-7 wp-photo wp-img-reveal ${j === JOURNEYS[1] ? 'md:order-2' : ''}`} style={{ aspectRatio: '16 / 9' }}>
+                      <Photo
+                        base={media?.card ?? j.cardImage}
+                        alt={`${j.name}: ${j.tagline}`}
+                        aspect="16 / 9"
+                        sizes="(min-width: 768px) 58vw, 100vw"
+                        reveal={false}
+                        imgClassName="transition-transform duration-700 group-hover:scale-[1.015]"
+                        className="h-full"
+                      />
+                    </div>
+                    <div className="md:col-span-5">
+                      <p className="wp-subhead text-[0.58rem] text-[#9E4214] mb-3">
+                        {j.duration} · {j.travelStyle} · {j.startPoint} to {j.endPoint}
                       </p>
+                      <h2 className="wp-display text-3xl md:text-4xl leading-[0.95] mb-3 group-hover:text-[#9E4214] transition-colors">
+                        {j.name}
+                      </h2>
+                      <p className="text-base text-[#1A1A1A]/75 leading-relaxed mb-4">
+                        {j.tagline}
+                      </p>
+                      <p className="text-sm text-[#1A1A1A]/60 leading-relaxed mb-5">
+                        Best for {j.bestFor.charAt(0).toLowerCase() + j.bestFor.slice(1)}
+                      </p>
+                      <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214]">
+                        Open the journey
+                        <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                      </span>
                     </div>
-                  </div>
-                  <div className="md:col-span-5 p-8 md:p-12 flex flex-col justify-center [direction:ltr]">
-                    <h2 className="wp-display text-3xl md:text-4xl lg:text-5xl text-[#1A1A1A] mb-4 leading-[0.95] group-hover:text-[#9E4214] transition-colors">
-                      {j.name}
-                    </h2>
-                    <p className="text-[#1A1A1A]/80 leading-relaxed mb-6 max-w-md text-sm md:text-base">
-                      {j.tagline}
-                    </p>
-                    <div className="flex flex-wrap gap-x-4 gap-y-2 mb-6">
-                      {j.highlights.slice(0, 4).map((h) => (
-                        <span
-                          key={h}
-                          className="text-[0.65rem] tracking-[0.12em] uppercase text-[#1A1A1A]/65 font-bold flex items-center gap-1.5"
-                        >
-                          <span className="w-1 h-1 rounded-full bg-[#C5511A]" />
-                          {h}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.18em] uppercase text-[#1A1A1A]/70 font-mono">
-                      <span>{j.startPoint} → {j.endPoint}</span>
-                      <span className="flex-1 h-px bg-[#1A1A1A]/15" />
-                      <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:text-[#9E4214] transition-[transform,color]" />
-                    </div>
-                  </div>
-                </Link>
-              ))}
+                  </Link>
+                );
+              })}
             </div>
 
-            {/* Custom journey CTA */}
-            <div className="mt-20 md:mt-32 bg-[#1A1A1A] text-[#F2EDE3] p-10 md:p-16 text-center">
-              <AcaciaMark className="w-20 h-14 mx-auto text-[#E8854A]/60 mb-6" />
-              <h2 className="wp-display text-3xl md:text-5xl leading-[0.95] mb-6">
-                We tailor every journey.
-              </h2>
-              <p className="text-base md:text-lg text-[#F2EDE3]/75 max-w-xl mx-auto leading-relaxed mb-8">
-                Combine destinations. Add a charter. Walk further. Stay longer.
-                Every itinerary above is a starting point, not a fixed route.
+            <div className="mt-12 wp-reveal">
+              <p className="text-base text-[#1A1A1A]/70 max-w-xl leading-relaxed">
+                None of these fit? That is how most Wildpath journeys start.
+                Bring us the shape of trip you have in mind and we will build
+                it with you.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href="/contact"
-                  className="group bg-[#C5511A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
-                >
-                  Request a Custom Journey
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform]" />
-                </Link>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border border-[#F2EDE3]/40 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
-                >
-                  <MessageCircle size={15} />
-                  Ask on WhatsApp
-                </a>
-              </div>
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3"
+              >
+                Start the conversation
+                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              </a>
             </div>
           </div>
         </section>
       </main>
-
       <Footer />
     </div>
   );

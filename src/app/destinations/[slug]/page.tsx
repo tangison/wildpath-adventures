@@ -1,239 +1,185 @@
 import type { Metadata } from 'next';
-import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
-import { ArrowRight, MessageCircle } from 'lucide-react';
-import { Nav, Footer, AcaciaMark, ScrollReveal } from '@/components/wildpath';
-import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { notFound } from 'next/navigation';
+import { ArrowRight, MessageCircle, ChevronLeft } from 'lucide-react';
+import { Nav, Footer, SectionHeading } from '@/components/wildpath';
+import { Photo } from '@/components/photo';
+import { Gallery } from '@/components/lightbox';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
-import { getJourney } from '@/lib/journeys';
-import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
+import { DESTINATION_MEDIA } from '@/lib/journey-media';
+import { SITE_URL, WHATSAPP_URL } from '@/lib/site';
 
-export async function generateStaticParams() {
+export function generateStaticParams() {
   return DESTINATIONS.map((d) => ({ slug: d.slug }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
   const dest = getDestination(slug);
-  if (!dest) return { title: 'Destination Not Found' };
+  if (!dest) return { title: 'Destination not found' };
   return {
     title: dest.name,
-    description: dest.overview,
+    description: dest.overview.slice(0, 155),
     alternates: { canonical: `/destinations/${slug}` },
   };
 }
 
-export default async function DestinationPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function DestinationPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
   const dest = getDestination(slug);
-
   if (!dest) notFound();
 
-  const journey = getJourney(dest.suggestedJourney);
-  const otherDestinations = DESTINATIONS.filter((d) => d.slug !== dest.slug).slice(0, 4);
+  const media = DESTINATION_MEDIA[dest.slug];
+  const hero = media?.hero ?? dest.image;
+  const mosaic = media?.mosaic ?? [];
+  const suggested = DESTINATIONS.find((d) => d.slug === dest.suggestedJourney);
+
+  // ImageObject JSON-LD — tells search engines what the hero photo depicts.
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ImageObject',
+    contentUrl: `${SITE_URL}/images/places/${hero}-1920.webp`,
+    name: dest.name,
+    description: dest.overview.slice(0, 200),
+    representativeOfPage: true,
+  };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Nav />
 
-      <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Destinations', url: '/destinations' }, { name: dest.name, url: `/destinations/${slug}` }]} />
-
-      <main id="main-content" className="flex-1 pt-32">
-        {/* ═════════════════════ HERO PHOTOGRAPHY ═════════════════════ */}
-        <section className="relative h-[55vh] md:h-[70vh] min-h-[450px] bg-[#1A1A1A] overflow-hidden">
-          <Image
-            src={dest.image}
-            alt={`${dest.name} — ${dest.country}`}
-            fill
-            priority
-            sizes="100vw"
-            className={`${dest.imageKind === 'illustration' ? 'object-contain object-center' : 'object-cover object-center'}`}
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/30 to-transparent" />
-          <div className="absolute inset-0 flex items-end">
-            <div className="max-w-7xl mx-auto w-full px-6 md:px-12 pb-10 md:pb-16">
-              <div className="max-w-3xl">
-                <p className="wp-subhead text-[0.65rem] tracking-[0.25em] text-[#E8854A] mb-3">
-                  {dest.country}
-                </p>
-                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#F2EDE3] leading-[0.88] mb-4">
-                  {dest.name}
-                </h1>
-                <p className="text-lg md:text-xl text-[#F2EDE3]/85 max-w-2xl leading-relaxed">
-                  {dest.shortLine}
-                </p>
-              </div>
-            </div>
+      <main id="main-content" className="flex-1">
+        {/* Full-bleed hero */}
+        <section className="relative">
+          <div className="wp-photo" style={{ aspectRatio: '16 / 9', minHeight: '400px' }}>
+            <Photo
+              base={hero}
+              alt={`${dest.name}, ${dest.country}. ${dest.shortLine}`}
+              aspect="16 / 9"
+              sizes="100vw"
+              priority
+              reveal={false}
+              className="h-full"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/80 via-[#140C06]/25 to-[#140C06]/35" aria-hidden="true" />
           </div>
-          {dest.imageKind === 'illustration' && (
-            <div className="absolute top-24 right-6 md:right-12 bg-[#F2EDE3]/90 px-3 py-1.5">
-              <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
-                Editorial illustration
+          <div className="absolute inset-0 flex items-end">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-14 w-full">
+              <Link
+                href="/destinations"
+                className="inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#F2EDE3]/80 hover:text-[#F2EDE3] transition-colors mb-5"
+              >
+                <ChevronLeft size={14} /> All destinations
+              </Link>
+              <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95] drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)]">
+                {dest.name}
+              </h1>
+              <p className="mt-3 text-base md:text-xl text-[#F2EDE3]/90 max-w-2xl leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]">
+                {dest.shortLine}
               </p>
             </div>
-          )}
-        </section>
-
-        {/* ═════════════════════ OVERVIEW ═════════════════════ */}
-        <section className="py-16 px-6 md:px-12">
-          <div className="max-w-4xl mx-auto">
-            <ScrollReveal>
-              <p className="wp-script text-2xl text-[#9E4214] mb-6">Overview</p>
-              <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.95] mb-8">
-                {dest.overview}
-              </h2>
-            </ScrollReveal>
-
-            {/* Key facts grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1A1A1A]/12 mt-12">
-              <div className="bg-[#F2EDE3] p-6 md:p-8">
-                <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-3">
-                  Best Time To Visit
-                </p>
-                <p className="text-sm text-[#1A1A1A] leading-relaxed">{dest.bestTime}</p>
-              </div>
-              <div className="bg-[#F2EDE3] p-6 md:p-8">
-                <p className="wp-subhead text-[0.6rem] tracking-[0.22em] text-[#9E4214] mb-3">
-                  Landscape
-                </p>
-                <p className="text-sm text-[#1A1A1A] leading-relaxed">{dest.landscape}</p>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* ═════════════════════ HIGHLIGHTS ═════════════════════ */}
-        <section className="py-28 px-6 md:px-12 bg-[#E8E3D5]">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-10">
-              What you will see.
-            </h2>
-            <div className="flex flex-wrap gap-3">
-              {dest.highlights.map((h) => (
-                <span
-                  key={h}
-                  className="bg-[#F2EDE3] border border-[#1A1A1A]/15 px-5 py-3 wp-display text-base md:text-lg text-[#1A1A1A] leading-tight"
-                >
-                  {h}
-                </span>
-              ))}
-            </div>
+        {/* Overview */}
+        <section className="py-14 md:py-20 px-6 md:px-12">
+          <div className="max-w-4xl mx-auto wp-reveal">
+            <p className="wp-display text-2xl md:text-3xl leading-[1.25] text-[#1A1A1A]">
+              {dest.overview}
+            </p>
           </div>
         </section>
 
-        {/* ═════════════════════ WILDLIFE ═════════════════════ */}
-        <section className="py-36 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-12">
-              What moves here.
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-px bg-[#1A1A1A]/12">
-              {dest.wildlife.map((w, i) => (
-                <div key={w} className="bg-[#F2EDE3] p-5 md:p-6 text-center">
-                  <span className="wp-display text-2xl text-[#9E4214]/25 block mb-1">
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                  <p className="text-sm md:text-base text-[#1A1A1A] leading-tight">{w}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═════════════════════ SUGGESTED JOURNEY ═════════════════════ */}
-        {journey && (
-          <section className="py-16 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
+        {/* Mosaic gallery */}
+        {mosaic.length > 0 && (
+          <section className="pb-14 md:pb-20 px-6 md:px-12">
             <div className="max-w-7xl mx-auto">
-              <h2 className="wp-display text-3xl md:text-5xl text-[#F2EDE3] leading-[0.9] mb-10">
-                See this on a journey.
-              </h2>
-              <Link
-                href={`/journeys/${journey.slug}`}
-                className="group grid md:grid-cols-12 gap-0 bg-[#2A2A2A] hover:bg-[#333] transition-colors duration-300 overflow-hidden"
-              >
-                <div className="relative md:col-span-5 aspect-[16/10] md:aspect-auto md:min-h-[340px] overflow-hidden">
-                  <Image
-                    src={journey.cardImage}
-                    alt={journey.name}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 45vw"
-                    className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
-                  />
-                  <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
-                    <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
-                      {journey.duration}
-                    </p>
-                  </div>
-                </div>
-                <div className="md:col-span-7 p-8 md:p-12 flex flex-col justify-center">
-                  <h3 className="wp-display text-3xl md:text-4xl text-[#F2EDE3] mb-4 leading-tight group-hover:text-[#E8854A] transition-colors">
-                    {journey.name}
-                  </h3>
-                  <p className="text-[#F2EDE3]/75 leading-relaxed mb-6 max-w-md text-sm md:text-base">
-                    {journey.tagline}
-                  </p>
-                  <div className="flex items-center gap-3 text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/70 font-mono">
-                    <span>View journey</span>
-                    <span className="flex-1 h-px bg-[#F2EDE3]/15" />
-                    <ArrowRight size={14} className="group-hover:translate-x-1 group-hover:text-[#E8854A] transition-[transform,color]" />
-                  </div>
-                </div>
-              </Link>
-
-              <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
-                <Link
-                  href={`/journeys/${journey.slug}`}
-                  className="group bg-[#C5511A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
-                >
-                  Request This Journey
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-[transform]" />
-                </Link>
-                <a
-                  href={WHATSAPP_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group border border-[#F2EDE3]/40 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-3 justify-center"
-                >
-                  <MessageCircle size={15} />
-                  Ask on WhatsApp
-                </a>
-              </div>
+              <Gallery images={mosaic.map((m) => ({ base: m.base, alt: m.alt, caption: m.alt }))} aspect="4 / 3" />
             </div>
           </section>
         )}
 
-        {/* ═════════════════════ OTHER DESTINATIONS ═════════════════════ */}
-        <section className="py-28 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-12">
-              Other destinations.
-            </h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-              {otherDestinations.map((d) => (
-                <Link
-                  key={d.slug}
-                  href={`/destinations/${d.slug}`}
-                  className="group relative block aspect-[3/4] overflow-hidden bg-[#1A1A1A]"
-                >
-                  <Image
-                    src={d.image}
-                    alt={d.name}
-                    fill
-                    sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
-                  <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-[#F2EDE3]">
-                    <p className="wp-subhead text-[0.55rem] tracking-[0.22em] text-[#E8854A] mb-1">
-                      {d.country}
-                    </p>
-                    <h3 className="wp-display text-base md:text-xl leading-[0.95] group-hover:text-[#E8854A] transition-colors">
-                      {d.name}
-                    </h3>
-                  </div>
-                </Link>
+        {/* Details grid: best time, wildlife, landscape */}
+        <section className="py-14 md:py-20 px-6 md:px-12 bg-[#E8E3D5]">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-px bg-[#1A1A1A]/12">
+            <div className="bg-[#F2EDE3] p-6 md:p-8 wp-reveal">
+              <p className="wp-subhead text-[0.58rem] text-[#9E4214] mb-3">Best time</p>
+              <p className="text-sm leading-relaxed text-[#1A1A1A]/80">{dest.bestTime}</p>
+            </div>
+            <div className="bg-[#F2EDE3] p-6 md:p-8 wp-reveal" data-reveal-delay="1">
+              <p className="wp-subhead text-[0.58rem] text-[#9E4214] mb-3">Wildlife</p>
+              <ul className="space-y-1.5">
+                {dest.wildlife.map((w) => (
+                  <li key={w} className="text-sm text-[#1A1A1A]/80">{w}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-[#F2EDE3] p-6 md:p-8 wp-reveal" data-reveal-delay="2">
+              <p className="wp-subhead text-[0.58rem] text-[#9E4214] mb-3">The land itself</p>
+              <p className="text-sm leading-relaxed text-[#1A1A1A]/80">{dest.landscape}</p>
+            </div>
+          </div>
+
+          {suggested && (
+            <div className="max-w-7xl mx-auto mt-10 wp-reveal">
+              <Link
+                href={`/journeys/${suggested.slug}`}
+                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 bg-[#F2EDE3] border-l-2 border-[#C5511A] p-6 md:p-8 hover:bg-[#1A1A1A] transition-colors duration-300 wp-border"
+              >
+                <div>
+                  <p className="wp-subhead text-[0.58rem] text-[#9E4214] mb-2 group-hover:text-[#E8854A] transition-colors">
+                    Journey that goes here
+                  </p>
+                  <p className="wp-display text-2xl md:text-3xl text-[#1A1A1A] group-hover:text-[#F2EDE3] transition-colors leading-none">
+                    {suggested.name}
+                  </p>
+                </div>
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] group-hover:text-[#E8854A] transition-colors shrink-0">
+                  Open
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </span>
+              </Link>
+            </div>
+          )}
+        </section>
+
+        {/* Highlights + CTA */}
+        <section className="py-16 md:py-20 px-6 md:px-12">
+          <div className="max-w-4xl mx-auto wp-reveal">
+            <SectionHeading title="Why it stays with you." />
+            <ul className="space-y-3 mb-10">
+              {dest.highlights.map((h) => (
+                <li key={h} className="flex gap-3 text-base md:text-lg text-[#1A1A1A]/85 leading-relaxed">
+                  <span className="text-[#C5511A] shrink-0 mt-0.5" aria-hidden="true">—</span>
+                  {h}
+                </li>
               ))}
+            </ul>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a
+                href={WHATSAPP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+              >
+                <MessageCircle size={15} />
+                Ask about {dest.name}
+              </a>
+              <Link
+                href="/contact"
+                className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+              >
+                Plan your journey
+              </Link>
             </div>
           </div>
         </section>
