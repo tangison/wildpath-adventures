@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 /**
- * Middleware — Security headers for every response.
+ * Proxy (formerly middleware) — staging robots guard.
  *
  * Implements industry-standard security headers:
  * - Content-Security-Policy: restricts resource origins (fonts, images, scripts)
@@ -15,7 +15,7 @@ import type { NextRequest } from 'next/server';
  *
  * Reference: https://securityheaders.com/
  */
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
   // Staging guard — anything that is not the production domain must be
