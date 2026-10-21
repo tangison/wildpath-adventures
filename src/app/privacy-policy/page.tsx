@@ -5,7 +5,7 @@ import { SITE, SITE_EMAIL } from '@/lib/site';
 export const metadata: Metadata = {
   title: 'Privacy Policy',
   description: 'How Wildpath Adventures collects, uses, and protects your personal information.',
-  alternates: { canonical: '/privacy' },
+  alternates: { canonical: '/privacy-policy' },
 };
 
 export default function PrivacyPage() {
@@ -45,10 +45,10 @@ export default function PrivacyPage() {
                   <p className="mb-3">When you enquire or book a journey, we collect:</p>
                   <ul className="list-disc pl-5 space-y-1.5">
                     <li>Your name, email, and phone/WhatsApp number</li>
-                    <li>The details you give us about your journey — dates, party size, interests, dietary needs</li>
+                    <li>The details you give us about your journey, dates, party size, interests, dietary needs</li>
                     <li>Passport details, when required for bookings and permits</li>
-                    <li>Payment information, processed through our payment provider — we do not store card numbers</li>
-                    <li>Communications between us — emails, WhatsApp messages, call notes</li>
+                    <li>Payment information, processed through our payment provider, we do not store card numbers</li>
+                    <li>Communications between us, emails, WhatsApp messages, call notes</li>
                   </ul>
                 </div>
 
@@ -58,9 +58,9 @@ export default function PrivacyPage() {
                   <ul className="list-disc pl-5 space-y-1.5">
                     <li>Draft, refine, and book your itinerary</li>
                     <li>Communicate with you before, during, and after your journey</li>
-                    <li>Coordinate with our partners — lodges, charter operators, guides</li>
+                    <li>Coordinate with our partners, lodges, charter operators, guides</li>
                     <li>Meet legal requirements in Namibia and the countries you visit</li>
-                    <li>Improve our journeys — never sold, never shared for marketing</li>
+                    <li>Improve our journeys, never sold, never shared for marketing</li>
                   </ul>
                 </div>
 
@@ -68,7 +68,7 @@ export default function PrivacyPage() {
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">Who we share with</h2>
                   <p>
                     We share only the information each partner needs to deliver your
-                    journey — lodges need names and dietary needs; charter operators
+                    journey, lodges need names and dietary needs; charter operators
                     need weights; park authorities need passport details. Every
                     partner is bound by confidentiality. We never sell your data.
                   </p>
@@ -80,7 +80,7 @@ export default function PrivacyPage() {
                     Booking records are kept for seven years for legal and
                     accounting reasons. Enquiry records that do not lead to a
                     booking are deleted after two years. You can request deletion
-                    sooner — write to {SITE_EMAIL}.
+                    sooner, write to {SITE_EMAIL}.
                   </p>
                 </div>
 

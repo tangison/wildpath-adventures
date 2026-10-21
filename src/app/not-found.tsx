@@ -34,7 +34,7 @@ export default function NotFound() {
               Off the map.
             </h1>
             <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-              The page you are looking for does not exist — or has moved. The map
+              The page you are looking for does not exist, or has moved. The map
               below will get you back on route.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">

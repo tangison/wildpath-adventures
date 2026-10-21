@@ -38,6 +38,27 @@ const inputClass =
   'w-full bg-[#F2EDE3] border border-[#1A1A1A]/15 px-4 py-3 text-sm text-[#1A1A1A] placeholder:text-[#1A1A1A]/40 focus:outline-none focus:border-[#C5511A] focus:ring-1 focus:ring-[#C5511A] transition-colors';
 const labelClass = 'wp-subhead text-[0.58rem] text-[#9E4214] mb-2 block';
 
+/**
+ * Builds a mailto: draft with the full enquiry. Static site: no server.
+ * The submit button hands the visitor to their own mail app with
+ * everything prefilled, addressed to the Wildpath enquiry inbox.
+ */
+function buildMailtoUrl(f: FormState): string {
+  const journeyName =
+    (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
+  const lines = [
+    `New enquiry from ${f.name || '—'} (${f.country || '—'})`,
+    `Email: ${f.email || '—'} · Phone/WhatsApp: ${f.phone || '—'}`,
+    `Journey: ${journeyName} · Travel: ${f.travelMonth || '—'} · Travellers: ${f.travellers}`,
+  ];
+  if (f.travelStyle) lines.push(`Style: ${f.travelStyle}`);
+  if (f.duration) lines.push(`Duration: ${f.duration}`);
+  if (f.interests) lines.push(`Interests: ${f.interests}`);
+  lines.push('', f.message || '—');
+  const subject = `Journey enquiry, ${f.name || 'via wildpathnamibia.com'}`;
+  return `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
+}
+
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(EMPTY);
   const [error, setError] = useState<string | null>(null);

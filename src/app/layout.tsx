@@ -6,6 +6,11 @@ import { RevealScript, ParallaxScript, ScrollTop, StickyCta } from "@/components
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 
+// Font policy: three families total.
+//   Anton  — display headlines and the WILDPATH wordmark
+//   Oswald — the ADVENTURES line of the wordmark (per approved logo spec)
+//   Geist  — body text and subheads
+// Editorial italic accents use the system serif stack (zero webfont bytes).
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -47,7 +52,7 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   openGraph: {
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} · ${SITE.tagline}`,
     description:
       "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa.",
     siteName: SITE.name,

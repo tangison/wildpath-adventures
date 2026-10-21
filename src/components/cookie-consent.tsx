@@ -52,7 +52,7 @@ export function CookieConsent() {
           </Link>{' '}
           and{' '}
           <Link
-            href="/privacy"
+            href="/privacy-policy"
             className="text-[#E8854A] hover:text-[#F2EDE3] underline underline-offset-2 transition-colors"
           >
             privacy policy

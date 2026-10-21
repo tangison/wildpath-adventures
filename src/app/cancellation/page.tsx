@@ -46,7 +46,7 @@ export default function CancellationPage() {
                     cancellation is to your departure date. The earlier you cancel,
                     the smaller the fee. Exact percentages and deposit amounts are
                     confirmed in your personalised proposal and booking
-                    confirmation — they vary with the partners, lodges, and charter
+                    confirmation, they vary with the partners, lodges, and charter
                     operators involved in your specific route.
                   </p>
                   <p className="mb-4">
@@ -67,7 +67,7 @@ export default function CancellationPage() {
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">How to cancel</h2>
                   <p>
-                    Cancellations must be in writing — email{' '}
+                    Cancellations must be in writing, email{' '}
                     <a href={`mailto:${SITE_EMAIL}`} className="text-[#9E4214] hover:underline">
                       {SITE_EMAIL}
                     </a>{' '}
@@ -81,7 +81,7 @@ export default function CancellationPage() {
                   <p>
                     If we cancel your journey (other than for force majeure or your
                     breach of these terms), you receive a full refund. We are not
-                    liable for any other costs — flights, visas, insurance — but
+                    liable for any other costs, flights, visas, insurance, but
                     will support your insurance claim with documentation.
                   </p>
                 </div>

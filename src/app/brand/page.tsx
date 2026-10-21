@@ -1,24 +1,24 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Footprints, Compass, Sun, MapPin } from 'lucide-react';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, CompassMark } from '@/components/wildpath';
 
+
 export const metadata: Metadata = {
   title: 'Brand Identity · Wildpath Adventures',
   description:
-    'Discover the visual identity behind Wildpath Adventures — our Namibian-inspired palette, editorial voice, and design principles.',
+    'Discover the visual identity behind Wildpath Adventures, our Namibian-inspired palette, editorial voice, and design principles.',
   alternates: { canonical: '/brand' },
   robots: { index: false, follow: true },
 };
 
 const PALETTE = [
-  { name: 'Warm Ivory', hex: '#F2EDE3', use: 'Primary background — pan clay', onLight: true },
-  { name: 'Deep Charcoal', hex: '#1A1A1A', use: 'Primary text — basalt', onLight: false },
-  { name: 'Burnt Orange', hex: '#C5511A', use: 'Accent — dune at 4 PM', onLight: true },
+  { name: 'Warm Ivory', hex: '#F2EDE3', use: 'Primary background, pan clay', onLight: true },
+  { name: 'Deep Charcoal', hex: '#1A1A1A', use: 'Primary text, basalt', onLight: false },
+  { name: 'Burnt Orange', hex: '#C5511A', use: 'Accent, dune at 4 PM', onLight: true },
   { name: 'Dust Sand', hex: '#D2B48C', use: 'Secondary surface', onLight: true },
-  { name: 'Muted Earth', hex: '#6B5E3D', use: 'Tertiary text — dry grass', onLight: true },
-  { name: 'Warm Stone', hex: '#6D6D6D', use: 'Secondary text — granite', onLight: true },
+  { name: 'Muted Earth', hex: '#6B5E3D', use: 'Tertiary text, dry grass', onLight: true },
+  { name: 'Warm Stone', hex: '#6D6D6D', use: 'Secondary text, granite', onLight: true },
 ];
 
 const VOICE_PRINCIPLES = [
@@ -60,15 +60,15 @@ export default function BrandPage() {
               <span className="text-[#9E4214]">the mandate.</span>
             </h1>
             <p className="text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed">
-              Everything Wildpath puts into the world — a wordmark, a
-              photograph, a sentence, a lodge wall — answers to four words:
+              Everything Wildpath puts into the world, a wordmark, a
+              photograph, a sentence, a lodge wall, answers to four words:
               travel the untamed beauty. This page is the system that holds
               those words accountable.
             </p>
           </div>
         </section>
 
-        {/* ═════════════════════ 01 — PRIMARY WORDMARK ═════════════════════ */}
+        {/* ═════════════════════ 01, PRIMARY WORDMARK ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-12 gap-8 mb-12">
@@ -81,13 +81,13 @@ export default function BrandPage() {
               <div className="md:col-span-9">
                 <p className="text-[#1A1A1A]/80 leading-relaxed max-w-xl mb-12">
                   The Wildpath logo is not an icon. It is not a badge, a
-                  shield, or an emblem. It is a typographic wordmark — two
+                  shield, or an emblem. It is a typographic wordmark, two
                   words, one line, generous breathing room. WILDPATH dominates;
                   ADVENTURES sits to its right, vertically centred, never
                   below, never stacked.
                 </p>
 
-                {/* The wordmark — large, breathing */}
+                {/* The wordmark, large, breathing */}
                 <div className="bg-[#F2EDE3] py-16 md:py-24 px-8 text-center">
                   <Wordmark size="xl" />
                 </div>
@@ -100,10 +100,10 @@ export default function BrandPage() {
             {/* Clear space + scale rules */}
             <div className="grid md:grid-cols-2 gap-px bg-[#1A1A1A]/12 mt-12">
               <div className="bg-[#E8E3D5] p-8 md:p-10">
-                <p className="wp-subhead text-xs text-[#9E4214] mb-4">02 — Clear Space</p>
+                <p className="wp-subhead text-xs text-[#9E4214] mb-4">02, Clear Space</p>
                 <p className="text-[#1A1A1A]/80 text-sm leading-relaxed mb-6">
                   The wordmark requires whitespace equal to the height of the
-                  letter W on all sides. Nothing may intrude on this margin —
+                  letter W on all sides. Nothing may intrude on this margin,
                   not text, not images, not borders.
                 </p>
                 <div className="bg-[#F2EDE3] p-8 border border-[#1A1A1A]/15 relative">
@@ -116,7 +116,7 @@ export default function BrandPage() {
                 </div>
               </div>
               <div className="bg-[#E8E3D5] p-8 md:p-10">
-                <p className="wp-subhead text-xs text-[#9E4214] mb-4">03 — Minimum Scale</p>
+                <p className="wp-subhead text-xs text-[#9E4214] mb-4">03, Minimum Scale</p>
                 <p className="text-[#1A1A1A]/80 text-sm leading-relaxed mb-6">
                   The wordmark must never appear smaller than 24px on screen.
                   Below this threshold, ADVENTURES becomes illegible and the
@@ -136,42 +136,42 @@ export default function BrandPage() {
           <ContourLines className="w-full h-12 text-[#1A1A1A]/15" />
         </div>
 
-        {/* ═════════════════════ 04 — ILLUSTRATION ═════════════════════ */}
+        {/* ═════════════════════ 04, ILLUSTRATION ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-12 gap-8">
               <div className="md:col-span-4">
                 <p className="wp-subhead text-xs text-[#9E4214] mb-2">04</p>
                 <h2 className="wp-display text-3xl md:text-4xl text-[#1A1A1A] leading-[0.95] mb-6">
-                  Illustration<br />System
+                  The Land,<br />Photographed
                 </h2>
                 <p className="text-[#1A1A1A]/80 leading-relaxed mb-6">
-                  Hand-drawn. Pen and ink. Cross-hatched. The illustration is
-                  the second identity element — a Namibian savannah scene with
-                  a lone acacia, a gravel road receding to the horizon,
-                  elephants, birds, and a low sun.
+                  Real photography is the second identity element, the
+                  country as it actually looks, shot by the people who travel
+                  it. This frame: a safari Land Cruiser on red Kalahari sand
+                  beside a camelthorn, from Juliet's own archive.
                 </p>
                 <p className="text-[#1A1A1A]/80 leading-relaxed">
-                  Never replace with stock illustration. Never flatten to
-                  vector. Never recolour. The texture is the point.
+                  Client photographs lead. The single approved illustration,
+                  the savannah strip, lives in the footer alone. Everything
+                  else on this site is Namibia itself.
                 </p>
               </div>
               <div className="md:col-span-8">
-                <div className="relative w-full aspect-square bg-[#E8E3D5]">
-                  <Image
-                    src="/images/illustrations/approved/wildpath-hero-main.webp"
-                    alt="Wildpath illustration — acacia tree, gravel road, elephants, birds, sunset"
-                    fill
-                    priority
+                <div className="relative w-full aspect-square bg-[#E8E3D5] wp-photo">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/photos/safari-vehicle-red-dune-1440.webp"
+                    alt="An open safari vehicle crossing a red Kalahari dune, acacia scrub behind."
+                    className="absolute inset-0 h-full w-full object-cover"
                     loading="eager"
-                    sizes="(max-width: 768px) 100vw, 65vw"
-                    className="object-contain p-8"
+                    decoding="async"
                   />
                 </div>
               </div>
             </div>
 
-            {/* Illustration motifs — the hand-drawn elements */}
+            {/* Illustration motifs, the hand-drawn elements */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-[#1A1A1A]/12 mt-12">
               {[
                 { label: 'Acacia', comp: <AcaciaMark className="w-20 h-14 text-[#1A1A1A]" /> },
@@ -188,7 +188,7 @@ export default function BrandPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ 05 — COLOUR ═════════════════════ */}
+        {/* ═════════════════════ 05, COLOUR ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3]">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-12 gap-8 mb-12">
@@ -228,7 +228,7 @@ export default function BrandPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ 06 — TYPOGRAPHY ═════════════════════ */}
+        {/* ═════════════════════ 06, TYPOGRAPHY ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-12 gap-8 mb-12">
@@ -241,7 +241,7 @@ export default function BrandPage() {
               <div className="md:col-span-9">
                 <p className="text-[#1A1A1A]/80 leading-relaxed max-w-xl">
                   Three voices. One register. Anton carries the wordmark and
-                  headlines — ultra-condensed, bold, uppercase. Archivo handles
+                  headlines, ultra-condensed, bold, uppercase. Archivo handles
                   section titles and labels. Caveat appears only for the
                   tagline, quotes, and section introductions.
                 </p>
@@ -250,7 +250,7 @@ export default function BrandPage() {
 
             <div className="grid md:grid-cols-3 gap-px bg-[#1A1A1A]/12">
               <div className="bg-[#F2EDE3] p-8 md:p-10">
-                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Primary — Anton</p>
+                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Primary, Anton</p>
                 <p className="wp-display text-6xl md:text-7xl text-[#1A1A1A] leading-[0.85] mb-6">
                   Untamed
                 </p>
@@ -260,7 +260,7 @@ export default function BrandPage() {
                 </p>
               </div>
               <div className="bg-[#F2EDE3] p-8 md:p-10">
-                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Secondary — Archivo</p>
+                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Secondary, Archivo</p>
                 <p className="wp-subhead text-5xl md:text-6xl text-[#1A1A1A] leading-[0.85] mb-6">
                   The route.
                 </p>
@@ -289,7 +289,7 @@ export default function BrandPage() {
           <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
         </div>
 
-        {/* ═════════════════════ 07 — VOICE ═════════════════════ */}
+        {/* ═════════════════════ 07, VOICE ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-5xl mx-auto">
             <div className="mb-16">
@@ -321,7 +321,7 @@ export default function BrandPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ 08 — TONALITY ═════════════════════ */}
+        {/* ═════════════════════ 08, TONALITY ═════════════════════ */}
         <section className="py-20 md:py-28 px-6 md:px-12 bg-[#C5511A] text-[#1A1A1A]">
           <div className="max-w-5xl mx-auto">
             <div className="mb-16">
@@ -354,7 +354,7 @@ export default function BrandPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ 09 — VALUES ═════════════════════ */}
+        {/* ═════════════════════ 09, VALUES ═════════════════════ */}
         <section className="py-20 md:py-32 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
             <div className="mb-16">
@@ -381,7 +381,7 @@ export default function BrandPage() {
           </div>
         </section>
 
-        {/* ═════════════════════ 10 — FORBIDDEN WORDS ═════════════════════ */}
+        {/* ═════════════════════ 10, FORBIDDEN WORDS ═════════════════════ */}
         <section className="py-20 md:py-28 px-6 md:px-12 bg-[#1A1A1A] text-[#F2EDE3] relative overflow-hidden">
           <BirdFlock className="absolute top-10 left-1/2 -translate-x-1/2 w-64 h-16 text-[#E8854A]/30" />
           <div className="relative max-w-5xl mx-auto text-center pt-8">

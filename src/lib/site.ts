@@ -1,50 +1,25 @@
 /**
  * Wildpath Adventures — Single source of truth for site-wide config.
  *
- * All values derive from environment variables with safe production defaults.
- * To migrate domains or change recipients, edit .env — never edit components.
+ * Static site: no server-side env lookups remain. Client-safe values only.
+ * To migrate domains or change recipients, edit this file — components read
+ * from here, never hardcode.
  *
- * Required env vars (see .env.example):
- *   NEXT_PUBLIC_SITE_DOMAIN      — canonical domain (no protocol)
  *   NEXT_PUBLIC_SITE_URL         — canonical URL (with protocol)
- *   CONTACT_EMAIL                — public enquiry address (server + client safe via NEXT_PUBLIC_ prefix mirror)
- *   CONTACT_RECIPIENT            — internal mailbox that receives form submissions (server only)
- *   PHONE_DISPLAY                — human-readable phone
- *   PHONE_E164                   — E.164 for tel: and wa.me links
- *
- * Optional:
- *   SMTP_URL                     — if set, enquiry form sends real email (server only)
- *   ENQUIRY_STORE_PATH           — if set, enquiries are appended to this JSON file (server only)
+ *   NEXT_PUBLIC_CONTACT_EMAIL    — public enquiry address
+ *   NEXT_PUBLIC_PHONE_DISPLAY    — human-readable phone
+ *   NEXT_PUBLIC_PHONE_E164       — E.164 for tel: and wa.me links
  */
 
-function required(name: string, fallback: string): string {
-  const val = process.env[name];
-  if (!val) {
-    // In production builds we want this to be explicit; in dev we fall back.
-    if (process.env.NODE_ENV === 'production') {
-      // We still allow fallback for first-deploy safety, but log a warning.
-      console.warn(`[site] Env var ${name} not set — using fallback ${fallback}`);
-    }
-    return fallback;
-  }
-  return val;
-}
-
 export const SITE = {
-  /** Canonical domain — change via NEXT_PUBLIC_SITE_DOMAIN in .env */
-  domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'wildpathnamibia.com',
+  /** Canonical domain — change via NEXT_PUBLIC_SITE_URL in build env */
+  domain: 'wildpathnamibia.com',
   /** Canonical URL with protocol */
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpathnamibia.com',
   name: 'Wildpath Adventures',
   tagline: 'Slow down. Breathe. Discover Namibia.',
   /** Public enquiry email — shown to users. Mirror of CONTACT_EMAIL for client-side use. */
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'journeys@wildpathnamibia.com',
-  /** Internal mailbox that actually receives form submissions (server only). */
-  enquiryRecipient: process.env.CONTACT_RECIPIENT || 'journeys@wildpathnamibia.com',
-  /** SMTP connection URL — if set, the enquiry API sends real email. */
-  smtpUrl: process.env.SMTP_URL || '',
-  /** Path to append JSON enquiry log to (server only, optional). */
-  enquiryStorePath: process.env.ENQUIRY_STORE_PATH || '',
   phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+264 81 255 7741',
   phoneE164: process.env.NEXT_PUBLIC_PHONE_E164 || '264812557741',
   location: {
