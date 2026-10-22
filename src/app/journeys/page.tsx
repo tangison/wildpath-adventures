@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, ContourLines, AcaciaMark, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { PhotoImg } from '@/components/photo';
 import { JOURNEYS } from '@/lib/journeys';
 import { WHATSAPP_URL } from '@/lib/site';
 
@@ -58,12 +58,11 @@ export default function JourneysPage() {
                   }`}
                 >
                   <div className="relative md:col-span-7 aspect-[16/10] md:aspect-auto md:min-h-[420px] bg-[#1A1A1A] overflow-hidden [direction:ltr]">
-                    <Image
-                      src={j.heroImage}
-                      alt={`${j.name} — ${j.route.map(r => r.name).join(', ')}`}
+                    <PhotoImg
+                      id={j.heroImage}
                       fill
                       sizes="(max-width: 768px) 100vw, 60vw"
-                      className="object-cover object-center group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                      className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                     />
                     <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                       <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">

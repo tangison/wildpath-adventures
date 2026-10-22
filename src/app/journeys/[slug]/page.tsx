@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle, MapPin } from 'lucide-react';
 import {
   Nav,
@@ -13,7 +12,9 @@ import {
   JourneyRouteTimeline,
 } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { PhotoImg } from '@/components/photo';
 import { JOURNEYS, getJourney } from '@/lib/journeys';
+import { JOURNEY_STOP_GALLERIES, type StopGallery } from '@/lib/photo-groups';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -38,6 +39,9 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
   if (!journey) notFound();
 
   const otherJourneys = JOURNEYS.filter((j) => j.slug !== journey.slug).slice(0, 3);
+  const stopGalleries: StopGallery[] = JOURNEY_STOP_GALLERIES[journey.slug] ?? [];
+  const stopDescription = (stopName: string) =>
+    journey.route.find((r) => r.name === stopName)?.description ?? '';
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
@@ -48,13 +52,13 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
       <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO ═════════════════════ */}
         <section className="relative h-[50vh] md:h-[65vh] min-h-[400px] bg-[#1A1A1A] overflow-hidden">
-          <Image
-            src={journey.heroImage}
-            alt={`${journey.name} — ${journey.route.map(r => r.name).join(', ')}`}
+          <PhotoImg
+            id={journey.heroImage}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
-            className="object-cover object-center opacity-70"
+            className="opacity-90"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/40 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -130,6 +134,64 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
         <div className="py-6 flex justify-center">
           <AcaciaMark className="w-28 h-18 text-[#1A1A1A]/30" />
         </div>
+
+        {/* ═════════════════════ STOP GALLERIES — image-led route ═════════════════════ */}
+        {stopGalleries.length > 0 && (
+          <section className="py-20 md:py-28 px-6 md:px-12">
+            <div className="max-w-7xl mx-auto">
+              <ScrollReveal>
+                <p className="wp-script text-2xl text-[#9E4214] mb-4">The route in pictures</p>
+                <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] leading-[0.9] mb-16">
+                  Every stop, before you ask
+                  <br />
+                  what it looks like.
+                </h2>
+              </ScrollReveal>
+              <div className="space-y-20 md:space-y-28">
+                {stopGalleries.map((stop, idx) => {
+                  const desc = stopDescription(stop.stop);
+                  const [first, ...rest] = stop.photos;
+                  return (
+                    <div key={stop.stop} className="grid md:grid-cols-12 gap-6 md:gap-10 items-start">
+                      <div className={`md:col-span-7 ${idx % 2 === 1 ? 'md:order-2' : ''}`}>
+                        <div className="relative aspect-[4/3] md:aspect-[3/2] overflow-hidden bg-[#1A1A1A]">
+                          <PhotoImg
+                            id={first}
+                            fill
+                            sizes="(max-width: 768px) 100vw, 58vw"
+                            className="hover:scale-[1.02] transition-transform duration-[1200ms] ease-out"
+                          />
+                        </div>
+                        {rest.length > 0 && (
+                          <div className="grid grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-4">
+                            {rest.slice(0, 3).map((pid) => (
+                              <div key={pid} className="relative aspect-square md:aspect-[4/3] overflow-hidden bg-[#1A1A1A]">
+                                <PhotoImg id={pid} fill sizes="(max-width: 768px) 33vw, 18vw" />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                      <div className={`md:col-span-5 ${idx % 2 === 1 ? 'md:order-1 md:text-right' : ''}`}>
+                        <p className="wp-subhead text-[0.6rem] tracking-[0.25em] text-[#9E4214] mb-3">
+                          Stop {String(idx + 1).padStart(2, '0')}
+                        </p>
+                        <h3 className="wp-display text-2xl md:text-4xl text-[#1A1A1A] leading-[0.95] mb-4">
+                          {stop.stop}
+                        </h3>
+                        {desc && (
+                          <p className="text-sm md:text-base text-[#1A1A1A]/75 leading-relaxed max-w-md md:max-w-none md:inline-block">
+                            {desc}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ═════════════════════ HIGHLIGHTS — editorial numbered list ═════════════════════ */}
         <section className="py-36 px-6 md:px-12 bg-[#E8E3D5]">
@@ -214,12 +276,11 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
                   className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
                 >
                   <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
-                    <Image
-                      src={j.cardImage}
-                      alt={j.name}
+                    <PhotoImg
+                      id={j.cardImage}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                      className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                     />
                     <div className="absolute top-3 left-3 bg-[#F2EDE3] px-2.5 py-1">
                       <p className="wp-subhead text-[0.55rem] tracking-[0.2em] text-[#9E4214]">

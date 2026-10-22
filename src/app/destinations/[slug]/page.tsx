@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, AcaciaMark, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { PhotoImg } from '@/components/photo';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { getJourney } from '@/lib/journeys';
+import { DESTINATION_MOSAICS } from '@/lib/photo-groups';
 import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
@@ -32,6 +33,7 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
 
   const journey = getJourney(dest.suggestedJourney);
   const otherDestinations = DESTINATIONS.filter((d) => d.slug !== dest.slug).slice(0, 4);
+  const mosaic = DESTINATION_MOSAICS[dest.slug] ?? [];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
@@ -42,13 +44,12 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
       <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO PHOTOGRAPHY ═════════════════════ */}
         <section className="relative h-[55vh] md:h-[70vh] min-h-[450px] bg-[#1A1A1A] overflow-hidden">
-          <Image
-            src={dest.image}
-            alt={`${dest.name} — ${dest.country}`}
+          <PhotoImg
+            id={dest.image}
             fill
-            priority
+            loading="eager"
+            fetchPriority="high"
             sizes="100vw"
-            className={`${dest.imageKind === 'illustration' ? 'object-contain object-center' : 'object-cover object-center'}`}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/30 to-transparent" />
           <div className="absolute inset-0 flex items-end">
@@ -66,14 +67,27 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
               </div>
             </div>
           </div>
-          {dest.imageKind === 'illustration' && (
-            <div className="absolute top-24 right-6 md:right-12 bg-[#F2EDE3]/90 px-3 py-1.5">
-              <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold">
-                Editorial illustration
-              </p>
-            </div>
-          )}
         </section>
+
+        {/* ═════════════════════ PHOTO MOSAIC ═════════════════════ */}
+        {mosaic.length > 0 && (
+          <section className="pb-20 px-6 md:px-12">
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+                {mosaic.map((pid, i) => (
+                  <div
+                    key={pid}
+                    className={`relative overflow-hidden bg-[#1A1A1A] ${
+                      i === 0 ? 'aspect-[4/5] md:col-span-2 md:aspect-[16/10]' : 'aspect-square md:aspect-[4/5]'
+                    }`}
+                  >
+                    <PhotoImg id={pid} fill sizes="(max-width: 768px) 50vw, 25vw" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* ═════════════════════ OVERVIEW ═════════════════════ */}
         <section className="py-16 px-6 md:px-12">
@@ -153,12 +167,11 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                 className="group grid md:grid-cols-12 gap-0 bg-[#2A2A2A] hover:bg-[#333] transition-colors duration-300 overflow-hidden"
               >
                 <div className="relative md:col-span-5 aspect-[16/10] md:aspect-auto md:min-h-[340px] overflow-hidden">
-                  <Image
-                    src={journey.cardImage}
-                    alt={journey.name}
+                  <PhotoImg
+                    id={journey.cardImage}
                     fill
                     sizes="(max-width: 768px) 100vw, 45vw"
-                    className="object-contain group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                    className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                   />
                   <div className="absolute top-4 left-4 bg-[#F2EDE3] px-3 py-1.5">
                     <p className="wp-subhead text-[0.6rem] tracking-[0.2em] text-[#9E4214]">
@@ -216,12 +229,11 @@ export default async function DestinationPage({ params }: { params: Promise<{ sl
                   href={`/destinations/${d.slug}`}
                   className="group relative block aspect-[3/4] overflow-hidden bg-[#1A1A1A]"
                 >
-                  <Image
-                    src={d.image}
-                    alt={d.name}
+                  <PhotoImg
+                    id={d.image}
                     fill
                     sizes="(max-width: 768px) 50vw, 25vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
+                    className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-4 md:p-6 flex flex-col justify-end text-[#F2EDE3]">

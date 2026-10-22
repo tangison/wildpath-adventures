@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Nav, Footer, ContourLines, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { PhotoImg } from '@/components/photo';
 import { DESTINATIONS } from '@/lib/destinations';
 
 export const metadata: Metadata = {
@@ -59,13 +59,13 @@ export default function DestinationsPage() {
               href={`/destinations/namibia`}
               className="group relative block aspect-[16/9] md:aspect-[21/9] overflow-hidden bg-[#1A1A1A] mb-8"
             >
-              <Image
-                src={namibia[0].image}
-                alt={`${namibia[0].name} — ${namibia[0].country}`}
+              <PhotoImg
+                id={namibia[0].image}
                 fill
-                priority
+                loading="eager"
+                fetchPriority="high"
                 sizes="100vw"
-                className={`${namibia[0].imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[1000ms] ease-out`}
+                className="group-hover:brightness-110 transition-[filter] duration-[1000ms] ease-out"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/30 to-transparent" />
               <div className="absolute inset-0 p-8 md:p-14 flex flex-col justify-end text-[#F2EDE3]">
@@ -93,12 +93,11 @@ export default function DestinationsPage() {
                   href={`/destinations/${d.slug}`}
                   className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
                 >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name} — ${d.country}`}
+                  <PhotoImg
+                    id={d.image}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
+                    className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">
@@ -141,12 +140,11 @@ export default function DestinationsPage() {
                   href={`/destinations/${d.slug}`}
                   className="group relative block aspect-[4/5] overflow-hidden bg-[#1A1A1A]"
                 >
-                  <Image
-                    src={d.image}
-                    alt={`${d.name} — ${d.country}`}
+                  <PhotoImg
+                    id={d.image}
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
-                    className={`${d.imageKind === 'illustration' ? 'object-contain' : 'object-cover object-center'} group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out`}
+                    className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/85 via-[#1A1A1A]/15 to-transparent" />
                   <div className="absolute inset-0 p-6 md:p-7 flex flex-col justify-end text-[#F2EDE3]">

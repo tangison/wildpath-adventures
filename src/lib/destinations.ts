@@ -4,12 +4,12 @@
  * Editorial cards. Image-led. Each destination has overview, highlights,
  * best time, wildlife, landscape, suggested journey.
  *
- * IMAGE POLICY (per V3 client-accuracy correction):
- *   - Real destinations use real photography where available.
- *   - Destinations without verified photography use a branded illustration
- *     placeholder (intentional, elegant — NOT a "coming soon" badge).
- *   - No image is presented as a real photograph unless its source is tracked
- *     in /home/z/my-project/ASSET_MANIFEST.md.
+ * IMAGE POLICY (image-first rebuild):
+ *   - Every destination card uses real photography (client-supplied or
+ *     title-verified Wikimedia Commons, tracked in images/images.manifest.json).
+ *   - NO illustration is used as a destination image. The only approved
+ *     illustration on the site is the footer brand strip.
+ *   - Every referenced photo must exist in src/data/photos.generated.ts.
  *
  * CLAIM POLICY:
  *   - No invented wildlife-population numbers ("120,000 elephants" softened).
@@ -29,13 +29,10 @@ export type Destination = {
   wildlife: string[];
   landscape: string;
   suggestedJourney: string;
-  /** Real destination photography (tracked in ASSET_MANIFEST.md) OR branded illustration placeholder. */
+  /** Real destination photography — id resolving through src/data/photos.generated.ts. */
   image: string;
-  /**
-   * 'photo' = real destination photograph (source-tracked)
-   * 'illustration' = intentional branded placeholder (no real photo available yet)
-   */
-  imageKind: 'photo' | 'illustration';
+  /** Always 'photo': illustrations are never used as destination imagery. */
+  imageKind: 'photo';
 };
 
 export const DESTINATIONS: Destination[] = [
@@ -51,7 +48,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Desert-adapted elephant', 'Black rhino', 'Lion', 'Gemsbok', 'Springbok'],
     landscape: 'Red sand, white salt, granite, basalt. A land of geology.',
     suggestedJourney: 'classic-namibia',
-    image: '/images/places/sossusvlei.webp',
+    image: 'wc-etosha-camelthorn-zebra',
     imageKind: 'photo',
   },
   {
@@ -66,7 +63,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Ostrich', 'Springbok', 'Gemsbok', 'Brown hyena (rare)'],
     landscape: 'Red sand, white clay pan, dead trees. The purest desert image.',
     suggestedJourney: 'untamed-desert',
-    image: '/images/places/sossusvlei.webp',
+    image: 'deadvlei-white-pan-red-dunes',
     imageKind: 'photo',
   },
   {
@@ -81,7 +78,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Black rhino', 'Elephant', 'Lion', 'Leopard', 'Gemsbok', 'Springbok'],
     landscape: 'Salt pan, savannah, mopane woodland. Flat and open — perfect for game viewing.',
     suggestedJourney: 'untamed-desert',
-    image: '/images/places/etosha.webp',
+    image: 'wc-etosha-elephant-family-waterhole',
     imageKind: 'photo',
   },
   {
@@ -96,7 +93,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Desert-adapted elephant', 'Black rhino', 'Desert lion (rare)', 'Gemsbok', 'Springbok'],
     landscape: 'Granite inselbergs, gravel plains, dry riverbeds. Ancient geology.',
     suggestedJourney: 'untamed-central',
-    image: '/images/places/damaraland.webp',
+    image: 'damaraland-lodge-granite-hill',
     imageKind: 'photo',
   },
   {
@@ -111,9 +108,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Brown hyena', 'Cape fur seal', 'Black-backed jackal'],
     landscape: 'Fog, dunes dropping into the sea, basalt, shipwrecks.',
     suggestedJourney: 'classic-namibia',
-    // No verified real photograph in current assets — use branded illustration placeholder.
-    image: '/images/illustrations/approved/destination-skeleton-coast.webp',
-    imageKind: 'illustration',
+    image: 'wc-skeleton-coast-shipwreck-surf',
+    imageKind: 'photo',
   },
   {
     slug: 'kalahari',
@@ -127,7 +123,7 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Gemsbok', 'Springbok', 'Meerkat', 'Brown hyena'],
     landscape: 'Red sand, camelthorn acacia, long horizons.',
     suggestedJourney: 'classic-namibia',
-    image: '/images/places/kalahari.webp',
+    image: 'kalahari-cabin-red-dune',
     imageKind: 'photo',
   },
   {
@@ -142,8 +138,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Hippo', 'Buffalo', 'Elephant', 'Wattled crane', 'African fish eagle', 'Sable antelope'],
     landscape: 'Rivers, floodplains, mopane woodland. Green Namibia.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-caprivi.webp',
-    imageKind: 'illustration',
+    image: 'wc-bwabwata-river-sunset',
+    imageKind: 'photo',
   },
   {
     slug: 'chobe',
@@ -157,8 +153,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant', 'Lion', 'Leopard', 'Buffalo', 'Puku', 'Hippo'],
     landscape: 'River, floodplain, woodland. Botswana at its most accessible.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-chobe.webp',
-    imageKind: 'illustration',
+    image: 'wc-chobe-elephant-swimming',
+    imageKind: 'photo',
   },
   {
     slug: 'victoria-falls',
@@ -172,8 +168,8 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Elephant (in town itself)', 'Hippo', 'Crocodile', 'Birdlife'],
     landscape: 'Basalt gorge, rainforest from the spray, the Zambezi above and below.',
     suggestedJourney: 'untamed-northern-caprivi',
-    image: '/images/illustrations/approved/destination-victoria-falls.webp',
-    imageKind: 'illustration',
+    image: 'wc-victoria-falls-panorama',
+    imageKind: 'photo',
   },
 ];
 

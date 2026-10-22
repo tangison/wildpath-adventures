@@ -6,6 +6,11 @@
  * Detailed day-by-day, accommodation, and meal plans are NOT shown publicly —
  * they are available on request via the enquiry form.
  *
+ * IMAGERY POLICY (image-first rebuild):
+ *   - cardImage and heroImage are real photographs (client-supplied or
+ *     title-verified Commons), resolving through src/data/photos.generated.ts.
+ *   - Journey pages additionally build per-stop galleries from the photo index.
+ *
  * Copy uses short editorial descriptions of each destination,
  * not invented operational detail or named personnel.
  *
@@ -38,8 +43,10 @@ export type Journey = {
   highlights: string[];
   overview: string;           // 2-3 sentences on the shape of the journey
   route: RouteStop[];         // the visual route sequence — destination by destination
-  cardImage: string;          // illustration for the journey card (brand-section appropriate)
-  heroImage: string;          // large hero image — real destination photography
+  /** Real photograph for the journey card. */
+  cardImage: string;
+  /** Large hero photograph — real destination imagery. */
+  heroImage: string;
   availability: string;
   mealsNote: string;
   /**
@@ -86,8 +93,8 @@ export const JOURNEYS: Journey[] = [
       { name: 'Etosha National Park', description: 'A salt flat the size of a small country. In the dry season, the waterholes become theatre — rhino, elephant, lion, all in a single evening.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-classic-namibia.webp',
-    heroImage: '/images/places/sossusvlei.webp',
+    cardImage: 'wc-sossusvlei-dune45-tree',
+    heroImage: 'wc-sossusvlei-dune45-sunrise',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
@@ -125,12 +132,12 @@ export const JOURNEYS: Journey[] = [
       { name: 'Rundu & the Okavango River', description: 'The border with Angola. The Okavango river runs wide and slow here, before it becomes the delta in Botswana.' },
       { name: 'Kwando River', description: 'A green ribbon of river and floodplain. Hippo, buffalo, elephant, and some of the best birding in southern Africa.' },
       { name: 'Bwabwata National Park', description: 'A park without fences — elephant, buffalo, wild dog, and the wattled crane. Few vehicles, fewer people.' },
-      { name: 'Chobe River', description: 'Across the border into Botswana. Chobe has the densest elephant population in Africa — 120,000 at the last count.' },
+      { name: 'Chobe River', description: 'Across the border into Botswana. The Chobe riverfront carries one of the densest elephant populations in Africa.' },
       { name: 'Zambezi River', description: 'The Zambezi before the falls. Wide, slow, and loud with hippo and fish eagle.' },
       { name: 'Windhoek', description: 'The return. Transfer connections arranged on request.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-northern-caprivi.webp',
-    heroImage: '/images/places/acacia-savanna.webp',
+    cardImage: 'wc-zambezi-sunset-cruise',
+    heroImage: 'wc-chobe-sunset-elephant',
     availability: 'Best travelled May to October. Private departures arranged on request.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
@@ -170,8 +177,8 @@ export const JOURNEYS: Journey[] = [
       { name: 'Swakopmund', description: 'The cold Atlantic coast. Fog, flamingos, and German colonial architecture on African shores.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-central.webp',
-    heroImage: '/images/places/damaraland.webp',
+    cardImage: 'wc-etosha-elephants-bathing',
+    heroImage: 'wc-etosha-lion-stretching',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [
@@ -213,8 +220,8 @@ export const JOURNEYS: Journey[] = [
       { name: 'Etosha National Park', description: 'The great white pan. In the dry season, every animal in the park comes to the waterholes.' },
       { name: 'Windhoek', description: 'The return. Airport transfer and onward travel.' },
     ],
-    cardImage: '/images/illustrations/approved/journey-desert.webp',
-    heroImage: '/images/places/etosha.webp',
+    cardImage: 'namib-red-dunes-green-plains',
+    heroImage: 'wc-waterberg-plateau-cliffs',
     availability: 'Private departures arranged on request, year-round.',
     mealsNote: 'Meal inclusions vary by section of route. Exact inclusions are confirmed in your personalised proposal.',
     _internalFlags: [

@@ -1,0 +1,2358 @@
+{
+  "generated": "2026-10-22",
+  "site": "wildpath.tangison.com",
+  "policy": {
+    "cartoon_or_illustration_content_images": "FORBIDDEN - only the footer brand illustration is approved",
+    "usage_rule": "every client and scouted photo must be referenced by src/ at least once (npm run check:images)",
+    "reuse_rule": "no photo may appear more than twice site-wide; distribute first, reuse later",
+    "size_cap_bytes": 250000,
+    "formats": "AVIF + WebP variants at 640/960/1440/1920 (source permitting)"
+  },
+  "client_photos": [
+    {
+      "id": "giraffes-walking-etosha",
+      "source_file": "IMG-20261016-WA0076.jpg",
+      "theme": "Three giraffes walking through green Etosha scrubland under an overcast sky.",
+      "alt": "Three giraffes walking through green Etosha scrubland under an overcast sky.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Etosha destination card; etosha-waterhole alternate",
+      "variants": [
+        {
+          "file": "/images/photos/giraffes-walking-etosha-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 122004,
+          "quality": 70
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 109815,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 83488,
+          "quality": 74
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 73930,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 51504,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 40773,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 26834,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/giraffes-walking-etosha-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 20963,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "rhino-ostrich-etosha",
+      "source_file": "IMG-20261016-WA0068.jpg",
+      "theme": "A rhino grazing beside an ostrich in green bush, photographed from a distance.",
+      "alt": "A rhino grazing beside an ostrich in green bush, photographed from a distance.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Field Notes thumbnail only, never hero",
+      "variants": [
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 117690,
+          "quality": 66
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 92690,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 89420,
+          "quality": 74
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 68069,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 59952,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 42645,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 33324,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/rhino-ostrich-etosha-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 24238,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "deadvlei-white-pan-red-dunes",
+      "source_file": "IMG-20261016-WA0074.jpg",
+      "theme": "Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes and a clear blue sky.",
+      "alt": "Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes and a clear blue sky.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Sossusvlei / Deadvlei destination card",
+      "variants": [
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 120902,
+          "quality": 70
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 106132,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 85342,
+          "quality": 74
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 72763,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 49448,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 37006,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 22730,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-white-pan-red-dunes-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 17048,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "deadvlei-trees-dune-shadow",
+      "source_file": "IMG-20261016-WA0071.jpg",
+      "theme": "Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.",
+      "alt": "Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Deadvlei alternate; journey page support",
+      "variants": [
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 84536,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 51802,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 55964,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 35835,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 31114,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 21364,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 17000,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/deadvlei-trees-dune-shadow-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 12179,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "kalahari-cabin-red-dune",
+      "source_file": "IMG-20261016-WA0060.jpg",
+      "theme": "Wooden cabin with a green roof on a red Kalahari dune, looking over green savanna.",
+      "alt": "Wooden cabin with a green roof on a red Kalahari dune, looking over green savanna.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Self-Drive Sanctuaries card; Southern Renewal journey (kalahari-farm)",
+      "variants": [
+        {
+          "file": "/images/photos/kalahari-cabin-red-dune-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 63124,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/kalahari-cabin-red-dune-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 47969,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/kalahari-cabin-red-dune-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 31634,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/kalahari-cabin-red-dune-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 24359,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "oryx-dusk-golden-grass",
+      "source_file": "IMG-20261016-WA0062.jpg",
+      "theme": "A gemsbok oryx standing in golden grass at dusk, mountains behind.",
+      "alt": "A gemsbok oryx standing in golden grass at dusk, mountains behind.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Wildlife moment; destination or journey card",
+      "variants": [
+        {
+          "file": "/images/photos/oryx-dusk-golden-grass-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 58874,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/oryx-dusk-golden-grass-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 45221,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/oryx-dusk-golden-grass-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 31868,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/oryx-dusk-golden-grass-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 24838,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "game-drive-red-sand-track",
+      "source_file": "IMG-20261016-WA0064.jpg",
+      "theme": "Open safari vehicle with guests on a red sand track in the Kalahari.",
+      "alt": "Open safari vehicle with guests on a red sand track in the Kalahari.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "road-4x4; guided journey pages",
+      "variants": [
+        {
+          "file": "/images/photos/game-drive-red-sand-track-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 67604,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/game-drive-red-sand-track-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 54830,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/game-drive-red-sand-track-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 33750,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/game-drive-red-sand-track-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 26631,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "namib-red-dunes-green-plains",
+      "source_file": "IMG-20261016-WA0069.jpg",
+      "theme": "Red dunes rising over green plains after rain, seen from a gravel road.",
+      "alt": "Red dunes rising over green plains after rain, seen from a gravel road.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Namib destination support; journey page support",
+      "variants": [
+        {
+          "file": "/images/photos/namib-red-dunes-green-plains-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 62710,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/namib-red-dunes-green-plains-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 49014,
+          "quality": 55
+        },
+        {
+          "file": "/images/photos/namib-red-dunes-green-plains-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 30380,
+          "quality": 78
+        },
+        {
+          "file": "/images/photos/namib-red-dunes-green-plains-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 22896,
+          "quality": 55
+        }
+      ]
+    },
+    {
+      "id": "damaraland-lodge-granite-hill",
+      "source_file": "IMG-20261016-WA0072.jpg",
+      "theme": "Thatched bungalows on stilts beneath a granite hill in Damaraland.",
+      "alt": "Thatched bungalows on stilts beneath a granite hill in Damaraland.",
+      "orientation": "landscape",
+      "licence": "Client's own photograph (Wildpath Adventures)",
+      "used_on": "Damaraland destination card; accommodation moment",
+      "variants": [
+        {
+          "file": "/images/photos/damaraland-lodge-granite-hill-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 69540,
+          "quality": 66
+        },
+        {
+          "file": "/images/photos/damaraland-lodge-granite-hill-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 62479,
+          "quality": 51
+        },
+        {
+          "file": "/images/photos/damaraland-lodge-granite-hill-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 40590,
+          "quality": 74
+        },
+        {
+          "file": "/images/photos/damaraland-lodge-granite-hill-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 38459,
+          "quality": 55
+        }
+      ]
+    }
+  ],
+  "scouted_photos": [
+    {
+      "id": "wc-sossusvlei-dune45-tree",
+      "subject": "sossusvlei-dune45-tree",
+      "group": "sossusvlei",
+      "theme": "A lone camelthorn tree in front of the red face of Dune 45, Sossusvlei.",
+      "alt": "A lone camelthorn tree in front of the red face of Dune 45, Sossusvlei.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Axel Tschentscher via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Lone_tree_in_front_of_Dune_45_Sossusvlei_Namibia.jpg",
+      "planned_usage": "Classic Namibia timeline - Sossusvlei stop",
+      "max_bytes": 181174,
+      "variants": [
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 148287
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 181174
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 28693
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 34778
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 70961
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-tree-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 83980
+        }
+      ]
+    },
+    {
+      "id": "wc-sossusvlei-dune45-sunrise",
+      "subject": "sossusvlei-dune45-sunrise",
+      "group": "sossusvlei",
+      "theme": "Dune 45 caught by first light at sunrise, its S-shaped ridge glowing red.",
+      "alt": "Dune 45 caught by first light at sunrise, its S-shaped ridge glowing red.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Giles Laurent via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:006_Dune_45_in_Sossusvlei_at_sunrise_Photo_by_Giles_Laurent.jpg",
+      "planned_usage": "Journey hero support - Untamed Desert / Classic",
+      "max_bytes": 171114,
+      "variants": [
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 96937
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 112224
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 142551
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 171114
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 17765
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 19542
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 45934
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-dune45-sunrise-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 48400
+        }
+      ]
+    },
+    {
+      "id": "wc-sossusvlei-bigdaddy-ridge",
+      "subject": "sossusvlei-bigdaddy-ridge",
+      "group": "sossusvlei",
+      "theme": "The view from the crest of Big Daddy dune down towards Deadvlei's white pan.",
+      "alt": "The view from the crest of Big Daddy dune down towards Deadvlei's white pan.",
+      "orientation": "landscape",
+      "licence": "CC BY 3.0 - Pavel \u0160pindler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Deadvlei,_na_vrcholu_duny_Big_Daddy_Dune,_pou%C5%A1%C5%A5_Namib_-_Namibie_-_panoramio.jpg",
+      "planned_usage": "Classic Namibia timeline - Deadvlei climb",
+      "max_bytes": 132060,
+      "variants": [
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-1440.avif",
+          "width": 1440,
+          "height": 954,
+          "bytes": 45557
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-1440.webp",
+          "width": 1440,
+          "height": 954,
+          "bytes": 61532
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-1920.avif",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 107268
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-1920.webp",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 132060
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-640.avif",
+          "width": 640,
+          "height": 424,
+          "bytes": 8951
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-640.webp",
+          "width": 640,
+          "height": 424,
+          "bytes": 11056
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-960.avif",
+          "width": 960,
+          "height": 636,
+          "bytes": 18156
+        },
+        {
+          "file": "/images/photos/wc-sossusvlei-bigdaddy-ridge-960.webp",
+          "width": 960,
+          "height": 636,
+          "bytes": 23774
+        }
+      ]
+    },
+    {
+      "id": "wc-deadvlei-aerial",
+      "subject": "deadvlei-aerial",
+      "group": "sossusvlei",
+      "theme": "Aerial view of orange dunes folding around the white clay pan of Deadvlei.",
+      "alt": "Aerial view of orange dunes folding around the white clay pan of Deadvlei.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Olga Ernst  &amp;  Hp.Baumeler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Deadvlei_Vogelperspektive.jpg",
+      "planned_usage": "Sossusvlei destination page mosaic",
+      "max_bytes": 168098,
+      "variants": [
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-1440.avif",
+          "width": 1440,
+          "height": 954,
+          "bytes": 109609
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-1440.webp",
+          "width": 1440,
+          "height": 954,
+          "bytes": 107452
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-1920.avif",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 121094
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-1920.webp",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 168098
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-640.avif",
+          "width": 640,
+          "height": 424,
+          "bytes": 21942
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-640.webp",
+          "width": 640,
+          "height": 424,
+          "bytes": 26804
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-960.avif",
+          "width": 960,
+          "height": 636,
+          "bytes": 47538
+        },
+        {
+          "file": "/images/photos/wc-deadvlei-aerial-960.webp",
+          "width": 960,
+          "height": 636,
+          "bytes": 58066
+        }
+      ]
+    },
+    {
+      "id": "wc-sesriem-canyon-floor",
+      "subject": "sesriem-canyon-floor",
+      "group": "sossusvlei",
+      "theme": "Sesriem Canyon's gravel floor between carved sandstone walls, a camelthorn growing in the shade.",
+      "alt": "Sesriem Canyon's gravel floor between carved sandstone walls, a camelthorn growing in the shade.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Diego Delso via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Ca%C3%B1%C3%B3n_Sesriem,_Sossusvlei,_Namibia,_2018-08-06,_DD_208.jpg",
+      "planned_usage": "Sossusvlei page highlights - Sesriem Canyon",
+      "max_bytes": 238318,
+      "variants": [
+        {
+          "file": "/images/photos/wc-sesriem-canyon-floor-1440.avif",
+          "width": 1440,
+          "height": 962,
+          "bytes": 233758
+        },
+        {
+          "file": "/images/photos/wc-sesriem-canyon-floor-1440.webp",
+          "width": 1440,
+          "height": 962,
+          "bytes": 238318
+        }
+      ]
+    },
+    {
+      "id": "wc-sesriem-canyon-walls",
+      "subject": "sesriem-canyon-walls",
+      "group": "sossusvlei",
+      "theme": "Layered walls of Sesriem Canyon under midday light.",
+      "alt": "Layered walls of Sesriem Canyon under midday light.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Diego Delso via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Ca%C3%B1%C3%B3n_Sesriem,_Sossusvlei,_Namibia,_2018-08-06,_DD_186.jpg",
+      "planned_usage": "Sossusvlei mosaic alternate",
+      "max_bytes": 239950,
+      "variants": [
+        {
+          "file": "/images/photos/wc-sesriem-canyon-walls-1280.avif",
+          "width": 1280,
+          "height": 853,
+          "bytes": 207750
+        },
+        {
+          "file": "/images/photos/wc-sesriem-canyon-walls-1280.webp",
+          "width": 1280,
+          "height": 853,
+          "bytes": 239950
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-elephant-family-waterhole",
+      "subject": "etosha-elephant-family-waterhole",
+      "group": "etosha",
+      "theme": "An elephant family, calves included, drinking together at the Gemsbokvlakte waterhole in Etosha.",
+      "alt": "An elephant family, calves included, drinking together at the Gemsbokvlakte waterhole in Etosha.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Christoph Str\u00e4ssler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Elephant_family_at_Gemsbokvlakte_waterhole,_Etosha_National_Park,_Namibia.jpg",
+      "planned_usage": "Etosha destination hero support; Untamed journeys Etosha stop",
+      "max_bytes": 230212,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-elephant-family-waterhole-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 229135
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephant-family-waterhole-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 230212
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-elephants-bathing",
+      "subject": "etosha-elephants-bathing",
+      "group": "etosha",
+      "theme": "Elephants bathing and splashing at an Etosha waterhole.",
+      "alt": "Elephants bathing and splashing at an Etosha waterhole.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Josep M. Gracia via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:African_elephants_bathing_at_a_waterhole_in_Etosha_National_Park,_Namibia,_2007.jpg",
+      "planned_usage": "Etosha page mosaic",
+      "max_bytes": 192942,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-1440.avif",
+          "width": 1440,
+          "height": 967,
+          "bytes": 106912
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-1440.webp",
+          "width": 1440,
+          "height": 967,
+          "bytes": 126072
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-1920.avif",
+          "width": 1920,
+          "height": 1289,
+          "bytes": 125633
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-1920.webp",
+          "width": 1920,
+          "height": 1289,
+          "bytes": 192942
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-640.avif",
+          "width": 640,
+          "height": 430,
+          "bytes": 43277
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-640.webp",
+          "width": 640,
+          "height": 430,
+          "bytes": 44388
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-960.avif",
+          "width": 960,
+          "height": 644,
+          "bytes": 69478
+        },
+        {
+          "file": "/images/photos/wc-etosha-elephants-bathing-960.webp",
+          "width": 960,
+          "height": 644,
+          "bytes": 79242
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-lion-stretching",
+      "subject": "etosha-lion-stretching",
+      "group": "etosha",
+      "theme": "A male lion stretching on open gravel plain in Etosha.",
+      "alt": "A male lion stretching on open gravel plain in Etosha.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 3.0 - Yathin S Krishnappa via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Panthera_leo_stretching_(Etosha,_2012).jpg",
+      "planned_usage": "Etosha wildlife block",
+      "max_bytes": 238740,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-lion-stretching-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 194956
+        },
+        {
+          "file": "/images/photos/wc-etosha-lion-stretching-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 238740
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-lion-cub",
+      "subject": "etosha-lion-cub",
+      "group": "etosha",
+      "theme": "A male lion standing over his cub beneath a bush in Etosha.",
+      "alt": "A male lion standing over his cub beneath a bush in Etosha.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Charles J. Sharp via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Lion_(Panthera_leo)_male_and_cub_Etosha.jpg",
+      "planned_usage": "Etosha mosaic alternate",
+      "max_bytes": 241514,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-lion-cub-1440.avif",
+          "width": 1440,
+          "height": 954,
+          "bytes": 239727
+        },
+        {
+          "file": "/images/photos/wc-etosha-lion-cub-1440.webp",
+          "width": 1440,
+          "height": 954,
+          "bytes": 241514
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-mountain-zebra",
+      "subject": "etosha-mountain-zebra",
+      "group": "etosha",
+      "theme": "A Hartmann's mountain zebra standing on Etosha's stone-strewn plain.",
+      "alt": "A Hartmann's mountain zebra standing on Etosha's stone-strewn plain.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Yathin S Krishnappa via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Equus_zebra_hartmannae_-_Etosha_2015.jpg",
+      "planned_usage": "Etosha wildlife block",
+      "max_bytes": 228130,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-mountain-zebra-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 223820
+        },
+        {
+          "file": "/images/photos/wc-etosha-mountain-zebra-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 228130
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-camelthorn-zebra",
+      "subject": "etosha-camelthorn-zebra",
+      "group": "etosha",
+      "theme": "A single camelthorn on golden grass, plains zebra far behind, in Etosha.",
+      "alt": "A single camelthorn on golden grass, plains zebra far behind, in Etosha.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Giles Laurent via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:124_Single_Camel_Thorn_tree_with_Plains_zebra_in_the_background_in_Etosha_National_Park_Photo_by_Giles_Laurent.jpg",
+      "planned_usage": "Etosha landscape / journeys support",
+      "max_bytes": 177332,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 102660
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 111400
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 149071
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 177332
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 21093
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 22018
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 49836
+        },
+        {
+          "file": "/images/photos/wc-etosha-camelthorn-zebra-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 52952
+        }
+      ]
+    },
+    {
+      "id": "wc-etosha-pan-acacia",
+      "subject": "etosha-pan-acacia",
+      "group": "etosha",
+      "theme": "A lone acacia in front of the shimmering white expanse of the dry Etosha pan.",
+      "alt": "A lone acacia in front of the shimmering white expanse of the dry Etosha pan.",
+      "orientation": "landscape",
+      "licence": "FAL - Alchemist-hp (talk) (www.pse-mendelejew.de) via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Dry_Etosha_Pan.jpg",
+      "planned_usage": "Etosha page - the pan itself",
+      "max_bytes": 147394,
+      "variants": [
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-1440.avif",
+          "width": 1440,
+          "height": 904,
+          "bytes": 68211
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-1440.webp",
+          "width": 1440,
+          "height": 904,
+          "bytes": 88038
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-1920.avif",
+          "width": 1920,
+          "height": 1206,
+          "bytes": 118043
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-1920.webp",
+          "width": 1920,
+          "height": 1206,
+          "bytes": 147394
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-640.avif",
+          "width": 640,
+          "height": 402,
+          "bytes": 18983
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-640.webp",
+          "width": 640,
+          "height": 402,
+          "bytes": 21998
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-960.avif",
+          "width": 960,
+          "height": 603,
+          "bytes": 37025
+        },
+        {
+          "file": "/images/photos/wc-etosha-pan-acacia-960.webp",
+          "width": 960,
+          "height": 603,
+          "bytes": 44208
+        }
+      ]
+    },
+    {
+      "id": "wc-fish-river-canyon-dusk",
+      "subject": "fish-river-canyon-dusk",
+      "group": "south",
+      "theme": "Soft dusk light over the inner gorge of Fish River Canyon, the river glinting far below.",
+      "alt": "Soft dusk light over the inner gorge of Fish River Canyon, the river glinting far below.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Olga Ernst via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Fish_River_Canyon,_Namibia_(2017).jpg",
+      "planned_usage": "Classic Namibia timeline - Fish River Canyon stop",
+      "max_bytes": 233164,
+      "variants": [
+        {
+          "file": "/images/photos/wc-fish-river-canyon-dusk-1440.avif",
+          "width": 1440,
+          "height": 954,
+          "bytes": 220270
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-dusk-1440.webp",
+          "width": 1440,
+          "height": 954,
+          "bytes": 233164
+        }
+      ]
+    },
+    {
+      "id": "wc-fish-river-canyon-view",
+      "subject": "fish-river-canyon-view",
+      "group": "south",
+      "theme": "Daylight view across the eroded walls of Fish River Canyon.",
+      "alt": "Daylight view across the eroded walls of Fish River Canyon.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 3.0 - Thomas Schoch via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Fish_River_Canyon_Namibia.jpg",
+      "planned_usage": "Canyon alternate",
+      "max_bytes": 244038,
+      "variants": [
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 162529
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 244038
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-640.avif",
+          "width": 640,
+          "height": 480,
+          "bytes": 40679
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-640.webp",
+          "width": 640,
+          "height": 480,
+          "bytes": 59592
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-960.avif",
+          "width": 960,
+          "height": 720,
+          "bytes": 84784
+        },
+        {
+          "file": "/images/photos/wc-fish-river-canyon-view-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 122522
+        }
+      ]
+    },
+    {
+      "id": "wc-kolmanskop-window",
+      "subject": "kolmanskop-window",
+      "group": "south",
+      "theme": "Sand drifting inside a ruined Kolmanskop house, framed by its wooden window.",
+      "alt": "Sand drifting inside a ruined Kolmanskop house, framed by its wooden window.",
+      "orientation": "landscape",
+      "licence": "CC BY 4.0 - Ralf H\u00fcsges via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Kolmanskop_-_ghost_town_in_Namibia.jpg",
+      "planned_usage": "Classic Namibia timeline - Kolmanskop stop",
+      "max_bytes": 238968,
+      "variants": [
+        {
+          "file": "/images/photos/wc-kolmanskop-window-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 216793
+        },
+        {
+          "file": "/images/photos/wc-kolmanskop-window-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 238968
+        }
+      ]
+    },
+    {
+      "id": "wc-kolmanskop-interior",
+      "subject": "kolmanskop-interior",
+      "group": "south",
+      "theme": "Afternoon light striping the sand-filled interior of a Kolmanskop villa.",
+      "alt": "Afternoon light striping the sand-filled interior of a Kolmanskop villa.",
+      "orientation": "landscape",
+      "licence": "CC BY 4.0 - Ralf H\u00fcsges via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Kolmanskop_-_ghost_town_in_Namibia2.jpg",
+      "planned_usage": "Kolmanskop alternate",
+      "max_bytes": 239448,
+      "variants": [
+        {
+          "file": "/images/photos/wc-kolmanskop-interior-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 236012
+        },
+        {
+          "file": "/images/photos/wc-kolmanskop-interior-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 239448
+        }
+      ]
+    },
+    {
+      "id": "wc-kolmanskop-buried-houses",
+      "subject": "kolmanskop-buried-houses",
+      "group": "south",
+      "theme": "Aerial view of Kolmanskop's houses half-buried by the dunes of the Sperrgebiet.",
+      "alt": "Aerial view of Kolmanskop's houses half-buried by the dunes of the Sperrgebiet.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - SkyPixels via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Kolmanskop_Ghost_Town_Buildings.jpg",
+      "planned_usage": "Kolmanskop wide shot",
+      "max_bytes": 233878,
+      "variants": [
+        {
+          "file": "/images/photos/wc-kolmanskop-buried-houses-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 213585
+        },
+        {
+          "file": "/images/photos/wc-kolmanskop-buried-houses-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 233878
+        }
+      ]
+    },
+    {
+      "id": "wc-wild-horses-garub",
+      "subject": "wild-horses-garub",
+      "group": "south",
+      "theme": "The wild horses of the Namib standing on the gravel plains below Garub.",
+      "alt": "The wild horses of the Namib standing on the gravel plains below Garub.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Leomudde via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Wild_Horses_of_Garub.jpg",
+      "planned_usage": "Classic Namibia timeline - wild horses stop",
+      "max_bytes": 152153,
+      "variants": [
+        {
+          "file": "/images/photos/wc-wild-horses-garub-1440.avif",
+          "width": 1440,
+          "height": 809,
+          "bytes": 89816
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-1440.webp",
+          "width": 1440,
+          "height": 809,
+          "bytes": 96182
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-1920.avif",
+          "width": 1920,
+          "height": 1079,
+          "bytes": 152153
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-1920.webp",
+          "width": 1920,
+          "height": 1079,
+          "bytes": 147306
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-640.avif",
+          "width": 640,
+          "height": 360,
+          "bytes": 20240
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-640.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 21968
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-960.avif",
+          "width": 960,
+          "height": 540,
+          "bytes": 44223
+        },
+        {
+          "file": "/images/photos/wc-wild-horses-garub-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 46380
+        }
+      ]
+    },
+    {
+      "id": "wc-swakopmund-woermannhaus",
+      "subject": "swakopmund-woermannhaus",
+      "group": "coast",
+      "theme": "The Woermannhaus, Swakopmund's German colonial building with its tower and timber gables.",
+      "alt": "The Woermannhaus, Swakopmund's German colonial building with its tower and timber gables.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Lidine Mia via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Swakopmund_-_Woermannhaus.jpg",
+      "planned_usage": "Swakopmund journey stop / destinations coast",
+      "max_bytes": 153396,
+      "variants": [
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-1440.avif",
+          "width": 1440,
+          "height": 964,
+          "bytes": 76832
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-1440.webp",
+          "width": 1440,
+          "height": 964,
+          "bytes": 92952
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-1920.avif",
+          "width": 1920,
+          "height": 1285,
+          "bytes": 128173
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-1920.webp",
+          "width": 1920,
+          "height": 1285,
+          "bytes": 153396
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-640.avif",
+          "width": 640,
+          "height": 428,
+          "bytes": 21081
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-640.webp",
+          "width": 640,
+          "height": 428,
+          "bytes": 23712
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-960.avif",
+          "width": 960,
+          "height": 642,
+          "bytes": 39658
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-woermannhaus-960.webp",
+          "width": 960,
+          "height": 642,
+          "bytes": 46890
+        }
+      ]
+    },
+    {
+      "id": "wc-swakopmund-jetty",
+      "subject": "swakopmund-jetty",
+      "group": "coast",
+      "theme": "Swakopmund's old wooden jetty reaching into the cold Atlantic.",
+      "alt": "Swakopmund's old wooden jetty reaching into the cold Atlantic.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Diego Delso via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Jetty,_Swakopmund,_Namibia,_2018-08-04,_DD_55.jpg",
+      "planned_usage": "Swakopmund page",
+      "max_bytes": 233538,
+      "variants": [
+        {
+          "file": "/images/photos/wc-swakopmund-jetty-1920.avif",
+          "width": 1920,
+          "height": 893,
+          "bytes": 233538
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-jetty-1920.webp",
+          "width": 1920,
+          "height": 893,
+          "bytes": 232618
+        }
+      ]
+    },
+    {
+      "id": "wc-swakopmund-coast",
+      "subject": "swakopmund-coast",
+      "group": "coast",
+      "theme": "Waves breaking along the Swakopmund seafront, palm trees behind the beach.",
+      "alt": "Waves breaking along the Swakopmund seafront, palm trees behind the beach.",
+      "orientation": "landscape",
+      "licence": "CC BY 3.0 - Pavel \u0160pindler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:M%C4%9Bsto_Swakopmund_-_Namibie_-_panoramio.jpg",
+      "planned_usage": "Swakopmund alternate",
+      "max_bytes": 185162,
+      "variants": [
+        {
+          "file": "/images/photos/wc-swakopmund-coast-1440.avif",
+          "width": 1440,
+          "height": 954,
+          "bytes": 108190
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-1440.webp",
+          "width": 1440,
+          "height": 954,
+          "bytes": 107568
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-1920.avif",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 141173
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-1920.webp",
+          "width": 1920,
+          "height": 1272,
+          "bytes": 185162
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-640.avif",
+          "width": 640,
+          "height": 424,
+          "bytes": 24437
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-640.webp",
+          "width": 640,
+          "height": 424,
+          "bytes": 27608
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-960.avif",
+          "width": 960,
+          "height": 636,
+          "bytes": 57281
+        },
+        {
+          "file": "/images/photos/wc-swakopmund-coast-960.webp",
+          "width": 960,
+          "height": 636,
+          "bytes": 63108
+        }
+      ]
+    },
+    {
+      "id": "wc-walvis-bay-flamingos",
+      "subject": "walvis-bay-flamingos",
+      "group": "coast",
+      "theme": "Flamingos feeding in the shallow Walvis Bay lagoon.",
+      "alt": "Flamingos feeding in the shallow Walvis Bay lagoon.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Balou46 via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:NA-walvisbay-lagoon-famingo.jpg",
+      "planned_usage": "Untamed Central - Walvis Bay lagoon stop",
+      "max_bytes": 250564,
+      "variants": [
+        {
+          "file": "/images/photos/wc-walvis-bay-flamingos-1920.avif",
+          "width": 1920,
+          "height": 1279,
+          "bytes": 230403
+        },
+        {
+          "file": "/images/photos/wc-walvis-bay-flamingos-1920.webp",
+          "width": 1920,
+          "height": 1279,
+          "bytes": 250564
+        }
+      ]
+    },
+    {
+      "id": "wc-cape-cross-seal-colony",
+      "subject": "cape-cross-seal-colony",
+      "group": "coast",
+      "theme": "The Cape fur seal colony spreading along the shore at Cape Cross.",
+      "alt": "The Cape fur seal colony spreading along the shore at Cape Cross.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Josep M. Gracia via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:CC_-_Large_Cape_fur_seal_colony_at_Cape_Cross,_Namibia,_2007.jpg",
+      "planned_usage": "Skeleton Coast page - Cape Cross",
+      "max_bytes": 122412,
+      "variants": [
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 94234
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 122412
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 40898
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 45908
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 75371
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seal-colony-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 78958
+        }
+      ]
+    },
+    {
+      "id": "wc-cape-cross-seals-rocks",
+      "subject": "cape-cross-seals-rocks",
+      "group": "coast",
+      "theme": "Cape fur seals crowded on the rocks beside the cold Atlantic surf.",
+      "alt": "Cape fur seals crowded on the rocks beside the cold Atlantic surf.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Josep M. Gracia via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:CC_-_Cape_fur_seal_colony_beside_the_Atlantic_Ocean_at_Cape_Cross,_Namibia,_2007.jpg",
+      "planned_usage": "Skeleton Coast alternate",
+      "max_bytes": 145100,
+      "variants": [
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-1440.avif",
+          "width": 1440,
+          "height": 967,
+          "bytes": 106466
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-1440.webp",
+          "width": 1440,
+          "height": 967,
+          "bytes": 108286
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-1920.avif",
+          "width": 1920,
+          "height": 1289,
+          "bytes": 131190
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-1920.webp",
+          "width": 1920,
+          "height": 1289,
+          "bytes": 145100
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-640.avif",
+          "width": 640,
+          "height": 430,
+          "bytes": 33591
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-640.webp",
+          "width": 640,
+          "height": 430,
+          "bytes": 36678
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-960.avif",
+          "width": 960,
+          "height": 644,
+          "bytes": 61615
+        },
+        {
+          "file": "/images/photos/wc-cape-cross-seals-rocks-960.webp",
+          "width": 960,
+          "height": 644,
+          "bytes": 68244
+        }
+      ]
+    },
+    {
+      "id": "wc-skeleton-coast-shipwreck-surf",
+      "subject": "skeleton-coast-shipwreck-surf",
+      "group": "coast",
+      "theme": "A shipwreck lying in the surf on the Skeleton Coast, waves breaking across its hull.",
+      "alt": "A shipwreck lying in the surf on the Skeleton Coast, waves breaking across its hull.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Domenico Convertini from Zurich, Schweiz via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Shipwreck_in_Skeleton_Coast_(17303355561).jpg",
+      "planned_usage": "Skeleton Coast destination hero",
+      "max_bytes": 230473,
+      "variants": [
+        {
+          "file": "/images/photos/wc-skeleton-coast-shipwreck-surf-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 230473
+        },
+        {
+          "file": "/images/photos/wc-skeleton-coast-shipwreck-surf-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 227340
+        }
+      ]
+    },
+    {
+      "id": "wc-skeleton-coast-shipwreck-bow",
+      "subject": "skeleton-coast-shipwreck-bow",
+      "group": "coast",
+      "theme": "Surge crashing bow-on against a rusting wreck on the Skeleton Coast.",
+      "alt": "Surge crashing bow-on against a rusting wreck on the Skeleton Coast.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Domenico Convertini from Zurich, Schweiz via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Shipwreck_in_Skeleton_Coast_(16683455783).jpg",
+      "planned_usage": "Skeleton Coast alternate",
+      "max_bytes": 226382,
+      "variants": [
+        {
+          "file": "/images/photos/wc-skeleton-coast-shipwreck-bow-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 213232
+        },
+        {
+          "file": "/images/photos/wc-skeleton-coast-shipwreck-bow-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 226382
+        }
+      ]
+    },
+    {
+      "id": "wc-twyfelfontein-engravings",
+      "subject": "twyfelfontein-engravings",
+      "group": "damaraland",
+      "theme": "Ancient San engravings of animals pecked into a rock face at Twyfelfontein.",
+      "alt": "Ancient San engravings of animals pecked into a rock face at Twyfelfontein.",
+      "orientation": "landscape",
+      "licence": "CC BY 2.0 - Jean &amp; Nathalie via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Twyfelfontein_Rock_Engraving,_Namibia.jpg",
+      "planned_usage": "Damaraland page - Twyfelfontein",
+      "max_bytes": 198736,
+      "variants": [
+        {
+          "file": "/images/photos/wc-twyfelfontein-engravings-1600.avif",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 192882
+        },
+        {
+          "file": "/images/photos/wc-twyfelfontein-engravings-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 198736
+        }
+      ]
+    },
+    {
+      "id": "wc-organ-pipes-damaraland",
+      "subject": "organ-pipes-damaraland",
+      "group": "damaraland",
+      "theme": "The dolerite columns of the Organ Pipes glowing warm red in Damaraland.",
+      "alt": "The dolerite columns of the Organ Pipes glowing warm red in Damaraland.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Joachim Huber from Switzerland via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Organ_Pipes,_Damaraland_Namibia_(3041250307).jpg",
+      "planned_usage": "Damaraland mosaic",
+      "max_bytes": 239088,
+      "variants": [
+        {
+          "file": "/images/photos/wc-organ-pipes-damaraland-1440.avif",
+          "width": 1440,
+          "height": 958,
+          "bytes": 222423
+        },
+        {
+          "file": "/images/photos/wc-organ-pipes-damaraland-1440.webp",
+          "width": 1440,
+          "height": 958,
+          "bytes": 239088
+        }
+      ]
+    },
+    {
+      "id": "wc-waterberg-plateau-cliffs",
+      "subject": "waterberg-plateau-cliffs",
+      "group": "centre",
+      "theme": "The red sandstone cliff face of the Waterberg Plateau rising above the plain.",
+      "alt": "The red sandstone cliff face of the Waterberg Plateau rising above the plain.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 3.0 - Daniel Kraft via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Waterberg_from_Restcamp.jpg",
+      "planned_usage": "Untamed Desert timeline - Waterberg stop",
+      "max_bytes": 237020,
+      "variants": [
+        {
+          "file": "/images/photos/wc-waterberg-plateau-cliffs-1440.avif",
+          "width": 1440,
+          "height": 1082,
+          "bytes": 225368
+        },
+        {
+          "file": "/images/photos/wc-waterberg-plateau-cliffs-1440.webp",
+          "width": 1440,
+          "height": 1082,
+          "bytes": 237020
+        }
+      ]
+    },
+    {
+      "id": "wc-waterberg-plateau-panorama",
+      "subject": "waterberg-plateau-panorama",
+      "group": "centre",
+      "theme": "The Waterberg plateau wall seen from below, green woodland on its rim.",
+      "alt": "The Waterberg plateau wall seen from below, green woodland on its rim.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.5 - Harald S\u00fcpfle via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Plateau_Waterberg.jpg",
+      "planned_usage": "Waterberg alternate",
+      "max_bytes": 250670,
+      "variants": [
+        {
+          "file": "/images/photos/wc-waterberg-plateau-panorama-1440.avif",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 239231
+        },
+        {
+          "file": "/images/photos/wc-waterberg-plateau-panorama-1440.webp",
+          "width": 1440,
+          "height": 1080,
+          "bytes": 250670
+        }
+      ]
+    },
+    {
+      "id": "wc-windhoek-christuskirche",
+      "subject": "windhoek-christuskirche",
+      "group": "centre",
+      "theme": "Windhoek's Christuskirche, sandstone and spire under a highland sky.",
+      "alt": "Windhoek's Christuskirche, sandstone and spire under a highland sky.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Diego Delso via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Iglesia_de_Cristo,_Windhoek,_Namibia,_2018-08-04,_DD_02.jpg",
+      "planned_usage": "Classic Namibia timeline - Windhoek start; About page support",
+      "max_bytes": 229476,
+      "variants": [
+        {
+          "file": "/images/photos/wc-windhoek-christuskirche-1920.avif",
+          "width": 1920,
+          "height": 1235,
+          "bytes": 225564
+        },
+        {
+          "file": "/images/photos/wc-windhoek-christuskirche-1920.webp",
+          "width": 1920,
+          "height": 1235,
+          "bytes": 229476
+        }
+      ]
+    },
+    {
+      "id": "wc-quiver-tree-forest",
+      "subject": "quiver-tree-forest",
+      "group": "south",
+      "theme": "Quiver trees scattered through golden grass in the forest near Keetmanshoop.",
+      "alt": "Quiver trees scattered through golden grass in the forest near Keetmanshoop.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Joachim Huber from Switzerland via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Quiver_Tree_Forest,_Keetmanshoop_(3166878714).jpg",
+      "planned_usage": "South section support",
+      "max_bytes": 198358,
+      "variants": [
+        {
+          "file": "/images/photos/wc-quiver-tree-forest-1600.avif",
+          "width": 1600,
+          "height": 1064,
+          "bytes": 185874
+        },
+        {
+          "file": "/images/photos/wc-quiver-tree-forest-1600.webp",
+          "width": 1600,
+          "height": 1064,
+          "bytes": 198358
+        }
+      ]
+    },
+    {
+      "id": "wc-quiver-tree-portrait",
+      "subject": "quiver-tree-portrait",
+      "group": "south",
+      "theme": "A single quiver tree silhouetted against the evening sky.",
+      "alt": "A single quiver tree silhouetted against the evening sky.",
+      "orientation": "portrait",
+      "licence": "CC BY 2.0 - Le Grand Portage, derivative work: Fletcher6 (talk) via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Aloe_dichotoma_-Keetmanshoop,_Namibia-21Aug2009-2.jpg",
+      "planned_usage": "Quiver tree alternate",
+      "max_bytes": 237812,
+      "variants": [
+        {
+          "file": "/images/photos/wc-quiver-tree-portrait-1440.avif",
+          "width": 1440,
+          "height": 1920,
+          "bytes": 216420
+        },
+        {
+          "file": "/images/photos/wc-quiver-tree-portrait-1440.webp",
+          "width": 1440,
+          "height": 1920,
+          "bytes": 237812
+        }
+      ]
+    },
+    {
+      "id": "wc-okavango-fisherman",
+      "subject": "okavango-fisherman",
+      "group": "rivers",
+      "theme": "A fisherman throwing a net from a mokoro on the Okavango River.",
+      "alt": "A fisherman throwing a net from a mokoro on the Okavango River.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Hp.Baumeler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Fischer_Okavango_(2018).jpg",
+      "planned_usage": "Caprivi journey - Rundu & Okavango stop",
+      "max_bytes": 248008,
+      "variants": [
+        {
+          "file": "/images/photos/wc-okavango-fisherman-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 213094
+        },
+        {
+          "file": "/images/photos/wc-okavango-fisherman-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 248008
+        }
+      ]
+    },
+    {
+      "id": "wc-bwabwata-river-sunset",
+      "subject": "bwabwata-river-sunset",
+      "group": "rivers",
+      "theme": "The sun dropping into the river in Bwabwata National Park, Caprivi.",
+      "alt": "The sun dropping into the river in Bwabwata National Park, Caprivi.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Jedesto via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Okavango_Sunset_Bwabwata.jpg",
+      "planned_usage": "Caprivi destination hero",
+      "max_bytes": 144456,
+      "variants": [
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 71655
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 96760
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 113894
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 144456
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 17341
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 19962
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 35899
+        },
+        {
+          "file": "/images/photos/wc-bwabwata-river-sunset-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 45930
+        }
+      ]
+    },
+    {
+      "id": "wc-chobe-elephant-swimming",
+      "subject": "chobe-elephant-swimming",
+      "group": "rivers",
+      "theme": "A young elephant swimming the Chobe River, trunk raised like a snorkel.",
+      "alt": "A young elephant swimming the Chobe River, trunk raised like a snorkel.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 2.0 - Christoph Str\u00e4ssler via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Young_Elephant_crossing_Chobe_river,_Chobe_National_Park,_Botswana.jpg",
+      "planned_usage": "Chobe destination hero",
+      "max_bytes": 140822,
+      "variants": [
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-1440.avif",
+          "width": 1440,
+          "height": 810,
+          "bytes": 63070
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-1440.webp",
+          "width": 1440,
+          "height": 810,
+          "bytes": 83744
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-1920.avif",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 137650
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 140822
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-640.avif",
+          "width": 640,
+          "height": 360,
+          "bytes": 14795
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-640.webp",
+          "width": 640,
+          "height": 360,
+          "bytes": 17514
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-960.avif",
+          "width": 960,
+          "height": 540,
+          "bytes": 29592
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-swimming-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 35928
+        }
+      ]
+    },
+    {
+      "id": "wc-chobe-elephant-herd",
+      "subject": "chobe-elephant-herd",
+      "group": "rivers",
+      "theme": "A breeding herd of elephants along the green banks of the Chobe River.",
+      "alt": "A breeding herd of elephants along the green banks of the Chobe River.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - AoneMokwena via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Elephants_on_the_Chobe_River.jpg",
+      "planned_usage": "Chobe page mosaic",
+      "max_bytes": 194648,
+      "variants": [
+        {
+          "file": "/images/photos/wc-chobe-elephant-herd-1600.avif",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 194648
+        },
+        {
+          "file": "/images/photos/wc-chobe-elephant-herd-1600.webp",
+          "width": 1600,
+          "height": 1067,
+          "bytes": 192808
+        }
+      ]
+    },
+    {
+      "id": "wc-chobe-sunset-elephant",
+      "subject": "chobe-sunset-elephant",
+      "group": "rivers",
+      "theme": "An elephant at the water's edge under an orange Chobe sunset.",
+      "alt": "An elephant at the water's edge under an orange Chobe sunset.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 3.0 - diego_cue via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Sunset_and_elephant_in_Chobe_NP_-_Botswana_-_panoramio.jpg",
+      "planned_usage": "Chobe sunset moment",
+      "max_bytes": 148186,
+      "variants": [
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-1440.avif",
+          "width": 1440,
+          "height": 960,
+          "bytes": 72238
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-1440.webp",
+          "width": 1440,
+          "height": 960,
+          "bytes": 92222
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-1920.avif",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 147172
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-1920.webp",
+          "width": 1920,
+          "height": 1280,
+          "bytes": 148186
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-640.avif",
+          "width": 640,
+          "height": 427,
+          "bytes": 15231
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-640.webp",
+          "width": 640,
+          "height": 427,
+          "bytes": 19686
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-960.avif",
+          "width": 960,
+          "height": 640,
+          "bytes": 32463
+        },
+        {
+          "file": "/images/photos/wc-chobe-sunset-elephant-960.webp",
+          "width": 960,
+          "height": 640,
+          "bytes": 42008
+        }
+      ]
+    },
+    {
+      "id": "wc-chobe-hippo-buffalo",
+      "subject": "chobe-hippo-buffalo",
+      "group": "rivers",
+      "theme": "A hippopotamus grazing between buffaloes on a Chobe floodplain.",
+      "alt": "A hippopotamus grazing between buffaloes on a Chobe floodplain.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Bernard Gagnon via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Hippopotamus_and_african_buffalos_in_Chobe_National_Park_01.jpg",
+      "planned_usage": "Caprivi rivers wildlife block",
+      "max_bytes": 197102,
+      "variants": [
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-1440.avif",
+          "width": 1440,
+          "height": 526,
+          "bytes": 111556
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-1440.webp",
+          "width": 1440,
+          "height": 526,
+          "bytes": 110854
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-1920.avif",
+          "width": 1920,
+          "height": 702,
+          "bytes": 143392
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-1920.webp",
+          "width": 1920,
+          "height": 702,
+          "bytes": 197102
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-640.avif",
+          "width": 640,
+          "height": 234,
+          "bytes": 22750
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-640.webp",
+          "width": 640,
+          "height": 234,
+          "bytes": 23722
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-960.avif",
+          "width": 960,
+          "height": 351,
+          "bytes": 52871
+        },
+        {
+          "file": "/images/photos/wc-chobe-hippo-buffalo-960.webp",
+          "width": 960,
+          "height": 351,
+          "bytes": 56336
+        }
+      ]
+    },
+    {
+      "id": "wc-chobe-buffalo-herd",
+      "subject": "chobe-buffalo-herd",
+      "group": "rivers",
+      "theme": "A herd of African buffalo grazing beside the river in Chobe.",
+      "alt": "A herd of African buffalo grazing beside the river in Chobe.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 3.0 - Someone35 via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:African_buffaloes_in_Chobe_National_Park,_Botswana.jpg",
+      "planned_usage": "Chobe alternate",
+      "max_bytes": 232656,
+      "variants": [
+        {
+          "file": "/images/photos/wc-chobe-buffalo-herd-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 211142
+        },
+        {
+          "file": "/images/photos/wc-chobe-buffalo-herd-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 232656
+        }
+      ]
+    },
+    {
+      "id": "wc-zambezi-sunset-cruise",
+      "subject": "zambezi-sunset-cruise",
+      "group": "rivers",
+      "theme": "A boat drifting the golden Zambezi at sunset, its reflection doubled in the water.",
+      "alt": "A boat drifting the golden Zambezi at sunset, its reflection doubled in the water.",
+      "orientation": "landscape",
+      "licence": "CC BY-SA 4.0 - Tracy Anne Brooks via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Zambezi_sunset_cruise.jpg",
+      "planned_usage": "Caprivi journey - Zambezi stop",
+      "max_bytes": 147216,
+      "variants": [
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-1440.avif",
+          "width": 1440,
+          "height": 962,
+          "bytes": 78936
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-1440.webp",
+          "width": 1440,
+          "height": 962,
+          "bytes": 100872
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-1920.avif",
+          "width": 1920,
+          "height": 1283,
+          "bytes": 137861
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-1920.webp",
+          "width": 1920,
+          "height": 1283,
+          "bytes": 147216
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-640.avif",
+          "width": 640,
+          "height": 428,
+          "bytes": 17582
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-640.webp",
+          "width": 640,
+          "height": 428,
+          "bytes": 22016
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-960.avif",
+          "width": 960,
+          "height": 642,
+          "bytes": 37564
+        },
+        {
+          "file": "/images/photos/wc-zambezi-sunset-cruise-960.webp",
+          "width": 960,
+          "height": 642,
+          "bytes": 47046
+        }
+      ]
+    },
+    {
+      "id": "wc-zambezi-katima-rapids",
+      "subject": "zambezi-katima-rapids",
+      "group": "rivers",
+      "theme": "The Zambezi running white over the rapids near Katima Mulilo.",
+      "alt": "The Zambezi running white over the rapids near Katima Mulilo.",
+      "orientation": "landscape",
+      "licence": "CC BY 2.0 - Eugen Zibiso via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Katima_Mulilo_Bridge.jpg",
+      "planned_usage": "Zambezi alternate",
+      "max_bytes": 253226,
+      "variants": [
+        {
+          "file": "/images/photos/wc-zambezi-katima-rapids-1920.avif",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 229611
+        },
+        {
+          "file": "/images/photos/wc-zambezi-katima-rapids-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 253226
+        }
+      ]
+    },
+    {
+      "id": "wc-victoria-falls-panorama",
+      "subject": "victoria-falls-panorama",
+      "group": "rivers",
+      "theme": "Panorama of the Victoria Falls gorge, spray rising from the cataract.",
+      "alt": "Panorama of the Victoria Falls gorge, spray rising from the cataract.",
+      "orientation": "landscape",
+      "licence": "CC BY 2.0 - Paul Balfe via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Victoria_Falls_panorama_(48009777623).jpg",
+      "planned_usage": "Victoria Falls destination hero (full-bleed banner)",
+      "max_bytes": 150172,
+      "variants": [
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-1440.avif",
+          "width": 1440,
+          "height": 444,
+          "bytes": 77872
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-1440.webp",
+          "width": 1440,
+          "height": 444,
+          "bytes": 83356
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-1920.avif",
+          "width": 1920,
+          "height": 592,
+          "bytes": 141608
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-1920.webp",
+          "width": 1920,
+          "height": 592,
+          "bytes": 150172
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-640.avif",
+          "width": 640,
+          "height": 197,
+          "bytes": 15825
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-640.webp",
+          "width": 640,
+          "height": 197,
+          "bytes": 16638
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-960.avif",
+          "width": 960,
+          "height": 296,
+          "bytes": 34359
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-panorama-960.webp",
+          "width": 960,
+          "height": 296,
+          "bytes": 36826
+        }
+      ]
+    },
+    {
+      "id": "wc-victoria-falls-leaping-water",
+      "subject": "victoria-falls-leaping-water",
+      "group": "rivers",
+      "theme": "The Leaping Water section of Victoria Falls pouring into its gorge.",
+      "alt": "The Leaping Water section of Victoria Falls pouring into its gorge.",
+      "orientation": "portrait",
+      "licence": "CC BY 2.0 - Jorge L\u00e1scar from Australia via Wikimedia Commons",
+      "commons_url": "https://commons.wikimedia.org/wiki/File:Lascar_Leaping_Water_(Stream_from_Victoria_Falls)_(4548270026).jpg",
+      "planned_usage": "Victoria Falls card alternate",
+      "max_bytes": 155626,
+      "variants": [
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-1440.avif",
+          "width": 1440,
+          "height": 1920,
+          "bytes": 97147
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-1440.webp",
+          "width": 1440,
+          "height": 1920,
+          "bytes": 108200
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-1920.avif",
+          "width": 1920,
+          "height": 2560,
+          "bytes": 141760
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-1920.webp",
+          "width": 1920,
+          "height": 2560,
+          "bytes": 155626
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-640.avif",
+          "width": 640,
+          "height": 853,
+          "bytes": 37789
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-640.webp",
+          "width": 640,
+          "height": 853,
+          "bytes": 43968
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-960.avif",
+          "width": 960,
+          "height": 1280,
+          "bytes": 69089
+        },
+        {
+          "file": "/images/photos/wc-victoria-falls-leaping-water-960.webp",
+          "width": 960,
+          "height": 1280,
+          "bytes": 75768
+        }
+      ]
+    }
+  ],
+  "retired_assets": {
+    "note": "Web-sourced V1 repo images with unconfirmed licences - no longer referenced by any page",
+    "files": [
+      "/images/places/sossusvlei.webp",
+      "/images/places/etosha.webp",
+      "/images/places/damaraland.webp",
+      "/images/places/kalahari.webp",
+      "/images/places/acacia-savanna.webp",
+      "/images/places/dune-detail.webp",
+      "/images/places/etosha-detail.webp",
+      "/images/places/namib-texture.webp",
+      "/images/places/sossusvlei-1.jpg",
+      "/images/places/sossusvlei-2.jpg",
+      "/images/places/etosha-1.jpg",
+      "/images/places/etosha-2.jpg",
+      "/images/places/kalahari-1.jpg",
+      "/images/places/kalahari-2.jpg",
+      "/images/places/damaraland-1.jpg",
+      "/images/places/damaraland-2.jpg"
+    ]
+  },
+  "brand_assets": {
+    "logos": "/images/brand/* (official client logo pack)",
+    "approved_footer_illustration": "the single pen-and-ink brand illustration in the footer (client-owned)",
+    "og_image": "/images/social/og-master.webp"
+  }
+}
