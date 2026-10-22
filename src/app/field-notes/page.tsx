@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, ContourLines, AcaciaMark, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+import { PhotoImg } from '@/components/photo';
+import { FIELD_NOTE_PHOTOS } from '@/lib/photo-groups';
+import { NOTES } from './notes';
 import { WHATSAPP_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -13,63 +15,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/field-notes' },
 };
 
-// Field Notes are clearly editorial destination guides.
-// No invented staff experiences. No implied company history.
-// No named personnel. No fictional journeys presented as fact.
-const NOTES = [
-  {
-    slug: 'when-to-visit-sossusvlei',
-    title: 'When to visit Sossusvlei',
-    excerpt:
-      'The dunes change character with the seasons. A short guide to light, temperature, and the best months for photography.',
-    category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-sossusvlei.webp',
-  },
-  {
-    slug: 'etosha-dry-and-wet-seasons',
-    title: 'Etosha in the dry and wet seasons',
-    excerpt:
-      'How wildlife viewing shifts between the dry winter months and the greener, quieter summer, and what each season rewards.',
-    category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-etosha-seasons.webp',
-  },
-  {
-    slug: 'packing-for-namibia',
-    title: 'Packing for Namibia',
-    excerpt:
-      'Neutral colours, layers for cold mornings and hot middays, soft bags for charter flights, and the small things that matter.',
-    category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-packing.webp',
-  },
-  {
-    slug: 'self-drive-namibia',
-    title: 'What to expect on a Namibian self-drive journey',
-    excerpt:
-      'Distances, road conditions, and the rhythm of a self-drive route. A practical introduction for first-time visitors.',
-    category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-self-drive.webp',
-  },
-  {
-    slug: 'responsible-wildlife-viewing',
-    title: 'Responsible wildlife viewing',
-    excerpt:
-      'How to watch wildlife well: distance, patience, and the habits that keep both animals and visitors safe.',
-    category: 'Travel preparation',
-    image: '/images/illustrations/approved/field-note-responsible-wildlife.webp',
-  },
-  {
-    slug: 'zambezi-region-route',
-    title: 'Planning a route through the Zambezi Region',
-    excerpt:
-      'The Caprivi Strip rewoven: rivers, parks, and the practical logistics of travelling Namibia\'s wet north-east.',
-    category: 'Destination guide',
-    image: '/images/illustrations/approved/field-note-zambezi-route.webp',
-  },
-];
-
 export default function FieldNotesPage() {
   const featured = NOTES[0];
   const rest = NOTES.slice(1);
+  const featuredPhoto = FIELD_NOTE_PHOTOS[featured.slug];
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
@@ -104,33 +53,38 @@ export default function FieldNotesPage() {
         {/* ═════════════════════ FEATURED NOTE ═════════════════════ */}
         <section className="py-16 md:py-24 px-6 md:px-12">
           <div className="max-w-7xl mx-auto">
-            <div className="group grid md:grid-cols-2 gap-0 bg-[#E8E3D5] overflow-hidden">
+            <Link
+              href={`/field-notes/${featured.slug}`}
+              className="group grid md:grid-cols-2 gap-0 bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
+            >
               <div className="relative aspect-[3/2] md:aspect-auto md:min-h-[400px] bg-[#1A1A1A] overflow-hidden">
-                <Image
-                  src={featured.image}
-                  alt={`Illustration for: ${featured.title}`}
-                  fill
-                  priority
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-contain"
-                />
+                {featuredPhoto && (
+                  <PhotoImg
+                    id={featuredPhoto}
+                    fill
+                    loading="eager"
+                    fetchPriority="high"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                  />
+                )}
               </div>
               <div className="p-8 md:p-12 flex flex-col justify-center">
                 <div className="flex items-center gap-3 mb-4 text-[0.65rem] tracking-[0.2em] uppercase font-bold">
                   <span className="text-[#9E4214]">{featured.category}</span>
                 </div>
-                <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] mb-4 leading-[0.95]">
+                <h2 className="wp-display text-3xl md:text-5xl text-[#1A1A1A] mb-4 leading-[0.95] group-hover:text-[#9E4214] transition-colors">
                   {featured.title}
                 </h2>
                 <p className="text-base text-[#1A1A1A]/75 leading-relaxed mb-6 max-w-md">
                   {featured.excerpt}
                 </p>
                 <span className="text-[0.65rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold flex items-center gap-2">
-                  Coming soon
-                  <ArrowRight size={12} />
+                  Read the note
+                  <ArrowRight size={12} className="group-hover:translate-x-1 transition-[transform]" />
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
         </section>
 
@@ -141,33 +95,42 @@ export default function FieldNotesPage() {
               From the archive.
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {rest.map((n) => (
-                <div key={n.slug} className="group block bg-[#E8E3D5] overflow-hidden">
-                  <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
-                    <Image
-                      src={n.image}
-                      alt={`Illustration for: ${n.title}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-contain group-hover:opacity-90 transition-[opacity] duration-500"
-                    />
-                  </div>
-                  <div className="p-6 md:p-8">
-                    <div className="flex items-center gap-3 mb-3 text-[0.6rem] tracking-[0.2em] uppercase font-bold">
-                      <span className="text-[#9E4214]">{n.category}</span>
+              {rest.map((n) => {
+                const photo = FIELD_NOTE_PHOTOS[n.slug];
+                return (
+                  <Link
+                    key={n.slug}
+                    href={`/field-notes/${n.slug}`}
+                    className="group block bg-[#E8E3D5] hover:bg-[#DDD7C8] transition-colors duration-300 overflow-hidden"
+                  >
+                    <div className="relative aspect-[3/2] bg-[#1A1A1A] overflow-hidden">
+                      {photo && (
+                        <PhotoImg
+                          id={photo}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          className="group-hover:brightness-110 transition-[filter] duration-[800ms] ease-out"
+                        />
+                      )}
                     </div>
-                    <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight">
-                      {n.title}
-                    </h3>
-                    <p className="text-sm text-[#1A1A1A]/75 leading-relaxed">
-                      {n.excerpt}
-                    </p>
-                    <p className="mt-4 text-[0.6rem] tracking-[0.18em] uppercase text-[#1A1A1A]/50 font-bold">
-                      Coming soon
-                    </p>
-                  </div>
-                </div>
-              ))}
+                    <div className="p-6 md:p-8">
+                      <div className="flex items-center gap-3 mb-3 text-[0.6rem] tracking-[0.2em] uppercase font-bold">
+                        <span className="text-[#9E4214]">{n.category}</span>
+                      </div>
+                      <h3 className="font-serif text-2xl md:text-3xl text-[#1A1A1A] mb-3 leading-tight group-hover:text-[#9E4214] transition-colors">
+                        {n.title}
+                      </h3>
+                      <p className="text-sm text-[#1A1A1A]/75 leading-relaxed">
+                        {n.excerpt}
+                      </p>
+                      <p className="mt-4 text-[0.6rem] tracking-[0.18em] uppercase text-[#9E4214] font-bold flex items-center gap-2">
+                        Read the note
+                        <ArrowRight size={11} className="group-hover:translate-x-1 transition-[transform]" />
+                      </p>
+                    </div>
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </section>

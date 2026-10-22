@@ -78,15 +78,29 @@ for (const r of retired) {
   if (re.test(haystack)) errors.push(`retired asset still referenced in src/: ${base}`);
 }
 
-// 4. illustrations: only the footer brand illustration allowed
+// 4. illustrations: only the footer brand strip allowed
+//    EXEMPTION: src/app/brand/page.tsx is the brand-guidelines page; its
+//    purpose is to display the brand illustration system itself, so
+//    illustration references there are intentional and audited manually.
 const illuRe = /images\/illustrations\/([A-Za-z0-9_\-/.]+)/g;
-let m;
-const allowedIllustration = new Set(['approved/wildpath-footer.png']);
-while ((m = illuRe.exec(haystack)) !== null) {
-  const rel = m[1].replace(/^v2\//, '');
-  // the footer brand strip - find by name anywhere
-  if (/footer/i.test(rel)) continue; // footer illustration is the approved one
-  errors.push(`illustration used as content image (forbidden): ${rel}`);
+const sourceFiles = [];
+(function walk2(dir) {
+  for (const name of readdirSync(dir)) {
+    const p = join(dir, name);
+    const st = statSync(p);
+    if (st.isDirectory()) walk2(p);
+    else if (/\.(tsx?|mdx?)$/.test(name)) sourceFiles.push(p);
+  }
+})(srcRoot);
+for (const f of sourceFiles) {
+  if (f.endsWith(join('app', 'brand', 'page.tsx'))) continue;
+  const text = readFileSync(f, 'utf8');
+  let m2;
+  const re2 = /images\/illustrations\/([A-Za-z0-9_\-/.]+)/g;
+  while ((m2 = re2.exec(text)) !== null) {
+    if (/footer/i.test(m2[1])) continue; // approved footer brand strip
+    errors.push(`illustration used as content image (forbidden): ${m2[1]} in ${f.replace(ROOT + '/', '')}`);
+  }
 }
 
 console.log(`check:images — ${photoIds.length} photos, ${totalChecked} variant files scanned`);

@@ -36,7 +36,7 @@ export const SITE = {
   /** Canonical URL with protocol */
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpathnamibia.com',
   name: 'Wildpath Adventures',
-  tagline: 'Travel the untamed beauty',
+  tagline: 'Slow down. Breathe. Discover Namibia.',
   /** Public enquiry email — shown to users. Mirror of CONTACT_EMAIL for client-side use. */
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'journeys@wildpathnamibia.com',
   /** Internal mailbox that actually receives form submissions (server only). */

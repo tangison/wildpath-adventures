@@ -1,50 +1,29 @@
 import type { Metadata } from "next";
-import { Geist, Anton, Oswald, Archivo, Caveat, Fraunces } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { CookieConsent } from "@/components/cookie-consent";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const frauncesSerif = Fraunces({
-  variable: "--font-fraunces",
-  subsets: ["latin"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const antonDisplay = Anton({
-  variable: "--font-anton",
-  subsets: ["latin"],
-  weight: "400",
-  display: "swap",
-});
-
-const oswaldCondensed = Oswald({
-  variable: "--font-oswald",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  display: "swap",
-});
-
-const archivoCondensed = Archivo({
+// Self-hosted variable fonts, TWO families only (brand + performance budget).
+// Archivo variable (wdth 62-125) covers body, subhead, and condensed display.
+// Fraunces variable covers serif italics and editorial accents.
+const archivo = localFont({
+  src: [
+    { path: "../fonts/archivo-var.woff2", style: "normal", weight: "100 900" },
+    { path: "../fonts/archivo-var-italic.woff2", style: "italic", weight: "100 900" },
+  ],
   variable: "--font-archivo",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
   display: "swap",
 });
 
-const caveatScript = Caveat({
-  variable: "--font-caveat",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const fraunces = localFont({
+  src: [
+    { path: "../fonts/fraunces-var.woff2", style: "normal", weight: "100 900" },
+    { path: "../fonts/fraunces-var-italic.woff2", style: "italic", weight: "100 900" },
+  ],
+  variable: "--font-fraunces",
   display: "swap",
 });
 
@@ -55,22 +34,7 @@ export const metadata: Metadata = {
     template: `%s · ${SITE.name}`,
   },
   description:
-    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa. Travel the untamed beauty.",
-  keywords: [
-    "Namibia",
-    "Kalahari",
-    "Damaraland",
-    "Sossusvlei",
-    "Etosha",
-    "Skeleton Coast",
-    "Caprivi",
-    "Victoria Falls",
-    "Chobe",
-    "safari",
-    "self-drive",
-    "African travel",
-    "tour operator",
-  ],
+    "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa. Slow down. Breathe. Discover Namibia.",
   authors: [{ name: SITE.name }],
   alternates: {
     canonical: SITE_URL,
@@ -158,12 +122,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* LCP preload — homepage hero illustration is the primary above-the-fold image */}
+        {/* LCP preload — the hero video POSTER is the largest above-the-fold element */}
         <link
           rel="preload"
           as="image"
-          href="/images/illustrations/approved/wildpath-hero-main.webp"
+          href="/video/poster.webp"
           type="image/webp"
+          fetchPriority="high"
         />
         <script
           type="application/ld+json"
@@ -171,7 +136,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${geistSans.variable} ${frauncesSerif.variable} ${antonDisplay.variable} ${oswaldCondensed.variable} ${archivoCondensed.variable} ${caveatScript.variable} antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
+        className={`${archivo.variable} ${fraunces.variable} font-sans antialiased bg-[#F2EDE3] text-[#1A1A1A]`}
       >
         {/* Skip-to-content link — accessibility: keyboard users can bypass navigation */}
         <a

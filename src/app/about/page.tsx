@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import { PhotoImg } from '@/components/photo';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { WHATSAPP_URL } from '@/lib/site';
@@ -54,12 +55,12 @@ export default function AboutPage() {
         <section className="px-6 md:px-12 pb-16 md:pb-24">
           <div className="max-w-7xl mx-auto">
             <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
-              <Image
-                src="/images/illustrations/approved/page-about.webp"
-                alt="Hand-drawn illustration of a lone acacia tree against the vast Namibian desert sky"
+              <PhotoImg
+                id="oryx-dusk-golden-grass"
                 fill
+                loading="eager"
+                fetchPriority="high"
                 sizes="100vw"
-                className="object-contain object-center"
               />
             </div>
           </div>

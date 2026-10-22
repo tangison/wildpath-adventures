@@ -565,8 +565,9 @@ export function Footer() {
       {/* Illustration strip — footer landscape accent */}
       <div className="relative w-full h-24 md:h-32 overflow-hidden border-b border-[#F2EDE3]/10">
         <Image
-          src="/images/illustrations/approved/wildpath-hero-main.webp"
-          alt="Namibian savannah horizon illustration"
+          src="/images/illustrations/approved/footer-strip.webp"
+          alt=""
+          aria-hidden="true"
           fill
           sizes="100vw"
           className="object-cover opacity-30 object-center"
@@ -579,9 +580,8 @@ export function Footer() {
 
           {/* Closing statement — oversized type, colophon scale */}
           <p className="wp-display text-[clamp(2.75rem,8vw,7.5rem)] leading-[0.9] tracking-[-0.01em] text-[#F2EDE3] mb-14">
-            Travel the{' '}
-            <em className="font-serif italic font-light text-[#E8854A]">untamed</em>{' '}
-            beauty<span className="text-[#C5511A]">.</span>
+            Slow down. Breathe.{' '}
+            <em className="font-serif italic font-light text-[#E8854A]">Discover Namibia.</em>
           </p>
 
           {/* Wildpath approved logo mark — footer (dark variant, ivory artwork for dark bg) */}
@@ -650,14 +650,14 @@ export function Footer() {
             <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
           </div>
 
-          {/* Copyright */}
+          {/* Copyright — year + entity name */}
           <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35 mb-6">
-            &copy; {new Date().getFullYear()} {SITE.name} · All routes reserved
+            &copy; {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </p>
 
           {/* Tangison Studio credit — colophon */}
           <p className="text-[0.55rem] tracking-[0.2em] uppercase text-[#F2EDE3]/30">
-            Designed &amp; Built by{' '}
+            Site by{' '}
             <a
               href={SITE.studio.url}
               target="_blank"
@@ -864,142 +864,6 @@ export function JourneyRouteTimeline({ route }: { route: RouteStop[] }) {
         </div>
       </div>
     </section>
-  );
-}
-
-// ═══════════════════════════════════════════════════════════
-// COMING SOON — editorial locked screen (preserved for future use)
-// REDUCED MOTION: Entrance animations skipped when preferred.
-// ═══════════════════════════════════════════════════════════
-
-export function ComingSoon({
-  title,
-  subtitle,
-}: {
-  title: string;
-  subtitle: string;
-}) {
-  const prefersReducedMotion = useReducedMotion();
-
-  return (
-    <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] relative overflow-hidden">
-      <div className="absolute inset-0 z-0">
-        <Image
-          src="/images/illustrations/approved/page-about.webp"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover opacity-20"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F2EDE3]/60 via-[#F2EDE3]/80 to-[#F2EDE3]" />
-      </div>
-
-      <div className="relative z-10 pt-10 px-6 md:px-12 border-b border-[#1A1A1A]/15">
-        <div className="max-w-7xl mx-auto flex justify-between items-center pb-6">
-          <Link href="/" aria-label="Home">
-            <Wordmark size="sm" />
-          </Link>
-          <Link
-            href="/"
-            className="text-[0.65rem] tracking-[0.2em] uppercase font-bold text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors flex items-center gap-2"
-          >
-            Back to Home <ArrowRight size={12} />
-          </Link>
-        </div>
-      </div>
-
-      <main className="relative z-10 flex-1 flex items-center px-6 md:px-12">
-        <div className="max-w-7xl mx-auto w-full grid md:grid-cols-12 gap-8 items-center">
-          {prefersReducedMotion ? (
-            <>
-              <div className="md:col-span-4">
-                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
-                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-              </div>
-              <div className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20">
-                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-                  The route is being charted
-                </p>
-                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
-                  {title}
-                </h1>
-                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-                  {subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/contact"
-                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    Plan Your Journey
-                    <ArrowRight size={16} />
-                  </Link>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    <MessageCircle size={15} />
-                    WhatsApp Us
-                  </a>
-                </div>
-              </div>
-            </>
-          ) : (
-            <>
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.2 }}
-                className="md:col-span-4"
-              >
-                <p className="wp-script text-2xl text-[#9E4214] mb-2">Coming soon</p>
-                <AcaciaMark className="w-24 h-16 text-[#1A1A1A]/40" />
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: EASE_DECELERATE, delay: 0.35 }}
-                className="md:col-span-8 md:pl-8 md:border-l md:border-[#1A1A1A]/20"
-              >
-                <p className="wp-subhead text-[0.65rem] tracking-[0.35em] text-[#9E4214] mb-4">
-                  The route is being charted
-                </p>
-                <h1 className="wp-display text-5xl md:text-7xl lg:text-8xl text-[#1A1A1A] leading-[0.9] mb-6">
-                  {title}
-                </h1>
-                <p className="text-lg text-[#1A1A1A]/70 max-w-lg leading-relaxed mb-8">
-                  {subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    href="/contact"
-                    className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    Plan Your Journey
-                    <ArrowRight size={16} />
-                  </Link>
-                  <a
-                    href={WHATSAPP_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
-                  >
-                    <MessageCircle size={15} />
-                    WhatsApp Us
-                  </a>
-                </div>
-              </motion.div>
-            </>
-          )}
-        </div>
-      </main>
-
-      <div className="relative z-10 py-6 px-6 text-center text-[0.6rem] tracking-[0.2em] uppercase text-[#1A1A1A]/45 border-t border-[#1A1A1A]/10">
-        &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country}
-      </div>
-    </div>
   );
 }
 

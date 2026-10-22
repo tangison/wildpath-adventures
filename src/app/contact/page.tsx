@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import { MessageCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { PhotoImg } from '@/components/photo';
 import { Nav, Footer, AcaciaMark, ContourLines, ScrollReveal } from '@/components/wildpath';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { ContactForm } from '@/components/contact-form';
@@ -49,12 +50,12 @@ export default function ContactPage() {
         <section className="px-6 md:px-12 pb-12 md:pb-16">
           <div className="max-w-7xl mx-auto">
             <div className="relative w-full aspect-[16/8] md:aspect-[16/6] overflow-hidden bg-[#F2EDE3]">
-              <Image
-                src="/images/illustrations/approved/page-contact.webp"
-                alt="Hand-drawn illustration of the Namibian landscape with open sky on the left side"
+              <PhotoImg
+                id="game-drive-red-sand-track"
                 fill
+                loading="eager"
+                fetchPriority="high"
                 sizes="100vw"
-                className="object-contain object-center"
               />
             </div>
           </div>
