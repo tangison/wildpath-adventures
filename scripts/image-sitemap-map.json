@@ -1,0 +1,163 @@
+{
+ "/": [
+  "wc-sossusvlei-dune45-sunrise",
+  "wc-etosha-elephant-family-waterhole",
+  "wc-chobe-elephant-swimming",
+  "wc-bwabwata-river-sunset",
+  "wc-victoria-falls-panorama",
+  "wc-skeleton-coast-shipwreck-surf",
+  "damaraland-lodge-granite-hill",
+  "kalahari-cabin-red-dune",
+  "wc-waterberg-plateau-cliffs",
+  "wc-etosha-camelthorn-zebra"
+ ],
+ "/journeys": [
+  "wc-sossusvlei-dune45-tree",
+  "wc-zambezi-sunset-cruise",
+  "wc-etosha-elephants-bathing",
+  "namib-red-dunes-green-plains"
+ ],
+ "/journeys/classic-namibia": [
+  "wc-sossusvlei-dune45-sunrise",
+  "wc-windhoek-christuskirche",
+  "oryx-dusk-golden-grass",
+  "game-drive-red-sand-track",
+  "kalahari-cabin-red-dune",
+  "wc-fish-river-canyon-dusk",
+  "wc-fish-river-canyon-view",
+  "wc-quiver-tree-forest",
+  "wc-quiver-tree-portrait",
+  "wc-wild-horses-garub",
+  "wc-kolmanskop-window",
+  "wc-kolmanskop-interior",
+  "wc-kolmanskop-buried-houses",
+  "wc-sossusvlei-bigdaddy-ridge",
+  "wc-deadvlei-aerial",
+  "deadvlei-trees-dune-shadow",
+  "wc-sesriem-canyon-floor",
+  "wc-swakopmund-woermannhaus",
+  "wc-swakopmund-jetty",
+  "wc-swakopmund-coast",
+  "wc-walvis-bay-flamingos",
+  "wc-twyfelfontein-engravings",
+  "wc-organ-pipes-damaraland",
+  "damaraland-lodge-granite-hill",
+  "wc-etosha-elephant-family-waterhole",
+  "wc-etosha-elephants-bathing",
+  "wc-etosha-lion-stretching",
+  "wc-etosha-lion-cub",
+  "wc-etosha-mountain-zebra",
+  "wc-etosha-pan-acacia",
+  "giraffes-walking-etosha",
+  "rhino-ostrich-etosha"
+ ],
+ "/journeys/untamed-northern-caprivi": [
+  "wc-chobe-sunset-elephant",
+  "wc-okavango-fisherman",
+  "wc-bwabwata-river-sunset",
+  "wc-chobe-hippo-buffalo",
+  "wc-chobe-elephant-swimming",
+  "wc-chobe-elephant-herd",
+  "wc-chobe-buffalo-herd",
+  "wc-zambezi-sunset-cruise",
+  "wc-zambezi-katima-rapids",
+  "wc-windhoek-christuskirche",
+  "wc-etosha-elephant-family-waterhole",
+  "wc-etosha-lion-stretching",
+  "giraffes-walking-etosha"
+ ],
+ "/journeys/untamed-central": [
+  "wc-etosha-lion-stretching",
+  "wc-etosha-elephants-bathing",
+  "wc-etosha-mountain-zebra",
+  "wc-etosha-pan-acacia",
+  "wc-twyfelfontein-engravings",
+  "wc-organ-pipes-damaraland",
+  "damaraland-lodge-granite-hill",
+  "wc-swakopmund-woermannhaus",
+  "wc-swakopmund-jetty",
+  "wc-walvis-bay-flamingos"
+ ],
+ "/journeys/untamed-desert": [
+  "wc-waterberg-plateau-cliffs",
+  "kalahari-cabin-red-dune",
+  "oryx-dusk-golden-grass",
+  "wc-sossusvlei-dune45-tree",
+  "wc-sossusvlei-dune45-sunrise",
+  "wc-deadvlei-aerial",
+  "deadvlei-white-pan-red-dunes",
+  "wc-swakopmund-coast",
+  "wc-swakopmund-jetty",
+  "wc-waterberg-plateau-panorama",
+  "wc-etosha-lion-cub",
+  "wc-etosha-elephant-family-waterhole",
+  "wc-etosha-camelthorn-zebra",
+  "rhino-ostrich-etosha"
+ ],
+ "/destinations": [
+  "wc-etosha-camelthorn-zebra",
+  "deadvlei-white-pan-red-dunes",
+  "wc-etosha-elephant-family-waterhole",
+  "damaraland-lodge-granite-hill",
+  "wc-skeleton-coast-shipwreck-surf",
+  "kalahari-cabin-red-dune",
+  "wc-bwabwata-river-sunset",
+  "wc-chobe-elephant-swimming",
+  "wc-victoria-falls-panorama"
+ ],
+ "/destinations/sossusvlei": [
+  "wc-deadvlei-aerial",
+  "wc-sesriem-canyon-floor",
+  "wc-sesriem-canyon-walls",
+  "deadvlei-trees-dune-shadow",
+  "wc-sossusvlei-dune45-tree",
+  "wc-sossusvlei-bigdaddy-ridge"
+ ],
+ "/destinations/etosha": [
+  "wc-etosha-elephants-bathing",
+  "wc-etosha-lion-cub",
+  "wc-etosha-mountain-zebra",
+  "wc-etosha-pan-acacia",
+  "giraffes-walking-etosha"
+ ],
+ "/destinations/damaraland": [
+  "wc-twyfelfontein-engravings",
+  "wc-organ-pipes-damaraland"
+ ],
+ "/destinations/skeleton-coast": [
+  "wc-skeleton-coast-shipwreck-bow",
+  "wc-cape-cross-seal-colony",
+  "wc-cape-cross-seals-rocks"
+ ],
+ "/destinations/kalahari": [
+  "oryx-dusk-golden-grass",
+  "game-drive-red-sand-track"
+ ],
+ "/destinations/caprivi": [
+  "wc-okavango-fisherman",
+  "wc-chobe-hippo-buffalo",
+  "wc-zambezi-katima-rapids"
+ ],
+ "/destinations/chobe": [
+  "wc-chobe-elephant-herd",
+  "wc-chobe-sunset-elephant",
+  "wc-chobe-buffalo-herd"
+ ],
+ "/destinations/victoria-falls": [
+  "wc-victoria-falls-leaping-water"
+ ],
+ "/about": [
+  "oryx-dusk-golden-grass"
+ ],
+ "/contact": [
+  "game-drive-red-sand-track"
+ ],
+ "/field-notes": [
+  "wc-etosha-pan-acacia",
+  "wc-sossusvlei-dune45-sunrise",
+  "wc-swakopmund-coast",
+  "game-drive-red-sand-track",
+  "wc-etosha-elephants-bathing",
+  "wc-zambezi-katima-rapids"
+ ]
+}

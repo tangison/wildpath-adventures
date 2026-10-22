@@ -2,9 +2,9 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MessageCircle, ArrowRight, Check, Loader2 } from 'lucide-react';
+import { MessageCircle, ArrowRight, Check, Mail } from 'lucide-react';
 import { AcaciaMark } from '@/components/wildpath';
-import { WHATSAPP_URL } from '@/lib/site';
+import { SITE_EMAIL, WHATSAPP_URL } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
 
 const EASE_PREMIUM = [0.4, 0, 0.2, 1] as const;
@@ -44,8 +44,7 @@ const INITIAL: FormState = {
 
 /**
  * Builds a wa.me link prefilled with the full enquiry, so WhatsApp works as a
- * real submission channel (not just a chat link). Used for the channel-choice
- * button, the error fallback, and the post-submission confirmation.
+ * real submission channel on a fully static site (no backend required).
  */
 function buildWhatsAppUrl(f: FormState): string {
   const journeyName =
@@ -62,52 +61,69 @@ function buildWhatsAppUrl(f: FormState): string {
   return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
 }
 
+/**
+ * Builds a mailto: draft with the enquiry as the body. Static-site submission
+ * channel: the visitor's own mail client sends the message to journeys@.
+ */
+function buildMailtoUrl(f: FormState): string {
+  const journeyName =
+    (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
+  const subject = `Journey enquiry — ${journeyName} (${f.travelMonth || 'dates flexible'})`;
+  const body = [
+    `Name: ${f.name || '—'}`,
+    `Email: ${f.email || '—'}`,
+    `Phone/WhatsApp: ${f.phone || '—'}`,
+    `Country of residence: ${f.country || '—'}`,
+    `Journey of interest: ${journeyName}`,
+    `Estimated travel month: ${f.travelMonth || '—'}`,
+    `Number of travellers: ${f.travellers}`,
+    f.travelStyle ? `Preferred travel style: ${f.travelStyle}` : '',
+    f.duration ? `Approximate duration: ${f.duration}` : '',
+    f.interests ? `Special interests: ${f.interests}` : '',
+    '',
+    'Message:',
+    f.message || '—',
+  ]
+    .filter(Boolean)
+    .join('\n');
+  return `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+/**
+ * Static contact form — no server, no database.
+ * Submission hands the completed enquiry to the visitor's chosen channel:
+ * WhatsApp (primary, per client) or their own email client via mailto:.
+ */
 export function ContactForm() {
   const [form, setForm] = useState<FormState>(INITIAL);
-  const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [status, setStatus] = useState<'idle' | 'sent'>('idle');
   const [error, setError] = useState('');
-  // Snapshot of the submitted enquiry — the form resets on success, but the
-  // confirmation screen still offers WhatsApp with the enquiry prefilled.
   const [lastEnquiry, setLastEnquiry] = useState<FormState | null>(null);
 
   function update<K extends keyof FormState>(key: K, value: FormState[K]) {
     setForm((f) => ({ ...f, [key]: value }));
   }
 
-  async function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (status === 'submitting') return;
+    setError('');
 
-    // Client-side guard: consent required
+    // Honeypot: bots get a silent fake success
+    if (form.website) {
+      setStatus('sent');
+      return;
+    }
     if (!form.consent) {
       setError('Please agree to the privacy policy so we can respond to your enquiry.');
       return;
     }
-
-    setStatus('submitting');
-    setError('');
-
-    try {
-      const res = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      const data = await res.json().catch(() => ({}));
-      if (!res.ok) {
-        throw new Error(data.error || 'Something went wrong. Please try WhatsApp instead.');
-      }
-      setLastEnquiry({ ...form });
-      setStatus('success');
-      setForm(INITIAL);
-    } catch (err) {
-      setStatus('error');
-      setError(err instanceof Error ? err.message : 'Something went wrong.');
-    }
+    setLastEnquiry({ ...form });
+    setStatus('sent');
   }
 
-  // ═══ SUCCESS STATE ═══
-  if (status === 'success') {
+  // ═══ CHANNEL-CHOICE / CONFIRMATION STATE ═══
+  if (status === 'sent') {
+    const enquiry = lastEnquiry ?? INITIAL;
     return (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -118,32 +134,43 @@ export function ContactForm() {
         <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#C5511A] flex items-center justify-center">
           <Check size={28} className="text-[#F2EDE3]" strokeWidth={2.5} />
         </div>
-        <p className="wp-script text-2xl text-[#9E4214] mb-3">Thank you</p>
+        <p className="wp-script text-2xl text-[#9E4214] mb-3">One tap away</p>
         <h3 className="wp-display text-3xl md:text-4xl text-[#1A1A1A] mb-4 leading-tight">
-          Your enquiry is on its way.
+          Send your enquiry your way.
         </h3>
         <p className="text-base text-[#1A1A1A]/75 leading-relaxed max-w-md mx-auto mb-8">
-          We aim to reply within two business days. For an immediate response,
-          message us on WhatsApp.
+          Your enquiry is ready with all the details filled in. Choose
+          WhatsApp for the fastest reply, or your email app if you prefer.
+          We aim to respond within two business days.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <a
-            href={buildWhatsAppUrl(lastEnquiry ?? INITIAL)}
+            href={buildWhatsAppUrl(enquiry)}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 justify-center"
           >
             <MessageCircle size={15} />
-            Continue on WhatsApp
+            Send on WhatsApp
           </a>
-          <button
-            type="button"
-            onClick={() => setStatus('idle')}
-            className="border border-[#1A1A1A] text-[#1A1A1A] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors"
+          <a
+            href={buildMailtoUrl(enquiry)}
+            className="border border-[#1A1A1A] text-[#1A1A1A] px-6 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3 justify-center"
           >
-            Send another enquiry
-          </button>
+            <Mail size={15} />
+            Send by email
+          </a>
         </div>
+        <button
+          type="button"
+          onClick={() => {
+            setStatus('idle');
+            setForm(INITIAL);
+          }}
+          className="mt-6 text-[0.65rem] tracking-[0.18em] uppercase text-[#1A1A1A]/50 hover:text-[#9E4214] transition-colors underline"
+        >
+          Edit this enquiry
+        </button>
       </motion.div>
     );
   }
@@ -354,51 +381,30 @@ export function ContactForm() {
       {error && (
         <div className="bg-[#C5511A]/10 border border-[#C5511A]/30 px-4 py-3 text-sm text-[#9E4214]">
           {error}
-          {status === 'error' && (
-            <a
-              href={buildWhatsAppUrl(form)}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-3 inline-flex items-center gap-2 bg-[#1A1A1A] text-[#F2EDE3] px-4 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#9E4214] transition-colors"
-            >
-              <MessageCircle size={14} />
-              Send this enquiry via WhatsApp instead
-            </a>
-          )}
         </div>
       )}
 
       <div className="flex flex-col sm:flex-row gap-3 pt-2">
         <button
           type="submit"
-          disabled={status === 'submitting'}
-          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center disabled:opacity-60 disabled:cursor-not-allowed"
+          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
-          {status === 'submitting' ? (
-            <>
-              <Loader2 size={15} className="animate-spin" />
-              Sending...
-            </>
-          ) : (
-            <>
-              Request This Journey
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </>
-          )}
+          Prepare my enquiry
+          <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
         </button>
         <a
-          href={buildWhatsAppUrl(form)}
+          href={WHATSAPP_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
           <MessageCircle size={15} />
-          Or WhatsApp Us
+          Just chat on WhatsApp
         </a>
       </div>
       <p className="text-xs text-[#1A1A1A]/55 pt-2">
-        We aim to reply within two business days. Your details are only used to
-        plan your journey — see our{' '}
+        No account needed. Submitting opens WhatsApp or your email app with the
+        enquiry filled in — nothing is stored on this website. See our{' '}
         <a href="/privacy" className="underline hover:text-[#9E4214]">privacy policy</a>.
       </p>
     </form>

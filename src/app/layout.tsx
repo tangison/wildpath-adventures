@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { Toaster } from "@/components/ui/toaster";
 import { CookieConsent } from "@/components/cookie-consent";
+import { ScrollToTop } from "@/components/scroll-to-top";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL } from "@/lib/site";
 
@@ -146,8 +146,8 @@ export default function RootLayout({
           Skip to content
         </a>
         {children}
-        <Toaster />
         <CookieConsent />
+      <ScrollToTop />
         <Analytics />
       </body>
     </html>

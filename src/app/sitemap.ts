@@ -3,6 +3,8 @@ import { SITE_URL } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
 
+export const dynamic = 'force-static';
+
 export default function sitemap(): MetadataRoute.Sitemap {
   // Fixed build date for lastModified — avoids every build appearing as "just modified"
   const lastMod = new Date('2026-08-08');

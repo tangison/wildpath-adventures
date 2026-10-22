@@ -1,39 +1,17 @@
 import type { NextConfig } from "next";
 
+/**
+ * Fully static export.
+ * No server, no database, no runtime image optimisation — images ship as
+ * pre-encoded AVIF/WebP variants served through <picture> (src/components/photo.tsx).
+ * Security headers that previously lived in middleware now live in vercel.json
+ * (Vercel) and the Caddyfile (staging origin).
+ */
 const nextConfig: NextConfig = {
-  output: "standalone",
-  /* ── Build quality ──────────────────────────────────────
-   * reactStrictMode: detects unsafe lifecycle methods & legacy context API
-   * ignoreBuildErrors: MUST be false in production — type errors are bugs
-   * ─────────────────────────────────────────────────────── */
+  output: "export",
   reactStrictMode: true,
-  typescript: {
-    ignoreBuildErrors: false,
-  },
-  /* ── Image optimisation ────────────────────────────────
-   * remotePatterns: allow externally-hosted images if needed
-   * formats: prefer AVIF then WebP for best compression
-   * ─────────────────────────────────────────────────────── */
-  images: {
-    formats: ['image/avif', 'image/webp'],
-  },
-  /* ── Security headers ──────────────────────────────────
-   * Additional headers applied to every response.
-   * Primary security headers are set in src/middleware.ts.
-   * ─────────────────────────────────────────────────────── */
-  async headers() {
-    return [
-      {
-        source: '/(.*)',
-        headers: [
-          {
-            key: 'X-Robots-Tag',
-            value: 'all', // explicitly allow indexing (override per-route if needed)
-          },
-        ],
-      },
-    ];
-  },
+  typescript: { ignoreBuildErrors: false },
+  images: { unoptimized: true },
 };
 
 export default nextConfig;

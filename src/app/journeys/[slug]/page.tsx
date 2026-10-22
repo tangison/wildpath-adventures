@@ -43,11 +43,36 @@ export default async function JourneyPage({ params }: { params: Promise<{ slug: 
   const stopDescription = (stopName: string) =>
     journey.route.find((r) => r.name === stopName)?.description ?? '';
 
+  // TouristTrip structured data — real route shape, no invented pricing
+  const tripJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TouristTrip',
+    name: journey.name,
+    description: journey.tagline,
+    url: `https://wildpathnamibia.com/journeys/${journey.slug}`,
+    touristType: journey.bestFor,
+    itinerary: journey.route.map((stop) => ({
+      '@type': 'ListItem',
+      item: { '@type': 'TouristAttraction', name: stop.name, description: stop.description },
+    })),
+    provider: {
+      '@type': 'TravelAgency',
+      name: 'Wildpath Adventures',
+      url: 'https://wildpathnamibia.com',
+      areaServed: 'Namibia',
+    },
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
       <Nav />
 
       <BreadcrumbJsonLd items={[{ name: 'Home', url: '/' }, { name: 'Journeys', url: '/journeys' }, { name: journey.name, url: `/journeys/${slug}` }]} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(tripJsonLd) }}
+      />
 
       <main id="main-content" className="flex-1 pt-32">
         {/* ═════════════════════ HERO ═════════════════════ */}
