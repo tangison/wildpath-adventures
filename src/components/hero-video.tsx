@@ -5,8 +5,9 @@ import { useEffect, useRef, useState } from 'react';
 /**
  * HeroVideo — full-bleed background loop (TASK 1).
  *
- * Sources: desktop 1280px + mobile 720px, each in H.264 MP4 (primary) and
- * WebM (progressive). Files live in /public/video.
+ * Sources: desktop 960px + mobile 560px, each in H.264 MP4 (primary) and
+ * WebM/VP9 (progressive). 6.5s seamless crossfade loop (tail dissolves back
+ * into the head) — no visible cut at the loop point. Files live in /public/video.
  *
  * Behaviour contract:
  * - autoplay muted loop playsinline — standard background-video posture
@@ -97,11 +98,11 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
   return (
     <div className="wp-hero-media">
       <img
-        src="/video/hero-poster.webp"
+        src="/video/hero-poster.avif"
         alt={posterAlt}
         className="wp-hero-poster"
-        width={1600}
-        height={900}
+        width={1280}
+        height={720}
         fetchPriority="high"
         decoding="sync"
       />

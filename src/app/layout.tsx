@@ -120,8 +120,8 @@ export default function RootLayout({
         <link
           rel="preload"
           as="image"
-          href="/video/hero-poster.webp"
-          type="image/webp"
+          href="/video/hero-poster.avif"
+          type="image/avif"
           fetchPriority="high"
         />
         <script

@@ -97,25 +97,26 @@ if (wildpathIdx === -1) {
 }
 
 // Warn: video assets present + poster under 80KB
-const poster = join(ROOT, 'public', 'video', 'hero-poster.webp');
+const poster = join(ROOT, 'public', 'video', 'hero-poster.avif');
 if (existsSync(poster) && statSync(poster).size > 80 * 1024) {
-  warnings.push(`hero-poster.webp is ${(statSync(poster).size / 1024).toFixed(0)}KB (target <80KB)`);
+  warnings.push(`hero-poster.avif is ${(statSync(poster).size / 1024).toFixed(0)}KB (target <80KB)`);
 }
+if (!existsSync(poster)) errors.push('MISSING POSTER: public/video/hero-poster.avif');
 for (const f of ['hero-desktop.mp4', 'hero-desktop.webm', 'hero-mobile.mp4', 'hero-mobile.webm']) {
   const p = join(ROOT, 'public', 'video', f);
   if (!existsSync(p)) errors.push(`MISSING VIDEO: public/video/${f}`);
 }
-const capVideoMB = 3;
+const capVideoMB = 0.6;
 for (const f of ['hero-desktop.mp4', 'hero-desktop.webm']) {
   const p = join(ROOT, 'public', 'video', f);
   if (existsSync(p) && statSync(p).size > capVideoMB * 1024 * 1024) {
-    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1048576).toFixed(2)}MB (cap ${capVideoMB}MB)`);
+    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1048576).toFixed(2)}MB (cap 600KB)`);
   }
 }
 for (const f of ['hero-mobile.mp4', 'hero-mobile.webm']) {
   const p = join(ROOT, 'public', 'video', f);
-  if (existsSync(p) && statSync(p).size > 1024 * 1024) {
-    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1048576).toFixed(2)}MB (cap 1MB)`);
+  if (existsSync(p) && statSync(p).size > 300 * 1024) {
+    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1024).toFixed(0)}KB (cap 300KB)`);
   }
 }
 
