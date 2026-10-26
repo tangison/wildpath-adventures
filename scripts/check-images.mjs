@@ -103,6 +103,20 @@ for (const f of sourceFiles) {
   }
 }
 
+// Video + poster budget (hero media)
+const vp = (f) => join(ROOT, 'public', 'video', f);
+if (!existsSync(vp('poster.avif'))) errors.push('MISSING POSTER: public/video/poster.avif');
+else if (statSync(vp('poster.avif')).size > 80 * 1024) warnings.push(`poster.avif is ${(statSync(vp('poster.avif')).size / 1024).toFixed(0)}KB (target <80KB)`);
+for (const f of ['desktop.mp4', 'desktop.webm', 'mobile.mp4', 'mobile.webm']) {
+  if (!existsSync(vp(f))) errors.push(`MISSING VIDEO: public/video/${f}`);
+}
+for (const f of ['desktop.mp4', 'desktop.webm']) {
+  if (existsSync(vp(f)) && statSync(vp(f)).size > 600 * 1024) errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(vp(f)).size / 1024).toFixed(0)}KB (cap 600KB)`);
+}
+for (const f of ['mobile.mp4', 'mobile.webm']) {
+  if (existsSync(vp(f)) && statSync(vp(f)).size > 300 * 1024) errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(vp(f)).size / 1024).toFixed(0)}KB (cap 300KB)`);
+}
+
 console.log(`check:images — ${photoIds.length} photos, ${totalChecked} variant files scanned`);
 for (const w of warnings) console.warn(`WARN: ${w}`);
 if (errors.length) {

@@ -37,7 +37,7 @@ export default function Home() {
       <main id="main-content" className="flex-1">
         {/* ═══════════════ FULL-BLEED VIDEO HERO ═══════════════ */}
         <section className="relative h-[86vh] min-h-[540px] md:h-[92vh] bg-[#1A1A1A] overflow-hidden">
-          <HeroVideo poster="/video/poster.webp" className="absolute inset-0 h-full w-full" />
+          <HeroVideo poster="/video/poster.avif" className="absolute inset-0 h-full w-full" />
           {/* WCAG AA scrim: darker at the text zone, never fully black */}
           <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/90 via-[#1A1A1A]/35 to-[#1A1A1A]/25" aria-hidden="true" />
           <div className="absolute inset-0 flex items-end">
