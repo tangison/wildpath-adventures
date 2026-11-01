@@ -30,6 +30,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
+      {/* LCP preload — hero poster is the above-the-fold image on THIS page only. */}
+      <link
+        rel="preload"
+        as="image"
+        href="/video/hero-poster.avif"
+        type="image/avif"
+        fetchPriority="high"
+      />
       <Nav />
 
       <main id="main-content" className="flex-1">

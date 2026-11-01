@@ -115,15 +115,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* LCP preload — homepage hero poster is the primary above-the-fold image.
-            The video itself loads lazily (preload="metadata"); the poster IS the LCP. */}
-        <link
-          rel="preload"
-          as="image"
-          href="/video/hero-poster.avif"
-          type="image/avif"
-          fetchPriority="high"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
