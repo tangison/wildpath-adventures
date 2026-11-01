@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { bestVariantWidth, variantDir } from '@/lib/variant-helpers';
 
 export type LightboxImage = {
   base: string;
@@ -32,7 +33,7 @@ export function Lightbox({
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<Element | null>(null);
-  const dir = (i: number) => images[i]?.dir ?? 'images/places';
+  const dir = (i: number) => variantDir(images[i]?.base ?? '', images[i]?.dir);
   const current = images[index];
 
   const next = useCallback(() => onNavigate((index + 1) % images.length), [index, images.length, onNavigate]);
@@ -68,7 +69,9 @@ export function Lightbox({
 
   if (!current) return null;
 
-  const w = current.width ?? 1920;
+  // Registry-aware width: capped families (kalahari 960, cape-cross 640)
+  // must never be asked for a -1920 variant that does not exist.
+  const w = bestVariantWidth(current.base, current.width ?? 1920);
 
   return (
     <div
@@ -142,7 +145,7 @@ export function Gallery({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/${img.dir ?? 'images/places'}/${img.base}-960.webp`}
+              src={`/${variantDir(img.base, img.dir)}/${img.base}-${bestVariantWidth(img.base, 960)}.webp`}
               alt={img.alt}
               loading="lazy"
               decoding="async"

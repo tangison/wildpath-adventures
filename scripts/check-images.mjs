@@ -96,21 +96,55 @@ if (wildpathIdx === -1) {
   warnings.push('Approved footer illustration not found in src (footer stripped?)');
 }
 
-// Warn: video assets present + poster under 80KB
+// 5. Registry integrity: every width listed in src/lib/image-variants.ts must
+//    exist on disk in BOTH formats. A srcset entry naming a missing file is a
+//    silent 404 in the browser (this is exactly how kalahari-1440 shipped broken).
+const variantSrc = readFileSync(join(ROOT, 'src/lib/image-variants.ts'), 'utf8');
+for (const [, base, dir, widthsLit] of variantSrc.matchAll(
+  /"([a-z0-9-]+)":\s*\{[^}]*?"dir":\s*"([^"]+)"[^}]*?"widths":\s*\[([^\]]+)\][^}]*\}/g
+)) {
+  for (const wStr of widthsLit.split(',').map((s) => s.trim()).filter(Boolean)) {
+    for (const ext of ['avif', 'webp']) {
+      const p = join(ROOT, 'public', dir, `${base}-${parseInt(wStr, 10)}.${ext}`);
+      if (!existsSync(p)) {
+        errors.push(`REGISTRY 404: ${dir}/${base}-${wStr}.${ext} listed in image-variants.ts but missing on disk`);
+      }
+    }
+  }
+}
+
+// 6. Hardcoded numbered variant paths in src must resolve to real files.
+//    Dynamic srcs go through src/lib/variant-helpers.ts (registry-driven);
+//    any remaining literal must point at something that exists.
+for (const m of srcText.matchAll(/['"`]((?:images|video)\/[a-z0-9/._-]*-(?:640|960|1280|1440|1600|1920|2560)\.(?:webp|avif|jpe?g|mp4|png))['"`]/g)) {
+  if (!existsSync(join(ROOT, 'public', m[1]))) {
+    errors.push(`HARDCODED 404: ${m[1]} referenced in src but missing on disk`);
+  }
+}
+
+// Hero media contract (ROLE spec): desktop 1280px MP4 target <2MB (cap 1.2MB here,
+// stricter than spec), mobile 720px MP4 <300KB, poster AVIF <80KB with WebP+JPEG
+// fallbacks. MP4-only delivery: H.264 decodes universally; a broken/truncated
+// first-source (the VP9 risk) is worse than the marginal WebM saving.
 const poster = join(ROOT, 'public', 'video', 'hero-poster.avif');
 if (existsSync(poster) && statSync(poster).size > 80 * 1024) {
   warnings.push(`hero-poster.avif is ${(statSync(poster).size / 1024).toFixed(0)}KB (target <80KB)`);
 }
 if (!existsSync(poster)) errors.push('MISSING POSTER: public/video/hero-poster.avif');
-for (const f of ['hero-desktop.mp4', 'hero-desktop.webm', 'hero-mobile.mp4', 'hero-mobile.webm']) {
+for (const f of ['hero-poster.webp', 'hero-poster.jpg']) {
+  if (!existsSync(join(ROOT, 'public', 'video', f))) {
+    errors.push(`MISSING POSTER FALLBACK: public/video/${f}`);
+  }
+}
+for (const f of ['hero-desktop.mp4', 'hero-mobile.mp4']) {
   const p = join(ROOT, 'public', 'video', f);
   if (!existsSync(p)) errors.push(`MISSING VIDEO: public/video/${f}`);
 }
-const capVideoMB = 0.6;
+const capVideoMB = 1.2;
 for (const f of ['hero-desktop.mp4', 'hero-desktop.webm']) {
   const p = join(ROOT, 'public', 'video', f);
   if (existsSync(p) && statSync(p).size > capVideoMB * 1024 * 1024) {
-    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1048576).toFixed(2)}MB (cap 600KB)`);
+    errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1048576).toFixed(2)}MB (cap 1.2MB)`);
   }
 }
 for (const f of ['hero-mobile.mp4', 'hero-mobile.webm']) {

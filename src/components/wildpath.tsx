@@ -14,6 +14,61 @@ import {
 import { JOURNEYS } from '@/lib/journeys';
 import { DESTINATIONS } from '@/lib/destinations';
 import type { RouteStop } from '@/lib/journeys';
+import { variantSrcSet, bestVariantWidth } from '@/lib/variant-helpers';
+
+/**
+ * TimelinePicture — registry-driven responsive photo for journey stop timelines.
+ * Replaces hardcoded "-1440/-960" srcs that 404 for width-capped families
+ * (kalahari tops out at 960, cape-cross-seals at 640).
+ */
+function TimelinePicture({
+  base,
+  alt,
+  eager = false,
+  small = false,
+  className = '',
+}: {
+  base: string;
+  alt: string;
+  eager?: boolean;
+  small?: boolean;
+  className?: string;
+}) {
+  const sizes = small ? '(min-width: 1024px) 33vw, 50vw' : '(min-width: 1024px) 66vw, 100vw';
+  const sets = variantSrcSet(base);
+  if (!sets) {
+    // Unknown family: single safe source, never a numbered variant.
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={`/images/places/${base}.webp`}
+        alt={alt}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        className={className}
+      />
+    );
+  }
+  const w = small ? bestVariantWidth(base, 960) : sets.largest;
+  const ratio = small ? 4 / 3 : 16 / 9;
+  return (
+    <picture>
+      <source type="image/avif" srcSet={sets.avif} sizes={sizes} />
+      <source type="image/webp" srcSet={sets.webp} sizes={sizes} />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={`/${sets.dir}/${base}-${w}.webp`}
+        alt={alt}
+        width={w}
+        height={Math.round(w / ratio)}
+        sizes={sizes}
+        loading={eager ? 'eager' : 'lazy'}
+        decoding="async"
+        className={className}
+      />
+    </picture>
+  );
+}
 
 // ═══════════════════════════════════════════════════════════
 // WILDPATH SHARED COMPONENTS — rewritten as a static, CSS-first layer.
@@ -664,7 +719,7 @@ export function JourneyRouteTimeline({
                   </h3>
                 </div>
 
-                {/* Lead photo — 16/9 full width of the column */}
+                {/* Lead photo — 16/9 full width of the column (registry srcset) */}
                 {first && (
                   <Link
                     href={`/destinations/${slugFor(stop.name)}`}
@@ -672,14 +727,10 @@ export function JourneyRouteTimeline({
                     style={{ aspectRatio: '16 / 9' }}
                     aria-label={`${stop.name} — open destination guide`}
                   >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={`/images/places/${first.base}-1440.webp`}
+                    <TimelinePicture
+                      base={first.base}
                       alt={first.alt}
-                      width={1440}
-                      height={810}
-                      loading={i < 2 ? 'eager' : 'lazy'}
-                      decoding="async"
+                      eager={i < 2}
                       className="transition-transform duration-700 group-hover:scale-[1.015]"
                     />
                   </Link>
@@ -689,15 +740,7 @@ export function JourneyRouteTimeline({
                   <div className="grid grid-cols-2 gap-3 mt-3">
                     {rest.map((p) => (
                       <div key={p.base} className="wp-photo wp-img-reveal" style={{ aspectRatio: '4 / 3' }}>
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={`/images/places/${p.base}-960.webp`}
-                          alt={p.alt}
-                          width={960}
-                          height={720}
-                          loading="lazy"
-                          decoding="async"
-                        />
+                        <TimelinePicture base={p.base} alt={p.alt} small />
                       </div>
                     ))}
                   </div>

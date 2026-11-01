@@ -8,6 +8,7 @@ import { Gallery } from '@/components/lightbox';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { DESTINATION_MEDIA } from '@/lib/journey-media';
 import { SITE_URL, WHATSAPP_URL } from '@/lib/site';
+import { bestVariantWidth, variantDir } from '@/lib/variant-helpers';
 
 export function generateStaticParams() {
   return DESTINATIONS.map((d) => ({ slug: d.slug }));
@@ -43,10 +44,12 @@ export default async function DestinationPage({
   const suggested = DESTINATIONS.find((d) => d.slug === dest.suggestedJourney);
 
   // ImageObject JSON-LD — tells search engines what the hero photo depicts.
+  // Width comes from the variant registry so capped families never advertise
+  // a -1920 file that does not exist on disk.
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'ImageObject',
-    contentUrl: `${SITE_URL}/images/places/${hero}-1920.webp`,
+    contentUrl: `${SITE_URL}/${variantDir(hero)}/${hero}-${bestVariantWidth(hero, 1920)}.webp`,
     name: dest.name,
     description: dest.overview.slice(0, 200),
     representativeOfPage: true,

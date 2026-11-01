@@ -12,10 +12,12 @@
  */
 
 export const SITE = {
-  /** Canonical domain — change via NEXT_PUBLIC_SITE_URL in build env */
-  domain: 'wildpathnamibia.com',
+  /** Canonical domain — change via NEXT_PUBLIC_SITE_URL in build env.
+   *  Serves at wildpath.tangison.com (Tangison) until the client's own
+   *  wildpathnamibia.com DNS goes live; flip this default when it does. */
+  domain: 'wildpath.tangison.com',
   /** Canonical URL with protocol */
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpathnamibia.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpath.tangison.com',
   name: 'Wildpath Adventures',
   tagline: 'Slow down. Breathe. Discover Namibia.',
   /** Public enquiry email — shown to users. Mirror of CONTACT_EMAIL for client-side use. */

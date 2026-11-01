@@ -265,7 +265,9 @@ export const IMAGE_VARIANTS: Record<string, VariantFamily> = {
     "max": 1920,
     "widths": [
       640,
-      960
+      960,
+      1440,
+      1920
     ]
   },
   "skeleton-coast-wreck": {

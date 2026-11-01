@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Footprints, Compass, Sun, MapPin } from 'lucide-react';
 import { Nav, Footer, Wordmark, AcaciaMark, BirdFlock, ContourLines, CompassMark } from '@/components/wildpath';
+import { bestVariantWidth } from '@/lib/variant-helpers';
 
 
 export const metadata: Metadata = {
@@ -161,7 +162,7 @@ export default function BrandPage() {
                 <div className="relative w-full aspect-square bg-[#E8E3D5] wp-photo">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/photos/safari-vehicle-red-dune-1440.webp"
+                    src={`/images/photos/safari-vehicle-red-dune-${bestVariantWidth('safari-vehicle-red-dune', 1440)}.webp`}
                     alt="An open safari vehicle crossing a red Kalahari dune, acacia scrub behind."
                     className="absolute inset-0 h-full w-full object-cover"
                     loading="eager"
