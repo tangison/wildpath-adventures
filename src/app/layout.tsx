@@ -7,11 +7,11 @@ import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 import { withBP } from "@/lib/base-path";
 
-// Font policy: three families total.
-//   Anton  — display headlines and the WILDPATH wordmark
-//   Oswald — the ADVENTURES line of the wordmark (per approved logo spec)
-//   Geist  — body text and subheads
-// Editorial italic accents use the system serif stack (zero webfont bytes).
+// Font policy: two self-hosted families (next/font, latin subset).
+//   Geist    — body text, subheads, UI
+//   Fraunces — editorial serif accents (headlines lean on .wp-display which
+//              pairs Geist weights with Fraunces italics; the WILDPATH
+//              wordmark is served artwork, not a webfont)
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -62,6 +62,12 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
+        url: withBP('/images/social/og-master.jpg'),
+        width: 1200,
+        height: 630,
+        alt: `${SITE.name} — ${SITE.tagline}`,
+      },
+      {
         url: withBP('/images/social/og-master.webp'),
         width: 1200,
         height: 630,
@@ -73,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE.name,
     description: SITE.tagline,
-    images: [withBP('/images/social/og-master.webp')],
+    images: [withBP('/images/social/og-master.jpg')],
   },
 };
 
@@ -137,7 +143,9 @@ export default function RootLayout({
         <ScrollTop />
         <StickyCta whatsappUrl={WHATSAPP_URL} />
         <CookieConsent />
-        <Analytics />
+        {/* Vercel Analytics only exists on Vercel — elsewhere (GitHub Pages
+            mirror, self-host) its script 404s and logs console noise. */}
+        {process.env.VERCEL ? <Analytics /> : null}
       </body>
     </html>
   );

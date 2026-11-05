@@ -18,10 +18,16 @@ import type { NextRequest } from 'next/server';
 export function proxy(request: NextRequest) {
   const response = NextResponse.next();
 
-  // Staging guard — anything that is not the production domain must be
-  // noindex/nofollow so staging builds never enter search indexes.
+  // Staging guard — only the production domains are indexable; every staging
+  // host (Vercel previews, tangison.github.io mirror, localhost) must be
+  // noindex/nofollow so they never enter search indexes.
   const host = request.headers.get('host') || '';
-  const isProduction = host.startsWith('wildpathnamibia.com') || host.startsWith('www.wildpathnamibia.com');
+  const PROD_HOSTS = [
+    'wildpath.tangison.com', // current canonical host
+    'wildpathnamibia.com', // client domain once DNS is live
+    'www.wildpathnamibia.com',
+  ];
+  const isProduction = PROD_HOSTS.some((h) => host.startsWith(h));
   if (!isProduction) {
     response.headers.set('X-Robots-Tag', 'noindex, nofollow');
   }
@@ -38,15 +44,15 @@ export function proxy(request: NextRequest) {
   // included, which keeps the meaningful hardening.
   const isDev = process.env.NODE_ENV === 'development';
   const scriptSrc = isDev
-    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live"
-    : "script-src 'self' 'unsafe-inline' https://vercel.live";
+    ? "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://vercel.live https://va.vercel-scripts.com"
+    : "script-src 'self' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com";
   const csp = [
     "default-src 'self'",
     scriptSrc,
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // inline styles for Tailwind + framer-motion
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com", // inline styles for Tailwind
     "font-src 'self' https://fonts.gstatic.com",
-    "img-src 'self' data: blob: https://wildpathnamibia.com",
-    "connect-src 'self' https://wa.me",
+    "img-src 'self' data: blob: https://wildpathnamibia.com https://wildpath.tangison.com",
+    "connect-src 'self' https://wa.me https://va.vercel-scripts.com", // Vercel Analytics beacon
     "frame-ancestors 'none'", // equivalent to X-Frame-Options: DENY
     "form-action 'self' https://wa.me", // allow form posts to self + WhatsApp
     "base-uri 'self'",

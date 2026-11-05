@@ -95,6 +95,8 @@ export function ScrollTop() {
         window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
       }}
       aria-label="Scroll back to top"
+      tabIndex={visible ? 0 : -1}
+      aria-hidden={!visible}
       className={`fixed bottom-5 right-5 z-50 w-11 h-11 hidden md:flex items-center justify-center bg-[#1A1A1A] text-[#F2EDE3] border border-[#F2EDE3]/20 hover:bg-[#C5511A] transition-all duration-300 ${
         visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3 pointer-events-none'
       }`}

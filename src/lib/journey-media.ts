@@ -37,6 +37,7 @@ export const JOURNEY_MEDIA: Record<
         { base: 'kalahari', alt: 'A deep orange sunset over Kalahari thornveld and a winding road.' },
         { base: 'kalahari-cabin-red-dune', alt: 'A stilted cabin with a green roof on a red Kalahari dune.' },
         { base: 'kalahari-2', alt: 'Hoodia plants on a red Kalahari dune slipface.' },
+        { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red Kalahari sand track.' },
       ],
       'Fish River Canyon': [
         { base: 'fish-river-canyon', alt: 'Fish River Canyon from the main viewpoint, layered rock walls and a dry riverbed below.' },
@@ -66,14 +67,13 @@ export const JOURNEY_MEDIA: Record<
         { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
         { base: 'etosha-2', alt: 'Lions drinking at an Etosha waterhole, mirrored in still water.' },
         { base: 'etosha-detail', alt: 'A breeding herd of elephants moving across red earth.' },
-        { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red sand track.' },
         { base: 'etosha-1', alt: 'Two cheetahs resting beside a termite mound in Etosha.' },
         { base: 'rhino-ostrich-etosha', alt: 'A rhino grazing beside an ostrich in green bush.' },
       ],
     },
     gallery: [
       { base: 'dune-detail', alt: 'Ridges of red dune sea rolling to the horizon.' },
-      { base: 'oryx-dusk-golden-grass', alt: 'A gemsbok oryx standing in golden grass at dusk.' },
+      { base: 'landcruiser-dune-crest', alt: 'A land cruiser parked on a dune crest above the sand sea.' },
       { base: 'etosha', alt: 'A close view of an elephant feeding on pale Etosha grass.' },
       { base: 'sossusvlei-2', alt: 'A walker descending a dune crest towards Deadvlei\u2019s white pan.' },
       { base: 'kalahari-2', alt: 'Hoodia plants on a red Kalahari dune slipface.' },
@@ -95,13 +95,16 @@ export const JOURNEY_MEDIA: Record<
       'Rundu & the Okavango River': [
         { base: 'okavango-river', alt: 'The Okavango River running wide and green under a blue sky.' },
       ],
-      'Kwando River': [],
+      'Kwando River': [
+        { base: 'caprivi-mokoro-golden-reeds', alt: 'A mokoro gliding through golden reeds on a Caprivi river channel.' },
+      ],
       'Bwabwata National Park': [
         { base: 'bwabwata-elephant', alt: 'A breeding herd of elephants crossing golden grass in Bwabwata National Park.' },
       ],
       'Chobe River': [
         { base: 'chobe-river-kasane', alt: 'The Chobe River winding through green floodplains near Kasane.' },
         { base: 'chobe-river-elephants-dusk', alt: 'Elephants moving along the Chobe riverbank at dusk through warm haze.' },
+        { base: 'chobe-elephants-riverbank', alt: 'Elephants gathered on the green banks of the Chobe River.' },
       ],
       'Zambezi River': [
         { base: 'zambezi-junction', alt: 'The Zambezi River where Namibia, Zambia, Zimbabwe and Botswana meet.' },
@@ -127,7 +130,7 @@ export const JOURNEY_MEDIA: Record<
       'Etosha National Park': [
         { base: 'etosha', alt: 'A close view of an elephant feeding on pale Etosha grass.' },
         { base: 'rhino-ostrich-etosha', alt: 'A rhino grazing beside an ostrich in green bush.' },
-        { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red sand track.' },
+        { base: 'etosha-2', alt: 'Lions drinking at an Etosha waterhole, mirrored in still water.' },
       ],
       'Damaraland': [
         { base: 'damaraland', alt: 'A granite koppie glowing red above dry Damaraland grassland.' },
@@ -221,7 +224,6 @@ export const DESTINATION_MEDIA: Record<
       { base: 'etosha-1', alt: 'Two cheetahs resting beside a termite mound.' },
       { base: 'etosha-detail', alt: 'A breeding herd of elephants moving across red earth.' },
       { base: 'rhino-ostrich-etosha', alt: 'A rhino grazing beside an ostrich in green bush.' },
-      { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red sand track.' },
     ],
   },
   'damaraland': {
@@ -236,7 +238,7 @@ export const DESTINATION_MEDIA: Record<
     hero: 'skeleton-coast-wreck',
     mosaic: [
       { base: 'cape-cross-seals', alt: 'Cape fur seals crowded on the rocks at Cape Cross.' },
-      { base: 'swakopmund-jetty', alt: 'Swakopmund\u2019s beachfront and jetty from the air.' },
+      { base: 'skeleton-coast-shipwreck', alt: 'A rusting shipwreck half-buried in Skeleton Coast sand and fog.' },
     ],
   },
   'kalahari': {
@@ -244,7 +246,7 @@ export const DESTINATION_MEDIA: Record<
     mosaic: [
       { base: 'kalahari-2', alt: 'Hoodia plants on a red dune slipface.' },
       { base: 'kalahari-cabin-red-dune', alt: 'A stilted cabin with a green roof on a red dune.' },
-      { base: 'oryx-dusk-golden-grass', alt: 'A gemsbok oryx standing in golden grass at dusk.' },
+      { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red Kalahari sand track.' },
       { base: 'dune-lodge', alt: 'A cabin on a red Kalahari dune above green savanna.' },
     ],
   },
@@ -259,12 +261,14 @@ export const DESTINATION_MEDIA: Record<
     hero: 'chobe-river-kasane',
     mosaic: [
       { base: 'chobe-river-elephants-dusk', alt: 'Elephants moving along the Chobe riverbank at dusk through warm haze.' },
+      { base: 'chobe-elephants-riverbank', alt: 'Elephants gathered on the green banks of the Chobe River.' },
     ],
   },
   'victoria-falls': {
     hero: 'victoria-falls',
     mosaic: [
       { base: 'zambezi-junction', alt: 'The Zambezi above the falls, wide and slow.' },
+      { base: 'victoria-falls-rainbow', alt: 'Victoria Falls with a rainbow standing in the spray gorge.' },
     ],
   },
 };

@@ -1,3 +1,7 @@
+> **SUPERSEDED 2026-11-05** — this audit describes an earlier build (framer-motion
+> era, `/privacy` route, brand in nav). The current site is fully static with a
+> hero video loop; motion is CSS/IntersectionObserver-based. Kept for history;
+> do not follow its instructions. See README.md for the current architecture.
 # Hallmark Audit — Wildpath Adventures V3
 
 **Audited:** `src/app/page.tsx`, `src/components/wildpath.tsx`, `src/app/journeys/[slug]/page.tsx`, `src/app/destinations/[slug]/page.tsx`, `src/app/about/page.tsx`, `src/app/contact/page.tsx`, `src/app/brand/page.tsx`, `src/app/field-notes/page.tsx`, `src/app/faq/page.tsx`, `src/app/not-found.tsx`

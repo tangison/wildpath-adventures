@@ -9,10 +9,13 @@ import {
   JourneyRouteTimeline,
 } from '@/components/wildpath';
 import { Photo } from '@/components/photo';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { Gallery } from '@/components/lightbox';
 import { getJourney, JOURNEYS } from '@/lib/journeys';
 import { JOURNEY_MEDIA } from '@/lib/journey-media';
 import { SITE, SITE_URL, WHATSAPP_URL } from '@/lib/site';
+
+export const dynamicParams = false; // unknown slugs hard-404 (no soft-200 crawl trap)
 
 export function generateStaticParams() {
   return JOURNEYS.map((j) => ({ slug: j.slug }));
@@ -84,6 +87,11 @@ export default async function JourneyPage({
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: '/' },
+        { name: 'Journeys', url: '/journeys' },
+        { name: journey.name, url: `/journeys/${journey.slug}` },
+      ]} />
       <Nav />
 
       <main id="main-content" className="flex-1">

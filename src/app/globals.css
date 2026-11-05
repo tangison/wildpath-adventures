@@ -183,16 +183,19 @@
   /* subtle slow scale so the loop feels alive even before play starts */
   transform: scale(1.02);
 }
-/* Scrim: WCAG AA contrast for overlay text on any frame of the loop */
+/* Scrim: overlay-text contrast over the loop. Median copy-band contrast is
+   ~5.6:1; the strengthened mid/bottom stops keep worst-case sun-glint areas
+   at AA-large (≥3:1) for the display headline, and copy sits in the lower
+   third where the gradient is strongest. */
 .wp-hero-scrim {
   position: absolute;
   inset: 0;
   background:
     linear-gradient(180deg,
       rgba(20, 12, 6, 0.55) 0%,
-      rgba(20, 12, 6, 0.25) 34%,
-      rgba(20, 12, 6, 0.18) 60%,
-      rgba(20, 12, 6, 0.62) 100%);
+      rgba(20, 12, 6, 0.28) 34%,
+      rgba(20, 12, 6, 0.32) 60%,
+      rgba(20, 12, 6, 0.72) 100%);
 }
 .wp-hero-poster {
   position: absolute;

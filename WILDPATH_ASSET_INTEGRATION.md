@@ -1,3 +1,9 @@
+> **SUPERSEDED 2026-11-05** — the asset kit this document describes lives outside
+> the repo (client handover archive), and the serving rules have changed: the
+> home hero is a video loop, logos ship as WebP rasters (`public/images/brand/`),
+> and illustrations are banned everywhere except the single approved footer
+> accent (`/images/illustrations/approved/wildpath-hero-main.webp`).
+> Do not follow the mapping below. See README.md.
 # Wildpath Approved Asset Integration
 
 The complete approved asset kit is committed in:

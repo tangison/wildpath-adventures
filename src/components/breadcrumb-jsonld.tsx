@@ -5,12 +5,14 @@
  *
  * Place inside the page component's JSX — it renders a <script> tag only.
  */
+import { SITE_URL } from '@/lib/site';
+
 export function BreadcrumbJsonLd({
   items,
 }: {
   items: { name: string; url: string }[];
 }) {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpathnamibia.com';
+  const baseUrl = SITE_URL;
 
   const jsonLd = {
     '@context': 'https://schema.org',

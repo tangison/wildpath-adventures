@@ -83,7 +83,7 @@ export default function FAQPage() {
           <div className="wp-photo" style={{ aspectRatio: '21 / 9', minHeight: '300px' }}>
             <Photo
               base="etosha-detail"
-              alt="A breeding herd of elephants moving across red earth in Etosha."
+              alt="A breeding herd of elephants moving across red earth."
               aspect="21 / 9"
               sizes="100vw"
               priority

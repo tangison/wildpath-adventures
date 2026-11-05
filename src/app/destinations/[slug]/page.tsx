@@ -4,11 +4,14 @@ import { notFound } from 'next/navigation';
 import { ArrowRight, MessageCircle, ChevronLeft } from 'lucide-react';
 import { Nav, Footer, SectionHeading } from '@/components/wildpath';
 import { Photo } from '@/components/photo';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { Gallery } from '@/components/lightbox';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { DESTINATION_MEDIA } from '@/lib/journey-media';
 import { SITE_URL, WHATSAPP_URL } from '@/lib/site';
 import { bestVariantWidth, variantDir } from '@/lib/variant-helpers';
+
+export const dynamicParams = false; // unknown slugs hard-404 (no soft-200 crawl trap)
 
 export function generateStaticParams() {
   return DESTINATIONS.map((d) => ({ slug: d.slug }));
@@ -58,6 +61,11 @@ export default async function DestinationPage({
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: '/' },
+        { name: 'Destinations', url: '/destinations' },
+        { name: dest.name, url: `/destinations/${dest.slug}` },
+      ]} />
       <Nav />
 
       <main id="main-content" className="flex-1">

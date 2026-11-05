@@ -152,6 +152,19 @@ export function ContactForm() {
 
   return (
     <form onSubmit={submit} className="relative bg-[#F2EDE3] border border-[#1A1A1A]/15 p-6 md:p-10">
+      {/* No-JS fallback: the form handlers are React; without JS, submitting
+          would silently do nothing. Point no-JS users at the direct channels. */}
+      <noscript>
+        <div className="mb-6 border border-[#C5511A]/40 bg-[#C5511A]/10 p-4 text-sm leading-relaxed">
+          <p className="font-semibold mb-1">This form needs JavaScript.</p>
+          <p>
+            Email us instead at{' '}
+            <a className="underline" href={`mailto:${SITE_EMAIL}`}>{SITE_EMAIL}</a>{' '}
+            or message us on{' '}
+            <a className="underline" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">WhatsApp</a>.
+          </p>
+        </div>
+      </noscript>
       {/* Honeypot — hidden from humans */}
       <div className="absolute -left-[9999px]" aria-hidden="true">
         <label htmlFor="website">Website</label>

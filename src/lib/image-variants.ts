@@ -1,9 +1,36 @@
-// GENERATED FILE — do not edit by hand. Run scripts/generate_image_variants.py
 // Registry of responsive variant families: base name -> dir + available widths.
-// WebP and AVIF variants exist for every listed width (unless noted null in manifest).
+// WebP and AVIF variants exist for every listed width. Maintained by hand
+// alongside images.manifest.json; scripts/check-images.mjs verifies both
+// against the files actually on disk at build time.
 export type VariantFamily = { dir: string; widths: number[]; max: number };
 
 export const IMAGE_VARIANTS: Record<string, VariantFamily> = {
+
+  "caprivi-mokoro-golden-reeds": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
+  "chobe-elephants-riverbank": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
+  "landcruiser-dune-crest": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
+  "skeleton-coast-shipwreck": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
+  "victoria-falls-rainbow": {
+    "dir": "images/photos",
+    "max": 1920,
+    "widths": [640, 960, 1440, 1920]
+  },
   "bwabwata-elephant": {
     "dir": "images/places",
     "max": 1920,

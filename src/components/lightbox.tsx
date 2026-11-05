@@ -33,6 +33,8 @@ export function Lightbox({
   onNavigate: (i: number) => void;
 }) {
   const closeRef = useRef<HTMLButtonElement>(null);
+  const prevRef = useRef<HTMLButtonElement>(null);
+  const nextRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<Element | null>(null);
   const dir = (i: number) => variantDir(images[i]?.base ?? '', images[i]?.dir);
   const current = images[index];
@@ -51,12 +53,23 @@ export function Lightbox({
       else if (e.key === 'ArrowRight') next();
       else if (e.key === 'ArrowLeft') prev();
       else if (e.key === 'Tab') {
-        // Simple focus trap: keep tabbing among the three controls.
-        const focusables = [closeRef.current];
-        if (!focusables[0]) return;
-        if (!document.activeElement || !focusables.includes(document.activeElement as HTMLButtonElement)) {
+        // Focus trap: wrap Tab across every control in the dialog (close,
+        // prev, next). With one control, Tab stays on it — focus can never
+        // escape a dialog that declares aria-modal.
+        const focusables = [closeRef.current, prevRef.current, nextRef.current]
+          .filter((b): b is HTMLButtonElement => !!b);
+        if (!focusables.length) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        const active = document.activeElement;
+        if (e.shiftKey) {
+          if (active === first || !focusables.includes(active as HTMLButtonElement)) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else if (active === last || !focusables.includes(active as HTMLButtonElement)) {
           e.preventDefault();
-          closeRef.current?.focus();
+          first.focus();
         }
       }
     };
@@ -89,16 +102,19 @@ export function Lightbox({
       </button>
       {images.length > 1 && (
         <>
-          <button className="wp-lightbox-prev" onClick={prev} aria-label="Previous image">
+          <button ref={prevRef} className="wp-lightbox-prev" onClick={prev} aria-label="Previous image">
             <ChevronLeft size={24} />
           </button>
-          <button className="wp-lightbox-next" onClick={next} aria-label="Next image">
+          <button ref={nextRef} className="wp-lightbox-next" onClick={next} aria-label="Next image">
             <ChevronRight size={24} />
           </button>
         </>
       )}
       <figure className="flex flex-col items-center max-w-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
+        {/* No fixed width/height here: source photos vary in aspect ratio and
+            a wrong ratio hint would make the open dialog visibly reflow when
+            the real dimensions arrive. The overlay is post-CLS by nature. */}
         <img
           src={withBP(`/${dir(index)}/${current.base}-${w}.webp`)}
           alt={current.alt}
@@ -148,6 +164,8 @@ export function Gallery({
             <img
               src={withBP(`/${variantDir(img.base, img.dir)}/${img.base}-${bestVariantWidth(img.base, 960)}.webp`)}
               alt={img.alt}
+              width={bestVariantWidth(img.base, 960)}
+              height={Math.round(bestVariantWidth(img.base, 960) / 1.5)}
               loading="lazy"
               decoding="async"
               className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"

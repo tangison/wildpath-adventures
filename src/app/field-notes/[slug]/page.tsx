@@ -5,7 +5,10 @@ import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { Nav, Footer } from '@/components/wildpath';
 import { Photo } from '@/components/photo';
 import { ARTICLES, FIELD_NOTES, getFieldNote } from '@/lib/field-notes';
-import { WHATSAPP_URL } from '@/lib/site';
+import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
+import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
+
+export const dynamicParams = false; // unknown slugs hard-404 (no soft-200 crawl trap)
 
 export function generateStaticParams() {
   return FIELD_NOTES.map((n) => ({ slug: n.slug }));
@@ -37,8 +40,26 @@ export default async function FieldNotePage({
 
   const others = FIELD_NOTES.filter((n) => n.slug !== slug).slice(0, 3);
 
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: note.title,
+    description: note.excerpt,
+    inLanguage: 'en',
+    author: { '@type': 'Organization', name: 'Wildpath Adventures', url: SITE_URL },
+    publisher: { '@type': 'Organization', name: 'Wildpath Adventures', url: SITE_URL },
+    mainEntityOfPage: `${SITE_URL}/field-notes/${note.slug}`,
+    image: `${SITE_URL}/images/social/og-master.jpg`,
+  };
+
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans overflow-x-hidden">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }} />
+      <BreadcrumbJsonLd items={[
+        { name: 'Home', url: '/' },
+        { name: 'Field Notes', url: '/field-notes' },
+        { name: note.title, url: `/field-notes/${note.slug}` },
+      ]} />
       <Nav />
       <main id="main-content" className="flex-1">
         {/* Photo header */}

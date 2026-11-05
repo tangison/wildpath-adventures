@@ -103,8 +103,9 @@ export const DESTINATIONS: Destination[] = [
     wildlife: ['Brown hyena', 'Cape fur seal', 'Black-backed jackal'],
     landscape: 'Fog, dunes dropping into the sea, basalt, shipwrecks.',
     suggestedJourney: 'classic-namibia',
-    // No verified real photograph in current assets — use branded illustration placeholder.
-    image: 'skeleton-coast-wreck', // photo base
+    // Real photograph (Eduard Bohlen wreck). Illustrations are banned
+    // everywhere except the single approved footer accent.
+    image: 'skeleton-coast-wreck',
   },
   {
     slug: 'kalahari',

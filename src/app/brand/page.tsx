@@ -7,7 +7,7 @@ import { withBP } from '@/lib/base-path';
 
 
 export const metadata: Metadata = {
-  title: 'Brand Identity · Wildpath Adventures',
+  title: 'Brand Identity',
   description:
     'Discover the visual identity behind Wildpath Adventures, our Namibian-inspired palette, editorial voice, and design principles.',
   alternates: { canonical: '/brand' },

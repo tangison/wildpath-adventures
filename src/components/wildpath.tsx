@@ -12,6 +12,7 @@ import {
   configuredSocialLinks,
 } from '@/lib/site';
 import { JOURNEYS } from '@/lib/journeys';
+import { withBP } from '@/lib/base-path';
 import { DESTINATIONS } from '@/lib/destinations';
 import type { RouteStop } from '@/lib/journeys';
 import { variantSrcSet, bestVariantWidth } from '@/lib/variant-helpers';
@@ -41,7 +42,7 @@ function TimelinePicture({
     return (
       // eslint-disable-next-line @next/next/no-img-element
       <img
-        src={`/images/places/${base}.webp`}
+        src={withBP(`/images/places/${base}.webp`)}
         alt={alt}
         loading={eager ? 'eager' : 'lazy'}
         decoding="async"
@@ -455,7 +456,7 @@ export function Footer() {
       {/* Illustration strip — the single approved cartoon accent */}
       <div className="relative w-full h-24 md:h-32 overflow-hidden border-b border-[#F2EDE3]/10">
         <Image
-          src="/images/illustrations/approved/wildpath-hero-main.webp"
+          src={withBP('/images/illustrations/approved/wildpath-hero-main.webp')}
           alt=""
           fill
           sizes="100vw"
@@ -476,7 +477,7 @@ export function Footer() {
           {/* Wildpath approved logo mark — footer (dark variant, ivory artwork) */}
           <div className="flex justify-center mb-10">
             <Image
-              src="/images/brand/wildpath-logo-dark-theme.webp"
+              src={withBP('/images/brand/wildpath-logo-dark-theme.webp')}
               alt="Wildpath Adventures"
               width={1255}
               height={1415}
@@ -536,6 +537,7 @@ export function Footer() {
             <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
             <Link href="/privacy-policy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
             <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
+            <Link href="/cookies" className="hover:text-[#F2EDE3] transition-colors">Cookies</Link>
             <Link href="/faq" className="hover:text-[#F2EDE3] transition-colors">FAQ</Link>
             <Link href="/brand" className="hover:text-[#F2EDE3] transition-colors">Brand</Link>
           </div>
@@ -607,9 +609,9 @@ export function JourneySnapshot({
       <div className="max-w-7xl mx-auto">
         <div className="wp-reveal">
           <p className="wp-subhead text-[0.62rem] text-[#9E4214] mb-4">Journey Snapshot</p>
-          <h1 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-4">
+          <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-4">
             {name}
-          </h1>
+          </h2>
           <p className="text-lg md:text-xl text-[#1A1A1A]/80 max-w-2xl leading-relaxed mb-10">
             {tagline}
           </p>
@@ -816,9 +818,9 @@ export function WildpathWatermark({
   className?: string;
   variant?: 'light' | 'dark';
 }) {
-  const src = variant === 'dark'
+  const src = withBP(variant === 'dark'
     ? '/images/brand/wildpath-logo-dark-theme.webp'
-    : '/images/brand/wildpath-logo-light-theme.webp';
+    : '/images/brand/wildpath-logo-light-theme.webp');
   return (
     <Image
       src={src}

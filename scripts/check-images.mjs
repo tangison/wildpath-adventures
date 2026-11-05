@@ -38,10 +38,12 @@ function walk(dir, out = []) {
 const srcFiles = walk(join(ROOT, 'src'));
 const srcText = srcFiles.map((f) => readFileSync(f, 'utf8')).join('\n');
 
-// 1. Every family referenced at least once.
+// 1. Every family referenced at least once (word-boundary match: `etosha-1`
+//    in source must NOT satisfy a reference to family `etosha`).
 const APPROVED_ILLUSTRATION = 'wildpath-hero-main.webp';
 for (const fam of manifest.families) {
-  if (!srcText.includes(`'${fam.base}'`) && !srcText.includes(`"${fam.base}"`) && !srcText.includes(`${fam.base}`)) {
+  const boundary = new RegExp(`(?<![a-z0-9-])${fam.base}(?![a-z0-9-])`);
+  if (!boundary.test(srcText)) {
     errors.push(`UNUSED PHOTO: ${fam.base} (${fam.dir}) — every photo must be used at least once`);
   }
 }
@@ -119,6 +121,52 @@ for (const [, base, dir, widthsLit] of variantSrc.matchAll(
 for (const m of srcText.matchAll(/['"`]((?:images|video)\/[a-z0-9/._-]*-(?:640|960|1280|1440|1600|1920|2560)\.(?:webp|avif|jpe?g|mp4|png))['"`]/g)) {
   if (!existsSync(join(ROOT, 'public', m[1]))) {
     errors.push(`HARDCODED 404: ${m[1]} referenced in src but missing on disk`);
+  }
+}
+
+// 7. Every photo base named in the media data (journey/destination/field-note
+//    maps, card/hero fields) must exist in IMAGE_VARIANTS. An unknown base
+//    falls back to a plain `${dir}/${base}.webp` path that does not exist on
+//    disk — a silent 404 the registry checks above never see.
+const registryBases = new Set(
+  [...variantSrc.matchAll(/"([a-z0-9-]+)":\s*\{/g)].map((m) => m[1])
+);
+const mediaText = srcFiles
+  .filter((f) => /journey-media|destinations|field-notes|journeys\.ts/.test(f))
+  .map((f) => readFileSync(f, 'utf8'))
+  .join('\n');
+for (const m of mediaText.matchAll(/(?:base|image|card|hero):\s*['"]([a-z0-9][a-z0-9-]+)['"]/g)) {
+  if (!registryBases.has(m[1])) {
+    errors.push(`UNKNOWN FAMILY: '${m[1]}' used in media data but missing from image-variants.ts`);
+  }
+}
+
+// 8. basePath class: raw root-absolute image/video literals in JSX must go
+//    through withBP(). next/image sources included — export mode does not
+//    apply basePath to them (verified: footer illustration shipped 404 on the
+//    GitHub Pages mirror while every withBP()-wrapped src was correct).
+for (const f of srcFiles) {
+  const lines = readFileSync(f, 'utf8').split('\n');
+  lines.forEach((line, i) => {
+    const raw = /(?:src|srcSet|href|poster)=["'{]`?\/?(?:images|video)\//.test(line);
+    if (raw && !line.includes('withBP') && !line.includes('https://')) {
+      errors.push(`MISSING withBP: ${f.replace(ROOT + '/', '')}:${i + 1} — ${line.trim().slice(0, 90)}`);
+    }
+  });
+}
+
+// 9. Static header/meta assets must exist on disk (og image, favicons,
+//    webmanifest) — cheap HEAD-equivalent that prevents silent 404s in
+//    link previews and browser tabs.
+for (const p of [
+  'images/social/og-master.jpg',
+  'images/social/og-master.webp',
+  'favicon.png', 'favicon-16.png', 'favicon-32.png',
+  'apple-touch-icon.png', 'android-chrome-192.png', 'android-chrome-512.png',
+  'site.webmanifest',
+]) {
+  if (!existsSync(join(ROOT, 'public', p))) {
+    errors.push(`MISSING STATIC ASSET: public/${p}`);
   }
 }
 

@@ -8,20 +8,27 @@ import { withBP } from '@/lib/base-path';
  *
  * Media: 8.0s seamless loop (tail crossfades into the reversed head, ending
  * exactly on frame 0 — the wrap is smoother than normal frame-to-frame motion,
- * seam SSIM 0.933 vs 0.735 for adjacent footage frames). Desktop 1280x720
- * (~1.0MB) and mobile 720x404 (~0.2MB) H.264 — universally decodable.
+ * full-frame seam SSIM ≈0.89 vs ≈0.60 for adjacent footage frames).
+ * Desktop 1280x720 (~1.0MB) and mobile 720x404 (~0.2MB) H.264 — universally
+ * decodable.
  *
  * Behaviour contract:
  * - poster <picture> (AVIF → WebP → JPEG) is the LCP element, preloaded
- * - sources are attached AFTER hydration; play() is called directly — never
- *   gated on `canplaythrough`, which does not fire under preload="metadata"
- *   (the bug that previously left the video invisible in Chromium/Firefox)
+ * - sources are attached AFTER hydration and only once the IntersectionObserver
+ *   confirms the hero is on screen; play() is called directly — never gated on
+ *   `canplaythrough`, which does not fire under preload="metadata" (the bug
+ *   that previously left the video invisible in Chromium/Firefox)
  * - fade-in only on the `playing` event; on any failure the poster remains
- * - muted + playsInline + loop: standard background-video posture
+ * - muted + playsInline + loop + autoplay: standard background-video posture;
+ *   the attribute is a belt-and-braces fallback alongside the JS play()
  * - prefers-reduced-motion / Save-Data / 2G: video never loads, poster only
- * - IntersectionObserver pauses the loop off-screen; visibilitychange too
+ *   (Save-Data/effectiveType come from navigator.connection — Chromium only;
+ *   WebKit exposes no network-info API, so iOS relies on the reduced-motion
+ *   and data-saver OS settings that surface through that API-free path)
+ * - IntersectionObserver pauses the loop off-screen; visibilitychange too;
+ *   both resume paths re-check the motion guard
  * - mobile vs desktop source chosen via matchMedia(≤768px), re-evaluated on
- *   viewport change
+ *   viewport change; a source switch fades back to the poster first
  */
 export function HeroVideo({ posterAlt }: { posterAlt: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -46,10 +53,13 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
     if (reducedMotion.matches || slowNetwork) return;
 
     const mobile = window.matchMedia('(max-width: 768px)');
-    let inView = true; // hero mounts above the fold
+    let inView = false; // IntersectionObserver sets this before anything plays
     let currentKind = '';
 
+    const allowedToPlay = () => !reducedMotion.matches && !slowNetwork;
+
     const start = () => {
+      if (!allowedToPlay()) return;
       const p = video.play();
       if (p) p.catch(() => setPlaying(false)); // autoplay blocked → poster stays
     };
@@ -58,6 +68,7 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
       const kind = mobile.matches ? 'mobile' : 'desktop';
       if (kind === currentKind) return;
       currentKind = kind;
+      setPlaying(false); // fade to poster; back in on the new source's `playing`
       video.src = withBP(`/video/hero-${kind}.mp4`);
       video.load();
       if (inView && !document.hidden) start();
@@ -70,17 +81,16 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
     video.addEventListener('playing', onPlaying);
     video.addEventListener('error', onError);
 
-    applySource();
-
-    const onMobileChange = () => applySource();
-    mobile.addEventListener('change', onMobileChange);
-
-    // Pause off-screen (battery + data).
+    // Pause off-screen (battery + data). Observed BEFORE the first source is
+    // attached so a hydration-scroll-past-the-hero never fetches video bytes.
     const io = new IntersectionObserver(
       ([entry]) => {
+        const was = inView;
         inView = entry.isIntersecting;
-        if (inView && !document.hidden && video.paused && currentKind) {
+        if (inView && !was && currentKind && !document.hidden) {
           start();
+        } else if (inView && !currentKind) {
+          applySource(); // first intersection drives the initial attach+play
         } else if (!inView) {
           video.pause();
         }
@@ -88,6 +98,8 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
       { threshold: 0.15 }
     );
     io.observe(video);
+
+    applySource(); // attach the right source now; IO starts playback when in view
 
     // Tab backgrounded/foregrounded.
     const onVisibility = () => {
@@ -98,6 +110,9 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
       }
     };
     document.addEventListener('visibilitychange', onVisibility);
+
+    const onMobileChange = () => applySource();
+    mobile.addEventListener('change', onMobileChange);
 
     // Honour a mid-session reduced-motion switch.
     const onMotionChange = () => {
@@ -138,6 +153,7 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
         ref={videoRef}
         className="wp-hero-video"
         style={{ opacity: playing ? 1 : 0, transition: 'opacity 0.8s ease' }}
+        autoPlay
         muted
         loop
         playsInline

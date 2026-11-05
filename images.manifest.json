@@ -372,7 +372,7 @@
       "alt": "The red sandstone cliffs of the Waterberg plateau rising over green bush.",
       "theme": "plateau/waterberg",
       "orientation": "landscape",
-      "kind": "photo",
+      "kind": "scouted-commons",
       "licence": "CC BY-SA 2.5 Harald Süpfle via Wikimedia Commons",
       "usage": [
         "journeys/untamed-desert:timeline"
@@ -384,7 +384,7 @@
       "alt": "A breeding herd of elephants crossing golden grass in Bwabwata National Park.",
       "theme": "wildlife/caprivi",
       "orientation": "landscape",
-      "kind": "photo",
+      "kind": "scouted-commons",
       "licence": "CC BY-SA 3.0 Marco Schmidt[1] via Wikimedia Commons",
       "usage": [
         "journeys/untamed-northern-caprivi:timeline+gallery",
@@ -397,7 +397,7 @@
       "alt": "The Okavango River running wide and green under a blue sky.",
       "theme": "river/okavango",
       "orientation": "landscape",
-      "kind": "photo",
+      "kind": "scouted-commons",
       "licence": "CC BY-SA 4.0 Zairon via Wikimedia Commons",
       "usage": [
         "journeys/untamed-northern-caprivi:timeline",
@@ -789,6 +789,67 @@
       "usage": [
         "journeys/untamed-northern-caprivi:timeline (Chobe River stop)",
         "destinations/chobe:mosaic"
+      ]
+    },
+    {
+      "base": "chobe-elephants-riverbank",
+      "dir": "images/photos",
+      "alt": "Elephants gathered on the green banks of the Chobe River.",
+      "theme": "wildlife/chobe",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline",
+        "destinations/chobe:mosaic"
+      ]
+    },
+    {
+      "base": "victoria-falls-rainbow",
+      "dir": "images/photos",
+      "alt": "Victoria Falls with a rainbow standing in the spray gorge.",
+      "theme": "water/victoria-falls",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "destinations/victoria-falls:mosaic"
+      ]
+    },
+    {
+      "base": "skeleton-coast-shipwreck",
+      "dir": "images/photos",
+      "alt": "A rusting shipwreck half-buried in Skeleton Coast sand and fog.",
+      "theme": "coast/skeleton-coast",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "destinations/skeleton-coast:mosaic"
+      ]
+    },
+    {
+      "base": "caprivi-mokoro-golden-reeds",
+      "dir": "images/photos",
+      "alt": "A mokoro gliding through golden reeds on a Caprivi river channel.",
+      "theme": "river/caprivi",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/untamed-northern-caprivi:timeline"
+      ]
+    },
+    {
+      "base": "landcruiser-dune-crest",
+      "dir": "images/photos",
+      "alt": "A land cruiser parked on a dune crest above the sand sea.",
+      "theme": "desert/dune-drive",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Project asset",
+      "usage": [
+        "journeys/classic-namibia:gallery"
       ]
     }
   ]
