@@ -5,7 +5,7 @@
   "description": "Wildpath Adventures — static site. Next.js App Router, no database, no backend services.",
   "scripts": {
     "dev": "next dev -p 3000 2>&1 | tee dev.log",
-    "build": "next build && npm run check:images",
+    "build": "next build && npm run check:images && cp -r .next/static .next/standalone/.next/ && cp -r public .next/standalone/",
     "check:images": "node scripts/check-images.mjs",
     "start": "NODE_ENV=production bun .next/standalone/server.js 2>&1 | tee server.log",
     "lint": "eslint ."
