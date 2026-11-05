@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { bestVariantWidth, variantDir } from '@/lib/variant-helpers';
+import { withBP } from '@/lib/base-path';
 
 export type LightboxImage = {
   base: string;
@@ -99,7 +100,7 @@ export function Lightbox({
       <figure className="flex flex-col items-center max-w-full">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={`/${dir(index)}/${current.base}-${w}.webp`}
+          src={withBP(`/${dir(index)}/${current.base}-${w}.webp`)}
           alt={current.alt}
           loading="eager"
         />
@@ -145,7 +146,7 @@ export function Gallery({
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src={`/${variantDir(img.base, img.dir)}/${img.base}-${bestVariantWidth(img.base, 960)}.webp`}
+              src={withBP(`/${variantDir(img.base, img.dir)}/${img.base}-${bestVariantWidth(img.base, 960)}.webp`)}
               alt={img.alt}
               loading="lazy"
               decoding="async"

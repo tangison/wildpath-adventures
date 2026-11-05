@@ -14,6 +14,7 @@ import { DESTINATIONS } from '@/lib/destinations';
 import { HOME_MOSAIC, HOME_GALLERY, CTA_PHOTO } from '@/lib/journey-media';
 import { SITE, WHATSAPP_URL } from '@/lib/site';
 import { FIELD_NOTES } from '@/lib/field-notes';
+import { withBP } from '@/lib/base-path';
 
 // ═══════════════════════════════════════════════════════════
 // WILDPATH ADVENTURES — HOME (image-first rebuild)
@@ -34,7 +35,7 @@ export default function Home() {
       <link
         rel="preload"
         as="image"
-        href="/video/hero-poster.avif"
+        href={withBP('/video/hero-poster.avif')}
         type="image/avif"
         fetchPriority="high"
       />

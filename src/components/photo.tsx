@@ -1,4 +1,5 @@
 import { IMAGE_VARIANTS } from '@/lib/image-variants';
+import { withBP } from '@/lib/base-path';
 
 /**
  * Photo — responsive <picture> for every real photograph on the site.
@@ -43,17 +44,17 @@ export function Photo({
     // Unknown family: render a safe single-source img so builds never break.
     return (
       <figure className={`wp-photo ${className}`} style={{ aspectRatio: aspect }}>
-        <img src={`/${dir}/${base}.webp`} alt={alt} loading={priority ? 'eager' : 'lazy'} className={imgClassName} />
+        <img src={withBP(`/${dir}/${base}.webp`)} alt={alt} loading={priority ? 'eager' : 'lazy'} className={imgClassName} />
         {caption ? <figcaption className="sr-only">{caption}</figcaption> : null}
       </figure>
     );
   }
 
   const widths = fam.widths;
-  const avifSrcset = widths.map((w) => `/${dir}/${base}-${w}.avif ${w}w`).join(', ');
-  const webpSrcset = widths.map((w) => `/${dir}/${base}-${w}.webp ${w}w`).join(', ');
+  const avifSrcset = widths.map((w) => `${withBP(`/${dir}/${base}-${w}.avif`)} ${w}w`).join(', ');
+  const webpSrcset = widths.map((w) => `${withBP(`/${dir}/${base}-${w}.webp`)} ${w}w`).join(', ');
   const largest = Math.max(...widths);
-  const src = `/${dir}/${base}-${largest}.webp`;
+  const src = withBP(`/${dir}/${base}-${largest}.webp`);
 
   // Intrinsic dimensions: derive height from the aspect ratio so the browser
   // reserves exact space (zero CLS) before the file downloads.

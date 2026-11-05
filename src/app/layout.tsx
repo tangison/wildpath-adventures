@@ -5,6 +5,7 @@ import { CookieConsent } from "@/components/cookie-consent";
 import { RevealScript, ParallaxScript, ScrollTop, StickyCta } from "@/components/widgets";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL, WHATSAPP_URL } from "@/lib/site";
+import { withBP } from "@/lib/base-path";
 
 // Font policy: three families total.
 //   Anton  — display headlines and the WILDPATH wordmark
@@ -61,7 +62,7 @@ export const metadata: Metadata = {
     url: SITE_URL,
     images: [
       {
-        url: '/images/social/og-master.webp',
+        url: withBP('/images/social/og-master.webp'),
         width: 1200,
         height: 630,
         alt: `${SITE.name} — ${SITE.tagline}`,
@@ -72,7 +73,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: SITE.name,
     description: SITE.tagline,
-    images: ['/images/social/og-master.webp'],
+    images: [withBP('/images/social/og-master.webp')],
   },
 };
 

@@ -1,4 +1,5 @@
 import { IMAGE_VARIANTS } from '@/lib/image-variants';
+import { withBP } from '@/lib/base-path';
 
 /**
  * Registry-driven variant selection.
@@ -34,7 +35,7 @@ export function variantSrcSet(base: string): {
 } | null {
   const fam = IMAGE_VARIANTS[base];
   if (!fam) return null;
-  const avif = fam.widths.map((w) => `/${fam.dir}/${base}-${w}.avif ${w}w`).join(', ');
-  const webp = fam.widths.map((w) => `/${fam.dir}/${base}-${w}.webp ${w}w`).join(', ');
+  const avif = fam.widths.map((w) => `${withBP(`/${fam.dir}/${base}-${w}.avif`)} ${w}w`).join(', ');
+  const webp = fam.widths.map((w) => `${withBP(`/${fam.dir}/${base}-${w}.webp`)} ${w}w`).join(', ');
   return { dir: fam.dir, avif, webp, largest: Math.max(...fam.widths) };
 }

@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { withBP } from '@/lib/base-path';
 
 /**
  * HeroVideo — full-bleed background loop.
@@ -57,7 +58,7 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
       const kind = mobile.matches ? 'mobile' : 'desktop';
       if (kind === currentKind) return;
       currentKind = kind;
-      video.src = `/video/hero-${kind}.mp4`;
+      video.src = withBP(`/video/hero-${kind}.mp4`);
       video.load();
       if (inView && !document.hidden) start();
     };
@@ -121,10 +122,10 @@ export function HeroVideo({ posterAlt }: { posterAlt: string }) {
   return (
     <div className="wp-hero-media">
       <picture>
-        <source srcSet="/video/hero-poster.avif" type="image/avif" />
-        <source srcSet="/video/hero-poster.webp" type="image/webp" />
+        <source srcSet={withBP('/video/hero-poster.avif')} type="image/avif" />
+        <source srcSet={withBP('/video/hero-poster.webp')} type="image/webp" />
         <img
-          src="/video/hero-poster.jpg"
+          src={withBP('/video/hero-poster.jpg')}
           alt={posterAlt}
           className="wp-hero-poster"
           width={1600}
