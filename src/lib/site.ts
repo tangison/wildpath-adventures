@@ -22,8 +22,8 @@ export const SITE = {
   tagline: 'Slow down. Breathe. Discover Namibia.',
   /** Public enquiry email — shown to users. Mirror of CONTACT_EMAIL for client-side use. */
   email: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'journeys@wildpathnamibia.com',
-  phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+264 81 255 7741',
-  phoneE164: process.env.NEXT_PUBLIC_PHONE_E164 || '264812557741',
+  phone: process.env.NEXT_PUBLIC_PHONE_DISPLAY || '+264 81 270 4244',
+  phoneE164: process.env.NEXT_PUBLIC_PHONE_E164 || '264812704244',
   location: {
     city: 'Windhoek',
     region: 'Khomas Region',
