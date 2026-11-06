@@ -1,0 +1,651 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://wildpath.tangison.com</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red Sossusvlei dunes rising behind acacia trees.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A granite koppie above Damaraland grassland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/skeleton-coast-wreck-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The wreck of the Eduard Bohlen stranded in Skeleton Coast sand.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Sunset over Kalahari thornveld.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/zambezi-junction-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Zambezi River at the four-nations corner, Caprivi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/chobe-river-kasane-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Chobe River winding through green floodplains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/victoria-falls-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Victoria Falls from the air, spray rising above the gorge.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/oryx-dusk-golden-grass-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A gemsbok oryx standing in golden grass at dusk.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Ridges of red dune sea rolling to the horizon.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/game-drive-red-sand-track-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A game-drive vehicle on a red sand track.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A walker descending a dune crest towards the white pan.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/thatched-hillside-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Thatched chalets on poles at the foot of a granite hill.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/journeys/classic-namibia</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-white-pan-red-dunes-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red Sossusvlei dunes rising behind acacia trees.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/windhoek-christ-church-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Christuskirche and central Windhoek from above.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Sunset over Kalahari thornveld.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/kalahari-cabin-red-dune-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A stilted cabin with a green roof on a red dune.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hoodia plants on a red dune slipface.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/game-drive-red-sand-track-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A game-drive vehicle on a red sand track.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/fish-river-canyon-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Fish River Canyon from the main viewpoint.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/quiver-tree-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A quiver tree in rocky ground under a blue sky, southern Namibia.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kolmanskop-ghost-town-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The sand-buried houses of Kolmanskop ghost town near Luederitz.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/namib-texture-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Gravel plain scattered with stones, dunes on the far horizon, near Aus.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-trees-dune-shadow-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Bare trees on white clay beneath a red dune in shadow.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A walker descending a dune crest towards the white pan.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/namib-red-dunes-green-plains-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red dunes meeting green plains after the rains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/swakopmund-jetty-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Swakopmund’s beachfront and jetty from the air.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A granite koppie above Damaraland grassland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Boulder-strewn hills with a lone shepherd’s tree.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/thatched-hillside-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Thatched chalets on poles at the foot of a granite hill.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-2-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Lions drinking at a waterhole, mirrored in still water.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A breeding herd of elephants moving across red earth.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Two cheetahs resting beside a termite mound.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/rhino-ostrich-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A rhino grazing beside an ostrich in green bush.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Ridges of red dune sea rolling to the horizon.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/landcruiser-dune-crest-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A land cruiser parked on a dune crest above the sand sea.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/journeys/untamed-northern-caprivi</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/chobe-river-kasane-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Chobe River winding through green floodplains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/zambezi-junction-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Zambezi River at the four-nations corner, Caprivi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/windhoek-christ-church-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Christuskirche and central Windhoek from above.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Two cheetahs resting beside a termite mound.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/okavango-river-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Okavango River running wide and green.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/caprivi-mokoro-golden-reeds-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A mokoro gliding through golden reeds on a Caprivi river channel.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/bwabwata-elephant-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants crossing golden grass in Bwabwata National Park.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/chobe-river-elephants-dusk-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants moving along the Chobe riverbank at dusk through warm haze.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/chobe-elephants-riverbank-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants gathered on the green banks of the Chobe River.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/victoria-falls-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Victoria Falls from the air, spray rising above the gorge.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/journeys/untamed-central</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A granite koppie above Damaraland grassland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/windhoek-christ-church-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Christuskirche and central Windhoek from above.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/rhino-ostrich-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A rhino grazing beside an ostrich in green bush.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-2-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Lions drinking at a waterhole, mirrored in still water.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/damaraland-lodge-granite-hill-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A lodge of stone and thatch built into a granite hillside.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Boulder-strewn hills with a lone shepherd’s tree.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/swakopmund-jetty-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Swakopmund’s beachfront and jetty from the air.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A breeding herd of elephants moving across red earth.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/thatched-hillside-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Thatched chalets on poles at the foot of a granite hill.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/journeys/untamed-desert</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/kalahari-cabin-red-dune-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A stilted cabin with a green roof on a red dune.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red Sossusvlei dunes rising behind acacia trees.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/windhoek-christ-church-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Christuskirche and central Windhoek from above.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hoodia plants on a red dune slipface.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-trees-dune-shadow-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Bare trees on white clay beneath a red dune in shadow.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/namib-red-dunes-green-plains-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red dunes meeting green plains after the rains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/swakopmund-jetty-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Swakopmund’s beachfront and jetty from the air.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/waterberg-plateau-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The red sandstone cliffs of the Waterberg plateau rising over green bush.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-2-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Lions drinking at a waterhole, mirrored in still water.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Two cheetahs resting beside a termite mound.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Ridges of red dune sea rolling to the horizon.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-white-pan-red-dunes-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Sunset over Kalahari thornveld.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/namibia</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Ridges of red dune sea rolling to the horizon.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red Sossusvlei dunes rising behind acacia trees.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A granite koppie above Damaraland grassland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/swakopmund-jetty-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Swakopmund’s beachfront and jetty from the air.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Sunset over Kalahari thornveld.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/fish-river-canyon-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Fish River Canyon from the main viewpoint.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/sossusvlei</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-white-pan-red-dunes-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red Sossusvlei dunes rising behind acacia trees.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/sossusvlei-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A walker descending a dune crest towards the white pan.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/deadvlei-trees-dune-shadow-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Bare trees on white clay beneath a red dune in shadow.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/namib-red-dunes-green-plains-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Red dunes meeting green plains after the rains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Ridges of red dune sea rolling to the horizon.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/etosha</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>An elephant feeding on pale Etosha grass.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/giraffes-walking-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Three giraffes walking through green Etosha scrubland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-2-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Lions drinking at a waterhole, mirrored in still water.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Two cheetahs resting beside a termite mound.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/etosha-detail-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A breeding herd of elephants moving across red earth.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/rhino-ostrich-etosha-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A rhino grazing beside an ostrich in green bush.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/damaraland</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A granite koppie above Damaraland grassland.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/damaraland-1-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Boulder-strewn hills with a lone shepherd’s tree.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/damaraland-lodge-granite-hill-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A lodge of stone and thatch built into a granite hillside.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/thatched-hillside-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Thatched chalets on poles at the foot of a granite hill.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/skeleton-coast</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/skeleton-coast-wreck-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The wreck of the Eduard Bohlen stranded in Skeleton Coast sand.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/cape-cross-seals-640.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Cape fur seals crowded on the rocks at Cape Cross.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/skeleton-coast-shipwreck-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A rusting shipwreck half-buried in Skeleton Coast sand and fog.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/kalahari</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Sunset over Kalahari thornveld.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/kalahari-2-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Hoodia plants on a red dune slipface.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/kalahari-cabin-red-dune-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A stilted cabin with a green roof on a red dune.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/game-drive-red-sand-track-960.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A game-drive vehicle on a red sand track.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/dune-lodge-1440.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>A cabin on a red Kalahari dune above green savanna.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/caprivi</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/zambezi-junction-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Zambezi River at the four-nations corner, Caprivi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/okavango-river-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Okavango River running wide and green.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/bwabwata-elephant-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants crossing golden grass in Bwabwata National Park.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/chobe</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/chobe-river-kasane-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Chobe River winding through green floodplains.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/chobe-river-elephants-dusk-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants moving along the Chobe riverbank at dusk through warm haze.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/chobe-elephants-riverbank-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Elephants gathered on the green banks of the Chobe River.</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://wildpath.tangison.com/destinations/victoria-falls</loc>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/victoria-falls-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Victoria Falls from the air, spray rising above the gorge.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/places/zambezi-junction-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>The Zambezi River at the four-nations corner, Caprivi.</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://wildpath.tangison.com/images/photos/victoria-falls-rainbow-1920.webp</image:loc>
+      <image:title>Wildpath Adventures</image:title>
+      <image:caption>Victoria Falls with a rainbow standing in the spray gorge.</image:caption>
+    </image:image>
+  </url>
+</urlset>

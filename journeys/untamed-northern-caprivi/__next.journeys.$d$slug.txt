@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[39756,["/wildpath-adventures/_next/static/chunks/ff1a16fafef87110.js","/wildpath-adventures/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+3:I[99123,["/wildpath-adventures/_next/static/chunks/31bb50d0efe46035.js","/wildpath-adventures/_next/static/chunks/e4a65d2874e78464.js","/wildpath-adventures/_next/static/chunks/2668039f4600fce2.js"],"default"]
+4:I[37457,["/wildpath-adventures/_next/static/chunks/ff1a16fafef87110.js","/wildpath-adventures/_next/static/chunks/7340adf74ff47ec0.js"],"default"]
+0:{"buildId":"OmXGF3n5fWbPaUg6LHGHQ","rsc":["$","$1","c",{"children":[null,["$","$L2",null,{"parallelRouterKey":"children","error":"$3","errorStyles":[],"errorScripts":[["$","script","script-0",{"src":"/wildpath-adventures/_next/static/chunks/e4a65d2874e78464.js","async":true}],["$","script","script-1",{"src":"/wildpath-adventures/_next/static/chunks/2668039f4600fce2.js","async":true}]],"template":["$","$L4",null,{}]}]]}],"loading":null,"isPartial":false}
