@@ -15,7 +15,8 @@ is prerendered at build time.
 - **Tailwind CSS 4**
 - **Geist** (body/UI) + **Fraunces** (editorial serif accents), both
   self-hosted subsets via `next/font` — no external font requests
-- Hero: 8-second compressed video loop (desktop + mobile H.264 MP4, AVIF/WebP
+- Hero: two 8-second seamless scene loops played as one playlist (Sossusvlei
+  dune drive + Swakopmund beachfront, desktop + mobile H.264 MP4, AVIF/WebP
   poster chain) — see `src/components/hero-video.tsx`
 - Photos: pre-optimised AVIF/WebP variant families served as plain
   `<picture>` markup through `src/components/photo.tsx`; registry in

@@ -174,6 +174,8 @@ for (const p of [
 // stricter than spec), mobile 720px MP4 <300KB, poster AVIF <80KB with WebP+JPEG
 // fallbacks. MP4-only delivery: H.264 decodes universally; a broken/truncated
 // first-source (the VP9 risk) is worse than the marginal WebM saving.
+// Scene 2 (hero-coast-*, Swakopmund footage, client brief Nov 2026): the brief
+// requires the new clip under 1MB desktop — cap enforced at 1.0MB.
 const poster = join(ROOT, 'public', 'video', 'hero-poster.avif');
 if (existsSync(poster) && statSync(poster).size > 80 * 1024) {
   warnings.push(`hero-poster.avif is ${(statSync(poster).size / 1024).toFixed(0)}KB (target <80KB)`);
@@ -184,7 +186,7 @@ for (const f of ['hero-poster.webp', 'hero-poster.jpg']) {
     errors.push(`MISSING POSTER FALLBACK: public/video/${f}`);
   }
 }
-for (const f of ['hero-desktop.mp4', 'hero-mobile.mp4']) {
+for (const f of ['hero-desktop.mp4', 'hero-mobile.mp4', 'hero-coast-desktop.mp4', 'hero-coast-mobile.mp4']) {
   const p = join(ROOT, 'public', 'video', f);
   if (!existsSync(p)) errors.push(`MISSING VIDEO: public/video/${f}`);
 }
@@ -199,6 +201,16 @@ for (const f of ['hero-mobile.mp4', 'hero-mobile.webm']) {
   const p = join(ROOT, 'public', 'video', f);
   if (existsSync(p) && statSync(p).size > 300 * 1024) {
     errors.push(`VIDEO OVER CAP: ${f} is ${(statSync(p).size / 1024).toFixed(0)}KB (cap 300KB)`);
+  }
+}
+{
+  const p = join(ROOT, 'public', 'video', 'hero-coast-desktop.mp4');
+  if (existsSync(p) && statSync(p).size > 1024 * 1024) {
+    errors.push(`VIDEO OVER CAP: hero-coast-desktop.mp4 is ${(statSync(p).size / 1048576).toFixed(2)}MB (brief cap 1.0MB)`);
+  }
+  const m = join(ROOT, 'public', 'video', 'hero-coast-mobile.mp4');
+  if (existsSync(m) && statSync(m).size > 300 * 1024) {
+    errors.push(`VIDEO OVER CAP: hero-coast-mobile.mp4 is ${(statSync(m).size / 1024).toFixed(0)}KB (cap 300KB)`);
   }
 }
 

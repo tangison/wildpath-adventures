@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Nav, Footer, ContourLines } from '@/components/wildpath';
+import { NtbBadge } from '@/components/ntb-badge';
 import { SITE, SITE_EMAIL } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -150,11 +151,15 @@ export default function TermsPage() {
                 </div>
 
                 <div className="bg-[#E8E3D5] p-5 border-l-2 border-[#C5511A] mt-10">
-                  <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
-                    Wildpath Adventures is a Namibian-owned tour operator
-                    registered in Windhoek, Namibia. Registration numbers and
-                    further statutory details are available on request.
-                  </p>
+                  <div className="flex flex-col sm:flex-row items-start gap-6">
+                    <NtbBadge variant="light" />
+                    <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
+                      Wildpath Adventures is a Namibian-owned tour operator
+                      registered in Windhoek, Namibia, and registered with the
+                      Namibia Tourism Board. The NTB registration number and
+                      further statutory details are available on request.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>

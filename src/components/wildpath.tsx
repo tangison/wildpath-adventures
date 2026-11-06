@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { Menu, X, ArrowRight, MessageCircle, ChevronDown } from 'lucide-react';
+import { NtbBadge } from '@/components/ntb-badge';
 import {
   SITE,
   SITE_EMAIL,
@@ -531,6 +532,11 @@ export function Footer() {
               ))}
             </div>
           )}
+
+          {/* Namibia Tourism Board registration mark, site-wide */}
+          <div className="flex justify-center mb-10">
+            <NtbBadge variant="dark" compact />
+          </div>
 
           {/* Legal links */}
           <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/50 mb-8">

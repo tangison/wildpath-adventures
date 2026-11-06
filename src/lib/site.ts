@@ -43,10 +43,22 @@ export const SITE = {
     name: 'Tangison Studio',
     url: 'https://studio.tangison.com',
   },
+  /**
+   * Namibia Tourism Board registration number.
+   *
+   * NOT published on any public registry we could verify (the NTB operator
+   * directory on visitnamibia.com.na has no Wildpath listing as of Nov 2026),
+   * so this ships empty and every NTB badge site-wide renders the generic
+   * "Registered with the Namibia Tourism Board" mark. Set it once here (or
+   * via NEXT_PUBLIC_NTB_REG_NUMBER) and all badges pick up the number —
+   * never invent one in a component.
+   */
+  ntbRegNumber: process.env.NEXT_PUBLIC_NTB_REG_NUMBER || '',
 } as const;
 
 // Convenience aliases used throughout the app
 export const SITE_EMAIL = SITE.email;
+export const NTB_REG_NUMBER = SITE.ntbRegNumber;
 export const SITE_URL = SITE.url;
 export const WHATSAPP_URL = `https://wa.me/${SITE.phoneE164}`;
 export const TEL_URL = `tel:+${SITE.phoneE164}`;

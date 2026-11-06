@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, MessageCircle } from 'lucide-react';
 import { Nav, Footer, BirdFlock } from '@/components/wildpath';
+import { NtbBadge } from '@/components/ntb-badge';
 import { Photo } from '@/components/photo';
 import { WHATSAPP_URL } from '@/lib/site';
 
@@ -70,6 +71,9 @@ export default function AboutPage() {
               will build your journey.
             </p>
             <BirdFlock className="w-40 h-12 text-[#9E4214]/40 mt-10" />
+            <div className="mt-10">
+              <NtbBadge variant="light" />
+            </div>
           </div>
         </section>
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Phone, Mail, MapPin, MessageCircle } from 'lucide-react';
 import { Nav, Footer } from '@/components/wildpath';
+import { NtbBadge } from '@/components/ntb-badge';
 import { Photo } from '@/components/photo';
 import { ContactForm } from '@/components/contact-form';
 import { SITE, WHATSAPP_URL, TEL_URL } from '@/lib/site';
@@ -121,6 +122,10 @@ export default function ContactPage() {
                     </span>
                   </span>
                 </div>
+              </div>
+
+              <div className="mt-8">
+                <NtbBadge variant="light" compact />
               </div>
 
               <div className="mt-8 wp-photo wp-img-reveal" style={{ aspectRatio: '4 / 3' }}>
