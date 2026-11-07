@@ -129,7 +129,7 @@ export function HeroSlider() {
         <p className="wp-subhead text-[0.6rem] md:text-[0.65rem] text-[#F2EDE3] bg-[#140C06]/55 backdrop-blur-sm px-3.5 py-2 max-w-[16rem] text-right leading-snug">
           {SLIDES[active].label}
         </p>
-        <div className="flex gap-2" role="tablist" aria-label="Choose slide">
+        <div className="flex gap-2 bg-[#140C06]/55 backdrop-blur-sm rounded-full px-3 py-2.5" role="tablist" aria-label="Choose slide">
           {SLIDES.map((s, i) => (
             <button
               key={s.base}
