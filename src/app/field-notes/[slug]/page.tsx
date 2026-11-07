@@ -5,7 +5,7 @@ import { ChevronLeft, ArrowRight } from 'lucide-react';
 import { Nav, Footer } from '@/components/wildpath';
 import { Photo } from '@/components/photo';
 import { ARTICLES, FIELD_NOTES, getFieldNote } from '@/lib/field-notes';
-import { WHATSAPP_URL, SITE_URL } from '@/lib/site';
+import { WHATSAPP_URL, SITE, SITE_URL } from '@/lib/site';
 import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 
 export const dynamicParams = false; // unknown slugs hard-404 (no soft-200 crawl trap)
@@ -26,6 +26,13 @@ export async function generateMetadata({
     title: note.title,
     description: note.excerpt,
     alternates: { canonical: `/field-notes/${slug}` },
+    openGraph: {
+      title: `${note.title} · ${SITE.name}`,
+      description: note.excerpt,
+      url: `${SITE_URL}/field-notes/${slug}`,
+      type: 'article',
+      images: [{ url: '/images/social/og-master.webp', width: 1200, height: 630 }],
+    },
   };
 }
 

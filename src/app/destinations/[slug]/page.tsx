@@ -8,7 +8,7 @@ import { BreadcrumbJsonLd } from '@/components/breadcrumb-jsonld';
 import { Gallery } from '@/components/lightbox';
 import { DESTINATIONS, getDestination } from '@/lib/destinations';
 import { DESTINATION_MEDIA } from '@/lib/journey-media';
-import { SITE_URL, WHATSAPP_URL } from '@/lib/site';
+import { SITE, SITE_URL, WHATSAPP_URL } from '@/lib/site';
 import { bestVariantWidth, variantDir } from '@/lib/variant-helpers';
 
 export const dynamicParams = false; // unknown slugs hard-404 (no soft-200 crawl trap)
@@ -29,6 +29,12 @@ export async function generateMetadata({
     title: dest.name,
     description: dest.overview.slice(0, 155),
     alternates: { canonical: `/destinations/${slug}` },
+    openGraph: {
+      title: `${dest.name} · ${SITE.name}`,
+      description: dest.overview.slice(0, 155),
+      url: `${SITE_URL}/destinations/${slug}`,
+      images: [{ url: '/images/social/og-master.webp', width: 1200, height: 630 }],
+    },
   };
 }
 

@@ -23,9 +23,10 @@ export function proxy(request: NextRequest) {
   // noindex/nofollow so they never enter search indexes.
   const host = request.headers.get('host') || '';
   const PROD_HOSTS = [
-    'wildpath.tangison.com', // current canonical host
-    'wildpathnamibia.com', // client domain once DNS is live
-    'www.wildpathnamibia.com',
+    'wildpathnamibia.com', // canonical client domain (Cloudflare DNS → Vercel)
+    'www.wildpathnamibia.com', // 301s to the apex on Vercel
+    'wildpath-live-murex.vercel.app', // production deployment host
+    'wildpath.tangison.com', // retired alias, kept until DNS fully removed
   ];
   const isProduction = PROD_HOSTS.some((h) => host.startsWith(h));
   if (!isProduction) {

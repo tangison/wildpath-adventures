@@ -87,10 +87,13 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "TravelAgency",
+  "@id": `${SITE_URL}/#travelagency`,
   name: SITE.name,
   description:
     "A Namibian-owned tour operator creating personalised journeys across Namibia and Southern Africa.",
   url: SITE_URL,
+  logo: withBP('/images/brand/wildpath-logo-light-theme.webp'),
+  image: [withBP('/images/social/og-master.jpg')],
   email: SITE.email,
   telephone: SITE.phone,
   areaServed: ["Namibia", "Botswana", "Zimbabwe", "Zambia"],
@@ -112,6 +115,15 @@ const jsonLd = {
     closes: "17:00",
   },
   slogan: SITE.tagline,
+  ...(SITE.ntbRegNumber
+    ? {
+        identifier: {
+          "@type": "PropertyValue",
+          name: "Namibia Tourism Board Registration Number",
+          value: SITE.ntbRegNumber,
+        },
+      }
+    : {}),
 };
 
 export default function RootLayout({

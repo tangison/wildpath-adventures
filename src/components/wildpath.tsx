@@ -535,7 +535,7 @@ export function Footer() {
           </div>
 
           {/* Legal links */}
-          <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.04em] text-[#F2EDE3]/50 mb-8">
+          <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.04em] text-[#F2EDE3]/65 mb-8">
             <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
             <Link href="/privacy-policy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
             <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
@@ -545,12 +545,12 @@ export function Footer() {
           </div>
 
           {/* Copyright — current year + entity */}
-          <p className="text-[0.6rem] tracking-[0.04em] text-[#F2EDE3]/35 mb-6">
+          <p className="text-[0.6rem] tracking-[0.04em] text-[#F2EDE3]/55 mb-6">
             &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country} · All routes reserved
           </p>
 
           {/* Tangison Studio credit, colophon */}
-          <p className="text-[0.55rem] tracking-[0.05em] text-[#F2EDE3]/30">
+          <p className="text-[0.55rem] tracking-[0.05em] text-[#F2EDE3]/45">
             Site by{' '}
             <a
               href={SITE.studio.url}

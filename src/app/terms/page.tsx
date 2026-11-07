@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Nav, Footer, ContourLines } from '@/components/wildpath';
 import { NtbBadge } from '@/components/ntb-badge';
-import { SITE, SITE_EMAIL } from '@/lib/site';
+import { SITE, SITE_EMAIL, NTB_REG_NUMBER } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions',
@@ -156,8 +156,9 @@ export default function TermsPage() {
                     <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
                       Wildpath Adventures is a Namibian-owned tour operator
                       registered in Windhoek, Namibia, and registered with the
-                      Namibia Tourism Board. The NTB registration number and
-                      further statutory details are available on request.
+                      Namibia Tourism Board{NTB_REG_NUMBER ? <> under registration
+                      number <span className="font-semibold text-[#1A1A1A]">{NTB_REG_NUMBER}</span></> : null}.
+                      Further statutory details are available on request.
                     </p>
                   </div>
                 </div>

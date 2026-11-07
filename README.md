@@ -66,10 +66,11 @@ public/
 One environment variable matters:
 
 - `NEXT_PUBLIC_SITE_URL` — canonical URL used by metadata, sitemaps, JSON-LD.
-  Default: `https://wildpath.tangison.com` (`src/lib/site.ts`).
+  Default: `https://wildpathnamibia.com` (`src/lib/site.ts`).
 
 `src/proxy.ts` sends `X-Robots-Tag: noindex, nofollow` on every host except
-the production domains (`wildpath.tangison.com`, `wildpathnamibia.com`) so
+the production domains (`wildpathnamibia.com`, `www.wildpathnamibia.com`,
+the live `*.vercel.app` deployment, retired `wildpath.tangison.com`) so
 previews and mirrors stay out of search indexes.
 
 ## Build & run
@@ -82,7 +83,8 @@ npm run start          # serve the standalone build
 npm run build:mirror   # GitHub Pages export (basePath /wildpath-adventures)
 ```
 
-Deploy: push to `main` → Vercel (project `wildpath-adventures`, domain
-`wildpath.tangison.com`). The GitHub Pages mirror on the `gh-pages` branch is
-a noindex bridge for outages only — canonicals and sitemaps always point at
-the production domain.
+Deploy: push to `main` → Vercel (gemsweb account, project `wildpath-live`,
+domain `wildpathnamibia.com` via Cloudflare DNS, A `@` → 76.76.21.21 and
+CNAME `www` → cname.vercel-dns.com, both DNS-only). The GitHub Pages mirror
+on the `gh-pages` branch is a noindex bridge for outages only — canonicals
+and sitemaps always point at the production domain.

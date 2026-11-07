@@ -48,7 +48,7 @@ export default function Home() {
         <section className="relative min-h-[92svh] flex flex-col justify-end overflow-hidden">
           <HeroSlider />
 
-          <div className="relative z-10 px-6 md:px-12 pb-14 md:pb-20 pt-40">
+          <div className="relative z-10 px-6 md:px-12 pb-28 md:pb-20 pt-40">
             <div className="max-w-7xl mx-auto">
               <p className="wp-subhead text-[0.62rem] md:text-xs text-[#F2EDE3]/90 mb-6">
                 Wildpath Adventures · Windhoek, Namibia
@@ -66,7 +66,7 @@ export default function Home() {
                   planned by a Namibian team that knows the land. Self-drive,
                   guided, or a mix of both.
                 </p>
-                <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
+                <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col md:items-start gap-3">
                   <Link
                     href="/journeys"
                     className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
@@ -152,10 +152,10 @@ export default function Home() {
                     imgClassName="transition-transform duration-700 group-hover:scale-[1.02]"
                     className="h-full"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/85 via-[#140C06]/25 to-transparent" aria-hidden="true" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#140C06]/92 via-[#140C06]/60 via-45% to-transparent to-80%" aria-hidden="true" />
                   <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
-                    <p className="wp-subhead text-[0.58rem] text-[#E8854A] mb-2">
-                      {j.duration} · {j.travelStyle}
+                    <p className="wp-subhead text-[0.58rem] text-[#F2EDE3]/90 mb-2 [text-shadow:0_1px_8px_rgba(20,12,6,0.9),0_0_2px_rgba(20,12,6,0.8)]">
+                      {j.duration} <span className="text-[#E8854A]">·</span> {j.travelStyle}
                     </p>
                     <h3 className="wp-display text-2xl md:text-4xl text-[#F2EDE3] leading-[0.95] mb-2">
                       {j.name}
