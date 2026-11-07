@@ -13,7 +13,7 @@ export default function NotFound() {
           </Link>
           <Link
             href="/"
-            className="text-[0.65rem] tracking-[0.2em] uppercase font-bold text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors flex items-center gap-2"
+            className="text-[0.65rem] tracking-[0.05em] font-bold text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors flex items-center gap-2"
           >
             Back to Home <ArrowRight size={12} />
           </Link>
@@ -40,7 +40,7 @@ export default function NotFound() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3"
+                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3"
               >
                 Back to Home
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -49,7 +49,7 @@ export default function NotFound() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3"
+                className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3"
               >
                 <MessageCircle size={15} />
                 WhatsApp Us
@@ -59,7 +59,7 @@ export default function NotFound() {
         </div>
       </main>
 
-      <footer className="py-6 px-6 text-center text-[0.6rem] tracking-[0.2em] uppercase text-[#1A1A1A]/45 border-t border-[#1A1A1A]/10">
+      <footer className="py-6 px-6 text-center text-[0.6rem] tracking-[0.05em] text-[#1A1A1A]/45 border-t border-[#1A1A1A]/10">
         &copy; {new Date().getFullYear()} Wildpath Adventures · Windhoek, Namibia
       </footer>
     </div>

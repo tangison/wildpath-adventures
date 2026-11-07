@@ -20,7 +20,7 @@ export default function PrivacyPage() {
               <h1 className="wp-display text-4xl md:text-6xl lg:text-7xl leading-[0.9] mb-4">
                 Privacy Policy
               </h1>
-              <p className="text-sm text-[#1A1A1A]/60">Last updated: July 2026</p>
+              <p className="text-sm text-[#1A1A1A]/60">Last updated: November 2026</p>
             </div>
           </div>
         </section>
@@ -39,6 +39,20 @@ export default function PrivacyPage() {
                   explains what information we collect when you contact us or travel
                   with us, how we use it, and the choices you have.
                 </p>
+
+                <div>
+                  <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">What this website stores</h2>
+                  <p>
+                    This website stores no personal data. There are no enquiry
+                    forms connected to a database, no user accounts, and no
+                    advertising trackers. When you tap a booking or enquiry
+                    button, you are handed straight to WhatsApp or your own
+                    email app, so your messages and contact details stay
+                    between you and us on those channels and never pass
+                    through this website. Anonymous, aggregated traffic counts
+                    help us know which pages are useful; they identify no one.
+                  </p>
+                </div>
 
                 <div>
                   <h2 className="wp-display text-2xl text-[#1A1A1A] mb-3">What we collect</h2>

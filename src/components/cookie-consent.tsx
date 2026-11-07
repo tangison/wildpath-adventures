@@ -61,13 +61,13 @@ export function CookieConsent() {
         <div className="flex gap-3 shrink-0">
           <button
             onClick={decline}
-            className="text-xs tracking-[0.15em] uppercase text-[#F2EDE3]/60 hover:text-[#F2EDE3] transition-colors px-3 py-2"
+            className="text-xs tracking-[0.03em] text-[#F2EDE3]/60 hover:text-[#F2EDE3] transition-colors px-3 py-2"
           >
             Decline
           </button>
           <button
             onClick={accept}
-            className="text-xs tracking-[0.15em] uppercase bg-[#C5511A] text-[#F2EDE3] px-5 py-2 hover:bg-[#E8854A] transition-colors"
+            className="text-xs tracking-[0.03em] bg-[#C5511A] text-[#F2EDE3] px-5 py-2 hover:bg-[#E8854A] transition-colors"
           >
             Accept
           </button>

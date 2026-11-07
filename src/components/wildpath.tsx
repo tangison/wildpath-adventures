@@ -109,7 +109,7 @@ export function Wordmark({
     <span className={`inline-block ${className}`}>
       <span className={`inline-flex items-center ${s.gap} ${color}`}>
         <span className={`wp-display leading-none ${s.wildpath}`}>WILDPATH</span>
-        <span className={`leading-none self-center wp-subhead ${s.adventures} ${s.tracking}`}>
+        <span className={`leading-none self-center wp-subhead ${s.adventures} ${s.tracking}`} style={{ letterSpacing: '0.18em' }}>
           ADVENTURES
         </span>
       </span>
@@ -202,8 +202,8 @@ export function FootprintsMark({ className = '' }: { className?: string }) {
 // ═══════════════════════════════════════════════════════════
 
 const JOURNEY_LINKS = [
-  { name: 'Classic Namibia Route', href: '/journeys/classic-namibia', desc: 'The full loop — canyon, coast, dunes, pan' },
-  { name: 'Northern Caprivi Route', href: '/journeys/untamed-northern-caprivi', desc: 'North into the rivers — Kwando, Chobe, Zambezi' },
+  { name: 'Classic Namibia Route', href: '/journeys/classic-namibia', desc: 'The full loop: canyon, coast, dunes, pan' },
+  { name: 'Northern Caprivi Route', href: '/journeys/untamed-northern-caprivi', desc: 'North into the rivers: Kwando, Chobe, Zambezi' },
   { name: 'Central Namibia Route', href: '/journeys/untamed-central', desc: 'Etosha, Damaraland and the cold Atlantic' },
   { name: 'Desert & Coast Route', href: '/journeys/untamed-desert', desc: 'Red sand, the Skeleton Coast, the great pan' },
 ];
@@ -217,7 +217,7 @@ const DESTINATION_LINKS = [
   { name: 'Caprivi & Zambezi', href: '/destinations/caprivi', desc: 'Rivers, floodplains and water country' },
   { name: 'Chobe', href: '/destinations/chobe', desc: 'Elephant country on the Chobe River' },
   { name: 'Victoria Falls', href: '/destinations/victoria-falls', desc: 'The smoke that thunders' },
-  { name: 'Namibia', href: '/destinations/namibia', desc: 'The country as a whole — start here' },
+  { name: 'Namibia', href: '/destinations/namibia', desc: 'The country as a whole, start here' },
 ];
 
 const NAV_LINKS_PRIMARY = [
@@ -255,7 +255,7 @@ function Dropdown({ item }: { item: NavItem }) {
     return (
       <Link
         href={item.href}
-        className="text-[0.7rem] tracking-[0.14em] uppercase font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200 py-2"
+        className="text-[0.7rem] tracking-[0.14em] font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200 py-2"
       >
         {item.name}
       </Link>
@@ -273,7 +273,7 @@ function Dropdown({ item }: { item: NavItem }) {
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
         aria-haspopup="true"
-        className="text-[0.7rem] tracking-[0.14em] uppercase font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200 py-2 inline-flex items-center gap-1"
+        className="text-[0.7rem] tracking-[0.14em] font-medium text-[#1A1A1A]/70 hover:text-[#9E4214] transition-colors duration-200 py-2 inline-flex items-center gap-1"
       >
         {item.name}
         <ChevronDown size={12} className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
@@ -301,7 +301,7 @@ function Dropdown({ item }: { item: NavItem }) {
           <Link
             href={item.href}
             onClick={() => setOpen(false)}
-            className="block px-5 py-3 text-[0.62rem] tracking-[0.18em] uppercase font-bold text-[#9E4214] hover:bg-[#E8E3D5] transition-colors border-t border-[#1A1A1A]/10"
+            className="block px-5 py-3 text-[0.62rem] tracking-[0.04em] font-bold text-[#9E4214] hover:bg-[#E8E3D5] transition-colors border-t border-[#1A1A1A]/10"
           >
             View all {item.name} →
           </Link>
@@ -357,13 +357,13 @@ export function Nav() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="border border-[#1A1A1A]/15 text-[#1A1A1A] px-4 py-2 text-[0.65rem] font-bold tracking-[0.15em] uppercase hover:bg-[#1A1A1A]/5 transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
+              className="border border-[#1A1A1A]/15 text-[#1A1A1A] px-4 py-2 text-[0.65rem] font-bold tracking-[0.03em] hover:bg-[#1A1A1A]/5 transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
             >
               <MessageCircle size={13} /> WhatsApp
             </a>
             <Link
               href="/contact"
-              className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.15em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
+              className="bg-[#1A1A1A] text-[#F2EDE3] px-5 py-2.5 text-xs font-bold tracking-[0.03em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-2 rounded-lg"
             >
               Plan Your Journey
             </Link>
@@ -411,7 +411,7 @@ export function Nav() {
                         key={sub.href}
                         href={sub.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="text-[0.72rem] tracking-[0.08em] uppercase text-[#1A1A1A]/55 hover:text-[#9E4214] transition-colors"
+                        className="text-[0.72rem] tracking-[0.08em] text-[#1A1A1A]/55 hover:text-[#9E4214] transition-colors"
                       >
                         {sub.name}
                       </Link>
@@ -426,7 +426,7 @@ export function Nav() {
             <Link
               href="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.15em] uppercase w-fit inline-block rounded-lg"
+              className="bg-[#1A1A1A] text-[#F2EDE3] px-6 py-4 text-sm font-bold tracking-[0.03em] w-fit inline-block rounded-lg"
             >
               Plan Your Journey
             </Link>
@@ -453,38 +453,34 @@ export function Footer() {
   const socials = configuredSocialLinks();
 
   return (
-    <footer className="bg-[#1A1A1A] text-[#F2EDE3] mt-auto">
-      {/* Illustration strip — the single approved cartoon accent */}
-      <div className="relative w-full h-24 md:h-32 overflow-hidden border-b border-[#F2EDE3]/10">
+    <footer className="relative bg-[#1A1A1A] text-[#F2EDE3] mt-auto overflow-hidden">
+      {/* Full-bleed illustration backdrop — Nov 2026 review: the approved
+          landscape now spans the entire footer behind the legal links.
+          Kept faint under a gradient so every line stays AA-readable. */}
+      <div className="absolute inset-0" aria-hidden="true">
         <Image
           src={withBP('/images/illustrations/approved/wildpath-hero-main.webp')}
           alt=""
           fill
           sizes="100vw"
-          className="object-cover opacity-30 object-center"
+          className="object-cover object-bottom opacity-[0.16]"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#1A1A1A] via-[#1A1A1A]/72 to-[#1A1A1A]/46" />
       </div>
 
-      <div className="pt-16 pb-10 px-6">
+      <div className="relative pt-16 pb-10 px-6">
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Closing statement */}
-          <p className="wp-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.95] text-[#F2EDE3] mb-14">
+          <p className="wp-display text-[clamp(2.4rem,7vw,6rem)] leading-[0.95] text-[#F2EDE3] mb-12">
             Slow down. Breathe.{' '}
             <em className="font-serif italic font-light text-[#E8854A]">Discover</em>{' '}
             Namibia<span className="text-[#C5511A]">.</span>
           </p>
 
-          {/* Wildpath approved logo mark — footer (dark variant, ivory artwork) */}
+          {/* Text wordmark only — Nov 2026 review: no logo artwork in the footer */}
           <div className="flex justify-center mb-10">
-            <Image
-              src={withBP('/images/brand/wildpath-logo-dark-theme.webp')}
-              alt="Wildpath Adventures"
-              width={1255}
-              height={1415}
-              sizes="(min-width: 768px) 224px, 160px"
-              className="w-40 h-[11.3rem] md:w-56 md:h-[15.8rem] object-contain"
-            />
+            <Wordmark size="lg" inverted />
           </div>
 
           {/* Contact details, embedded in the statement */}
@@ -539,7 +535,7 @@ export function Footer() {
           </div>
 
           {/* Legal links */}
-          <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.18em] uppercase text-[#F2EDE3]/50 mb-8">
+          <div className="flex gap-6 justify-center flex-wrap text-[0.65rem] tracking-[0.04em] text-[#F2EDE3]/50 mb-8">
             <Link href="/terms" className="hover:text-[#F2EDE3] transition-colors">Terms</Link>
             <Link href="/privacy-policy" className="hover:text-[#F2EDE3] transition-colors">Privacy</Link>
             <Link href="/cancellation" className="hover:text-[#F2EDE3] transition-colors">Cancellation</Link>
@@ -549,12 +545,12 @@ export function Footer() {
           </div>
 
           {/* Copyright — current year + entity */}
-          <p className="text-[0.6rem] tracking-[0.18em] uppercase text-[#F2EDE3]/35 mb-6">
+          <p className="text-[0.6rem] tracking-[0.04em] text-[#F2EDE3]/35 mb-6">
             &copy; {new Date().getFullYear()} {SITE.name} · {SITE.location.city}, {SITE.location.country} · All routes reserved
           </p>
 
           {/* Tangison Studio credit, colophon */}
-          <p className="text-[0.55rem] tracking-[0.2em] uppercase text-[#F2EDE3]/30">
+          <p className="text-[0.55rem] tracking-[0.05em] text-[#F2EDE3]/30">
             Site by{' '}
             <a
               href={SITE.studio.url}
@@ -618,7 +614,7 @@ export function JourneySnapshot({
           <h2 className="wp-display text-4xl md:text-6xl lg:text-7xl text-[#1A1A1A] leading-[0.95] mb-4">
             {name}
           </h2>
-          <p className="text-lg md:text-xl text-[#1A1A1A]/80 max-w-2xl leading-relaxed mb-10">
+          <p className="text-lg md:text-lg text-[#1A1A1A]/80 max-w-2xl leading-relaxed mb-10">
             {tagline}
           </p>
         </div>
@@ -655,7 +651,7 @@ export function JourneySnapshot({
         <div className="wp-reveal mt-10 flex flex-col sm:flex-row gap-3" data-reveal-delay="3">
           <Link
             href="/contact"
-            className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+            className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
           >
             Request This Journey
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -664,7 +660,7 @@ export function JourneySnapshot({
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+            className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
           >
             <MessageCircle size={15} />
             WhatsApp Us
@@ -733,7 +729,7 @@ export function JourneyRouteTimeline({
                     href={`/destinations/${slugFor(stop.name)}`}
                     className="wp-photo wp-img-reveal block group"
                     style={{ aspectRatio: '16 / 9' }}
-                    aria-label={`${stop.name} — open destination guide`}
+                    aria-label={`${stop.name}, open destination guide`}
                   >
                     <TimelinePicture
                       base={first.base}
@@ -767,12 +763,12 @@ export function JourneyRouteTimeline({
         <div className="mt-20 flex flex-col items-center gap-4 text-center wp-reveal">
           <FootprintsMark className="w-6 h-12 text-[#9E4214]/40" />
           <p className="text-sm text-[#1A1A1A]/60 max-w-md leading-relaxed">
-            The full day-by-day itinerary — with selected accommodation, logistics
-            and inclusions — is available on request.
+            The full day-by-day itinerary, with selected accommodation, logistics
+            and inclusions, is available on request.
           </p>
           <Link
             href="/contact"
-            className="mt-2 group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3"
+            className="mt-2 group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3"
           >
             Request the Full Itinerary
             <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

@@ -87,14 +87,14 @@ export default async function DestinationPage({
             <div className="max-w-7xl mx-auto px-6 md:px-12 pb-10 md:pb-14 w-full">
               <Link
                 href="/destinations"
-                className="inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#F2EDE3]/80 hover:text-[#F2EDE3] transition-colors mb-5"
+                className="inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.04em] text-[#F2EDE3]/80 hover:text-[#F2EDE3] transition-colors mb-5"
               >
                 <ChevronLeft size={14} /> All destinations
               </Link>
               <h1 className="wp-display text-4xl md:text-7xl text-[#F2EDE3] leading-[0.95] drop-shadow-[0_2px_14px_rgba(0,0,0,0.4)]">
                 {dest.name}
               </h1>
-              <p className="mt-3 text-base md:text-xl text-[#F2EDE3]/90 max-w-2xl leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]">
+              <p className="mt-3 text-base md:text-lg text-[#F2EDE3]/90 max-w-2xl leading-relaxed drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]">
                 {dest.shortLine}
               </p>
             </div>
@@ -154,7 +154,7 @@ export default async function DestinationPage({
                     {suggested.name}
                   </p>
                 </div>
-                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] group-hover:text-[#E8854A] transition-colors shrink-0">
+                <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.04em] text-[#9E4214] group-hover:text-[#E8854A] transition-colors shrink-0">
                   Open
                   <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </span>
@@ -170,7 +170,7 @@ export default async function DestinationPage({
             <ul className="space-y-3 mb-10">
               {dest.highlights.map((h) => (
                 <li key={h} className="flex gap-3 text-base md:text-lg text-[#1A1A1A]/85 leading-relaxed">
-                  <span className="text-[#C5511A] shrink-0 mt-0.5" aria-hidden="true">—</span>
+                  <span className="text-[#C5511A] shrink-0 mt-0.5" aria-hidden="true">·</span>
                   {h}
                 </li>
               ))}
@@ -180,14 +180,14 @@ export default async function DestinationPage({
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
               >
                 <MessageCircle size={15} />
                 Ask about {dest.name}
               </a>
               <Link
                 href="/contact"
-                className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
               >
                 Plan your journey
               </Link>

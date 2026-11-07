@@ -49,6 +49,7 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Sossusvlei': [
         { base: 'sossusvlei', alt: 'Red Sossusvlei dunes rising behind acacia trees on the gravel plain.' },
+        { base: 'thatched-hillside', alt: 'Thatched chalets on stilts below a rocky outcrop near Sossusvlei.' },
         { base: 'deadvlei-white-pan-red-dunes', alt: 'Dead camelthorn trees on the white clay pan of Deadvlei, backed by red dunes.' },
         { base: 'deadvlei-trees-dune-shadow', alt: 'Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.' },
         { base: 'sossusvlei-1', alt: 'Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.' },
@@ -61,7 +62,6 @@ export const JOURNEY_MEDIA: Record<
       'Damaraland': [
         { base: 'damaraland', alt: 'A granite koppie glowing red above dry Damaraland grassland.' },
         { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
-        { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
       ],
       'Etosha National Park': [
         { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
@@ -134,7 +134,6 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Damaraland': [
         { base: 'damaraland', alt: 'A granite koppie glowing red above dry Damaraland grassland.' },
-        { base: 'damaraland-lodge-granite-hill', alt: 'A lodge of stone and thatch built into a granite hillside in Damaraland.' },
         { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
       ],
       'Swakopmund': [
@@ -143,7 +142,7 @@ export const JOURNEY_MEDIA: Record<
     },
     gallery: [
       { base: 'etosha-detail', alt: 'A breeding herd of elephants moving across red earth.' },
-      { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
+      { base: 'rhino-ostrich-etosha', alt: 'A rhino grazing beside an ostrich in green bush.' },
       { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
       { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
     ],
@@ -162,6 +161,7 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Sossusvlei': [
         { base: 'sossusvlei', alt: 'Red Sossusvlei dunes rising behind acacia trees on the gravel plain.' },
+        { base: 'thatched-hillside', alt: 'Thatched chalets on stilts below a rocky outcrop near Sossusvlei.' },
         { base: 'deadvlei-trees-dune-shadow', alt: 'Deadvlei in soft light: bare trees on white clay beneath a red dune in shadow.' },
         { base: 'sossusvlei-1', alt: 'Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.' },
         { base: 'namib-red-dunes-green-plains', alt: 'Red dunes meeting green plains after the rains.' },
@@ -211,6 +211,7 @@ export const DESTINATION_MEDIA: Record<
       { base: 'sossusvlei', alt: 'Red dunes rising behind acacia trees on the gravel plain.' },
       { base: 'sossusvlei-1', alt: 'Hikers on the knife-edge ridge of a Sossusvlei dune at sunrise.' },
       { base: 'sossusvlei-2', alt: 'A walker descending a dune crest towards the white pan.' },
+      { base: 'thatched-hillside', alt: 'Thatched chalets on stilts below a rocky outcrop near Sossusvlei.' },
       { base: 'deadvlei-trees-dune-shadow', alt: 'Bare trees on white clay beneath a red dune in shadow.' },
       { base: 'namib-red-dunes-green-plains', alt: 'Red dunes meeting green plains after the rains.' },
       { base: 'dune-detail', alt: 'Ridges of red dune sea rolling to the horizon.' },
@@ -230,8 +231,6 @@ export const DESTINATION_MEDIA: Record<
     hero: 'damaraland',
     mosaic: [
       { base: 'damaraland-1', alt: 'Boulder-strewn hills with a lone shepherd\u2019s tree.' },
-      { base: 'damaraland-lodge-granite-hill', alt: 'A lodge of stone and thatch built into a granite hillside.' },
-      { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
     ],
   },
   'skeleton-coast': {
@@ -286,14 +285,14 @@ export const HOME_MOSAIC: PhotoRef[] = [
   { base: 'victoria-falls', alt: 'Victoria Falls from the air, spray rising above the gorge.' },
 ];
 
-/** General gallery — includes the flagged-ambiguous shot (see build report). */
+/** General gallery — kept free of photos used elsewhere on the home page. */
 export const HOME_GALLERY: PhotoRef[] = [
   { base: 'oryx-dusk-golden-grass', alt: 'A gemsbok oryx standing in golden grass at dusk.' },
   { base: 'dune-detail', alt: 'Ridges of red dune sea rolling to the horizon.' },
   { base: 'game-drive-red-sand-track', alt: 'A game-drive vehicle on a red sand track.' },
   { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
-  { base: 'sossusvlei-2', alt: 'A walker descending a dune crest towards the white pan.' },
-  { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
+  { base: 'namib-red-dunes-green-plains', alt: 'Red dunes meeting green plains after the rains.' },
+  { base: 'victoria-falls-rainbow', alt: 'Victoria Falls with a rainbow standing in the spray gorge.' },
 ];
 
 export const CTA_PHOTO = {

@@ -124,7 +124,7 @@ export const JOURNEYS: Journey[] = [
       { name: 'Etosha National Park', description: 'A first taste of wildlife on the great white pan, rhino, elephant, lion at the waterholes.' },
       { name: 'Rundu & the Okavango River', description: 'The border with Angola. The Okavango river runs wide and slow here, before it becomes the delta in Botswana.' },
       { name: 'Kwando River', description: 'A green ribbon of river and floodplain. Hippo, buffalo, elephant, and some of the best birding in southern Africa.' },
-      { name: 'Bwabwata National Park', description: 'A park without fences — elephant, buffalo, wild dog, and the wattled crane. Few vehicles, fewer people.' },
+      { name: 'Bwabwata National Park', description: 'A park without fences: elephant, buffalo, wild dog, and the wattled crane. Few vehicles, fewer people.' },
       { name: 'Chobe River', description: 'Across the border into Botswana. Chobe is famous for having one of the densest elephant populations in Africa.' },
       { name: 'Zambezi River', description: 'The Zambezi before the falls. Wide, slow, and loud with hippo and fish eagle.' },
       { name: 'Windhoek', description: 'The return. Transfer connections arranged on request.' },

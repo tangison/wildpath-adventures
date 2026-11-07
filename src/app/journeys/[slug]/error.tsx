@@ -35,7 +35,7 @@ export default function JourneyError({
           </p>
 
           {error.digest && (
-            <p className="text-[0.65rem] tracking-[0.15em] uppercase text-[#1A1A1A]/40 mb-8">
+            <p className="text-[0.65rem] tracking-[0.03em] text-[#1A1A1A]/40 mb-8">
               Reference: {error.digest}
             </p>
           )}
@@ -43,7 +43,7 @@ export default function JourneyError({
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={reset}
-              className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 cursor-pointer"
+              className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors inline-flex items-center gap-3 cursor-pointer"
             >
               Try again
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -53,7 +53,7 @@ export default function JourneyError({
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3"
+              className="group border border-[#1A1A1A] text-[#1A1A1A] px-7 py-3.5 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors inline-flex items-center gap-3"
             >
               <MessageCircle size={15} />
               WhatsApp Us

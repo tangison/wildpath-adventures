@@ -76,7 +76,7 @@ export default function DestinationsIndex() {
                       <p className="text-sm md:text-base text-[#F2EDE3]/80 leading-snug max-w-md">
                         {d.shortLine}
                       </p>
-                      <span className="mt-3 inline-flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#E8854A]">
+                      <span className="mt-3 inline-flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.04em] text-[#E8854A]">
                         Open the guide
                         <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                       </span>

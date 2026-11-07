@@ -67,7 +67,7 @@ export default function FieldNotesIndex() {
                     {n.title}
                   </h2>
                   <p className="text-sm text-[#1A1A1A]/70 leading-relaxed mt-2">{n.excerpt}</p>
-                  <span className="mt-3 inline-flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.18em] uppercase text-[#9E4214]">
+                  <span className="mt-3 inline-flex items-center gap-2 text-[0.62rem] font-bold tracking-[0.04em] text-[#9E4214]">
                     Read the note
                     <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
                   </span>

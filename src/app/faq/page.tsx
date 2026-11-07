@@ -14,7 +14,7 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: 'Is Namibia safe to travel in?',
-    a: 'Yes. Namibia is one of the safest countries in Africa for travellers. Crime against tourists is rare. The usual big-city precautions apply in Windhoek. In the bush, the risks are environmental, such as sun, dust, and distance, and your guide manages those.',
+    a: 'Yes. Namibia is one of the safest countries in Africa for travellers. The usual big-city precautions apply in Windhoek. In the bush, the risks are environmental, such as sun, dust, and distance, and your guide manages those.',
   },
   {
     q: 'Do I need a visa?',
@@ -136,14 +136,14 @@ export default function FAQPage() {
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
                   <MessageCircle size={15} />
                   WhatsApp us
                 </a>
                 <Link
                   href="/contact"
-                  className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
                   Contact page
                   <ArrowRight size={14} />

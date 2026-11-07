@@ -307,7 +307,7 @@
       "theme": "city/windhoek",
       "orientation": "landscape",
       "kind": "scouted-commons",
-      "licence": "CC BY-SA 2.0 Christoph Strässler via Wikimedia Commons",
+      "licence": "CC BY-SA 2.0 Christoph Str\u00e4ssler via Wikimedia Commons",
       "usage": [
         "journeys/*/timeline (Windhoek)",
         "field-notes/self-drive-in-namibia:inline"
@@ -320,7 +320,7 @@
       "theme": "south/quivertree",
       "orientation": "portrait",
       "kind": "scouted-commons",
-      "licence": "CC BY-SA 4.0 Bjørn Christian Tørrissen via Wikimedia Commons",
+      "licence": "CC BY-SA 4.0 Bj\u00f8rn Christian T\u00f8rrissen via Wikimedia Commons",
       "usage": [
         "journeys/classic-namibia:timeline"
       ]
@@ -373,7 +373,7 @@
       "theme": "plateau/waterberg",
       "orientation": "landscape",
       "kind": "scouted-commons",
-      "licence": "CC BY-SA 2.5 Harald Süpfle via Wikimedia Commons",
+      "licence": "CC BY-SA 2.5 Harald S\u00fcpfle via Wikimedia Commons",
       "usage": [
         "journeys/untamed-desert:timeline"
       ]
@@ -726,38 +726,6 @@
         "journeys/classic-namibia:timeline",
         "journeys/untamed-desert:timeline",
         "destinations/sossusvlei:mosaic"
-      ],
-      "variants": [
-        {
-          "w": 640,
-          "fmt": "avif"
-        },
-        {
-          "w": 640,
-          "fmt": "webp"
-        },
-        {
-          "w": 960,
-          "fmt": "avif"
-        },
-        {
-          "w": 960,
-          "fmt": "webp"
-        }
-      ]
-    },
-    {
-      "base": "damaraland-lodge-granite-hill",
-      "dir": "images/photos",
-      "alt": "Thatched bungalows on stilts beneath a granite hill in Damaraland.",
-      "theme": "Damaraland destination card; accommodation moment",
-      "orientation": "landscape",
-      "kind": "client",
-      "licence": "Client's own photograph, used with permission; no third-party licence required",
-      "usage": [
-        "journeys/untamed-central:timeline",
-        "destinations/damaraland:mosaic",
-        "about:section"
       ],
       "variants": [
         {

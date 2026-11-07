@@ -12,12 +12,11 @@
  */
 
 export const SITE = {
-  /** Canonical domain — change via NEXT_PUBLIC_SITE_URL in build env.
-   *  Serves at wildpath.tangison.com (Tangison) until the client's own
-   *  wildpathnamibia.com DNS goes live; flip this default when it does. */
-  domain: 'wildpath.tangison.com',
+  /** Canonical domain — the client's own domain (Cloudflare DNS → Vercel).
+   *  wildpath.tangison.com is retired; www redirects to the root at Vercel. */
+  domain: 'wildpathnamibia.com',
   /** Canonical URL with protocol */
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpath.tangison.com',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://wildpathnamibia.com',
   name: 'Wildpath Adventures',
   tagline: 'Slow down. Breathe. Discover Namibia.',
   /** Public enquiry email — shown to users. Mirror of CONTACT_EMAIL for client-side use. */
@@ -44,23 +43,21 @@ export const SITE = {
     url: 'https://studio.tangison.com',
   },
   /**
-   * Namibia Tourism Board registration number.
-   *
-   * NOT published on any public registry we could verify (the NTB operator
-   * directory on visitnamibia.com.na has no Wildpath listing as of Nov 2026),
-   * so this ships empty and every NTB badge site-wide renders the generic
-   * "Registered with the Namibia Tourism Board" mark. Set it once here (or
-   * via NEXT_PUBLIC_NTB_REG_NUMBER) and all badges pick up the number —
-   * never invent one in a component.
+   * Namibia Tourism Board registration number, supplied by the client
+   * (Nov 2026 review session). Every NTB badge site-wide renders it.
+   * Override via NEXT_PUBLIC_NTB_REG_NUMBER if it ever changes.
    */
-  ntbRegNumber: process.env.NEXT_PUBLIC_NTB_REG_NUMBER || '',
+  ntbRegNumber: process.env.NEXT_PUBLIC_NTB_REG_NUMBER || 'TFA01662',
 } as const;
 
 // Convenience aliases used throughout the app
 export const SITE_EMAIL = SITE.email;
 export const NTB_REG_NUMBER = SITE.ntbRegNumber;
 export const SITE_URL = SITE.url;
-export const WHATSAPP_URL = `https://wa.me/${SITE.phoneE164}`;
+/** WhatsApp deep link with a short prefilled greeting so the chat starts warm. */
+export const WHATSAPP_URL = `https://wa.me/${SITE.phoneE164}?text=${encodeURIComponent(
+  'Hello Wildpath Adventures, I would like to plan a journey to Namibia.'
+)}`;
 export const TEL_URL = `tel:+${SITE.phoneE164}`;
 
 /**

@@ -107,7 +107,7 @@ export default function CancellationPage() {
                   <p className="text-sm text-[#1A1A1A]/70 leading-relaxed">
                     Some accommodation partners and charter operators apply their
                     own cancellation terms, particularly during peak season
-                    (July–October). We will always flag these in your
+                    (July to October). We will always flag these in your
                     confirmation, before any deposit is taken.
                   </p>
                 </div>

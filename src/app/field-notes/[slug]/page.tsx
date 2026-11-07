@@ -80,7 +80,7 @@ export default async function FieldNotePage({
             <div className="max-w-3xl mx-auto px-6 md:px-12 pb-10 md:pb-14 w-full">
               <Link
                 href="/field-notes"
-                className="inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#F2EDE3]/80 hover:text-[#F2EDE3] transition-colors mb-5"
+                className="inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.04em] text-[#F2EDE3]/80 hover:text-[#F2EDE3] transition-colors mb-5"
               >
                 <ChevronLeft size={14} /> Field notes
               </Link>
@@ -145,7 +145,7 @@ export default async function FieldNotePage({
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/contact"
-                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
                   Plan your journey
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -154,7 +154,7 @@ export default async function FieldNotePage({
                   href={WHATSAPP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                  className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                 >
                   WhatsApp us
                 </a>

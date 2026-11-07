@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Fraunces } from "next/font/google";
 import "./globals.css";
 import { CookieConsent } from "@/components/cookie-consent";
-import { RevealScript, ParallaxScript, ScrollTop, StickyCta } from "@/components/widgets";
+import { RevealScript, ParallaxScript, ScrollTop, StickyCta, WhatsAppFab } from "@/components/widgets";
 import { Analytics } from "@vercel/analytics/react";
 import { SITE, SITE_URL, WHATSAPP_URL } from "@/lib/site";
 import { withBP } from "@/lib/base-path";
@@ -65,13 +65,13 @@ export const metadata: Metadata = {
         url: withBP('/images/social/og-master.jpg'),
         width: 1200,
         height: 630,
-        alt: `${SITE.name} — ${SITE.tagline}`,
+        alt: `${SITE.name} · ${SITE.tagline}`,
       },
       {
         url: withBP('/images/social/og-master.webp'),
         width: 1200,
         height: 630,
-        alt: `${SITE.name} — ${SITE.tagline}`,
+        alt: `${SITE.name} · ${SITE.tagline}`,
       },
     ],
   },
@@ -133,7 +133,7 @@ export default function RootLayout({
         {/* Skip-to-content link — accessibility: keyboard users can bypass navigation */}
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#C5511A] focus:text-[#F2EDE3] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:tracking-wider focus:uppercase focus:outline-none"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[9999] focus:bg-[#C5511A] focus:text-[#F2EDE3] focus:px-4 focus:py-2 focus:text-sm focus:font-bold focus:tracking-wider focus: focus:outline-none"
         >
           Skip to content
         </a>
@@ -141,6 +141,7 @@ export default function RootLayout({
         <RevealScript />
         <ParallaxScript />
         <ScrollTop />
+        <WhatsAppFab whatsappUrl={WHATSAPP_URL} />
         <StickyCta whatsappUrl={WHATSAPP_URL} />
         <CookieConsent />
         {/* Vercel Analytics only exists on Vercel — elsewhere (GitHub Pages

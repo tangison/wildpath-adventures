@@ -29,7 +29,7 @@ export default function Loading() {
         </svg>
 
         <p
-          className="text-[0.65rem] tracking-[0.2em] uppercase text-[#1A1A1A]/50 wp-subhead"
+          className="text-[0.65rem] tracking-[0.05em] text-[#1A1A1A]/50 wp-subhead"
           aria-hidden="true"
         >
           Loading&hellip;

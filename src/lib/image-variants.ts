@@ -83,14 +83,6 @@ export const IMAGE_VARIANTS: Record<string, VariantFamily> = {
       1920
     ]
   },
-  "damaraland-lodge-granite-hill": {
-    "dir": "images/photos",
-    "max": 1280,
-    "widths": [
-      640,
-      960
-    ]
-  },
   "deadvlei-trees-dune-shadow": {
     "dir": "images/photos",
     "max": 2560,

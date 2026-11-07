@@ -47,14 +47,14 @@ function buildMailtoUrl(f: FormState): string {
   const journeyName =
     (JOURNEYS.find((j) => j.slug === f.journey)?.name ?? f.journey) || 'Not selected';
   const lines = [
-    `New enquiry from ${f.name || '—'} (${f.country || '—'})`,
-    `Email: ${f.email || '—'} · Phone/WhatsApp: ${f.phone || '—'}`,
-    `Journey: ${journeyName} · Travel: ${f.travelMonth || '—'} · Travellers: ${f.travellers}`,
+    `New enquiry from ${f.name || '(not given)'} (${f.country || '(not given)'})`,
+    `Email: ${f.email || '(not given)'} · Phone/WhatsApp: ${f.phone || '(not given)'}`,
+    `Journey: ${journeyName} · Travel: ${f.travelMonth || '(not given)'} · Travellers: ${f.travellers}`,
   ];
   if (f.travelStyle) lines.push(`Style: ${f.travelStyle}`);
   if (f.duration) lines.push(`Duration: ${f.duration}`);
   if (f.interests) lines.push(`Interests: ${f.interests}`);
-  lines.push('', f.message || '—');
+  lines.push('', f.message || '(not given)');
   const subject = `Journey enquiry, ${f.name || 'via wildpathnamibia.com'}`;
   return `mailto:${SITE_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join('\n'))}`;
 }
@@ -142,7 +142,7 @@ export function ContactForm() {
         </p>
         <button
           onClick={() => { setForm(EMPTY); setHandedOff(null); }}
-          className="text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-2"
+          className="text-xs font-bold tracking-[0.04em] text-[#9E4214] hover:text-[#1A1A1A] transition-colors inline-flex items-center gap-2"
         >
           Write another enquiry <ArrowRight size={14} />
         </button>
@@ -265,7 +265,7 @@ export function ContactForm() {
       <div className="mt-7 flex flex-col sm:flex-row gap-3">
         <button
           type="submit"
-          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+          className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
           <MessageCircle size={15} />
           Send enquiry on WhatsApp
@@ -273,7 +273,7 @@ export function ContactForm() {
         <button
           type="button"
           onClick={emailFallback}
-          className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+          className="border border-[#1A1A1A] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#1A1A1A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
         >
           <Mail size={15} />
           Send by email instead

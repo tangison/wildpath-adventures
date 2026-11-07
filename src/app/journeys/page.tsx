@@ -83,7 +83,7 @@ export default function JourneysIndex() {
                       <p className="text-sm text-[#1A1A1A]/60 leading-relaxed mb-5">
                         Best for {j.bestFor.charAt(0).toLowerCase() + j.bestFor.slice(1)}
                       </p>
-                      <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214]">
+                      <span className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.04em] text-[#9E4214]">
                         Open the journey
                         <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                       </span>
@@ -103,7 +103,7 @@ export default function JourneysIndex() {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-6 group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3"
+                className="mt-6 group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-colors duration-300 inline-flex items-center gap-3"
               >
                 Start the conversation
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

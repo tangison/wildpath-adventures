@@ -112,7 +112,7 @@ export default function BrandPage() {
                   <div className="border border-dashed border-[#C5511A]/40 p-8 md:p-12 text-center">
                     <Wordmark size="md" />
                   </div>
-                  <p className="text-[0.6rem] tracking-[0.2em] uppercase text-[#9E4214] text-center mt-3">
+                  <p className="text-[0.6rem] tracking-[0.05em] text-[#9E4214] text-center mt-3">
                     Minimum clear space = height of W
                   </p>
                 </div>
@@ -272,7 +272,7 @@ export default function BrandPage() {
                 </p>
               </div>
               <div className="bg-[#F2EDE3] p-8 md:p-10">
-                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Accent — Caveat</p>
+                <p className="wp-subhead text-xs text-[#9E4214] mb-4">Accent: Caveat</p>
                 <p className="wp-subhead text-6xl md:text-7xl text-[#9E4214] leading-[0.85] mb-6">
                   beauty
                 </p>
@@ -339,15 +339,15 @@ export default function BrandPage() {
               {TONALITY.map((t) => (
                 <div key={t.axis} className="bg-[#C5511A] grid md:grid-cols-3 gap-6 p-6 md:p-8">
                   <div>
-                    <p className="text-[0.6rem] tracking-[0.25em] uppercase font-bold mb-1">Axis</p>
+                    <p className="text-[0.6rem] tracking-[0.05em] font-bold mb-1">Axis</p>
                     <p className="wp-display text-lg">{t.axis}</p>
                   </div>
                   <div>
-                    <p className="text-[0.6rem] tracking-[0.25em] uppercase font-bold mb-1">Position</p>
+                    <p className="text-[0.6rem] tracking-[0.05em] font-bold mb-1">Position</p>
                     <p className="wp-subhead text-2xl">{t.position}</p>
                   </div>
                   <div>
-                    <p className="text-[0.6rem] tracking-[0.25em] uppercase font-bold mb-1">Note</p>
+                    <p className="text-[0.6rem] tracking-[0.05em] font-bold mb-1">Note</p>
                     <p className="text-sm leading-relaxed">{t.note}</p>
                   </div>
                 </div>
@@ -430,7 +430,7 @@ export default function BrandPage() {
             </h2>
             <Link
               href="/"
-              className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] transition-all inline-flex items-center gap-3"
+              className="group bg-[#1A1A1A] text-[#F2EDE3] px-7 py-3.5 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] transition-all inline-flex items-center gap-3"
             >
               Return to the map
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />

@@ -6,7 +6,8 @@ import {
   BirdFlock,
   SectionHeading,
 } from '@/components/wildpath';
-import { HeroVideo } from '@/components/hero-video';
+import { HeroSlider } from '@/components/hero-slider';
+import { LoopVideo } from '@/components/loop-video';
 import { Gallery } from '@/components/lightbox';
 import { Photo } from '@/components/photo';
 import { JOURNEYS } from '@/lib/journeys';
@@ -18,8 +19,9 @@ import { withBP } from '@/lib/base-path';
 
 // ═══════════════════════════════════════════════════════════
 // WILDPATH ADVENTURES — HOME (image-first rebuild)
-// Full-bleed video hero, photo-led journey cards, destination
-// mosaic, field-notes strip, lightbox gallery, photo CTA.
+// Full-opacity photo carousel hero, uniform film band, photo-led
+// journey cards, destination mosaic, field-notes strip, lightbox
+// gallery, photo CTA.
 //
 // Copy rules (Tangison house style): no em dashes, no exclamation
 // points, no invented claims. Every claim traceable to
@@ -31,20 +33,20 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#F2EDE3] text-[#1A1A1A] font-sans selection:bg-[#C5511A] selection:text-[#F2EDE3] overflow-x-hidden">
-      {/* LCP preload — hero poster is the above-the-fold image on THIS page only. */}
+      {/* LCP preload — hero slide 1 is the above-the-fold image on THIS page only. */}
       <link
         rel="preload"
         as="image"
-        href={withBP('/video/hero-poster.avif')}
+        href={withBP('/images/photos/deadvlei-white-pan-red-dunes-1920.avif')}
         type="image/avif"
         fetchPriority="high"
       />
       <Nav />
 
       <main id="main-content" className="flex-1">
-        {/* ═══════════ HERO — full-bleed video loop ═══════════ */}
+        {/* HERO — full-opacity photo carousel */}
         <section className="relative min-h-[92svh] flex flex-col justify-end overflow-hidden">
-          <HeroVideo posterAlt="A sandy four-by-four track winding through red Sossusvlei dunes and camelthorn trees." />
+          <HeroSlider />
 
           <div className="relative z-10 px-6 md:px-12 pb-14 md:pb-20 pt-40">
             <div className="max-w-7xl mx-auto">
@@ -67,7 +69,7 @@ export default function Home() {
                 <div className="md:col-span-4 flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
                   <Link
                     href="/journeys"
-                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                   >
                     Explore the journeys
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -76,7 +78,7 @@ export default function Home() {
                     href={WHATSAPP_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                    className="group border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                   >
                     <MessageCircle size={15} />
                     WhatsApp us
@@ -101,6 +103,28 @@ export default function Home() {
           </div>
         </section>
 
+        {/* FILM BAND — two clips, identical 16/9 containers */}
+        <section className="py-16 md:py-24 px-6 md:px-12 bg-[#E8E3D5]">
+          <div className="max-w-7xl mx-auto">
+            <SectionHeading
+              title="From the road."
+              intro="Two short scenes filmed on our routes. They loop silently; the sound you get on the journey itself."
+            />
+            <div className="grid md:grid-cols-2 gap-5 md:gap-6">
+              <LoopVideo
+                kind="dunes"
+                label="Sossusvlei, dune drive"
+                alt="A four-by-four winding through red Sossusvlei dunes, first frame of the clip."
+              />
+              <LoopVideo
+                kind="coast"
+                label="Swakopmund, beachfront"
+                alt="The Swakopmund beachfront in soft morning light, first frame of the clip."
+              />
+            </div>
+          </div>
+        </section>
+
         {/* ═══════════ JOURNEYS — image-led cards ═══════════ */}
         <section className="py-16 md:py-24 px-6 md:px-12 bg-[#E8E3D5]">
           <div className="max-w-7xl mx-auto">
@@ -116,7 +140,7 @@ export default function Home() {
                   key={j.slug}
                   href={`/journeys/${j.slug}`}
                   className="group relative block wp-photo wp-img-reveal"
-                  style={{ aspectRatio: i === 0 ? '16 / 10' : '16 / 10' }}
+                  style={{ aspectRatio: '16 / 10' }}
                 >
                   <Photo
                     base={j.cardImage}
@@ -139,7 +163,7 @@ export default function Home() {
                     <p className="text-sm md:text-base text-[#F2EDE3]/80 leading-relaxed max-w-md hidden md:block">
                       {j.tagline}
                     </p>
-                    <span className="mt-3 inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.18em] uppercase text-[#F2EDE3]">
+                    <span className="mt-3 inline-flex items-center gap-2 text-[0.65rem] font-bold tracking-[0.04em] text-[#F2EDE3]">
                       View the route
                       <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
                     </span>
@@ -196,7 +220,7 @@ export default function Home() {
             <div className="mt-8">
               <Link
                 href="/destinations"
-                className="group inline-flex items-center gap-3 text-xs font-bold tracking-[0.18em] uppercase text-[#9E4214] hover:text-[#1A1A1A] transition-colors"
+                className="group inline-flex items-center gap-3 text-xs font-bold tracking-[0.04em] text-[#9E4214] hover:text-[#1A1A1A] transition-colors"
               >
                 All destinations
                 <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
@@ -290,14 +314,14 @@ export default function Home() {
                 <div className="mt-7 flex flex-col sm:flex-row gap-3">
                   <Link
                     href="/contact"
-                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                    className="group bg-[#F2EDE3] text-[#1A1A1A] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#C5511A] hover:text-[#F2EDE3] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                   >
                     Plan your journey
                     <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
                   <a
                     href={`mailto:${SITE.email}`}
-                    className="border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.18em] uppercase hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
+                    className="border border-[#F2EDE3]/60 text-[#F2EDE3] px-7 py-4 text-xs font-bold tracking-[0.04em] hover:bg-[#F2EDE3] hover:text-[#1A1A1A] transition-colors duration-300 inline-flex items-center gap-3 justify-center"
                   >
                     {SITE.email}
                   </a>
