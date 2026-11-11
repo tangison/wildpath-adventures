@@ -157,8 +157,18 @@ export default function TermsPage() {
                       Wildpath Adventures is a Namibian-owned tour operator
                       registered in Windhoek, Namibia, and registered with the
                       Namibia Tourism Board{NTB_REG_NUMBER ? <> under registration
-                      number <span className="font-semibold text-[#1A1A1A]">{NTB_REG_NUMBER}</span></> : null}.
-                      Further statutory details are available on request.
+                      number <span className="font-semibold text-[#1A1A1A]">{NTB_REG_NUMBER}</span></> : null},
+                      verifiable on the{' '}
+                      <a
+                        href="https://visitnamibia.com.na/business-directory/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="underline hover:text-[#C5511A]"
+                      >
+                        NTB Business Directory
+                      </a>{' '}
+                      by searching the registration number. Further statutory
+                      details are available on request.
                     </p>
                   </div>
                 </div>

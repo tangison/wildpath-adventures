@@ -73,6 +73,65 @@ export const IMAGE_VARIANTS: Record<string, VariantFamily> = {
       1920
     ]
   },
+  "damaraland-mesa": {
+    "dir": "images/places",
+    "max": 1920,
+    "widths": [
+      640,
+      960,
+      1440,
+      1920
+    ]
+  },
+  "damaraland-road": {
+    "dir": "images/places",
+    "max": 1920,
+    "widths": [
+      640,
+      960,
+      1440,
+      1920
+    ]
+  },
+  "twyfelfontein-organ-pipes": {
+    "dir": "images/places",
+    "max": 1440,
+    "widths": [
+      640,
+      960,
+      1440
+    ]
+  },
+  "twyfelfontein-engravings": {
+    "dir": "images/places",
+    "max": 1920,
+    "widths": [
+      640,
+      960,
+      1440,
+      1920
+    ]
+  },
+  "desert-elephants-damaraland": {
+    "dir": "images/places",
+    "max": 1920,
+    "widths": [
+      640,
+      960,
+      1440,
+      1920
+    ]
+  },
+  "himba-kunene": {
+    "dir": "images/places",
+    "max": 1920,
+    "widths": [
+      640,
+      960,
+      1440,
+      1920
+    ]
+  },
   "damaraland-1": {
     "dir": "images/places",
     "max": 1920,

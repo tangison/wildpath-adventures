@@ -23,6 +23,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: '/terms', priority: 0.3 },
     { path: '/cancellation', priority: 0.3 },
     { path: '/cookies', priority: 0.3 },
+    { path: '/brand', priority: 0.2 },
   ];
 
   const staticEntries: MetadataRoute.Sitemap = staticPages.map((p) => ({

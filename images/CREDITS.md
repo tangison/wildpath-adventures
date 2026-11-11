@@ -64,3 +64,40 @@ No third-party licence applies. Originals are kept untouched in `images/_origina
 - Retrieved: 2026-10-20
 - Alt: Elephants moving along the Chobe riverbank at dusk through warm haze.
 - Used on: Caprivi journey Chobe River stop; Chobe destination mosaic
+
+
+## twyfelfontein-organ-pipes
+- Source: namibia-images-pack (pictures_123.docx), upscaled 2x (EDSR)
+- Served: 6 variants (WebP + AVIF, to 1440 — native 1784px, never upscaled beyond)
+- Used on: Damaraland destination mosaic; Classic Namibia journey timeline
+- Alt text: Tall rust-orange basalt rock columns glowing in warm low sun in the Twyfelfontein area of Damaraland, Namibia.
+
+## damaraland-mesa
+- Source: namibia-images-pack (pictures_123.docx), upscaled 4x (EDSR)
+- Served: 8 variants (WebP + AVIF)
+- Used on: Damaraland destination mosaic; Untamed Central journey timeline
+- Alt text: Red boulders and a flat-topped mesa rising above a dry plain in Damaraland, Namibia.
+
+## twyfelfontein-engravings
+- Source: namibia-images-pack (pictures_123.docx), upscaled 4x (EDSR). Pack manifest notes apparent stock origin (iStock) — confirm commercial licence before wide reuse.
+- Served: 8 variants (WebP + AVIF)
+- Used on: Damaraland destination mosaic; Untamed Central journey timeline
+- Alt text: Ancient San rock engravings of animals and symbols, including the Lion Plate, at Twyfelfontein, Namibia.
+
+## desert-elephants-damaraland
+- Source: namibia-images-pack (pictures_123.docx), upscaled 4x (EDSR). Pack manifest notes apparent stock origin (iStock) — confirm commercial licence before wide reuse.
+- Served: 8 variants (WebP + AVIF)
+- Used on: Damaraland destination mosaic; Classic Namibia journey timeline
+- Alt text: An adult and baby desert elephant walking across dry ground in front of mountains in Damaraland, Namibia.
+
+## himba-kunene
+- Source: namibia-images-pack (pictures_123.docx), upscaled 4x (EDSR). Pack manifest notes apparent stock origin (iStock) — confirm commercial licence before wide reuse.
+- Served: 8 variants (WebP + AVIF)
+- Used on: Home general gallery only (location not tied to a route page)
+- Alt text: Himba women in traditional dress sitting outside their huts in a village near Kamanjab, Namibia.
+
+## damaraland-road
+- Source: namibia-images-pack (pictures_123.docx), native 1920x1080, no upscaling
+- Served: 8 variants (WebP + AVIF)
+- Used on: Damaraland destination mosaic; Untamed Central journey gallery
+- Alt text: A winding gravel road crosses golden desert plains toward red flat-topped mountains in Damaraland, Namibia.

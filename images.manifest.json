@@ -819,6 +819,83 @@
       "usage": [
         "journeys/classic-namibia:gallery"
       ]
+    },
+    {
+      "base": "twyfelfontein-organ-pipes",
+      "dir": "images/places",
+      "alt": "Tall rust-orange basalt rock columns glowing in warm low sun in the Twyfelfontein area of Damaraland, Namibia.",
+      "theme": "rock/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "destinations/damaraland:mosaic",
+        "journeys/classic-namibia:timeline"
+      ]
+    },
+    {
+      "base": "damaraland-mesa",
+      "dir": "images/places",
+      "alt": "Red boulders and a flat-topped mesa rising above a dry plain in Damaraland, Namibia.",
+      "theme": "rock/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "destinations/damaraland:mosaic",
+        "journeys/untamed-central:timeline"
+      ]
+    },
+    {
+      "base": "twyfelfontein-engravings",
+      "dir": "images/places",
+      "alt": "Ancient San rock engravings of animals and symbols, including the Lion Plate, at Twyfelfontein, Namibia.",
+      "theme": "rock-art/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "destinations/damaraland:mosaic",
+        "journeys/untamed-central:timeline"
+      ]
+    },
+    {
+      "base": "desert-elephants-damaraland",
+      "dir": "images/places",
+      "alt": "An adult and baby desert elephant walking across dry ground in front of mountains in Damaraland, Namibia.",
+      "theme": "wildlife/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "destinations/damaraland:mosaic",
+        "journeys/classic-namibia:timeline"
+      ]
+    },
+    {
+      "base": "himba-kunene",
+      "dir": "images/places",
+      "alt": "Himba women in traditional dress sitting outside their huts in a village near Kamanjab, Namibia.",
+      "theme": "culture/kunene",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "home:gallery"
+      ]
+    },
+    {
+      "base": "damaraland-road",
+      "dir": "images/places",
+      "alt": "A winding gravel road crosses golden desert plains toward red flat-topped mountains in Damaraland, Namibia.",
+      "theme": "route/damaraland",
+      "orientation": "landscape",
+      "kind": "photo",
+      "licence": "Client-supplied (pictures_123.docx); see images/CREDITS.md",
+      "usage": [
+        "destinations/damaraland:mosaic",
+        "journeys/untamed-central:gallery"
+      ]
     }
   ]
 }

@@ -61,6 +61,8 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Damaraland': [
         { base: 'damaraland', alt: 'A granite koppie glowing red above dry Damaraland grassland.' },
+        { base: 'twyfelfontein-organ-pipes', alt: 'Rust-orange basalt columns of the Organ Pipes formation glowing in low sun, Twyfelfontein.' },
+        { base: 'desert-elephants-damaraland', alt: 'An adult and baby desert elephant walking across dry ground in front of Damaraland mountains.' },
         { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
       ],
       'Etosha National Park': [
@@ -134,6 +136,8 @@ export const JOURNEY_MEDIA: Record<
       ],
       'Damaraland': [
         { base: 'damaraland', alt: 'A granite koppie glowing red above dry Damaraland grassland.' },
+        { base: 'twyfelfontein-engravings', alt: 'Ancient San rock engravings, the Lion Plate, at Twyfelfontein.' },
+        { base: 'damaraland-mesa', alt: 'Red boulders and a flat-topped mesa above a dry plain in Damaraland.' },
         { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
       ],
       'Swakopmund': [
@@ -145,6 +149,7 @@ export const JOURNEY_MEDIA: Record<
       { base: 'rhino-ostrich-etosha', alt: 'A rhino grazing beside an ostrich in green bush.' },
       { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
       { base: 'damaraland-1', alt: 'Boulder-strewn Damaraland hills with a lone shepherd\u2019s tree.' },
+      { base: 'damaraland-road', alt: 'A gravel road winding toward red flat-topped mountains in Damaraland.' },
     ],
   },
 
@@ -231,6 +236,12 @@ export const DESTINATION_MEDIA: Record<
     hero: 'damaraland',
     mosaic: [
       { base: 'damaraland-1', alt: 'Boulder-strewn hills with a lone shepherd\u2019s tree.' },
+      { base: 'twyfelfontein-organ-pipes', alt: 'Rust-orange basalt columns of the Organ Pipes formation, Twyfelfontein.' },
+      { base: 'twyfelfontein-engravings', alt: 'Ancient San rock engravings, the Lion Plate, at Twyfelfontein.' },
+      { base: 'desert-elephants-damaraland', alt: 'An adult and baby desert elephant on dry ground, mountains behind.' },
+      { base: 'damaraland-road', alt: 'A gravel road winding toward red flat-topped mountains in Damaraland.' },
+      { base: 'damaraland-lodge-granite-hill', alt: 'A lodge of stone and thatch built into a granite hillside.' },
+      { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
     ],
   },
   'skeleton-coast': {
@@ -293,6 +304,7 @@ export const HOME_GALLERY: PhotoRef[] = [
   { base: 'giraffes-walking-etosha', alt: 'Three giraffes walking through green Etosha scrubland.' },
   { base: 'namib-red-dunes-green-plains', alt: 'Red dunes meeting green plains after the rains.' },
   { base: 'victoria-falls-rainbow', alt: 'Victoria Falls with a rainbow standing in the spray gorge.' },
+  { base: 'himba-kunene', alt: 'Himba women in traditional dress outside their huts near Kamanjab, Kunene region.' },
 ];
 
 export const CTA_PHOTO = {

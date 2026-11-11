@@ -1,21 +1,23 @@
 import Image from 'next/image';
-import { NTB_REG_NUMBER } from '@/lib/site';
+import { NTB_REG_NUMBER, NTB_DIRECTORY_URL } from '@/lib/site';
 import { withBP } from '@/lib/base-path';
 
 /**
  * NtbBadge — Namibia Tourism Board registration mark.
  *
- * A typographic seal in the site's editorial language (sharp border, tracked
- * small caps, hairline rule) rather than a recreation of the NTB's official
- * logo, which is a registered mark we do not hold assets for.
+ * Uses the official "Namibia · Endless Horizons" tourism mark served from the
+ * NTB's own site (visitnamibia.com.na) and links every badge to the NTB
+ * Business Directory, where the registration can be verified by number.
  *
  * - When NTB_REG_NUMBER is set (src/lib/site.ts or NEXT_PUBLIC_NTB_REG_NUMBER),
- *   every badge renders "NTB Reg. <number>".
- * - While it is empty the badge renders the verified-generic statement only;
+ *   every badge renders "NTB Reg. <number>" and links to the directory.
+ * - While it is empty the badge renders the mark with the generic statement;
  *   the statutory line stays honest ("Registration number available on
  *   request" on /terms carries that detail).
  *
- * Variant `dark` is for the footer band (#1A1A1A); `light` for ivory pages.
+ * Variant `dark` is for the footer band (#1A1A1A) — the emblem sits on a small
+ * ivory plate so the full-colour mark reads like an accreditation seal.
+ * Variant `light` is for ivory pages and carries the full mark with wordmark.
  * Pure server component: zero client JS, zero bytes beyond the markup.
  */
 
@@ -33,20 +35,36 @@ export function NtbBadge({
   const muted = variant === 'dark' ? 'text-[#F2EDE3]/60' : 'text-[#1A1A1A]/60';
   const soft = variant === 'dark' ? 'text-[#F2EDE3]/45' : 'text-[#1A1A1A]/45';
   const rule = variant === 'dark' ? 'bg-[#F2EDE3]/25' : 'bg-[#1A1A1A]/25';
-  const accent = variant === 'dark' ? 'text-[#E8854A]' : 'text-[#9E4214]';
+
+  const label = NTB_REG_NUMBER
+    ? `Registered with the Namibia Tourism Board — Reg. ${NTB_REG_NUMBER}. Verify on the NTB Business Directory.`
+    : 'Registered with the Namibia Tourism Board. Verify on the NTB Business Directory.';
+
+  const linkProps = {
+    href: NTB_DIRECTORY_URL,
+    target: '_blank' as const,
+    rel: 'noopener noreferrer',
+    'aria-label': label,
+    title: label,
+  };
 
   if (compact) {
     return (
-      <p
-        className={`inline-flex items-center gap-2 border ${line} px-3 py-2 ${className}`}
+      <a
+        {...linkProps}
+        className={`inline-flex items-center gap-2.5 border ${line} pl-2 pr-3 py-1.5 hover:border-[#C5511A] transition-colors ${className}`}
         data-testid="ntb-badge"
       >
-        {/* 1:1 scale-locked mark, decorative — the text carries the meaning */}
-        <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true" className="shrink-0">
-          <rect x="0.5" y="0.5" width="17" height="17" fill="none" stroke="currentColor" className={muted} strokeWidth="1" />
-          <path d="M4.5 12.5v-7l4.5 5v-5h1v7l-4.5-5v5z" fill="currentColor" className={ink} />
-          <path d="M12.5 5.5h1v7h-1z" fill="currentColor" className={accent} />
-        </svg>
+        {/* Official NTB emblem on an ivory plate — accreditation-seal treatment */}
+        <span className="w-8 h-8 bg-[#F2EDE3] flex items-center justify-center shrink-0">
+          <Image
+            src={withBP('/images/brand/ntb-emblem.webp')}
+            alt=""
+            width={30}
+            height={20}
+            className="w-[30px] h-auto"
+          />
+        </span>
         <span className={`text-[0.6rem] tracking-[0.22em] uppercase ${muted}`}>
           {NTB_REG_NUMBER ? (
             <>NTB Reg. <span className={ink}>{NTB_REG_NUMBER}</span></>
@@ -54,25 +72,24 @@ export function NtbBadge({
             <>Registered · Namibia Tourism Board</>
           )}
         </span>
-      </p>
+      </a>
     );
   }
 
   return (
-    <div
-      className={`inline-flex flex-col items-center border ${line} px-6 py-5 text-center ${className}`}
+    <a
+      {...linkProps}
+      className={`inline-flex flex-col items-center border ${line} px-6 py-5 text-center hover:border-[#C5511A] transition-colors ${className}`}
       data-testid="ntb-badge"
     >
+      {/* Official "Namibia · Endless Horizons" tourism mark */}
       <Image
-        src={withBP(variant === 'dark'
-          ? '/images/brand/wildpath-logo-dark-theme.webp'
-          : '/images/brand/wildpath-logo-light-theme.webp')}
-        alt=""
-        width={48}
-        height={54}
-        className="w-12 h-[3.375rem] object-contain mb-3"
+        src={withBP('/images/brand/ntb-full.webp')}
+        alt="Namibia Tourism Board — Namibia, Endless Horizons"
+        width={104}
+        height={103}
+        className="w-[104px] h-auto mb-3"
       />
-      <p className={`wp-display text-2xl leading-none ${ink} mb-2`}>NTB</p>
       <span className={`block w-10 h-px ${rule} mb-2`} aria-hidden="true" />
       <p className={`text-[0.6rem] tracking-[0.24em] uppercase ${muted}`}>
         Namibia Tourism Board
@@ -80,9 +97,9 @@ export function NtbBadge({
       <p className={`text-[0.6rem] tracking-[0.24em] uppercase ${ink} mt-1`}>
         {NTB_REG_NUMBER ? `Reg. ${NTB_REG_NUMBER}` : 'Registered'}
       </p>
-      <p className={`text-[0.55rem] tracking-[0.18em] uppercase ${soft} mt-3 max-w-[22ch]`}>
-        Tour operator · Windhoek, Namibia
+      <p className={`text-[0.55rem] tracking-[0.18em] uppercase ${soft} mt-3 max-w-[24ch]`}>
+        Verify on the NTB Business Directory ↗
       </p>
-    </div>
+    </a>
   );
 }

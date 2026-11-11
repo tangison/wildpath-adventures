@@ -43,16 +43,23 @@ export const SITE = {
     url: 'https://studio.tangison.com',
   },
   /**
-   * Namibia Tourism Board registration number, supplied by the client
-   * (Nov 2026 review session). Every NTB badge site-wide renders it.
-   * Override via NEXT_PUBLIC_NTB_REG_NUMBER if it ever changes.
+   * Namibia Tourism Board registration number.
+   *
+   * Confirmed by the client (NTB certificate): TFA01662. Shipped as the
+   * default so every NTB badge renders it; NEXT_PUBLIC_NTB_REG_NUMBER still
+   * overrides for build-env flexibility. Badges link to the NTB Business
+   * Directory where the number can be verified.
    */
   ntbRegNumber: process.env.NEXT_PUBLIC_NTB_REG_NUMBER || 'TFA01662',
+  /** Official NTB site + Business Directory (searchable by registration number). */
+  ntbUrl: 'https://visitnamibia.com.na',
+  ntbDirectoryUrl: 'https://visitnamibia.com.na/business-directory/',
 } as const;
 
 // Convenience aliases used throughout the app
 export const SITE_EMAIL = SITE.email;
 export const NTB_REG_NUMBER = SITE.ntbRegNumber;
+export const NTB_DIRECTORY_URL = SITE.ntbDirectoryUrl;
 export const SITE_URL = SITE.url;
 /** WhatsApp deep link with a short prefilled greeting so the chat starts warm. */
 export const WHATSAPP_URL = `https://wa.me/${SITE.phoneE164}?text=${encodeURIComponent(

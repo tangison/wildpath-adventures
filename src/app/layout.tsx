@@ -114,6 +114,11 @@ const jsonLd = {
     opens: "08:00",
     closes: "17:00",
   },
+  identifier: {
+    "@type": "PropertyValue",
+    name: "Namibia Tourism Board registration",
+    value: SITE.ntbRegNumber,
+  },
   slogan: SITE.tagline,
   ...(SITE.ntbRegNumber
     ? {
