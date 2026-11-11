@@ -82,8 +82,8 @@ export default function AboutPage() {
           <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div className="wp-photo wp-img-reveal order-2 md:order-1" style={{ aspectRatio: '4 / 3' }}>
               <Photo
-                base="damaraland-lodge-granite-hill"
-                alt="A lodge of stone and thatch built into a granite hillside in Damaraland."
+                base="thatched-hillside"
+                alt="Thatched chalets on poles at the foot of a granite hill in Damaraland."
                 aspect="4 / 3"
                 sizes="(min-width: 768px) 50vw, 100vw"
                 reveal={false}

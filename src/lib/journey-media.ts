@@ -240,7 +240,6 @@ export const DESTINATION_MEDIA: Record<
       { base: 'twyfelfontein-engravings', alt: 'Ancient San rock engravings, the Lion Plate, at Twyfelfontein.' },
       { base: 'desert-elephants-damaraland', alt: 'An adult and baby desert elephant on dry ground, mountains behind.' },
       { base: 'damaraland-road', alt: 'A gravel road winding toward red flat-topped mountains in Damaraland.' },
-      { base: 'damaraland-lodge-granite-hill', alt: 'A lodge of stone and thatch built into a granite hillside.' },
       { base: 'thatched-hillside', alt: 'Thatched chalets on poles at the foot of a granite hill.' },
     ],
   },
